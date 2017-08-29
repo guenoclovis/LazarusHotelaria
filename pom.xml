@@ -51,7 +51,7 @@
 	 </dependency>
 	</dependencies>
 
-	<!-- comentario para teste alterado -->
+	<!-- comentario para teste alterado de novo -->
 
 	<build>
 		<finalName>LazarusHotelaria</finalName>
