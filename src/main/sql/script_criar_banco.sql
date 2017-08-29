@@ -1,0 +1,1 @@
+CREATE DATABASE lazarus WITH OWNER postgres TEMPLATE template0 ENCODING 'utf-8';

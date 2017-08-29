@@ -1,0 +1,32 @@
+=== r00 ====================================
+- Clovis criou estrutura inicial de pastas para backend e frontend
+- Clovis pesquisou, baixou e incorporou um template
+
+=== r08 ====================================
+
+- Clovis adicionou parte parcial do frontend para CRUD de filial
+
+=== r09 ====================================
+
+- bibliotecas externas e codigos da aplicação separados em pastas diferentes:
+    app: contem codigo da aplicacao
+    lib: contem bibliotecas externas (tema e bootstrap)
+    
+- index.html passou a apenas redirecionar para a pasta da aplicação
+
+- SPA: a pagina principal do sistema passou a ser a paginaPrincipal.html
+
+- renomeados artefatos para que seja mais facil saber o conteudo pelo nome:
+   * modulos ->       xxxxx.module.js
+   * rotas ->         xxxxx.route.js
+   * servicos ->      xxxxx.service.js
+   * controladores->  xxxxx-[pesquisar|incluir|editar].controller.js
+   
+   
+- arquivo contendo as rotas do sistema: app.rotas.js
+
+- arquivo contendo o modulo principal do sistema: app.modulo-principal.js
+
+- criacao da pasta /doc e deste CHANGELOG
+
+- *** ALTERACAO NO app.rotas.js PARA FUNCIONAR O SERVIDOR DE LIVERELOADjs

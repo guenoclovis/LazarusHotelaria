@@ -1,0 +1,48 @@
+<div>
+    <div ng-controller="ConsultarFilialController as vm">
+        <h1>{{vm.msgs}}</h1>
+        <h1>Consulta Filial</h1>
+        <div>
+            <pre>{{vm.filial| json}}</pre>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="nome" class="cols-sm-2 control-label">Nome</label>
+                <div class="cols-sm-4">
+                    <div class="input-group">
+                        <span class="input-group-addon">
+                            <i class="fa fa-envelope fa" aria-hidden="true"></i>
+                        </span>
+                        <input type="text" class="form-control" name="nome" id="nome" ng-model="vm.filial.nome"
+                               placeholder="Nome da Filial" />
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="form-group ">
+                <button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
+                <button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+            </div>
+
+            <div ng-if="vm.filiais.length > 0">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>ID</td>
+                            <td>Nome</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="filial in vm.filiais">
+                            <td>{{ filial.id}}</td>
+                            <td>{{ filial.nome}}</td>
+                            <td><a ng-click="vm.irParaTelaDetalhamento(filial.id)">Detalhar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
