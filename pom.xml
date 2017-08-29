@@ -50,7 +50,6 @@
 	  <version>2.5.1</version>
 	 </dependency>
 	</dependencies>
-	<!-- comentario para teste -->
 
 	<build>
 		<finalName>LazarusHotelaria</finalName>
