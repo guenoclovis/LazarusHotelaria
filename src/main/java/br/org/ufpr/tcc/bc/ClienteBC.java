@@ -1,16 +1,15 @@
 package br.org.ufpr.tcc.bc;
 
 import java.util.List;
+import java.util.logging.Level;
 import java.util.logging.Logger;
 
-import br.org.ufpr.tcc.ClienteDAO;
-import br.org.ufpr.tcc.dto.ClienteDTO;
+import br.org.ufpr.tcc.dao.ClienteDAO;
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Pagina;
-import java.util.logging.Level;
 
 public class ClienteBC {
 

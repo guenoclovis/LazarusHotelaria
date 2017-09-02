@@ -6,10 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.entity.Cliente;
-import java.util.logging.Logger;
 
 
 
