@@ -1,52 +1,52 @@
-	<div>
-		<div ng-controller="EditarClienteController as vm">
-			<h1>{{vm.msgs}}</h1>
-			<div ng-if="vm.cliente.id">
-				<h1>Cliente Editar</h1>
-			</div>
-			<div ng-if="!vm.cliente.id">
-				<h1>Cliente Incluir</h1>
-			</div>
-			
-			<div>
-				<pre>{{vm.cliente | json}}</pre>
-			</div>
 
-			<form>
-				<div class="form-group">
-					<label for="id" class="cols-sm-2 control-label">ID</label>
-					<div class="cols-sm-4">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-user fa" aria-hidden="true"></i>
-							</span>
-							<input type="text" class="form-control" name="id" id="id" ng-model="vm.cliente.id"
-								placeholder="ID do Fulano(a)" />
-						</div>
-					</div>
-				</div>
-
-				<div class="form-group">
-					<label for="nome" class="cols-sm-2 control-label">Nome</label>
-					<div class="cols-sm-4">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-envelope fa" aria-hidden="true"></i>
-							</span>
-							<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.cliente.nome"
-								placeholder="Nome do Fulano(a)" />
-						</div>
-					</div>
-				</div>
-
-
-				<div class="form-group ">
-					<button ng-click="vm.incluir()" class="btn btn-primary">Incluir</button>
-					<button ng-click="vm.alterar()" class="btn btn-primary">Alterar</button>
-					<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
-				</div>				
-
-			</form>
-
+<div>
+	<div ng-controller="EditarClienteController as vm">
+		<h1>{{vm.msgs}}</h1>
+		<div ng-if="vm.cliente.id">
+			<h1>Cliente Editar</h1>
 		</div>
+		<div ng-if="!vm.cliente.id">
+			<h1>Cliente Incluir</h1>
+		</div>
+
+		<div>
+			<pre>{{vm.cliente | json}}</pre>
+		</div>
+
+		<form>
+			<div class="form-group" ng-if="vm.cliente.id">
+				<label for="id" class="cols-sm-2 control-label">ID</label>
+				<div class="cols-sm-4">
+					<div class="input-group">
+						<div class="col-md-6">
+							<span id="nome">{{vm.cliente.id}}</span>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="form-group">
+				<label for="nome" class="cols-sm-2 control-label">Nome</label>
+				<div class="cols-sm-4">
+					<div class="input-group">
+						<span class="input-group-addon">
+							<i class="fa fa-envelope fa" aria-hidden="true"></i>
+						</span>
+						<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.cliente.nome"
+							placeholder="Nome do Fulano(a)" />
+					</div>
+				</div>
+			</div>
+
+
+			<div class="form-group ">
+				<button ng-if="!vm.cliente.id" ng-click="vm.incluir()" class="btn btn-primary">Incluir</button>
+				<button ng-if="vm.cliente.id" ng-click="vm.alterar()" class="btn btn-primary">Alterar</button>
+				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
+			</div>
+
+		</form>
+
 	</div>
+</div>
