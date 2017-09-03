@@ -23,7 +23,7 @@
 
         vm.msgs = "";
 
-        vm.limpar = limpar;
+        vm.limparFormulario = limparFormulario;
         vm.irParaTelaConsultar = irParaTelaConsultar;
         vm.incluir = incluir;
         vm.alterar = alterar;
@@ -38,21 +38,26 @@
             }
         }
 
-        function limpar() {
+        function recarregarTela() {
             $state.reload();
         }
 
         function irParaTelaConsultar() {
             $state.go('clienteConsultar');
         }
-
+        
         function incluir() {
 
             vm.cliente.id = undefined;
 
             ClienteData.salvar(vm.cliente).then(function (data) {
                 vm.msgs = "Cliente incluído com sucesso!";
+                limparFormulario();
             });
+        }
+        
+        function limparFormulario() {
+        	vm.cliente = {};
         }
 
         function alterar() {
