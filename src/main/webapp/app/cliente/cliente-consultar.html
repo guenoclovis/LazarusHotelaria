@@ -1,68 +1,71 @@
 <div>
-    <div ng-controller="ConsultarClienteController as vm">
-        <h1>{{vm.msgs}}</h1>
-        <h1>Consulta Clientes</h1>
-        <div>
-            <pre>{{vm.cliente| json}}</pre>
-        </div>
+	<div ng-controller="ConsultarClienteController as vm">
 
-        <form>
-            <!-- 				<div class="form-group"> -->
-            <!-- 					<label for="id" class="cols-sm-2 control-label">ID</label> -->
-            <!-- 					<div class="cols-sm-4"> -->
-            <!-- 						<div class="input-group"> -->
-            <!-- 							<span class="input-group-addon"> -->
-            <!-- 								<i class="fa fa-user fa" aria-hidden="true"></i> -->
-            <!-- 							</span> -->
-            <!-- 							<input type="text" class="form-control" name="id" id="id" ng-model="vm.cliente.id" -->
-            <!-- 								placeholder="ID do Fulano(a)" /> -->
-            <!-- 						</div> -->
-            <!-- 					</div> -->
-            <!-- 				</div> -->
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Consultar Clientes</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<div><pre>{{vm.cliente | json}}</pre></div>
+				</div>
+			</div>
 
-            <div class="form-group">
-                <label for="nome" class="cols-sm-2 control-label">Nome</label>
-                <div class="cols-sm-4">
-                    <div class="input-group">
-                        <span class="input-group-addon">
-                            <i class="fa fa-envelope fa" aria-hidden="true"></i>
-                        </span>
-                        <input type="text" class="form-control" name="nome" id="nome" ng-model="vm.cliente.nome"
-                               placeholder="Nome do Fulano(a)" />
-                    </div>
-                </div>
-            </div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="nome" class="cols-sm-2 control-label">Nome</label>
+						<div class="cols-sm-4">
+							<div class="input-group">
+								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.cliente.nome"
+									placeholder="Nome do Fulano(a)" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
 
-
-            <div class="form-group ">
-                <!-- 					<button ng-click="vm.obter()" class="btn btn-primary">Obter</button> -->
-                <button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
-                <!-- 					<button ng-click="vm.alterar()" class="btn btn-primary">Alterar</button> -->
-                <button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
-            </div>
-
-            <div ng-if="vm.clientes.length > 0">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <td>ID</td>
-                            <td>Nome</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="cliente in vm.clientes">
-                            <td>{{ cliente.id}}</td>
-                            <td>{{ cliente.nome}}</td>
-                            <td>{{ cliente.nome}}</td>
-                            <td><a ng-click="vm.irParaTelaDetalhamento(cliente.id)">Detalhar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-
-
-            </div>
-
-        </form>
-
-    </div>
+			<div class="row">
+				<div class="col-md-12">
+					<div align="center">
+						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
+						<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div ng-if="vm.clientes.length > 0">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>ID</td>
+									<td>Nome</td>
+									<td>Ação</td>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="cliente in vm.clientes">
+									<td>{{ cliente.id}}</td>
+									<td>{{ cliente.nome}}</td>
+									<td>
+										<button ng-click="vm.irParaTelaDetalhamento(cliente.id)" class="btn btn-primary btn-xs">Detalhar</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 </div>

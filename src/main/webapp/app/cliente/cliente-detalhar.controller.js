@@ -24,6 +24,7 @@
 
         vm.voltarParaTelaAnterior = voltarParaTelaAnterior;
         vm.irParaTelaEdicao = irParaTelaEdicao;
+        vm.excluir = excluir;
 
         activate();
 
@@ -50,6 +51,12 @@
         function obter() {
             ClienteData.obter(vm.cliente.id).then(function (data) {
                 vm.cliente = data.plain();
+            });
+        }
+        
+        function excluir() {
+            ClienteData.excluir(vm.cliente.id).then(function (data) {                
+                $state.go('clienteConsultar');
             });
         }
 

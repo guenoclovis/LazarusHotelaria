@@ -9,6 +9,11 @@ public class Mensagem {
 	private int severidade;
 	
 	private String texto;
+	
+	public Mensagem(int severidade, String texto) {
+		this.severidade = severidade;
+		this.texto = texto;
+	}
 
 	public int getSeveridade() {
 		return severidade;
@@ -17,5 +22,6 @@ public class Mensagem {
 	public void setSeveridade(int severidade) {
 		this.severidade = severidade;
 	}
+	
 	
 }

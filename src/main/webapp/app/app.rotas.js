@@ -69,7 +69,7 @@
             controller: 'DetalharClienteController',
             templateUrl: './cliente/cliente-detalhar.html',
             params: {
-                id: null
+                id: undefined
             }
         }
 

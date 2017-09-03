@@ -1,45 +1,57 @@
-	<div>
-		<div ng-controller="DetalharClienteController as dcc">
-			<h2>{{dcc.msgs}}</h2>
-			<h2>Cliente Detalhar</h2>
-			<div>
-				<pre>{{dcc.cliente | json}}</pre>
+
+<div>
+	<div ng-controller="DetalharClienteController as dcc">
+
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Detalhar do Cliente</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div><pre>{{dcc.cliente | json}}</pre></div>
+				</div>
 			</div>
 
-			<form>
-				<div class="form-group">
-					<label for="id" class="cols-sm-2 control-label">ID</label>
-					<div class="cols-sm-4">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-user fa" aria-hidden="true"></i>
-							</span>
-							<input type="text" class="form-control" name="id" id="id" ng-model="dcc.cliente.id"
-								placeholder="ID do Fulano(a)" />
-						</div>
-					</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">ID</label>
 				</div>
-
-				<div class="form-group">
+				<div class="col-md-6">
+					<span id="nome">{{dcc.cliente.id}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
 					<label for="nome" class="cols-sm-2 control-label">Nome</label>
-					<div class="cols-sm-4">
-						<div class="input-group">
-							<span class="input-group-addon">
-								<i class="fa fa-envelope fa" aria-hidden="true"></i>
-							</span>
-							<input type="text" class="form-control" name="nome" id="nome" ng-model="dcc.cliente.nome"
-								placeholder="Nome do Fulano(a)" />
-						</div>
-					</div>
 				</div>
-
-
-				<div class="form-group ">
-					<button ng-click="dcc.voltarParaTelaAnterior()" class="btn btn-primary">Voltar</button>
-					<button ng-click="dcc.irParaTelaEdicao(dcc.cliente.id)" class="btn btn-primary">Editar</button>					
+				<div class="col-md-6">
+					<span id="nome">{{dcc.cliente.nome}}</span>
 				</div>
-
-			</form>
-
+				<div class="col-md-2"></div>
+			</div>
 		</div>
+
+		<div class="row">
+			<div class="col-md-12 lazarus-align">
+				<div class="lazarus-align">
+					<button ng-click="dcc.voltarParaTelaAnterior()" class="btn btn-primary">Voltar</button>
+					<button ng-click="dcc.irParaTelaEdicao(dcc.cliente.id)" class="btn btn-primary">Editar</button>
+					<button ng-click="dcc.excluir(dcc.cliente.id)" class="btn btn-primary">Excluir</button>
+				</div>
+			</div>
+		</div>
+
 	</div>
+
+</div>

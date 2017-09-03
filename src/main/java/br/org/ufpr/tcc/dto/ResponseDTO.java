@@ -1,5 +1,6 @@
 package br.org.ufpr.tcc.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.org.ufpr.tcc.entity.Mensagem;
@@ -11,7 +12,7 @@ public class ResponseDTO {
     private List<Mensagem> mensagens;
 
     public ResponseDTO() {
-        this(null, null);
+        this(null, new ArrayList<Mensagem>());
     }
 
     public ResponseDTO(Long id, List<Mensagem> mensagens) {

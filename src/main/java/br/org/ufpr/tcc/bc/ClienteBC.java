@@ -9,6 +9,7 @@ import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
+import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.entity.Pagina;
 
 public class ClienteBC {
@@ -55,9 +56,15 @@ public class ClienteBC {
         return new ResponseDTO();
     }
 
-    public ResponseDTO remover(Long[] ids) {
-        // TODO Auto-generated method stub
-        return null;
+    public ResponseDTO remover(Long id) {
+    	ResponseDTO response = new ResponseDTO();
+    	try {
+			dao.excluir(id);
+		} catch (Exception e) {
+			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Não foi possível excluir cliente com id=" + id));
+			e.printStackTrace();
+		}
+    	return response;
     }
 
 }

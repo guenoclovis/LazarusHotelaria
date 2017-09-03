@@ -59,6 +59,9 @@
 
             ClienteData.salvar(vm.cliente).then(function (data) {
                 vm.msgs = "Cliente salvo com sucesso!";
+                $state.go('clienteDetalhar', {
+                    'id': vm.cliente.id
+                });
             });
         }
 

@@ -77,7 +77,7 @@ public class ClienteFacade {
         Cliente cliente = new Cliente();
     	cliente.setId(dto.getId());
     	cliente.setNome(dto.getNome());
-    	 log.info("Ver se está correto: "+ cliente.toString());
+    	 log.info("Ver se estï¿½ correto: "+ cliente.toString());
 		ResponseDTO responseDTO = bc.persistir(cliente);
 
         logMsg = "Registro de Cliente persistido";
@@ -87,7 +87,15 @@ public class ClienteFacade {
     }
     
     public ResponseDTO remover(Long... ids) {
-        return bc.remover(ids);
+    	ResponseDTO retorno = new ResponseDTO();
+    	
+    	for(Long id : ids){
+    		ResponseDTO aux = bc.remover(id);
+    		retorno.getMensagens().addAll(aux.getMensagens());
+    	}
+    	
+    	return retorno;
+    	 
     }
 
 	public ResponseDTO inserir(ClienteDTO clienteDTO) {

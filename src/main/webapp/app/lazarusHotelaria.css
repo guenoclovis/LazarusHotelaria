@@ -1,0 +1,9 @@
+.col-md-1, .col-md-4, .col-md-6, .col-md-8, .col-md-12 {
+	border-width: 1px;
+	border-style: none;
+}
+
+.lazarus-align {
+	vertical-align: middle;
+	text-align: center;
+}

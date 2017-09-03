@@ -74,6 +74,16 @@ public class ClienteREST {
         return Response.ok(response).build();
     }
     
+    @DELETE
+    @Path("{id}")
+    @Produces("application/json")    
+    public Response remover(@PathParam("id") Long id) {
+    	List<Long> ids = new ArrayList<Long>();
+    	ids.add(id);
+        
+        return remover(ids);
+    }
+    
     @PUT
     @Path("{id}")
     @Consumes("application/json")

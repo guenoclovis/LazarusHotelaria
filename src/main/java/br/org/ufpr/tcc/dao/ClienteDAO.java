@@ -19,7 +19,7 @@ public class ClienteDAO {
 
     private final String stmtInserir = "INSERT INTO cliente(nome) VALUES(?)";
     private final String stmtObter = "SELECT * FROM cliente WHERE id = ?";
-    private final String stmtExcluir = "DELETE * FROM cliente WHERE id = ?";
+    private final String stmtExcluir = "DELETE FROM cliente WHERE id = ?";
     private final String stmtListar = "SELECT * FROM cliente";
     private final String stmtListarPaginado = "SELECT * FROM cliente";
     private final String stmtAlterar = "UPDATE cliente SET nome = ? WHERE id = ?";
@@ -143,20 +143,17 @@ public class ClienteDAO {
 
     }
     
-    public void excluir(int id) throws Exception {
+    public void excluir(Long id) throws Exception {
         Connection con = null;
         PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Cliente> lista = new ArrayList();
         try{
             con = ConnectionManager.getConnection();
             stmt = con.prepareStatement(stmtExcluir);
-            stmt.setInt(1, id);
+            stmt.setLong(1, id);
             stmt.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao excliur um cliente. Origem="+ex.getMessage());
         }finally{
-            try{rs.close();}catch(Exception ex){System.out.println("Erro ao fechar result set. Ex="+ex.getMessage());};
             try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
             try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               
         }
