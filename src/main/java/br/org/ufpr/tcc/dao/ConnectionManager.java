@@ -9,7 +9,7 @@ public class ConnectionManager {
 
     private static final String driverName = "org.postgresql.Driver";
     
-    /** PROD **/
+    /** PROD ######################################## **/
 
     
     /** LOCAL **/
