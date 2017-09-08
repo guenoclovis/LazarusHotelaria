@@ -89,7 +89,7 @@ public class ClienteREST {
     @Consumes("application/json")
     @Produces("application/json")    
     public Response alterar(@PathParam("id") Long id, ClienteDTO clienteDTO) {
-    	clienteDTO.setId(id);
+    	clienteDTO.setCodCliente(id.intValue());
         ResponseDTO response = facade.persistir(clienteDTO);
         return Response.ok(response).build();
     }

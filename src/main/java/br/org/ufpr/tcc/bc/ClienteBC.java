@@ -18,7 +18,7 @@ public class ClienteBC {
 
     private ClienteDAO dao = new ClienteDAO();
 
-    public Cliente obter(Long id) {
+    public Cliente obter(Integer id) {
         return dao.obter(id);
     }
 
@@ -36,13 +36,13 @@ public class ClienteBC {
         String descricaoOperacao = "";
 
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
-        if (cliente.getId() == null) {
+        if (cliente.getCodCliente() == null) {
             log.info("Inicia a persistência de um novo cliente.");
             dao.inserir(cliente);
             log.info("Persistiu novo cliente na base de dados.");
 
         } else {
-            log.info("Inicia a atualização do cliente [id=%d]" + cliente.getId());
+            log.info("Inicia a atualização do cliente [id=%d]" + cliente.getCodCliente());
 
             try {
                 //TODO: PENDENTE
@@ -56,7 +56,7 @@ public class ClienteBC {
         return new ResponseDTO();
     }
 
-    public ResponseDTO remover(Long id) {
+    public ResponseDTO remover(Integer id) {
     	ResponseDTO response = new ResponseDTO();
     	try {
 			dao.excluir(id);

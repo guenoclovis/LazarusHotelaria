@@ -50,13 +50,18 @@
 								<tr>
 									<td>ID</td>
 									<td>Nome</td>
-									<td>Ação</td>
+									<td>Data Nascimento</td>
+									<td>Sexo</td>
+									<td>Nacionalidade</td>
 								</tr>
 							</thead>
 							<tbody>
 								<tr ng-repeat="cliente in vm.clientes">
-									<td>{{ cliente.id}}</td>
+									<td>{{ cliente.codCliente}}</td>
 									<td>{{ cliente.nome}}</td>
+									<td>{{ cliente.dtNasc}}</td>
+									<td>{{ cliente.sexo}}</td>
+									<td>{{ cliente.nacionalidade}}</td>
 									<td>
 										<button ng-click="vm.irParaTelaDetalhamento(cliente.id)" class="btn btn-primary btn-xs">Detalhar</button>
 									</td>

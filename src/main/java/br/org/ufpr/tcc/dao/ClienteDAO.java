@@ -17,12 +17,12 @@ public class ClienteDAO {
     
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private final String stmtInserir = "INSERT INTO cliente(nome) VALUES(?)";
-    private final String stmtObter = "SELECT * FROM cliente WHERE id = ?";
-    private final String stmtExcluir = "DELETE FROM cliente WHERE id = ?";
-    private final String stmtListar = "SELECT * FROM cliente";
-    private final String stmtListarPaginado = "SELECT * FROM cliente";
-    private final String stmtAlterar = "UPDATE cliente SET nome = ? WHERE id = ?";
+    private final String stmtInserir = "INSERT INTO clientes(COD_CLIENTE, NOME, DT_NASC, SEXO, NACIONALIDADE, TELEFONE1, TELEFONE2, EMAIL1, EMAIL2, CPF, RG, PASSAPORTE, END_RUA, END_NRO, END_BAIRRO, END_CIDADE, END_UF, END_COMPL, SENHA_ACESSO, STATUS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String stmtObter = "SELECT * FROM clientes WHERE id = ?";
+    private final String stmtExcluir = "DELETE FROM clientes WHERE id = ?";
+    private final String stmtListar = "SELECT * FROM clientes";
+    private final String stmtListarPaginado = "SELECT * FROM clientes";
+    private final String stmtAlterar = "UPDATE clientes SET NOME = ?, DT_NASC = ?, SEXO = ?, NACIONALIDADE = ?, TELEFONE1 = ?, TELEFONE2 = ?, EMAIL1 = ?, EMAIL2 = ?, CPF = ?, RG = ?, PASSAPORTE = ?, END_RUA = ?, END_NRO = ?, END_BAIRRO = ?, END_CIDADE = ?, END_UF = ?, END_COMPL = ?, SENHA_ACESSO = ?, STATUS = ? WHERE COD_CLIENTE = ? ";
 
     public void inserir(Cliente cliente) {
         Connection con = null;
@@ -30,9 +30,29 @@ public class ClienteDAO {
         try{
             con = ConnectionManager.getConnection();
             stmt = con.prepareStatement(stmtInserir,PreparedStatement.RETURN_GENERATED_KEYS);
-            stmt.setString(1, cliente.getNome());
+            stmt.setInt(1 ,cliente.getCodCliente());
+            stmt.setString(2 ,cliente.getNome());
+            stmt.setDate(3 , new java.sql.Date(cliente.getDtNasc().getTime()));
+            stmt.setString(4 ,String.valueOf(cliente.getSexo()));
+            stmt.setString(5 ,cliente.getNacionalidade());
+            stmt.setString(6 ,cliente.getTelefone1());
+            stmt.setString(7 ,cliente.getTelefone2());
+            stmt.setString(8 ,cliente.getEmail1());
+            stmt.setString(9 ,cliente.getEmail2());
+            stmt.setString(10 ,cliente.getCpf());
+            stmt.setString(11 ,cliente.getRg());
+            stmt.setString(12 ,cliente.getPassaporte());
+            stmt.setString(13 ,cliente.getEndRua());
+            stmt.setInt(14 ,cliente.getEndNro());
+            stmt.setString(15 ,cliente.getEndBairro());
+            stmt.setString(16 ,cliente.getEndCidade());
+            stmt.setString(17 ,cliente.getEndUf());
+            stmt.setString(18 ,cliente.getEndCompl());
+            stmt.setString(19 ,cliente.getSenhaAcesso());
+            stmt.setString(20 ,String.valueOf(cliente.getStatus()));
+
             stmt.executeUpdate();
-            cliente.setId(lerIdCliente(stmt));
+            cliente.setCodCliente(lerIdCliente(stmt));
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao inserir um cliente no banco de dados.", ex);
         } finally{
@@ -41,13 +61,13 @@ public class ClienteDAO {
         }
      }
     
-    private Long lerIdCliente(PreparedStatement stmt) throws SQLException {
+    private Integer lerIdCliente(PreparedStatement stmt) throws SQLException {
         ResultSet rs = stmt.getGeneratedKeys();
         rs.next();
-        return rs.getLong(1);
+        return rs.getInt(1);
     }
 
-    public Cliente obter(Long id) {
+    public Cliente obter(Integer id) {
         Connection con = null;
         PreparedStatement stmt = null;
         ResultSet rs = null;
@@ -55,13 +75,15 @@ public class ClienteDAO {
         try{
             con = ConnectionManager.getConnection();
             stmt = con.prepareStatement(stmtObter);
-            stmt.setLong(1, id.longValue());
+            stmt.setInt(1, id);
             rs = stmt.executeQuery();
+            
             if(rs.next()){
-                clienteLido = new Cliente();
-                clienteLido.setNome(rs.getString("nome"));
-                clienteLido.setId(rs.getLong("id"));
+            	
+                clienteLido = extrairClienteDoResultSet(rs);
+                
                 return clienteLido;
+                
             }else{
                 throw new RuntimeException("Não existe cliente com este id. Id="+id);
             }
@@ -76,6 +98,33 @@ public class ClienteDAO {
 
     }
 
+	private Cliente extrairClienteDoResultSet(ResultSet rs) throws SQLException {
+		Cliente clienteLido;
+		clienteLido = new Cliente();
+		
+		clienteLido.setCodCliente(rs.getInt("COD_CLIENTE"));
+		clienteLido.setNome(rs.getString("NOME"));
+		clienteLido.setDtNasc(rs.getDate("DT_NASC"));
+		clienteLido.setSexo(rs.getString("SEXO").charAt(0));
+		clienteLido.setNacionalidade(rs.getString("NACIONALIDADE"));
+		clienteLido.setTelefone1(rs.getString("TELEFONE1"));
+		clienteLido.setTelefone2(rs.getString("TELEFONE2"));
+		clienteLido.setEmail1(rs.getString("EMAIL1"));
+		clienteLido.setEmail2(rs.getString("EMAIL2"));
+		clienteLido.setCpf(rs.getString("CPF"));
+		clienteLido.setRg(rs.getString("RG"));
+		clienteLido.setPassaporte(rs.getString("PASSAPORTE"));
+		clienteLido.setEndRua(rs.getString("END_RUA"));
+		clienteLido.setEndNro(rs.getInt("END_NRO"));
+		clienteLido.setEndBairro(rs.getString("END_BAIRRO"));
+		clienteLido.setEndCidade(rs.getString("END_CIDADE"));
+		clienteLido.setEndUf(rs.getString("END_UF"));
+		clienteLido.setEndCompl(rs.getString("END_COMPL"));
+		clienteLido.setSenhaAcesso(rs.getString("SENHA_ACESSO"));
+		clienteLido.setStatus(rs.getString("STATUS").charAt(0));
+		return clienteLido;
+	}
+
     public List<Cliente> listar() throws Exception {
         Connection con = null;
         PreparedStatement stmt = null;
@@ -89,9 +138,8 @@ public class ClienteDAO {
             Cliente cliente = null;
             
             while(rs.next()){
-            	cliente = new Cliente();
-                cliente.setNome(rs.getString("nome"));
-                cliente.setId(rs.getLong("id"));
+            	
+            	cliente = extrairClienteDoResultSet(rs);
                 
                 lista.add(cliente);
             }
@@ -121,14 +169,13 @@ public class ClienteDAO {
             rs = stmt.executeQuery();
             
             
-            //TODO: tratar os filtros!
+            //TODO: tratar os filtros aqui!
             
             Cliente cliente = null;
             
             while(rs.next()){
-            	cliente = new Cliente();
-                cliente.setNome(rs.getString("nome"));
-                cliente.setId(rs.getLong("id"));
+            	
+            	cliente = extrairClienteDoResultSet(rs);
                 
                 lista.add(cliente);
             }
@@ -143,13 +190,13 @@ public class ClienteDAO {
 
     }
     
-    public void excluir(Long id) throws Exception {
+    public void excluir(Integer id) throws Exception {
         Connection con = null;
         PreparedStatement stmt = null;
         try{
             con = ConnectionManager.getConnection();
             stmt = con.prepareStatement(stmtExcluir);
-            stmt.setLong(1, id);
+            stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao excliur um cliente. Origem="+ex.getMessage());
@@ -166,8 +213,29 @@ public class ClienteDAO {
         try{
             con = ConnectionManager.getConnection();
             stmt = con.prepareStatement(stmtAlterar);
-            stmt.setString(1, cliente.getNome());
-            stmt.setLong(2, cliente.getId());
+            
+            stmt.setString(1 ,cliente.getNome());
+            stmt.setDate(2 , new java.sql.Date(cliente.getDtNasc().getTime()));
+            stmt.setString(3 ,String.valueOf(cliente.getSexo()));
+            stmt.setString(4 ,cliente.getNacionalidade());
+            stmt.setString(5 ,cliente.getTelefone1());
+            stmt.setString(6 ,cliente.getTelefone2());
+            stmt.setString(7 ,cliente.getEmail1());
+            stmt.setString(8 ,cliente.getEmail2());
+            stmt.setString(9 ,cliente.getCpf());
+            stmt.setString(10 ,cliente.getRg());
+            stmt.setString(11 ,cliente.getPassaporte());
+            stmt.setString(12 ,cliente.getEndRua());
+            stmt.setInt(13 ,cliente.getEndNro());
+            stmt.setString(14 ,cliente.getEndBairro());
+            stmt.setString(15 ,cliente.getEndCidade());
+            stmt.setString(16 ,cliente.getEndUf());
+            stmt.setString(17 ,cliente.getEndCompl());
+            stmt.setString(18 ,cliente.getSenhaAcesso());
+            stmt.setString(19 ,String.valueOf(cliente.getStatus()));
+            
+            stmt.setInt(20 ,cliente.getCodCliente());
+            
             stmt.executeUpdate();
         } catch (SQLException ex) {
             throw new RuntimeException("Erro ao alterar um cliente. Origem="+ex.getMessage());

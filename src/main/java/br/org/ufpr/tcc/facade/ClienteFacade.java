@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import br.org.ufpr.tcc.bc.ClienteBC;
+import br.org.ufpr.tcc.converter.ClienteToDTO;
 import br.org.ufpr.tcc.dto.ClienteDTO;
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
@@ -23,15 +24,14 @@ public class ClienteFacade {
         
         log.info(logMsg);
 
-        Cliente c = bc.obter(id);
+        Cliente c = bc.obter(id.intValue());
 
         logMsg = "Busca do cliente finalizada";
         log.info(logMsg);
 
         //CONVERTER
-        ClienteDTO clienteDTO = new ClienteDTO();
-    	clienteDTO.setId(c.getId());
-    	clienteDTO.setNome(c.getNome());
+        ClienteToDTO converter = new ClienteToDTO();
+        ClienteDTO clienteDTO = converter.convert(c);
     	
         return clienteDTO;
     }
@@ -51,14 +51,13 @@ public class ClienteFacade {
         log.info("Convertendo resultados obtidos");
 
         
-        //Converter        
+        //CONVERTER
         List<ClienteDTO> clientesDTO = new ArrayList<ClienteDTO>();
         for(Cliente c : listagem.getEntidades()){
-        	ClienteDTO clienteDTO = new ClienteDTO();
-        	clienteDTO.setId(c.getId());
-        	clienteDTO.setNome(c.getNome());
-        	
-        	clientesDTO.add(clienteDTO);
+            ClienteToDTO converter = new ClienteToDTO();
+            ClienteDTO clienteDTO = converter.convert(c);
+            
+            clientesDTO.add(clienteDTO);
         }
 		
 		ResultadoPaginadoDTO<ClienteDTO> responseDTO = new ResultadoPaginadoDTO<ClienteDTO>(clientesDTO, new Pagina());
@@ -75,7 +74,7 @@ public class ClienteFacade {
 
         //Conversao
         Cliente cliente = new Cliente();
-    	cliente.setId(dto.getId());
+    	cliente.setCodCliente(dto.getCodCliente());
     	cliente.setNome(dto.getNome());
     	 log.info("Ver se est� correto: "+ cliente.toString());
 		ResponseDTO responseDTO = bc.persistir(cliente);
@@ -90,7 +89,7 @@ public class ClienteFacade {
     	ResponseDTO retorno = new ResponseDTO();
     	
     	for(Long id : ids){
-    		ResponseDTO aux = bc.remover(id);
+    		ResponseDTO aux = bc.remover(id.intValue());
     		retorno.getMensagens().addAll(aux.getMensagens());
     	}
     	
