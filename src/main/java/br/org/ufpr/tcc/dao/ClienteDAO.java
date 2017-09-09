@@ -17,9 +17,9 @@ public class ClienteDAO {
     
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private final String stmtInserir = "INSERT INTO clientes(COD_CLIENTE, NOME, DT_NASC, SEXO, NACIONALIDADE, TELEFONE1, TELEFONE2, EMAIL1, EMAIL2, CPF, RG, PASSAPORTE, END_RUA, END_NRO, END_BAIRRO, END_CIDADE, END_UF, END_COMPL, SENHA_ACESSO, STATUS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
-    private final String stmtObter = "SELECT * FROM clientes WHERE id = ?";
-    private final String stmtExcluir = "DELETE FROM clientes WHERE id = ?";
+    private final String stmtInserir = "INSERT INTO clientes(NOME, DT_NASC, SEXO, NACIONALIDADE, TELEFONE1, TELEFONE2, EMAIL1, EMAIL2, CPF, RG, PASSAPORTE, END_RUA, END_NRO, END_BAIRRO, END_CIDADE, END_UF, END_COMPL, SENHA_ACESSO, STATUS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    private final String stmtObter = "SELECT * FROM clientes WHERE cod_cliente = ?";
+    private final String stmtExcluir = "DELETE FROM clientes WHERE cod_cliente = ?";
     private final String stmtListar = "SELECT * FROM clientes";
     private final String stmtListarPaginado = "SELECT * FROM clientes";
     private final String stmtAlterar = "UPDATE clientes SET NOME = ?, DT_NASC = ?, SEXO = ?, NACIONALIDADE = ?, TELEFONE1 = ?, TELEFONE2 = ?, EMAIL1 = ?, EMAIL2 = ?, CPF = ?, RG = ?, PASSAPORTE = ?, END_RUA = ?, END_NRO = ?, END_BAIRRO = ?, END_CIDADE = ?, END_UF = ?, END_COMPL = ?, SENHA_ACESSO = ?, STATUS = ? WHERE COD_CLIENTE = ? ";
@@ -30,26 +30,26 @@ public class ClienteDAO {
         try{
             con = ConnectionManager.getConnection();
             stmt = con.prepareStatement(stmtInserir,PreparedStatement.RETURN_GENERATED_KEYS);
-            stmt.setInt(1 ,cliente.getCodCliente());
-            stmt.setString(2 ,cliente.getNome());
-            stmt.setDate(3 , new java.sql.Date(cliente.getDtNasc().getTime()));
-            stmt.setString(4 ,String.valueOf(cliente.getSexo()));
-            stmt.setString(5 ,cliente.getNacionalidade());
-            stmt.setString(6 ,cliente.getTelefone1());
-            stmt.setString(7 ,cliente.getTelefone2());
-            stmt.setString(8 ,cliente.getEmail1());
-            stmt.setString(9 ,cliente.getEmail2());
-            stmt.setString(10 ,cliente.getCpf());
-            stmt.setString(11 ,cliente.getRg());
-            stmt.setString(12 ,cliente.getPassaporte());
-            stmt.setString(13 ,cliente.getEndRua());
-            stmt.setInt(14 ,cliente.getEndNro());
-            stmt.setString(15 ,cliente.getEndBairro());
-            stmt.setString(16 ,cliente.getEndCidade());
-            stmt.setString(17 ,cliente.getEndUf());
-            stmt.setString(18 ,cliente.getEndCompl());
-            stmt.setString(19 ,cliente.getSenhaAcesso());
-            stmt.setString(20 ,String.valueOf(cliente.getStatus()));
+            
+            stmt.setString(1 ,cliente.getNome());
+            stmt.setDate(2 , new java.sql.Date(cliente.getDtNasc().getTime()));
+            stmt.setString(3 ,String.valueOf(cliente.getSexo()));
+            stmt.setString(4 ,cliente.getNacionalidade());
+            stmt.setString(5 ,cliente.getTelefone1());
+            stmt.setString(6 ,cliente.getTelefone2());
+            stmt.setString(7 ,cliente.getEmail1());
+            stmt.setString(8 ,cliente.getEmail2());
+            stmt.setString(9 ,cliente.getCpf());
+            stmt.setString(10 ,cliente.getRg());
+            stmt.setString(11 ,cliente.getPassaporte());
+            stmt.setString(12 ,cliente.getEndRua());
+            stmt.setInt(13 ,cliente.getEndNro());
+            stmt.setString(14 ,cliente.getEndBairro());
+            stmt.setString(15 ,cliente.getEndCidade());
+            stmt.setString(16 ,cliente.getEndUf());
+            stmt.setString(17 ,cliente.getEndCompl());
+            stmt.setString(18 ,cliente.getSenhaAcesso());
+            stmt.setString(19 ,String.valueOf(cliente.getStatus()));
 
             stmt.executeUpdate();
             cliente.setCodCliente(lerIdCliente(stmt));

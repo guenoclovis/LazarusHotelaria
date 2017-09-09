@@ -59,7 +59,7 @@
             controller: 'EditarClienteController',
             templateUrl: './cliente/cliente-editar.html',
             params: {
-                id: undefined
+                codCliente: undefined
             }
         }
 
@@ -69,7 +69,7 @@
             controller: 'DetalharClienteController',
             templateUrl: './cliente/cliente-detalhar.html',
             params: {
-                id: undefined
+            	codCliente: undefined
             }
         }
 
@@ -79,7 +79,7 @@
             controller: 'ConsultarFilialController',
             templateUrl: './filial/filial-consultar.html',
             params: {
-                id: null
+                id: undefined
             }
         }
 

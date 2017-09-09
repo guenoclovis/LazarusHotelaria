@@ -6,6 +6,7 @@ import java.util.logging.Logger;
 
 import br.org.ufpr.tcc.bc.ClienteBC;
 import br.org.ufpr.tcc.converter.ClienteToDTO;
+import br.org.ufpr.tcc.converter.DTOtoCliente;
 import br.org.ufpr.tcc.dto.ClienteDTO;
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
@@ -72,11 +73,10 @@ public class ClienteFacade {
         String logMsg = "Iniciando a persistência de Cliente";
         log.info(logMsg);
 
-        //Conversao
-        Cliente cliente = new Cliente();
-    	cliente.setCodCliente(dto.getCodCliente());
-    	cliente.setNome(dto.getNome());
-    	 log.info("Ver se est� correto: "+ cliente.toString());
+        //CONVERTER
+        DTOtoCliente converter = new DTOtoCliente();
+        Cliente cliente = converter.convert(dto);
+        
 		ResponseDTO responseDTO = bc.persistir(cliente);
 
         logMsg = "Registro de Cliente persistido";
@@ -97,9 +97,20 @@ public class ClienteFacade {
     	 
     }
 
-	public ResponseDTO inserir(ClienteDTO clienteDTO) {
-		// TODO Auto-generated method stub
-		return null;
+	public ResponseDTO inserir(ClienteDTO dto) {
+		String logMsg = "Iniciando a persistência de Cliente";
+        log.info(logMsg);
+
+        //CONVERTER
+        DTOtoCliente converter = new DTOtoCliente();
+        Cliente cliente = converter.convert(dto);
+        
+		ResponseDTO responseDTO = bc.persistir(cliente);
+
+        logMsg = "Registro de Cliente persistido";
+        log.info(logMsg);
+
+        return responseDTO;
 	}
 
 }

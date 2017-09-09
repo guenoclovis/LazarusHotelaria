@@ -18,7 +18,7 @@
         var vm = this;
 
         vm.cliente = {};
-        vm.cliente.id = $stateParams.id;
+        vm.cliente.codCliente = $stateParams.codCliente;
 
         vm.msgs = "";
 
@@ -42,20 +42,20 @@
             $state.go('clienteConsultar');
         }
 
-        function irParaTelaEdicao(id) {
+        function irParaTelaEdicao(codCliente) {
             $state.go('clienteEditar', {
-                'id': id
+                'codCliente': codCliente
             });
         }
 
         function obter() {
-            ClienteData.obter(vm.cliente.id).then(function (data) {
+            ClienteData.obter(vm.cliente.codCliente).then(function (data) {
                 vm.cliente = data.plain();
             });
         }
         
         function excluir() {
-            ClienteData.excluir(vm.cliente.id).then(function (data) {                
+            ClienteData.excluir(vm.cliente.codCliente).then(function (data) {                
                 $state.go('clienteConsultar');
             });
         }

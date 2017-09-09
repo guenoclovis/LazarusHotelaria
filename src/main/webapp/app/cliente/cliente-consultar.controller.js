@@ -67,10 +67,10 @@
             $state.reload();
         }
 
-        function irParaTelaDetalhamento(id) {
+        function irParaTelaDetalhamento(codCliente) {
             //salvarEstadoTela();			
             $state.go('clienteDetalhar', {
-                'id': id
+                'codCliente': codCliente
             });
         }
 

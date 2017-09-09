@@ -30,9 +30,9 @@ public class ClienteREST {
 	ClienteFacade facade = new ClienteFacade();
 	
 	@GET
-    @Path("{id}")
+    @Path("{codCliente}")
     @Produces("application/json") 
-    public ClienteDTO obter(@PathParam("id") Long id, @QueryParam("fields") String fields) {
+    public ClienteDTO obter(@PathParam("codCliente") Long id, @QueryParam("fields") String fields) {
         ClienteDTO clienteDTO = facade.obter(id, fields);
 		return clienteDTO;
     }
@@ -75,9 +75,9 @@ public class ClienteREST {
     }
     
     @DELETE
-    @Path("{id}")
+    @Path("{codCliente}")
     @Produces("application/json")    
-    public Response remover(@PathParam("id") Long id) {
+    public Response remover(@PathParam("codCliente") Long id) {
     	List<Long> ids = new ArrayList<Long>();
     	ids.add(id);
         
@@ -85,10 +85,10 @@ public class ClienteREST {
     }
     
     @PUT
-    @Path("{id}")
+    @Path("{codCliente}")
     @Consumes("application/json")
     @Produces("application/json")    
-    public Response alterar(@PathParam("id") Long id, ClienteDTO clienteDTO) {
+    public Response alterar(@PathParam("codCliente") Long id, ClienteDTO clienteDTO) {
     	clienteDTO.setCodCliente(id.intValue());
         ResponseDTO response = facade.persistir(clienteDTO);
         return Response.ok(response).build();

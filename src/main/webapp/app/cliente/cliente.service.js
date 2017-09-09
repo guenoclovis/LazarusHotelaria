@@ -22,8 +22,8 @@
         return service;
         // //////////////
 
-        function obter(id, filtros) {
-            return Restangular.one(apiURLCompleta, id).get(filtros);
+        function obter(codCliente, filtros) {
+            return Restangular.one(apiURLCompleta, codCliente).get(filtros);
         }
 
         function listar(filtros) {
@@ -31,15 +31,15 @@
         }
         
         function salvar(cliente) {
-            if (cliente.id) {
-                return Restangular.all(apiURLCompleta + "/" + cliente.id).customPUT(cliente);
+            if (cliente.codCliente) {
+                return Restangular.all(apiURLCompleta + "/" + cliente.codCliente).customPUT(cliente);
             } else {
             	return Restangular.all(apiURLCompleta).post(cliente);
             }
         }
         
-        function excluir(id) {
-            return Restangular.one(apiURLCompleta, id).remove();
+        function excluir(codCliente) {
+            return Restangular.one(apiURLCompleta, codCliente).remove();
         }
     }
 })();

@@ -19,7 +19,7 @@
         var vm = this;
 
         vm.cliente = {};
-        vm.cliente.id = $stateParams.id;
+        vm.cliente.codCliente = $stateParams.codCliente;
 
         vm.msgs = "";
 
@@ -33,7 +33,7 @@
         //////// OPERACOES DO CONTROLADOR ////////////////////
 
         function activate() {
-            if (vm.cliente.id !== undefined) {
+            if (vm.cliente.codCliente !== undefined) {
                 obter();
             }
         }
@@ -48,7 +48,7 @@
         
         function incluir() {
 
-            vm.cliente.id = undefined;
+            vm.cliente.codCliente = undefined;
 
             ClienteData.salvar(vm.cliente).then(function (data) {
                 vm.msgs = "Cliente incluído com sucesso!";
@@ -65,13 +65,13 @@
             ClienteData.salvar(vm.cliente).then(function (data) {
                 vm.msgs = "Cliente salvo com sucesso!";
                 $state.go('clienteDetalhar', {
-                    'id': vm.cliente.id
+                    'codCliente': vm.cliente.codCliente
                 });
             });
         }
 
         function obter() {
-            ClienteData.obter(vm.cliente.id).then(function (data) {
+            ClienteData.obter(vm.cliente.codCliente).then(function (data) {
                 vm.cliente = data.plain();
             });
         }
