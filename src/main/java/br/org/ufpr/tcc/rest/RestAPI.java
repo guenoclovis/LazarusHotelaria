@@ -12,8 +12,10 @@ public class RestAPI extends Application {
 
 	public RestAPI() {
 		singletons.add(new ClienteREST());
+		singletons.add(new FilialREST());
 	}
 
+	
 	@Override
 	public Set<Object> getSingletons() {
 		return singletons;

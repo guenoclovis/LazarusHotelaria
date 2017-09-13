@@ -1,0 +1,82 @@
+
+<div>
+	<div ng-controller="EditarFilialController as vm">
+		<h1>{{vm.msgs}}</h1>
+		<div ng-if="vm.filial.codFilial">
+			<h1>Filial Editar</h1>
+		</div>
+		<div ng-if="!vm.filial.codFilial">
+			<h1>Filial Incluir</h1>
+		</div>
+
+		<div>
+			<pre>{{vm.filial | json}}</pre>
+		</div>
+
+		<form>
+		
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Código</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.filial.codFilial}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Nome</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.filial.nome}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
+				</div>
+				<div class="col-md-6">
+					<span id="dtNasc">{{dcc.filial.descricao}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="exibirSite" class="cols-sm-2 control-label">Site</label>
+				</div>
+				<div class="col-md-6">
+					<span id="sexo">{{dcc.filial.exibirSite}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<span id="sexo">{{dcc.filial.status}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="form-group ">
+				<button ng-if="!vm.filial.codFilial" ng-click="vm.incluir()" class="btn btn-primary">Incluir</button>
+				<button ng-if="vm.filial.codFilial" ng-click="vm.alterar()" class="btn btn-primary">Alterar</button>
+				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
+			</div>
+
+		</form>
+
+	</div>
+</div>

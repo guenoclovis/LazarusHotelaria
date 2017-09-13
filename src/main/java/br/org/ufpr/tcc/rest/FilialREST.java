@@ -1,0 +1,98 @@
+package br.org.ufpr.tcc.rest;
+
+import java.net.URI;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.ws.rs.Consumes;
+import javax.ws.rs.DELETE;
+import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
+import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
+import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Context;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriInfo;
+
+import br.org.ufpr.tcc.dto.FilialDTO;
+import br.org.ufpr.tcc.dto.FilialFiltroDTO;
+import br.org.ufpr.tcc.dto.ResponseDTO;
+import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
+import br.org.ufpr.tcc.facade.FilialFacade;
+
+
+
+@Path("/filial")
+public class FilialREST {
+
+	FilialFacade facade = new FilialFacade();
+	
+	@GET
+    @Path("{codFilial}")
+    @Produces("application/json") 
+    public FilialDTO obter(@PathParam("codFilial") Long id, @QueryParam("fields") String fields) {
+		FilialDTO filialDTO = facade.obter(id, fields);
+		return filialDTO;
+    }
+	
+	@GET
+    @Produces("application/json")
+	public ResultadoPaginadoDTO<FilialDTO> listar(@QueryParam("currentpage") int currentPage,
+	        @QueryParam("pagesize") int pageSize,
+	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
+	        @QueryParam("fields") String fields) {
+
+        FilialFiltroDTO filtro = new FilialFiltroDTO();
+        
+
+        // Paginação
+        if (pageSize != 0) {
+            filtro.getPagina().setPageSize(pageSize);
+        }
+        if (currentPage != 0) {
+            filtro.getPagina().setCurrentPage(currentPage);
+        }
+
+        return facade.listar(filtro, fields);
+    }
+	
+	@POST
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Response inserir(FilialDTO filialDTO, @Context UriInfo uriInfo) {
+        ResponseDTO response = facade.persistir(filialDTO);        
+        URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
+        return Response.created(location).entity(response).build();
+    }
+
+    @DELETE
+    @Produces("application/json")    
+    public Response remover(@QueryParam("ids") List<Long> ids) {
+        ResponseDTO response = facade.remover(ids.toArray(new Long[ids.size()]));
+        return Response.ok(response).build();
+    }
+    
+    @DELETE
+    @Path("{codFilial}")
+    @Produces("application/json")    
+    public Response remover(@PathParam("codFilial") Long id) {
+    	List<Long> ids = new ArrayList<Long>();
+    	ids.add(id);
+        
+        return remover(ids);
+    }
+    
+    @PUT
+    @Path("{codFilial}")
+    @Consumes("application/json")
+    @Produces("application/json")    
+    public Response alterar(@PathParam("codFilial") Long id, FilialDTO filialDTO) {
+    	filialDTO.setCodFilial(Integer.valueOf(id.intValue()));
+        ResponseDTO response = facade.persistir(filialDTO);
+        return Response.ok(response).build();
+    }
+	
+}
