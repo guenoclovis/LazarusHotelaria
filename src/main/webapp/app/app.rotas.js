@@ -82,6 +82,26 @@
                 id: undefined
             }
         }
+        
+        var filialEditarState = {
+                name: 'filialEditar',
+                url: '/filialEditar',
+                controller: 'EditarFilialController',
+                templateUrl: './filial/filial-editar.html',
+                params: {
+                    codFilial: undefined
+                }
+            }
+
+            var filialDetalharState = {
+                name: 'filialDetalhar',
+                url: '/filialDetalhar',
+                controller: 'DetalharFilialController',
+                templateUrl: './filial/filial-detalhar.html',
+                params: {
+                	codFilial: undefined
+                }
+            }
 
         $stateProvider.state(inicioState);
         $stateProvider.state(reservaState);
@@ -94,6 +114,8 @@
         $stateProvider.state(clienteDetalharState);
         $stateProvider.state(loginState);
         $stateProvider.state(filialConsultarState);
+        $stateProvider.state(filialEditarState);
+        $stateProvider.state(filialDetalharState);
     });
 
 })();

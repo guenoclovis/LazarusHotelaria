@@ -6,7 +6,7 @@
 
     // Adicionando um Controlador para a tela 'detalhar' do modulo 'filial'
     angular.module('filial').controller(
-            'DetalhaFilialController',
+            'DetalharFilialController',
             DetalharFilialController);
 
     // Definindo atributos e operacoes do Controlador da tela 'detalhar' do modulo 'filial'

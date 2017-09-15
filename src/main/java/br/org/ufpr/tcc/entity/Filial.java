@@ -11,18 +11,6 @@ public class Filial {
 	private char status;
 	
 	
-	public Filial() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
-	public Filial(Integer codFilial, String nome, String descricao, String exibirSite, char status) {
-		super();
-		this.codFilial = codFilial;
-		this.nome = nome;
-		this.descricao = descricao;
-		this.exibirSite = exibirSite;
-		this.status = status;
-	}
 	@Override
 	public String toString() {
 		return "Filial [codFilial=" + codFilial + ", nome=" + nome + ", descricao=" + descricao + ", exibirSite="
