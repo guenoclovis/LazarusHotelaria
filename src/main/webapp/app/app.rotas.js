@@ -79,7 +79,7 @@
             controller: 'ConsultarFilialController',
             templateUrl: './filial/filial-consultar.html',
             params: {
-                id: undefined
+            	codFilial: undefined
             }
         }
         

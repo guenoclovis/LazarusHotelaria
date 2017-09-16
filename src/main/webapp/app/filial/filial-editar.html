@@ -15,46 +15,26 @@
 
 		<form>
 		
-			<div class="row">
+			<div class="row" ng-if="vm.filial.codFilial">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="nome" class="cols-sm-2 control-label">Código</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.filial.codFilial}}</span>
+					<span id="nome">{{vm.filial.codFilial}}</span>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
 			</div>
+			
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="nome" class="cols-sm-2 control-label">Nome</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.filial.nome}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
-				</div>
-				<div class="col-md-6">
-					<span id="dtNasc">{{dcc.filial.descricao}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="exibirSite" class="cols-sm-2 control-label">Site</label>
-				</div>
-				<div class="col-md-6">
-					<span id="sexo">{{dcc.filial.exibirSite}}</span>
+					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.filial.nome"
+							placeholder="Nome da Filial" />
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -62,10 +42,35 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="status" class="cols-sm-2 control-label">Status</label>
+					<label for="dtNasc" class="cols-sm-2 control-label">Descricao</label>
 				</div>
 				<div class="col-md-6">
-					<span id="sexo">{{dcc.filial.status}}</span>
+					<input type="text" class="form-control" name="descricao" id="descricao" ng-model="vm.filial.descricao"
+							 />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="sexo" class="cols-sm-2 control-label">Site</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="exibirSite" id="exibirSite" ng-model="vm.filial.exibirSite"
+							placeholder="S ou N" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nacionalidade" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="status" id="status" ng-model="vm.filial.status"
+							placeholder="Nome da Filial" />
 				</div>
 				<div class="col-md-2"></div>
 			</div>

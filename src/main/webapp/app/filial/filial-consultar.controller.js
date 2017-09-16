@@ -70,7 +70,7 @@
         function irParaTelaDetalhamento(id) {
             //salvarEstadoTela();			
             $state.go('filialDetalhar', {
-                'id': id
+                'codFilial': id
             });
         }
 
