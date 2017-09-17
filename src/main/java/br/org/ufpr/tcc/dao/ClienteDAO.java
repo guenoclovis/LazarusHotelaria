@@ -19,7 +19,7 @@ public class ClienteDAO {
 
     private final String stmtInserir = "INSERT INTO clientes(NOME, DT_NASC, SEXO, NACIONALIDADE, TELEFONE1, TELEFONE2, EMAIL1, EMAIL2, CPF, RG, PASSAPORTE, END_RUA, END_NRO, END_BAIRRO, END_CIDADE, END_UF, END_COMPL, SENHA_ACESSO, STATUS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     private final String stmtObter = "SELECT * FROM clientes WHERE cod_cliente = ?";
-    private final String stmtExcluir = "UPDATE clientes SET STATUS = 'E' WHERE cod_clientes = ? ";//
+    private final String stmtExcluir = "UPDATE clientes SET STATUS = 'E' WHERE cod_clientes = ? ";
     private final String stmtListar = "SELECT * FROM clientes";
     private final String stmtListarPaginado = "SELECT * FROM clientes";
     private final String stmtAlterar = "UPDATE clientes SET NOME = ?, DT_NASC = ?, SEXO = ?, NACIONALIDADE = ?, TELEFONE1 = ?, TELEFONE2 = ?, EMAIL1 = ?, EMAIL2 = ?, CPF = ?, RG = ?, PASSAPORTE = ?, END_RUA = ?, END_NRO = ?, END_BAIRRO = ?, END_CIDADE = ?, END_UF = ?, END_COMPL = ?, SENHA_ACESSO = ?, STATUS = ? WHERE COD_CLIENTE = ? ";
