@@ -1,0 +1,4 @@
+diagrama de sequencia
+
+Ator > View >  Interceptor > Rest > Conversor > Facade > BC > Validador > DAO
+                   

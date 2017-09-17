@@ -1,0 +1,96 @@
+
+<div>
+	<div ng-controller="DetalharAtributoController as dcc">
+
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Detalhar o Atributo</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div>
+						<pre>{{dcc.atributo | json}}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Código</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.atributo.codAtributo}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="tipo" class="cols-sm-2 control-label">Tipo</label>
+				</div>
+				<div class="col-md-6">
+					<span id="tipo">{{dcc.atributo.tipo}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>			
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Nome</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.atributo.nome}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
+				</div>
+				<div class="col-md-6">
+					<span id="dtNasc">{{dcc.atributo.descricao}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<!-- <div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<span id="sexo">{{dcc.atributo.status}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div-->
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 lazarus-align">
+				<div class="lazarus-align">
+					<button ng-click="dcc.voltarParaTelaAnterior()"
+						class="btn btn-primary">Voltar</button>
+					<button ng-click="dcc.irParaTelaEdicao(dcc.atributo.codAtributo)"
+						class="btn btn-primary">Editar</button>
+					<button ng-click="dcc.excluir(dcc.atributo.codAtributo)"
+						class="btn btn-primary">Excluir</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>
