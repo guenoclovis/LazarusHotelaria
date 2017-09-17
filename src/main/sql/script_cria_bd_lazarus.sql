@@ -11,6 +11,7 @@
 --		7 - TABELA DE RELACIONAMENTO TIPOS DE QUARTO X ATRIBUTOS
 --		8 - TABELA DE QUARTOS
 --		9 - TABELA DE RELACIONAMENTO QUARTOS X ATRIBUTOS
+--		10 - TABELA AUXILIAR USADA PELO SHOWCASE: NAO FAZ PARTE DO TCC
 ----------------------------------------------------------------------
 -- 1 - TABELA DE USUï¿½RIOS
 ----------------------------------------------------------------------
@@ -162,4 +163,17 @@ CREATE TABLE QUARTO_ATRIBUTO(
 -- DROP TABLE QUARTO_ATRIBUTO
 -- SELECT * FROM QUARTO_ATRIBUTO
 -- INSERT INTO QUARTO_ATRIBUTO VALUES(1, 1);
+----------------------------------------------------------------------
+----------------------------------------------------------------------
+-- 9 - TABELA DE RELACIONAMENTO QUARTOS X ATRIBUTOS
+----------------------------------------------------------------------
+CREATE TABLE SHOWCASE(
+	COD_SHOWCASE			INTEGER			NOT NULL,
+	
+	
+	
+);
+-- DROP TABLE SHOWCASE
+-- SELECT * FROM SHOWCASE
+-- INSERT INTO SHOWCASE VALUES(1, 1);
 ----------------------------------------------------------------------
