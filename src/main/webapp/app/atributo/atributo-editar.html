@@ -1,0 +1,87 @@
+
+<div>
+	<div ng-controller="EditarAtributoController as vm">
+		<h1>{{vm.msgs}}</h1>
+		<div ng-if="vm.atributo.codAtributo">
+			<h1>Atributo Editar</h1>
+		</div>
+		<div ng-if="!vm.atributo.codAtributo">
+			<h1>Atributo Incluir</h1>
+		</div>
+
+		<div>
+			<pre>{{vm.atributo | json}}</pre>
+		</div>
+
+		<form>
+		
+			<div class="row" ng-if="vm.atributo.codAtributo">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Código</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{vm.atributo.codAtributo}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>			
+			<!-- TIPO -->
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="sexo" class="cols-sm-2 control-label">Tipo</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="tipo" id="tipo" ng-model="vm.atributo.tipo"
+							placeholder="Mudar para Combobox" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<!-- NOME -->			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Nome</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.atributo.nome"
+							placeholder="Nome do Atributo" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<!-- DESCRIÇÃO -->			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="dtNasc" class="cols-sm-2 control-label">Descricao</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="descricao" id="descricao" ng-model="vm.atributo.descricao"
+						placeholder="Descricao do Atributo" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>		
+			<!-- STATUS (?) -->
+			<!--<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nacionalidade" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="status" id="status" ng-model="vm.atributo.status"
+							placeholder="Nome da Atributo" />
+				</div>
+				<div class="col-md-2"></div>
+			</div-->
+			
+			<div class="form-group ">
+				<button ng-if="!vm.atributo.codAtributo" ng-click="vm.incluir()" class="btn btn-primary">Salvar</button>
+				<button ng-if="vm.atributo.codAtributo" ng-click="vm.alterar()" class="btn btn-primary">Salvar</button>
+				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
+			</div>
+
+		</form>
+
+	</div>
+</div>
