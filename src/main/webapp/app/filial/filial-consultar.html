@@ -48,12 +48,15 @@
                         <tr>
                             <td>Nome</td>
                             <td>Descrição</td>
+                            <td>E-mail</td>
+                            <td>Ação</td>
                         </tr>
                     </thead>
                     <tbody>
                         <tr ng-repeat="filial in vm.filiais">
                             <td>{{ filial.nome}}</td>
                             <td>{{ filial.descricao}}</td>
+                            <td>{{ filial.email}}</td>
                             <td><a ng-click="vm.irParaTelaDetalhamento(filial.codFilial)" class="btn btn-primary btn-xs">Detalhar</a></td>
                         </tr>
                     </tbody>

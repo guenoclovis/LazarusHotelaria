@@ -15,6 +15,7 @@ public class DTOtoFilial {
 		
 		filial.setCodFilial(dto.getCodFilial());
 		filial.setNome(dto.getNome());
+		filial.setEmail(dto.getEmail());
 		filial.setDescricao(dto.getDescricao());
 		filial.setExibirSite(dto.getExibirSite());
 		filial.setStatus(dto.getStatus());

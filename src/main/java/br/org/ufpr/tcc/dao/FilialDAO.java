@@ -18,12 +18,12 @@ public class FilialDAO {
     
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private final String stmtInserir = "INSERT INTO filiais(NOME, DESCRICAO, EXIBIR_SITE, STATUS) VALUES(?, ?, ?, ?)";
+    private final String stmtInserir = "INSERT INTO filiais(NOME, EMAIL1, DESCRICAO, EXIBIR_SITE, STATUS) VALUES(?, ?, ?, ?, ?)";
     private final String stmtObter = "SELECT * FROM filiais WHERE cod_filial = ?";
     private final String stmtExcluir = "DELETE FROM filiais WHERE cod_filial = ?";
     private final String stmtListar = "SELECT * FROM filiais";
-    private final String stmtListarPaginado = "SELECT * FROM filiais";
-    private final String stmtAlterar = "UPDATE filiais SET NOME = ?, DESCRICAO = ?, EXIBIR_SITE = ?, STATUS = ? WHERE COD_FILIAL = ? ";
+    private final String stmtListarPaginado = "SELECT * FROM filiais WHERE nome ilike ? ";
+    private final String stmtAlterar = "UPDATE filiais SET NOME = ?, EMAIL1 = ?, DESCRICAO = ?, EXIBIR_SITE = ?, STATUS = ? WHERE COD_FILIAL = ? ";
 
     public void inserir(Filial filial) {
         Connection con = null;
@@ -33,9 +33,10 @@ public class FilialDAO {
             stmt = con.prepareStatement(stmtInserir,PreparedStatement.RETURN_GENERATED_KEYS);
             
             stmt.setString(1 ,filial.getNome());
-            stmt.setString(2 , filial.getDescricao());
-            stmt.setString(3 ,filial.getExibirSite());
-            stmt.setString(4 ,String.valueOf(filial.getStatus()));
+            stmt.setString(2 , filial.getEmail());
+            stmt.setString(3 , filial.getDescricao());
+            stmt.setString(4 ,filial.getExibirSite());
+            stmt.setString(5 ,String.valueOf(filial.getStatus()));
 
             stmt.executeUpdate();
             filial.setCodFilial(lerIdFilial(stmt));
@@ -90,6 +91,7 @@ public class FilialDAO {
 		
 		filialLida.setCodFilial(rs.getInt("COD_FILIAL"));
 		filialLida.setNome(rs.getString("NOME"));
+		filialLida.setEmail(rs.getString("EMAIL1"));
 		filialLida.setDescricao(rs.getString("DESCRICAO"));
 		filialLida.setExibirSite(rs.getString("EXIBIR_SITE"));
 		filialLida.setStatus(rs.getString("STATUS").charAt(0));
@@ -186,11 +188,12 @@ public class FilialDAO {
             stmt = con.prepareStatement(stmtAlterar);
             
             stmt.setString(1 ,filial.getNome());
-            stmt.setString(2 ,filial.getDescricao());
-            stmt.setString(3 ,filial.getExibirSite());
-            stmt.setString(4 ,String.valueOf(filial.getStatus()));
-            
-            stmt.setInt(5 ,filial.getCodFilial());
+            stmt.setString(2 ,filial.getEmail());
+            stmt.setString(3 ,filial.getDescricao());
+            stmt.setString(4 ,filial.getExibirSite());
+            stmt.setString(5 ,String.valueOf(filial.getStatus()));
+            //where
+            stmt.setInt(6 ,filial.getCodFilial());
             
             stmt.executeUpdate();
         } catch (SQLException ex) {

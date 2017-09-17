@@ -10,6 +10,7 @@ public class FilialToDTO {
 		
 		dto.setCodFilial(filial.getCodFilial());
 		dto.setNome(filial.getNome());
+		dto.setEmail(filial.getEmail());
 		dto.setDescricao(filial.getDescricao());
 		dto.setExibirSite(filial.getExibirSite());
 		dto.setStatus(filial.getStatus());

@@ -6,15 +6,15 @@ public class Filial {
 
 	private Integer codFilial;
 	private String nome;
+	private String email;
 	private String descricao;
 	private String exibirSite;
 	private char status;
 	
-	
 	@Override
 	public String toString() {
-		return "Filial [codFilial=" + codFilial + ", nome=" + nome + ", descricao=" + descricao + ", exibirSite="
-				+ exibirSite + ", status=" + status + "]";
+		return "Filial [codFilial=" + codFilial + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao
+				+ ", exibirSite=" + exibirSite + ", status=" + status + "]";
 	}
 	@Override
 	public int hashCode() {
@@ -22,6 +22,7 @@ public class Filial {
 		int result = 1;
 		result = prime * result + ((codFilial == null) ? 0 : codFilial.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((exibirSite == null) ? 0 : exibirSite.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + status;
@@ -45,6 +46,11 @@ public class Filial {
 			if (other.descricao != null)
 				return false;
 		} else if (!descricao.equals(other.descricao))
+			return false;
+		if (email == null) {
+			if (other.email != null)
+				return false;
+		} else if (!email.equals(other.email))
 			return false;
 		if (exibirSite == null) {
 			if (other.exibirSite != null)
@@ -72,6 +78,12 @@ public class Filial {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
 	public String getDescricao() {
 		return descricao;
 	}
@@ -91,6 +103,4 @@ public class Filial {
 		this.status = status;
 	}
 	
-	
-	
-}
+	}

@@ -6,10 +6,17 @@ public class FilialDTO {
 
 	private Integer codFilial;
     private String nome;
-    private String descricao;
+    private String email;
+	private String descricao;
     private String exibirSite;
     private char status;
     
+    public String getEmail() {
+    	return email;
+    }
+    public void setEmail(String email) {
+    	this.email = email;
+    }
     
 	public Integer getCodFilial() {
 		return codFilial;
