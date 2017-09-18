@@ -70,41 +70,6 @@
 					</div>
 				</div>
 			</div>
-=======
-									placeholder="Nome Atributo" />
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-12">
-					<div align="center">
-						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
-						<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
-					</div>
-				</div>
-			</div>
-			<div ng-if="vm.filiais.length > 0">
-                <table class="table table-bordered table-hover">
-                    <thead>
-                        <tr>
-                            <td>Nome</td>
-                            <td>Descrição</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr ng-repeat="atributo in vm.atributos">
-                            <td>{{ atributo.nome}}</td>
-                            <td>{{ atributo.descricao}}</td>
-                            <td><a ng-click="vm.irParaTelaDetalhamento(atributo.codAtributo)" class="btn btn-primary btn-xs">Detalhar</a></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
->>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
 		</div>
 	</div>
 </div>
