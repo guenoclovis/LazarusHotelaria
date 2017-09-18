@@ -1,0 +1,67 @@
+<div>
+	<div ng-controller="ConsultarShowcaseController as vm">
+
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Consultar Filiais</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<div><pre>{{vm.showcase | json}}</pre></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="nome" class="cols-sm-2 control-label">Nome</label>
+						<div class="cols-sm-4">
+							<div class="input-group">
+								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.showcase.nome"
+									placeholder="Nome da Showcase" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div align="center">
+						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
+						<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+					</div>
+				</div>
+			</div>
+			<div ng-if="vm.filiais.length > 0">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            <td>Nome</td>
+                            <td>Descri��o</td>
+                            <td>E-mail</td>
+                            <td>A��o</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="showcase in vm.filiais">
+                            <td>{{ showcase.nome}}</td>
+                            <td>{{ showcase.descricao}}</td>
+                            <td>{{ showcase.email}}</td>
+                            <td><a ng-click="vm.irParaTelaDetalhamento(showcase.codShowcase)" class="btn btn-primary btn-xs">Detalhar</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+		</div>
+	</div>
+</div>

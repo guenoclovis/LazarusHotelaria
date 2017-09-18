@@ -10,12 +10,13 @@ public class Filial {
 	private String descricao;
 	private String exibirSite;
 	private char status;
-	
+
 	@Override
 	public String toString() {
 		return "Filial [codFilial=" + codFilial + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao
 				+ ", exibirSite=" + exibirSite + ", status=" + status + "]";
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -28,6 +29,7 @@ public class Filial {
 		result = prime * result + status;
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -66,41 +68,53 @@ public class Filial {
 			return false;
 		return true;
 	}
+
 	public Integer getCodFilial() {
 		return codFilial;
 	}
+
 	public void setCodFilial(Integer codFilial) {
 		this.codFilial = codFilial;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
 	public String getDescricao() {
 		return descricao;
 	}
+
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
+
 	public String getExibirSite() {
 		return exibirSite;
 	}
+
 	public void setExibirSite(String exibirSite) {
 		this.exibirSite = exibirSite;
 	}
+
 	public char getStatus() {
 		return status;
 	}
+
 	public void setStatus(char status) {
 		this.status = status;
 	}
-	
-	}
+
+}
