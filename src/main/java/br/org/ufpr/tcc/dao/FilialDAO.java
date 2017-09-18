@@ -1,5 +1,6 @@
 package br.org.ufpr.tcc.dao;
 
+import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -20,7 +21,7 @@ public class FilialDAO {
 
     private final String stmtInserir = "INSERT INTO filiais(NOME, EMAIL1, DESCRICAO, EXIBIR_SITE, STATUS) VALUES(?, ?, ?, ?, ?)";
     private final String stmtObter = "SELECT * FROM filiais WHERE cod_filial = ?";
-    private final String stmtExcluir = "DELETE FROM filiais WHERE cod_filial = ?";
+    private final String stmtExcluir = "UPDATE clientes SET STATUS = 'E' WHERE cod_clientes = ? ";
     private final String stmtListar = "SELECT * FROM filiais";
     private final String stmtListarPaginado = "SELECT * FROM filiais WHERE nome ilike ? ";
     private final String stmtAlterar = "UPDATE filiais SET NOME = ?, EMAIL1 = ?, DESCRICAO = ?, EXIBIR_SITE = ?, STATUS = ? WHERE COD_FILIAL = ? ";
@@ -113,8 +114,10 @@ public class FilialDAO {
             while(rs.next()){
             	
             	filial = extrairFilialDoResultSet(rs);
-                
-                lista.add(filial);
+                /*if(filial.getStatus() != String.charAt("I") ){
+                	
+                }*/
+            	lista.add(filial);
             }
             return lista;
         } catch (SQLException ex) {

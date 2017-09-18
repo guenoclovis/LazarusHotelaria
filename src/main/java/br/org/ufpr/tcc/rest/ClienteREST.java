@@ -21,7 +21,7 @@ import br.org.ufpr.tcc.dto.ClienteDTO;
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
-import br.org.ufpr.tcc.entity.Pagina;
+//import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.facade.ClienteFacade;
 
 @Path("/cliente")

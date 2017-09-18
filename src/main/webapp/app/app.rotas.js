@@ -131,36 +131,36 @@
 				codAtributo : undefined
 			}
 		}
+		
+		var tipoquartoConsultarState = {
+				name : 'tipoquartoConsultar',
+				url : '/tipoquartoConsultar',
+				controller : 'ConsultarTipoQuartoController',
+				templateUrl : './tipoquarto/tipoquarto-consultar.html',
+				params : {
+					codTipoQuarto : undefined
+				}
+			}
 
-		var showcaseConsultarState = {
-			name : 'showcaseConsultar',
-			url : '/showcaseConsultar',
-			controller : 'ConsultarShowcaseController',
-			templateUrl : './showcase/showcase-consultar.html',
+		var tipoquartoEditarState = {
+			name : 'tipoquartoEditar',
+			url : '/tipoquartoEditar',
+			controller : 'EditarTipoQuartoController',
+			templateUrl : './tipoquarto/tipoquarto-editar.html',
 			params : {
-				codShowcase : undefined
+				codTipoQuarto : undefined
 			}
 		}
 
-		var showcaseEditarState = {
-			name : 'showcaseEditar',
-			url : '/showcaseEditar',
-			controller : 'EditarShowcaseController',
-			templateUrl : './showcase/showcase-editar.html',
+		var tipoquartoDetalharState = {
+			name : 'tipoquartoDetalhar',
+			url : '/tipoquartoDetalhar',
+			controller : 'DetalharTipoQuartoController',
+			templateUrl : './tipoquarto/tipoquarto-detalhar.html',
 			params : {
-				codShowcase : undefined
+				codTipoQuarto : undefined
 			}
-		}
-
-		var showcaseDetalharState = {
-			name : 'showcaseDetalhar',
-			url : '/showcaseDetalhar',
-			controller : 'DetalharShowcaseController',
-			templateUrl : './showcase/showcase-detalhar.html',
-			params : {
-				codShowcase : undefined
-			}
-		}
+		}		
 
 		$stateProvider.state(inicioState);
 		$stateProvider.state(reservaState);
@@ -178,10 +178,9 @@
 		$stateProvider.state(atributoConsultarState);
 		$stateProvider.state(atributoEditarState);
 		$stateProvider.state(atributoDetalharState);
-		$stateProvider.state(showcaseConsultarState);
-		$stateProvider.state(showcaseEditarState);
-		$stateProvider.state(showcaseDetalharState);
-
+		$stateProvider.state(tipoquartoConsultarState);
+		$stateProvider.state(tipoquartoEditarState);
+		$stateProvider.state(tipoquartoDetalharState);
 	});
 
 })();

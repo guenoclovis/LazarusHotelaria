@@ -4,15 +4,15 @@
 (function () {
     'use strict';
 
-    // Adicionando um Controlador para a tela 'consultar' do modulo 'atributo'
-    angular.module('atributo').controller(
-            'ConsultarAtributoController',
-            ConsultarAtributoController);
+    // Adicionando um Controlador para a tela 'consultar' do modulo 'tipoquarto'
+    angular.module('tipoquarto').controller(
+            'ConsultarTipoQuartoController',
+            ConsultarTipoQuartoController);
 
-    // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'atributo'
+    // Definindo tipoquartos e operacoes do Controlador da tela 'consultar' do modulo 'tipoquarto'
     /* @ngInject */
-    function ConsultarAtributoController($controller, $scope, $state,
-    		AtributoData) {
+    function ConsultarTipoQuartoController($controller, $scope, $state,
+    		TipoQuartoData) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -20,8 +20,8 @@
         vm.msgs = "";
 
         vm.filtros = {};
-        vm.atributoS = [];
-        vm.atributo = {};
+        vm.tipoquartoS = [];
+        vm.tipoquarto = {};
 
         // Paginação
         vm.totalresults = 0;
@@ -68,20 +68,20 @@
         }
 
 
-        function irParaTelaDetalhamento(CodAtributo) {
+        function irParaTelaDetalhamento(CodTipoQuarto) {
             //salvarEstadoTela();			
-            $state.go('atributoDetalhar', {
-                'codAtributo': codAtributo
+            $state.go('tipoquartoDetalhar', {
+                'codTipoQuarto': codTipoQuarto
             });
         }
 
         function irParaTelaInclusao() {
             //salvarEstadoTela();
-            $state.go('atributoEditar');
+            $state.go('tipoquartoEditar');
         }
 
         function salvarEstadoTela() {
-            var devePesquisar = vm.atributos.length > 0;
+            var devePesquisar = vm.tipoquartos.length > 0;
             //FiltroService.salvarFiltros(vm.filtros, devePesquisar);
         }
 
@@ -99,8 +99,8 @@
         function pesquisar() {
             var filtros = vm.filtros;
 
-            AtributoData.listar(filtros).then(function (data) {
-                vm.atributos = data.entidades;
+            TipoQuartoData.listar(filtros).then(function (data) {
+                vm.tipoquartos = data.entidades;
 
                 if (data.pagina) {
                     var page = data.pagina;

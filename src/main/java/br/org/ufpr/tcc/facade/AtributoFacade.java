@@ -59,8 +59,7 @@ public class AtributoFacade {
         for(Atributo f : listagem.getEntidades()){
         	AtributoToDTO converter = new AtributoToDTO();
         	AtributoDTO atributoDTO = converter.convert(f);
-            
-        atributosDTO.add(atributoDTO);
+        	atributosDTO.add(atributoDTO);
         }
 		
 		ResultadoPaginadoDTO<AtributoDTO> responseDTO = new ResultadoPaginadoDTO<AtributoDTO>(atributosDTO, new Pagina());

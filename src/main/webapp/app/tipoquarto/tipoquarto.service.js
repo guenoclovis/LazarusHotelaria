@@ -4,12 +4,12 @@
 (function() {
     'use strict';
 
-    angular.module('atributo').factory('AtributoData', AtributoData);
+    angular.module('tipoquarto').factory('TipoQuartoData', TipoQuartoData);
 
     /* @ngInject */
-    function AtributoData(Restangular, $q) {
+    function TipoQuartoData(Restangular, $q) {
     	Restangular.setBaseUrl('http://localhost\:8080');
-        var apiURL = '/atributo';
+        var apiURL = '/tipoquarto';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 
         var service = {
@@ -20,26 +20,25 @@
         };
 
         return service;
-        // //////////////
 
-        function obter(codAtributo, filtros) {
-            return Restangular.one(apiURLCompleta, codAtributo).get(filtros);
+        function obter(codTipoQuarto, filtros) {
+            return Restangular.one(apiURLCompleta, codTipoQuarto).get(filtros);
         }
 
         function listar(filtros) {
             return Restangular.one(apiURLCompleta).get(filtros);
         }
         
-        function salvar(atributo) {
-            if (atributo.codAtributo) {
-                return Restangular.all(apiURLCompleta + "/" + atributo.codAtributo).customPUT(atributo);
+        function salvar(tipoquarto) {
+            if (tipoquarto.codTipoQuarto) {
+                return Restangular.all(apiURLCompleta + "/" + tipoquarto.codTipoQuarto).customPUT(tipoquarto);
             } else {
-            	return Restangular.all(apiURLCompleta).post(atributo);
+            	return Restangular.all(apiURLCompleta).post(tipoquarto);
             }
         }
         
-        function excluir(codAtributo) {
-            return Restangular.one(apiURLCompleta, codAtributo).remove();
+        function excluir(codTipoQuarto) {
+            return Restangular.one(apiURLCompleta, codTipoQuarto).remove();
         }
     }
 })();

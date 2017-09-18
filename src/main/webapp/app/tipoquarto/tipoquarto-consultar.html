@@ -1,5 +1,5 @@
 <div>
-	<div ng-controller="ConsultarAtributoController as vm">
+	<div ng-controller="ConsultarTipoQuartoController as vm">
 
 		<div class=".container">
 			<div class="row">
@@ -9,12 +9,12 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12 lazarus-align">
-					<h2>Consultar Atributos</h2>
+					<h2>Consultar Tipos de Quartos</h2>
 				</div>
 			</div>
 			<div class="row">
 				<div class="col-md-12 lazarus-align">
-					<div><pre>{{vm.atributo | json}}</pre></div>
+					<div><pre>{{vm.tipoquarto | json}}</pre></div>
 				</div>
 			</div>
 
@@ -25,8 +25,8 @@
 						<label for="nome" class="cols-sm-2 control-label">Nome</label>
 						<div class="cols-sm-4">
 							<div class="input-group">
-								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.atributo.nome"
-									placeholder="Nome do Atributo" />
+								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.tipoquarto.nome"
+									placeholder="Nome do TipoQuarto" />
 							</div>
 						</div>
 					</div>
@@ -44,7 +44,7 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div ng-if="vm.atributos.length > 0">
+					<div ng-if="vm.tipoquartos.length > 0">
 						<table class="table table-striped">
 							<thead>
 								<tr>
@@ -55,13 +55,13 @@
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="atributo in vm.atributos">
-									<td>{{ atributo.codAtributo}}</td>
-									<td>{{ atributo.tipo}}</td>
-									<td>{{ atributo.nome}}</td>
-									<td>{{ atributo.descricao}}</td>
+								<tr ng-repeat="tipoquarto in vm.tipoquartos">
+									<td>{{ tipoquarto.codTipoQuarto}}</td>
+									<td>{{ tipoquarto.tipo}}</td>
+									<td>{{ tipoquarto.nome}}</td>
+									<td>{{ tipoquarto.descricao}}</td>
 									<td>
-										<button ng-click="vm.irParaTelaDetalhamento(atributo.codAtributo)" class="btn btn-primary btn-xs">Detalhar</button>
+										<button ng-click="vm.irParaTelaDetalhamento(tipoquarto.codTipoQuarto)" class="btn btn-primary btn-xs">Detalhar</button>
 									</td>
 								</tr>
 							</tbody>

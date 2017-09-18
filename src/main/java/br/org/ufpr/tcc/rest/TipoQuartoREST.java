@@ -17,35 +17,35 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.org.ufpr.tcc.dto.AtributoDTO;
-import br.org.ufpr.tcc.dto.AtributoFiltroDTO;
+import br.org.ufpr.tcc.dto.TipoQuartoDTO;
+import br.org.ufpr.tcc.dto.TipoQuartoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
-import br.org.ufpr.tcc.facade.AtributoFacade;
+import br.org.ufpr.tcc.facade.TipoQuartoFacade;
 
 
 
-@Path("/atributo")
-public class AtributoREST {
+@Path("/tipoquarto")
+public class TipoQuartoREST {
 
-	AtributoFacade facade = new AtributoFacade();
+	TipoQuartoFacade facade = new TipoQuartoFacade();
 	
 	@GET
-    @Path("{codAtributo}")
+    @Path("{codTipoQuarto}")
     @Produces("application/json") 
-    public AtributoDTO obter(@PathParam("codAtributo") Long id, @QueryParam("fields") String fields) {
-		AtributoDTO atributoDTO = facade.obter(id, fields);
-		return atributoDTO;
+    public TipoQuartoDTO obter(@PathParam("codTipoQuarto") Long id, @QueryParam("fields") String fields) {
+		TipoQuartoDTO tipoquartoDTO = facade.obter(id, fields);
+		return tipoquartoDTO;
     }
 	
 	@GET
     @Produces("application/json")
-	public ResultadoPaginadoDTO<AtributoDTO> listar(@QueryParam("currentpage") int currentPage,			
+	public ResultadoPaginadoDTO<TipoQuartoDTO> listar(@QueryParam("currentpage") int currentPage,			
 	        @QueryParam("pagesize") int pageSize,
 	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {
 
-        AtributoFiltroDTO filtro = new AtributoFiltroDTO();
+        TipoQuartoFiltroDTO filtro = new TipoQuartoFiltroDTO();
         
 
         // Paginação
@@ -62,8 +62,8 @@ public class AtributoREST {
 	@POST
     @Produces("application/json")
     @Consumes("application/json")
-    public Response inserir(AtributoDTO atributoDTO, @Context UriInfo uriInfo) {
-        ResponseDTO response = facade.persistir(atributoDTO);        
+    public Response inserir(TipoQuartoDTO tipoquartoDTO, @Context UriInfo uriInfo) {
+        ResponseDTO response = facade.persistir(tipoquartoDTO);        
         URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
         return Response.created(location).entity(response).build();
     }
@@ -76,9 +76,9 @@ public class AtributoREST {
     }
     
     @DELETE
-    @Path("{codAtributo}")
+    @Path("{codTipoQuarto}")
     @Produces("application/json")    
-    public Response remover(@PathParam("codAtributo") Long id) {
+    public Response remover(@PathParam("codTipoQuarto") Long id) {
     	List<Long> ids = new ArrayList<Long>();
     	ids.add(id);
         
@@ -86,12 +86,12 @@ public class AtributoREST {
     }
     
     @PUT
-    @Path("{codAtributo}")
+    @Path("{codTipoQuarto}")
     @Consumes("application/json")
     @Produces("application/json")    
-    public Response alterar(@PathParam("codAtributo") Long id, AtributoDTO atributoDTO) {
-    	atributoDTO.setCodAtributo(Integer.valueOf(id.intValue()));
-        ResponseDTO response = facade.persistir(atributoDTO);
+    public Response alterar(@PathParam("codTipoQuarto") Long id, TipoQuartoDTO tipoquartoDTO) {
+    	tipoquartoDTO.setCodTipoQuarto(Integer.valueOf(id.intValue()));
+        ResponseDTO response = facade.persistir(tipoquartoDTO);
         return Response.ok(response).build();
     }
 	
