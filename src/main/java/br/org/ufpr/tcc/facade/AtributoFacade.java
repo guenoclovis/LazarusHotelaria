@@ -59,7 +59,6 @@ public class AtributoFacade {
         for(Atributo f : listagem.getEntidades()){
         	AtributoToDTO converter = new AtributoToDTO();
         	AtributoDTO atributoDTO = converter.convert(f);
-            
         	atributosDTO.add(atributoDTO);
         }
 		

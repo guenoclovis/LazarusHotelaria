@@ -67,10 +67,11 @@
             $state.reload();
         }
 
+
         function irParaTelaDetalhamento(CodAtributo) {
             //salvarEstadoTela();			
             $state.go('atributoDetalhar', {
-                'codAtributo': CodAtributo
+                'codAtributo': codAtributo
             });
         }
 

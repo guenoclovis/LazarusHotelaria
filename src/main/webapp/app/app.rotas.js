@@ -150,4 +150,5 @@
 		$stateProvider.state(atributoDetalharState);
 
 	});
+
 })();
