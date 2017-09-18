@@ -40,7 +40,11 @@ public class AtributoREST {
 	
 	@GET
     @Produces("application/json")
+<<<<<<< HEAD
 	public ResultadoPaginadoDTO<AtributoDTO> listar(@QueryParam("currentpage") int currentPage,			
+=======
+	public ResultadoPaginadoDTO<AtributoDTO> listar(@QueryParam("currentpage") int currentPage,
+>>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
 	        @QueryParam("pagesize") int pageSize,
 	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {

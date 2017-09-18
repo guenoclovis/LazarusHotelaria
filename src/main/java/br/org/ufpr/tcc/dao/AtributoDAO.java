@@ -167,7 +167,11 @@ public class AtributoDAO {
             stmt.setInt(1, id);
             stmt.executeUpdate();
         } catch (SQLException ex) {
+<<<<<<< HEAD
             throw new RuntimeException("Erro ao excluir Atributo. Origem="+ex.getMessage());
+=======
+            throw new RuntimeException("Erro ao excliur um Atributo. Origem="+ex.getMessage());
+>>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
         }finally{
             try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
             try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               

@@ -60,7 +60,11 @@ public class AtributoFacade {
         	AtributoToDTO converter = new AtributoToDTO();
         	AtributoDTO atributoDTO = converter.convert(f);
             
+<<<<<<< HEAD
         	atributosDTO.add(atributoDTO);
+=======
+        atributosDTO.add(atributoDTO);
+>>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
         }
 		
 		ResultadoPaginadoDTO<AtributoDTO> responseDTO = new ResultadoPaginadoDTO<AtributoDTO>(atributosDTO, new Pagina());
