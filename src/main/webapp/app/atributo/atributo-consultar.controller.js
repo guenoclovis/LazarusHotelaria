@@ -67,17 +67,10 @@
             $state.reload();
         }
 
-<<<<<<< HEAD
         function irParaTelaDetalhamento(CodAtributo) {
             //salvarEstadoTela();			
             $state.go('atributoDetalhar', {
                 'codAtributo': CodAtributo
-=======
-        function irParaTelaDetalhamento(id) {
-            //salvarEstadoTela();			
-            $state.go('atributoDetalhar', {
-                'codAtributo': id
->>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
             });
         }
 
