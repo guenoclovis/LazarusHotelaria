@@ -1,0 +1,74 @@
+<div>
+	<div ng-controller="ConsultarTipoQuartoController as vm">
+
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Consultar Tipos de Quartos</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<div><pre>{{vm.tipoquarto | json}}</pre></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="nome" class="cols-sm-2 control-label">Nome</label>
+						<div class="cols-sm-4">
+							<div class="input-group">
+								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.tipoquarto.nome"
+									placeholder="Nome do TipoQuarto" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div align="center">
+						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
+						<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div ng-if="vm.tipoquartos.length > 0">
+						<table class="table table-striped">
+							<thead>
+								<tr>
+									<td>Cód.</td>
+									<td>Tipo</td>
+		                            <td>Nome</td>
+		                            <td>Descrição</td>      
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="tipoquarto in vm.tipoquartos">
+									<td>{{ tipoquarto.codTipoQuarto}}</td>
+									<td>{{ tipoquarto.tipo}}</td>
+									<td>{{ tipoquarto.nome}}</td>
+									<td>{{ tipoquarto.descricao}}</td>
+									<td>
+										<button ng-click="vm.irParaTelaDetalhamento(tipoquarto.codTipoQuarto)" class="btn btn-primary btn-xs">Detalhar</button>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

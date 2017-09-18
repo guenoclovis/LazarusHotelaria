@@ -1,0 +1,96 @@
+
+<div>
+	<div ng-controller="DetalharTipoQuartoController as dcc">
+
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Detalhar o TipoQuarto</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div>
+						<pre>{{dcc.tipoquarto | json}}</pre>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Código</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.tipoquarto.codTipoQuarto}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="tipo" class="cols-sm-2 control-label">Tipo</label>
+				</div>
+				<div class="col-md-6">
+					<span id="tipo">{{dcc.tipoquarto.tipo}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>			
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Nome</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.tipoquarto.nome}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
+				</div>
+				<div class="col-md-6">
+					<span id="dtNasc">{{dcc.tipoquarto.descricao}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<!-- <div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<span id="sexo">{{dcc.tipoquarto.status}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div-->
+
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 lazarus-align">
+				<div class="lazarus-align">
+					<button ng-click="dcc.voltarParaTelaAnterior()"
+						class="btn btn-primary">Voltar</button>
+					<button ng-click="dcc.irParaTelaEdicao(dcc.tipoquarto.codTipoQuarto)"
+						class="btn btn-primary">Editar</button>
+					<button ng-click="dcc.excluir(dcc.tipoquarto.codTipoQuarto)"
+						class="btn btn-primary">Excluir</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

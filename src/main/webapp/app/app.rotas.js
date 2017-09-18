@@ -131,6 +131,36 @@
 				codAtributo : undefined
 			}
 		}
+		
+		var tipoquartoConsultarState = {
+				name : 'tipoquartoConsultar',
+				url : '/tipoquartoConsultar',
+				controller : 'ConsultarTipoQuartoController',
+				templateUrl : './tipoquarto/tipoquarto-consultar.html',
+				params : {
+					codTipoQuarto : undefined
+				}
+			}
+
+		var tipoquartoEditarState = {
+			name : 'tipoquartoEditar',
+			url : '/tipoquartoEditar',
+			controller : 'EditarTipoQuartoController',
+			templateUrl : './tipoquarto/tipoquarto-editar.html',
+			params : {
+				codTipoQuarto : undefined
+			}
+		}
+
+		var tipoquartoDetalharState = {
+			name : 'tipoquartoDetalhar',
+			url : '/tipoquartoDetalhar',
+			controller : 'DetalharTipoQuartoController',
+			templateUrl : './tipoquarto/tipoquarto-detalhar.html',
+			params : {
+				codTipoQuarto : undefined
+			}
+		}		
 
 		$stateProvider.state(inicioState);
 		$stateProvider.state(reservaState);
@@ -148,7 +178,9 @@
 		$stateProvider.state(atributoConsultarState);
 		$stateProvider.state(atributoEditarState);
 		$stateProvider.state(atributoDetalharState);
-
+		$stateProvider.state(tipoquartoConsultarState);
+		$stateProvider.state(tipoquartoEditarState);
+		$stateProvider.state(tipoquartoDetalharState);
 	});
 
 })();

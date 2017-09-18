@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>TITULO</title>
+<title>LAZARUS</title>
 
 
 <!-- ======================= CSS FILES INCLUDE =========================== -->
@@ -57,6 +57,13 @@
 <script src="atributo/atributo-consultar.controller.js"></script>
 <script src="atributo/atributo-detalhar.controller.js"></script>
 
+<!-- Tipo de Quarto -->
+<script src="tipoquarto/tipoquarto.module.js"></script>
+<script src="tipoquarto/tipoquarto.service.js"></script>
+<script src="tipoquarto/tipoquarto-editar.controller.js"></script>
+<script src="tipoquarto/tipoquarto-consultar.controller.js"></script>
+<script src="tipoquarto/tipoquarto-detalhar.controller.js"></script>
+
 <!-- Principal -->
 <script src="app.modulo-principal.js"></script>
 <script src="app.rotas.js"></script>
@@ -91,11 +98,17 @@
 				<li class="nav-item"><a class="nav-link" ui-sref="login">Login</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					ui-sref="filialConsultar">Filial</a></li>
+					ui-sref="filialConsultar">Filial</a>
+				</li>
 				<li class="nav-item"><a class="nav-link"
-					ui-sref="atributoConsultar">Atributo</a></li>
-<!-- 				<li class="nav-item"><a class="nav-link" -->
-<!-- 					ui-sref="showcaseConsultar">Showcase</a></li> -->
+					ui-sref="atributoConsultar">Atributo</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="tipoquartoConsultar">Tipo de Quarto</a>
+				</li>				
+<!--			<li class="nav-item"><a class="nav-link" -->
+<!--				ui-sref="showcaseConsultar">Showcase</a>
+				</li> -->
 			</ul>
 		</div>
 	</nav>
