@@ -1,102 +1,112 @@
 <!DOCTYPE html>
 <html lang="en">
 
-    <head>
+<head>
 
 
-        <!-- ======================= META INFORMATION =========================== -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- ======================= META INFORMATION =========================== -->
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>TITULO</title>
+<title>TITULO</title>
 
 
-        <!-- ======================= CSS FILES INCLUDE =========================== -->
-        <!-- Bootstrap core CSS -->
-        <link href="../lib/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!-- ======================= CSS FILES INCLUDE =========================== -->
+<!-- Bootstrap core CSS -->
+<link href="../lib/vendor/bootstrap/css/bootstrap.min.css"
+	rel="stylesheet">
 
-        <!-- Custom styles for this template -->
-        <link href="../lib/css/half-slider.css" rel="stylesheet">
-        <link href="../lib/vendor/bootstrap/css/bootswatch.bootstrap.min.css" rel="stylesheet">
-        <link href="lazarusHotelaria.css" rel="stylesheet">
+<!-- Custom styles for this template -->
+<link href="../lib/css/half-slider.css" rel="stylesheet">
+<link href="../lib/vendor/bootstrap/css/bootswatch.bootstrap.min.css"
+	rel="stylesheet">
+<link href="lazarusHotelaria.css" rel="stylesheet">
 
-        <!-- ======================= JS FILES INCLUDE =========================== -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/lodash/3.10.0/lodash.min.js"></script>
-        <script src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
+<!-- ======================= JS FILES INCLUDE =========================== -->
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
+<script src="https://cdn.jsdelivr.net/lodash/3.10.0/lodash.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
 
-		<!-- Cliente -->
-        <script src="cliente/cliente.module.js"></script>
-        <script src="cliente/cliente.service.js"></script>
-        <script src="cliente/cliente-editar.controller.js"></script>
-        <script src="cliente/cliente-consultar.controller.js"></script>
-        <script src="cliente/cliente-detalhar.controller.js"></script>
-        
-        <!-- Filial -->        
-        <script src="filial/filial.module.js"></script>
-        <script src="filial/filial.service.js"></script>
-        <script src="filial/filial-editar.controller.js"></script>
-        <script src="filial/filial-consultar.controller.js"></script>
-        <script src="filial/filial-detalhar.controller.js"></script>
-        
-        <!-- Principal -->
-        <script src="app.modulo-principal.js"></script>
-        <script src="app.rotas.js"></script>
+<!-- Cliente -->
+<script src="cliente/cliente.module.js"></script>
+<script src="cliente/cliente.service.js"></script>
+<script src="cliente/cliente-editar.controller.js"></script>
+<script src="cliente/cliente-consultar.controller.js"></script>
+<script src="cliente/cliente-detalhar.controller.js"></script>
 
-        <!-- Bootstrap core JavaScript -->
-        <script src="../lib/vendor/jquery/jquery.min.js"></script>
-        <script src="../lib/vendor/popper/popper.min.js"></script>
-        <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
-    </head>
+<!-- Filial -->
+<script src="filial/filial.module.js"></script>
+<script src="filial/filial.service.js"></script>
+<script src="filial/filial-editar.controller.js"></script>
+<script src="filial/filial-consultar.controller.js"></script>
+<script src="filial/filial-detalhar.controller.js"></script>
 
-    <body ng-app="lazarusApp">    	
-        <!-- ======================= MENU =========================== -->
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-            <a class="navbar-brand" href="#">TITULO</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" ui-sref="inicio">Início</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="reserva">Reserva</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="quartos">Quartos</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="contato">Contato</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="clienteConsultar">Cliente</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="login">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" ui-sref="filialConsultar">Filial</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+<!-- Atributo -->
+<script src="atributo/atributo.module.js"></script>
+<script src="atributo/atributo.service.js"></script>
+<script src="atributo/atributo-editar.controller.js"></script>
+<script src="atributo/atributo-consultar.controller.js"></script>
+<script src="atributo/atributo-detalhar.controller.js"></script>
 
-        <!-- =============== LOCAL ONDE HTMLs SAO INSERIDOS ========== -->
-    <ui-view></ui-view>
+<!-- Principal -->
+<script src="app.modulo-principal.js"></script>
+<script src="app.rotas.js"></script>
 
-    <!-- ======================= RODAPE =========================== -->
-    <footer class="py-5 bg-dark">
-        <div class="container">
-            <p class="m-0 text-center text-white">TITULO ANO</p>
-        </div>
-    </footer>
+<!-- Bootstrap core JavaScript -->
+<script src="../lib/vendor/jquery/jquery.min.js"></script>
+<script src="../lib/vendor/popper/popper.min.js"></script>
+<script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+</head>
+
+<body ng-app="lazarusApp">
+	<!-- ======================= MENU =========================== -->
+	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+		<a class="navbar-brand" href="#">TITULO</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse"
+			data-target="#navbarResponsive" aria-controls="navbarResponsive"
+			aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarResponsive">
+			<ul class="navbar-nav ml-auto">
+				<li class="nav-item active"><a class="nav-link"
+					ui-sref="inicio">Início</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="reserva">Reserva</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" ui-sref="quartos">Quartos</a>
+				</li>
+				<li class="nav-item"><a class="nav-link" ui-sref="contato">Contato</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="clienteConsultar">Cliente</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="login">Login</a>
+				</li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="filialConsultar">Filial</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="atributoConsultar">Atributo</a></li>
+			</ul>
+		</div>
+	</nav>
+
+	<!-- =============== LOCAL ONDE HTMLs SAO INSERIDOS ========== -->
+	<ui-view></ui-view>
+
+	<!-- ======================= RODAPE =========================== -->
+	<footer class="py-5 bg-dark">
+		<div class="container">
+			<p class="m-0 text-center text-white">TITULO ANO</p>
+		</div>
+	</footer>
 
 </body>
 

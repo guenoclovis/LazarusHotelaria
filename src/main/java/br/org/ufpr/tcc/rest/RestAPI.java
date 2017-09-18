@@ -13,6 +13,7 @@ public class RestAPI extends Application {
 	public RestAPI() {
 		singletons.add(new ClienteREST());
 		singletons.add(new FilialREST());
+		singletons.add(new AtributoREST());
 	}
 
 	

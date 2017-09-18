@@ -13,9 +13,9 @@ public class ConnectionManager {
 
     
     /** LOCAL **/
-    private static final String connectionUrl = "jdbc:postgresql://localhost:5432/lazarus";
+    private static final String connectionUrl = "jdbc:postgresql://localhost:5432/Lazarus";
     private static final String userName = "postgres";
-    private static final String userPass = "1";
+    private static final String userPass = "123";
 
     private Connection con = null;
 
