@@ -14,6 +14,7 @@ public class RestAPI extends Application {
 		singletons.add(new ClienteREST());
 		singletons.add(new FilialREST());
 		singletons.add(new AtributoREST());
+		singletons.add(new ShowcaseREST());
 	}
 
 	
