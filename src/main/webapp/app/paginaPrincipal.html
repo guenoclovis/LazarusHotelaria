@@ -13,7 +13,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>LAZARUS</title>
+<title></title>
 
 
 <!-- ======================= CSS FILES INCLUDE =========================== -->
@@ -28,50 +28,95 @@
 <link href="lazarusHotelaria.css" rel="stylesheet">
 
 <!-- ======================= JS FILES INCLUDE =========================== -->
-<script
+
+<script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.5/angular.min.js"></script>
-<script
+<script type="text/javascript"
 	src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.min.js"></script>
-<script src="https://cdn.jsdelivr.net/lodash/3.10.0/lodash.min.js"></script>
-<script
+<script type="text/javascript"
+	src="https://cdn.jsdelivr.net/lodash/3.10.0/lodash.min.js"></script>
+<script type="text/javascript"
 	src="http://cdnjs.cloudflare.com/ajax/libs/restangular/1.5.1/restangular.js"></script>
 
+<script type="text/javascript" src="../lib/ngMask/ngMask.min.js"></script>
+
+<script type="text/javascript"
+	src="../lib/checklist-model/checklist-model.js"></script>
+
+<script type="text/javascript"
+	src="../lib/datepicker-localdate/datepicker-localdate.js"></script>
+
+<!-- <script type="text/javascript" -->
+<!-- 	src="../lib/ng-file-upload/ng-file-upload.min.js"></script> -->
+
+<script type="text/javascript"
+	src="../lib/ui-bootstrap-tpls/ui-bootstrap-tpls-2.5.0.min.js"></script>
+
+<script type="text/javascript"
+	src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+
+<!-- <script type="text/javascript" -->
+<!-- 	src="../lib/jquery.sticky/jquery.sticky.js"></script> -->
+
+
 <!-- Cliente -->
-<script src="cliente/cliente.module.js"></script>
-<script src="cliente/cliente.service.js"></script>
-<script src="cliente/cliente-editar.controller.js"></script>
-<script src="cliente/cliente-consultar.controller.js"></script>
-<script src="cliente/cliente-detalhar.controller.js"></script>
+<script type="text/javascript" src="cliente/cliente.module.js"></script>
+<script type="text/javascript" src="cliente/cliente.service.js"></script>
+<script type="text/javascript"
+	src="cliente/cliente-editar.controller.js"></script>
+<script type="text/javascript"
+	src="cliente/cliente-consultar.controller.js"></script>
+<script type="text/javascript"
+	src="cliente/cliente-detalhar.controller.js"></script>
 
 <!-- Filial -->
-<script src="filial/filial.module.js"></script>
-<script src="filial/filial.service.js"></script>
-<script src="filial/filial-editar.controller.js"></script>
-<script src="filial/filial-consultar.controller.js"></script>
-<script src="filial/filial-detalhar.controller.js"></script>
+<script type="text/javascript" src="filial/filial.module.js"></script>
+<script type="text/javascript" src="filial/filial.service.js"></script>
+<script type="text/javascript" src="filial/filial-editar.controller.js"></script>
+<script type="text/javascript"
+	src="filial/filial-consultar.controller.js"></script>
+<script type="text/javascript"
+	src="filial/filial-detalhar.controller.js"></script>
 
 <!-- Atributo -->
-<script src="atributo/atributo.module.js"></script>
-<script src="atributo/atributo.service.js"></script>
-<script src="atributo/atributo-editar.controller.js"></script>
-<script src="atributo/atributo-consultar.controller.js"></script>
-<script src="atributo/atributo-detalhar.controller.js"></script>
+<script type="text/javascript" src="atributo/atributo.module.js"></script>
+<script type="text/javascript" src="atributo/atributo.service.js"></script>
+<script type="text/javascript"
+	src="atributo/atributo-editar.controller.js"></script>
+<script type="text/javascript"
+	src="atributo/atributo-consultar.controller.js"></script>
+<script type="text/javascript"
+	src="atributo/atributo-detalhar.controller.js"></script>
 
 <!-- Tipo de Quarto -->
-<script src="tipoquarto/tipoquarto.module.js"></script>
-<script src="tipoquarto/tipoquarto.service.js"></script>
-<script src="tipoquarto/tipoquarto-editar.controller.js"></script>
-<script src="tipoquarto/tipoquarto-consultar.controller.js"></script>
-<script src="tipoquarto/tipoquarto-detalhar.controller.js"></script>
+<script type="text/javascript" src="tipoquarto/tipoquarto.module.js"></script>
+<script type="text/javascript" src="tipoquarto/tipoquarto.service.js"></script>
+<script type="text/javascript"
+	src="tipoquarto/tipoquarto-editar.controller.js"></script>
+<script type="text/javascript"
+	src="tipoquarto/tipoquarto-consultar.controller.js"></script>
+<script type="text/javascript"
+	src="tipoquarto/tipoquarto-detalhar.controller.js"></script>
+
+<!-- showcase -->
+<script type="text/javascript" src="showcase/showcase.module.js"></script>
+<script type="text/javascript" src="showcase/showcase.service.js"></script>
+<script type="text/javascript"
+	src="showcase/showcase-editar.controller.js"></script>
+<script type="text/javascript"
+	src="showcase/showcase-consultar.controller.js"></script>
+<script type="text/javascript"
+	src="showcase/showcase-detalhar.controller.js"></script>
 
 <!-- Principal -->
-<script src="app.modulo-principal.js"></script>
-<script src="app.rotas.js"></script>
+<script type="text/javascript" src="app.modulo-principal.js"></script>
+<script type="text/javascript" src="app.rotas.js"></script>
 
 <!-- Bootstrap core JavaScript -->
 <script src="../lib/vendor/jquery/jquery.min.js"></script>
-<script src="../lib/vendor/popper/popper.min.js"></script>
-<script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- <script src="../lib/vendor/popper/popper.min.js"></script> -->
+<!-- <script src="../lib/vendor/bootstrap/js/bootstrap.min.js"></script> -->
 </head>
 
 <body ng-app="lazarusApp">
@@ -98,17 +143,13 @@
 				<li class="nav-item"><a class="nav-link" ui-sref="login">Login</a>
 				</li>
 				<li class="nav-item"><a class="nav-link"
-					ui-sref="filialConsultar">Filial</a>
-				</li>
+					ui-sref="filialConsultar">Filial</a></li>
 				<li class="nav-item"><a class="nav-link"
-					ui-sref="atributoConsultar">Atributo</a>
-				</li>
+					ui-sref="atributoConsultar">Atributo</a></li>
 				<li class="nav-item"><a class="nav-link"
-					ui-sref="tipoquartoConsultar">Tipo de Quarto</a>
-				</li>				
-<!--			<li class="nav-item"><a class="nav-link" -->
-<!--				ui-sref="showcaseConsultar">Showcase</a>
-				</li> -->
+					ui-sref="tipoquartoConsultar">Tipo de Quarto</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="showcaseConsultar">Showcase</a></li>
 			</ul>
 		</div>
 	</nav>

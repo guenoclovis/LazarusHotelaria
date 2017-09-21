@@ -161,6 +161,36 @@
 				codTipoQuarto : undefined
 			}
 		}		
+		
+		var showcaseConsultarState = {
+				name : 'showcaseConsultar',
+				url : '/showcaseConsultar',
+				controller : 'ConsultarShowcaseController',
+				templateUrl : './showcase/showcase-consultar.html',
+				params : {
+					codShowcase : undefined
+				}
+			}
+
+		var showcaseEditarState = {
+			name : 'showcaseEditar',
+			url : '/showcaseEditar',
+			controller : 'EditarShowcaseController',
+			templateUrl : './showcase/showcase-editar.html',
+			params : {
+				codShowcase : undefined
+			}
+		}
+
+		var showcaseDetalharState = {
+			name : 'showcaseDetalhar',
+			url : '/showcaseDetalhar',
+			controller : 'DetalharShowcaseController',
+			templateUrl : './showcase/showcase-detalhar.html',
+			params : {
+				codShowcase : undefined
+			}
+		}		
 
 		$stateProvider.state(inicioState);
 		$stateProvider.state(reservaState);
@@ -181,6 +211,9 @@
 		$stateProvider.state(tipoquartoConsultarState);
 		$stateProvider.state(tipoquartoEditarState);
 		$stateProvider.state(tipoquartoDetalharState);
+		$stateProvider.state(showcaseConsultarState);
+		$stateProvider.state(showcaseEditarState);
+		$stateProvider.state(showcaseDetalharState);
 	});
 
 })();
