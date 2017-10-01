@@ -7,3 +7,28 @@
 	vertical-align: middle;
 	text-align: center;
 }
+
+.menu_lazarus {
+    margin-bottom: 0px;
+    border-radius: inherit;	
+}
+
+.rodape-lazarus{	
+    margin-top: 5%;
+}
+
+#combo-filial{
+	height: 45px;	
+}
+
+.btn-calendario{
+    padding: 27px 0px 0px 5px;
+}
+
+.linha-site{
+	margin-right: 0px;	
+}
+
+.linha-item p{
+	margin-top: 10px;
+}
