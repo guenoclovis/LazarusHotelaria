@@ -33,7 +33,7 @@ public class ClienteDAO {
             
             stmt.setString(1 ,cliente.getNome());
             stmt.setDate(2 , new java.sql.Date(cliente.getDtNasc().getTime()));
-            stmt.setString(3 ,String.valueOf(cliente.getSexo()));
+            stmt.setInt(3 ,cliente.getSexo());
             stmt.setString(4 ,cliente.getNacionalidade());
             stmt.setString(5 ,cliente.getTelefone1());
             stmt.setString(6 ,cliente.getTelefone2());
@@ -105,7 +105,7 @@ public class ClienteDAO {
 		clienteLido.setCodCliente(rs.getInt("COD_CLIENTE"));
 		clienteLido.setNome(rs.getString("NOME"));
 		clienteLido.setDtNasc(rs.getDate("DT_NASC"));
-		clienteLido.setSexo(rs.getString("SEXO").charAt(0));
+		clienteLido.setSexo(rs.getInt("SEXO"));
 		clienteLido.setNacionalidade(rs.getString("NACIONALIDADE"));
 		clienteLido.setTelefone1(rs.getString("TELEFONE1"));
 		clienteLido.setTelefone2(rs.getString("TELEFONE2"));

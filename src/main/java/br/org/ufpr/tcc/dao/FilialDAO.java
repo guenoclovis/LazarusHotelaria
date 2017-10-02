@@ -24,7 +24,7 @@ public class FilialDAO {
     private final String stmtExcluir = "UPDATE clientes SET STATUS = 'E' WHERE cod_clientes = ? ";
     private final String stmtListar = "SELECT * FROM filiais";
     private final String stmtListarPaginado = "SELECT * FROM filiais WHERE nome ilike ? ";
-    private final String stmtAlterar = "UPDATE filiais SET NOME = ?, EMAIL1 = ?, DESCRICAO = ?, EXIBIR_SITE = ?, STATUS = ? WHERE COD_FILIAL = ? ";
+    private final String stmtAlterar = "UPDATE filiais SET NOME = ?, EMAIL = ?, DESCRICAO = ?, EXIBIR_SITE = ?, STATUS = ? WHERE COD_FILIAL = ? ";
 
     public void inserir(Filial filial) {
         Connection con = null;
@@ -92,7 +92,7 @@ public class FilialDAO {
 		
 		filialLida.setCodFilial(rs.getInt("COD_FILIAL"));
 		filialLida.setNome(rs.getString("NOME"));
-		filialLida.setEmail(rs.getString("EMAIL1"));
+		filialLida.setEmail(rs.getString("EMAIL"));
 		filialLida.setDescricao(rs.getString("DESCRICAO"));
 		filialLida.setExibirSite(rs.getString("EXIBIR_SITE"));
 		filialLida.setStatus(rs.getString("STATUS").charAt(0));

@@ -1,8 +1,11 @@
 package br.org.ufpr.tcc.converter;
 
+import java.util.Date;
+
 import br.org.ufpr.tcc.bc.ClienteBC;
 import br.org.ufpr.tcc.dto.ClienteDTO;
 import br.org.ufpr.tcc.entity.Cliente;
+import br.org.ufpr.tcc.util.DataUtil;
 
 public class DTOtoCliente {
 	
@@ -15,14 +18,14 @@ public class DTOtoCliente {
 		
 		cliente.setCodCliente(dto.getCodCliente());
 		cliente.setNome(dto.getNome());
-		cliente.setDtNasc(dto.getDtNasc());
+		cliente.setDtNasc(DataUtil.toDate(dto.getDtNasc().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
 		cliente.setSexo(dto.getSexo());
 		cliente.setNacionalidade(dto.getNacionalidade());
 		cliente.setTelefone1(dto.getTelefone1());
 		cliente.setTelefone2(dto.getTelefone2());
 		cliente.setEmail1(dto.getEmail1());
 		cliente.setEmail2(dto.getEmail2());
-		cliente.setCpf(dto.getCpf());
+		cliente.setCpf(dto.getCpf().replace(".", "").replace("-", ""));
 		cliente.setRg(dto.getRg());
 		cliente.setPassaporte(dto.getPassaporte());
 		cliente.setEndRua(dto.getEndRua());

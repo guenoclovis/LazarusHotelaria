@@ -10,7 +10,7 @@ public class ClienteToDTO {
 
 		dto.setCodCliente(cliente.getCodCliente());
 		dto.setNome(cliente.getNome());
-		dto.setDtNasc(cliente.getDtNasc());
+		//dto.setDtNasc(cliente.getDtNasc());
 		dto.setSexo(cliente.getSexo());
 		dto.setNacionalidade(cliente.getNacionalidade());
 		dto.setTelefone1(cliente.getTelefone1());

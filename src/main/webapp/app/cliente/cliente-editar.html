@@ -45,9 +45,18 @@
 					<label for="dtNasc" class="cols-sm-2 control-label">Data Nascimento</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="dtNasc" id="dtNasc" ng-model="vm.cliente.dtNasc"
-							placeholder="Ex: 11/12/2013" />
+					<!-- <input type="text" class="form-control" name="dtNasc" id="dtNasc" ng-model="vm.cliente.dtNasc"
+							placeholder="Ex: 11/12/2013" /> -->
+					<input type="text" class="form-control" id="dtNasc" uib-datepicker-popup="{{format}}"
+							ng-model="vm.cliente.dtNasc" is-open="vm.popup1.opened"
+							datepicker-options="dateOptions" ng-required="true" close-text="Close"
+							alt-input-formats="altInputFormats" />
+						<span class="input-group-btn">
+							<button type="button" class="btn btn-default" ng-click="vm.open1()">
+								Calendário
+							</button>		
 				</div>
+				
 				<div class="col-md-2"></div>
 			</div>
 			
@@ -57,8 +66,25 @@
 					<label for="sexo" class="cols-sm-2 control-label">Sexo</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="sexo" id="sexo" ng-model="vm.cliente.sexo"
-							placeholder="M ou F" />
+					<!--<input type="text" class="form-control" name="sexo" id="sexo" ng-model="vm.cliente.sexo"
+							placeholder="M ou F" />-->
+					<div class="form-inline" id="sexo">
+							<div class="radio col-sm-2">
+								<input ng-model="vm.cliente.sexo" type="radio" name="radio-situacao" id="sexo-m"
+									ng-value="1">
+								<label for="radio-situacao-a">Masculino</label>
+							</div>
+							<div class="radio col-sm-2">
+								<input ng-model="vm.cliente.sexo" type="radio" name="radio-situacao" id="sexo-f"
+									ng-value="2">
+								<label for="radio-situacao-i">Feminino</label>
+							</div>
+							<div class="radio col-sm-2">
+								<input ng-model="vm.cliente.sexo" type="radio" name="radio-situacao" id="sexo-o"
+									ng-value="0">
+								<label for="radio-situacao-i">Outro</label>
+							</div>
+						</div>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -70,7 +96,7 @@
 				</div>
 				<div class="col-md-6">
 					<input type="text" class="form-control" name="nacionalidade" id="nacionalidade" ng-model="vm.cliente.nacionalidade"
-							placeholder="Nome do Fulano(a)" />
+							placeholder="" />
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -129,8 +155,7 @@
 					<label for="cpf" class="cols-sm-2 control-label">CPF</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="cpf" id="cpf" ng-model="vm.cliente.cpf"
-							placeholder="" />
+					<input id="cpf" type="cpf" mask="999.999.999-99" ng-model="vm.cliente.cpf">
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -213,8 +238,13 @@
 					<label for="endUf" class="cols-sm-2 control-label">Endereço - UF</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="endUf" id="endUf" ng-model="vm.cliente.endUf"
-							placeholder="" />
+					<!-- <input type="text" class="form-control" name="endUf" id="endUf" ng-model="vm.cliente.endUf"
+							placeholder="" /> -->
+					<select id="endUf" class="form-control"
+						ng-options="item.codigo as item.descricao for item in vm.ufs" ng-model="vm.cliente.endUf"
+						selectpicker>
+						<option value="" selected>Selecione</option>
+					</select>
 				</div>
 				<div class="col-md-2"></div>
 			</div>

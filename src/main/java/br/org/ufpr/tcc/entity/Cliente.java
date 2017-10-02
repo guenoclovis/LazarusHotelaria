@@ -7,7 +7,7 @@ public class Cliente {
 	private Integer codCliente;
     private String nome;
     private Date dtNasc;
-    private char sexo;
+    private Integer sexo;
     private String nacionalidade;
     private String telefone1;
     private String telefone2;
@@ -43,10 +43,10 @@ public class Cliente {
 	public void setDtNasc(Date dtNasc) {
 		this.dtNasc = dtNasc;
 	}
-	public char getSexo() {
+	public Integer getSexo() {
 		return sexo;
 	}
-	public void setSexo(char sexo) {
+	public void setSexo(Integer sexo) {
 		this.sexo = sexo;
 	}
 	public String getNacionalidade() {
