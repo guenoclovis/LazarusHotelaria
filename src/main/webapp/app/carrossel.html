@@ -39,53 +39,95 @@
                 </a>
             </div>
         </header>
-
-<!-- ======================= QUADRO DE VAGAS =========================== -->
-        <div class="row">
-            <div class="col-sm-4">
-                <div class="container">
-                    <h1 align="left">
-                        Quartos dispon√≠veis
-                    </h1>
-                    <p>Data de entrada:</p>
-                    <div class="container">
-                        <div class="form-group">
-                            <div class='input-group date' id='datetimepicker1'>
-                                <input type='text' class="form-control" />
-                                <span class="input-group-addon">
-                                    <span class="glyphicon glyphicon-calendar"></span>
-                                </span>
-                            </div>
-                        </div>
-                        <script type="text/javascript">
-                            $(function () {
-                                $('#datetimepicker1').datetimepicker();
-                            });
-                        </script>
-                    </div>
-                    <p>Data de sa√≠da:</p>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker1'>
-                            <input type='text' class="form-control" />
-                            <span class="input-group-addon">
-                                <span class="glyphicon glyphicon-calendar"></span>
-                            </span>
-                        </div>
-                    </div>
-                    <script type="text/javascript">
-                        $(function () {
-                            $('#datetimepicker1').datetimepicker();
-                        });
-                    </script>
-                    <input type="button" name="buscar" value="Buscar">
-                </div>
-            </div>
-            <div class="col-sm-8">
-                <section class="container">
-                    <div class="container">
-                        <h1>Hoteis - Tipos de Quartos</h1>
-                        <p>Confira os espa√ßos oferecidos pelo hotel.</p>
-                    </div>
-                </section>
-            </div>
-        </div>
+		</br>
+<!-- ======================= QUARTOS DISPONÕVEIS =========================== -->
+        <div class="row linha-site">
+        <div class="container">
+            <div class="col-sm-4">             
+               
+				<!-- TÕTULO -->
+				<h3 align="left">Quartos dispon√≠veis</h1></h3></br>
+				
+				<!-- FILIAL -->			
+				<div class="form-group">
+					<label for="combo-filial-lateral" class="control-label">Hotel Destino</label>
+					<select id="combo-filial-lateral" class="form-control" selectpicker>
+<!-- 					ng-options="item.codigo as item.descricao for item in vm.ufs" ng-model="vm.showcase.uf" -->
+						<option value="" selected>Curitiba-PR</option>
+						<option value="">Florianopolis-SC</option>
+						<option value="">Porto Alegre-RS</option>
+					</select>
+				</div>
+				
+                <!-- DATA ENTRADA -->
+				<p class="input-group">
+					<label for="data-entrada">Data de Entrada</label>
+					<input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+						ng-model="vm.showcase.dataEntrada" is-open="vm.popup1.opened"
+						datepicker-options="dateOptions" ng-required="true" close-text="Close"
+						alt-input-formats="altInputFormats" id="data-entrada" />
+					<span class="input-group-btn btn-calendario">
+						<button type="button" class="btn btn-default" ng-click="vm.open1()">C</button>
+					</span>
+				</p>
+				
+                <!-- DATA SAÕDA -->
+				<p class="input-group">
+					<label for="data-saida">Data de Sa√≠da</label>
+					<input type="text" class="form-control" uib-datepicker-popup
+						ng-model="vm.showcase.dataSaida" is-open="vm.popup2.opened"
+						datepicker-options="dateOptions" ng-required="true" close-text="Close" id="data-saida" />
+					<span class="input-group-btn btn-calendario">
+						<button type="button" class="btn btn-default" ng-click="vm.open1()">C</button>
+					</span>
+				</p>      
+					              
+				<!-- BOT√O BUSCAR -->                    
+				<div align="center">
+					<button ng-click="vm.irParaTelaInclusao()" name="buscar" class="btn btn-primary">Buscar</button>
+				</div>           		
+		</div>    
+<!-- ======================= FILIAIS OU TIPOS DE QUARTO =========================== -->
+		<div class="col-sm-8">
+	            <h1>Nossos Hoteis</h1>
+	            <p>Nossa rede de hoteis esta presente em todos os estados. Confira e explore nossas filiais:</p>
+	            
+				<div class="container-fluid bg-4 text-center">
+				  <div class="row">
+					<div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>				    
+				  </div></br>
+				  <div class="row">
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				  </div>					  
+				</div>
+	        </div>
+		</div>
+	</div>
