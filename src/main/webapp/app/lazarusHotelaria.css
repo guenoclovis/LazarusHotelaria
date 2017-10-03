@@ -1,3 +1,4 @@
+
 /* ===================== GERAIS DO SISTEMA ===================== */
 .col-md-1, .col-md-4, .col-md-6, .col-md-8, .col-md-12 {
 	border-width: 1px;
@@ -59,7 +60,22 @@
 }
 
 /* ===================== PÁGINAS ===================== */
-
+/* ATRIBUTOS */
+.atributos h3{
+	margin-top: 20px;
+    margin-bottom: 0px;
+}
+/* CARROSSEL */
+.carrossel-lateral{
+	margin-top: 10px;	
+}
+/* TEXTO DESCRICAO*/
+.corpo-descricao{
+	margin-top: 30px;
+}
+.corpo-descricao p{
+	text-align: left;
+} 	
 /* TÍTULOS */
 .titulo-paginas-meio{
 	padding-bottom: 30px;	
@@ -111,11 +127,11 @@
 }
 .botoes-esquerda{
     margin-top: 15px;
-    text-align: left;
+    float: left;
 }
 .botoes-direita{
     margin-top: 15px;
-    text-align: right;	
+    float: right;	
 }
 .botoes-direita button{
 	margin-right: 10px;
@@ -125,11 +141,14 @@
 #combo-filial-lateral{
 	height: 45px;
 }
-
+/* ===================== TIPO DE QUARTO ===================== */
+#paginavalor{
+	float: right;		
+}
 /* ===================== ATRIBUTO ===================== */
 #combo-tipo{
 	height: 40px;
-	/*max-width: 32%;*/
+    width: 95%;
     margin-left: 15px;
 }	
 .campo-descricao{
@@ -164,3 +183,4 @@
 .item-descricao{
 	margin-top: 0px;		
 }
+/* ========================================================================================== */

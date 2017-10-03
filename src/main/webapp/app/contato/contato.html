@@ -61,21 +61,20 @@
 			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Mensagem</label>
+					<label for="mensagem" class="cols-sm-2 control-label">Mensagem</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.cliente.nome" placeholder="Sua Mensgem..." />
+					<input type="text" class="form-control campo-descricao" name="nome" id="mensagem" ng-model="vm.cliente.nome" placeholder="Sua Mensgem..." />
 				</div>
 				<div class="col-md-2"></div>
 			</div>
 			
 			<!-- BOTÃO ENVIAR -->
-			<!-- div class="form-group "-->
-			<div class="row botoes-direita">
-				<div class="col-md-10">
+			<div class="col-sm-12">
+				<div class="botoes-meio" align="center">	
 					<button ng-click="vm.enviarEmail()" class="btn btn-primary">Enviar</button>
 				</div>
-			</div>
+			</div>		
 		</form>
 	</div>
 	</div>
