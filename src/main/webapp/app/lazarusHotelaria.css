@@ -28,7 +28,7 @@
 
 #combo-filial{
 	height: 45px;
-	max-width: 32%;	
+	/*max-width: 32%;*/	
 }
 .btn-calendario{
     padding: 27px 0px 0px 5px;
@@ -39,8 +39,8 @@
 }
 
 .linha-item {
-    max-width: 32%;
-    margin-right: 1%;	
+    /*max-width: 32%;
+    margin-right: 1%;*/	
     border-color: #339966;
     border-style: dotted;
 }  
@@ -129,7 +129,7 @@
 /* ===================== ATRIBUTO ===================== */
 #combo-tipo{
 	height: 40px;
-	max-width: 32%;
+	/*max-width: 32%;*/
     margin-left: 15px;
 }	
 .campo-descricao{
@@ -137,8 +137,8 @@
 }	
 /* ===================== LISTA DE TIPOS DE QUARTOS ===================== */
 .item-quarto{
-    max-width: 24%;
-    margin-right: 1%;	
+    /*max-width: 24%;
+    margin-right: 1%;*/	
     border-color: #339966;
     border-style: dotted;
 }    

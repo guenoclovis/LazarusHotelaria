@@ -7,6 +7,7 @@
 			name : 'inicio',
 			url : '/inicio',
 			templateUrl : 'carrossel.html'
+			//controller : 'InicioController'
 		}
 
 		var reservaState = {
@@ -15,6 +16,12 @@
 			templateUrl : './reserva/reserva.html'
 		}
 
+		var tipoquartositeState = {
+				name : 'tipoquartosite',
+				url : '/tipoquarto',
+				templateUrl : './quartos/tipoquartosite.html'
+			}				
+		
 		var quartosState = {
 			name : 'quartos',
 			url : '/quartos',
@@ -37,13 +44,19 @@
 			name : 'quartos.infos',
 			url : '/quartos/infos',
 			templateUrl : './quartos/infos.html'
-		}
+		}	
 
 		var loginState = {
 			name : 'login',
 			url : '/login',
 			templateUrl : './login/login.html'
 		}
+		
+		var contatoState = {
+				name : 'contato',
+				url : '/contato',
+				templateUrl : './contato/contato.html'
+			}
 
 		var clienteConsultarState = {
 			name : 'clienteConsultar',
@@ -195,6 +208,7 @@
 		$stateProvider.state(inicioState);
 		$stateProvider.state(reservaState);
 		$stateProvider.state(quartosState);
+		$stateProvider.state(tipoquartositeState);
 		$stateProvider.state(quartosProfileState);
 		$stateProvider.state(quartosAccountState);
 		$stateProvider.state(quartosInfosState);
@@ -202,6 +216,7 @@
 		$stateProvider.state(clienteEditarState);
 		$stateProvider.state(clienteDetalharState);
 		$stateProvider.state(loginState);
+		$stateProvider.state(contatoState);
 		$stateProvider.state(filialConsultarState);
 		$stateProvider.state(filialEditarState);
 		$stateProvider.state(filialDetalharState);
