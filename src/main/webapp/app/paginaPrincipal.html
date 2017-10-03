@@ -3,7 +3,6 @@
 
 <head>
 
-
 <!-- ======================= META INFORMATION =========================== -->
 <meta charset="utf-8">
 <meta name="viewport"
@@ -14,7 +13,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 
 <title></title>
-
 
 <!-- ======================= CSS FILES INCLUDE =========================== -->
 <!-- Bootstrap core CSS -->
@@ -57,7 +55,6 @@
 
 <!-- <script type="text/javascript" -->
 <!-- 	src="../lib/jquery.sticky/jquery.sticky.js"></script> -->
-
 
 <!-- Cliente -->
 <script type="text/javascript" src="cliente/cliente.module.js"></script>
@@ -130,24 +127,21 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<li class="nav-item active"><a class="nav-link"
-					ui-sref="inicio">Início</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="reserva">Reserva</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" ui-sref="quartos">Quartos</a>
-				</li>
-				<li class="nav-item"><a class="nav-link" ui-sref="contato">Contato</a>
-				</li>
-				<li class="nav-item"><a class="nav-link"
-					ui-sref="clienteConsultar">Cliente</a></li>
-				<li class="nav-item"><a class="nav-link"
-					ui-sref="filialConsultar">Filial</a></li>
-				<li class="nav-item"><a class="nav-link"
-					ui-sref="atributoConsultar">Atributo</a></li>
-				<li class="nav-item"><a class="nav-link"
-					ui-sref="tipoquartoConsultar">Tipo de Quarto</a></li>
-				<li class="nav-item"><a class="nav-link"
-					ui-sref="showcaseConsultar">Showcase</a></li>
+				<!-- ========================= TELAS DO SITE ABERTO ========================= -->											
+				<li class="nav-item active"><a class="nav-link" ui-sref="inicio">Início</a></li>				
+				<li class="nav-item"><a class="nav-link" ui-sref="quartos">Quartos</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="reserva">Reserva</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="contato">Contato</a></li>
+				<!-- ========================= TELAS DE CLIENTE ============================= -->
+				
+				<!-- ========================= TELAS DE FUNCIONÁRIO ========================= -->
+				<li class="nav-item"><a class="nav-link" ui-sref="clienteConsultar">Cliente</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="filialConsultar">Filial</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="atributoConsultar">Atributo</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="tipoquartoConsultar">Tipo de Quarto</a></li>
+				<!-- ========================= OUTRAS ==================================== -->
+				<li class="nav-item"><a class="nav-link" ui-sref="showcaseConsultar">Showcase</a></li>				
+				<!-- ===================================================================== -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="\clienteEditar" class="menu-opcoes-acesso"><span class="glyphicon glyphicon-log-in menu-opcoes-acesso"></span> Cadastre-se</a></li>
@@ -167,5 +161,4 @@
 	</footer>
 
 </body>
-
 </html>

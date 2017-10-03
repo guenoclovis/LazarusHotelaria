@@ -28,9 +28,8 @@
 
 #combo-filial{
 	height: 45px;
-	max-width: 32%;		
+	max-width: 32%;	
 }
-
 .btn-calendario{
     padding: 27px 0px 0px 5px;
 }
@@ -59,12 +58,83 @@
 	color: #ffff99;	
 }
 
+/* ===================== PÁGINAS ===================== */
+
+/* TÍTULOS */
+.titulo-paginas-meio{
+	padding-bottom: 30px;	
+}
+.titulo-paginas-meio h1{
+    text-align: center;
+}
+.titulo-paginas-meio p{
+    text-align: center;
+}
+.titulo-paginas-esquerda{
+	padding-bottom: 30px;	
+}
+.titulo-paginas-esquerda h1{
+    text-align: left;
+}
+.titulo-paginas-esquerda p{
+    text-align: left;
+}
+/* GRIDS */
+.grid-pesquisa{
+ 	background-color: #98FB98;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+.grid-pesquisa thead{
+    font-weight: bold;
+}
+/* CAMPOS */
+.campo-form{
+	margin-bottom: 12px;
+}
+.campo-form label{
+    padding-top: 10px;
+	margin-left: 15px;
+}
+.campo-form input{
+    margin-left: 15px;
+    width: 95%;
+}
+.campo-form input::placeholder {
+	font-style: italic;
+	vertical-align: top;
+}
+/* BOTÕES */
+.botoes-meio{
+    margin-top: 15px;
+    text-align: center;
+}
+.botoes-esquerda{
+    margin-top: 15px;
+    text-align: left;
+}
+.botoes-direita{
+    margin-top: 15px;
+    text-align: right;	
+}
+.botoes-direita button{
+	margin-right: 10px;
+}
 /* ===================== INICIO ===================== */
 
 #combo-filial-lateral{
 	height: 45px;
 }
 
+/* ===================== ATRIBUTO ===================== */
+#combo-tipo{
+	height: 40px;
+	max-width: 32%;
+    margin-left: 15px;
+}	
+.campo-descricao{
+	height: 120px;	
+}	
 /* ===================== LISTA DE TIPOS DE QUARTOS ===================== */
 .item-quarto{
     max-width: 24%;

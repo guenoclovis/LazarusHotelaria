@@ -18,6 +18,8 @@
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
 
+        vm.tipos = [];        
+        
         vm.atributo = {};
         vm.atributo.codAtributo = $stateParams.codAtributo;
 
@@ -30,13 +32,24 @@
 
         activate();
 
-        //////// OPERACOES DO CONTROLADOR ////////////////////
-
         function activate() {
             if (vm.atributo.codAtributo !== undefined) {
                 obter();
-            }
-        }
+            }            
+        	// CARREGA LISTA DE TIPOS
+			carregarTipos();            
+        }        
+        
+		// ============================= OPERACOES DO CONTROLADOR  ============================= //
+		function carregarTipos(){
+			vm.tipos = [{
+				codigo : 1,
+				descricao : 'Hotel'
+			}, {
+				codigo : 2,
+				descricao : 'Quarto'
+			}];
+		}        
 
         function recarregarTela() {
             $state.reload();
