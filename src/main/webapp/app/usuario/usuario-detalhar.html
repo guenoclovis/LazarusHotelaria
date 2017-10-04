@@ -1,0 +1,169 @@
+
+<div>
+	<div ng-controller="DetalharUsuarioController as dcc">
+
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Detalhar do Usuario</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<div><pre>{{dcc.usuario | json}}</pre></div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Código</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.usuario.codUsuario}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Nome</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.usuario.nome}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Ativo</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.usuario.ativo}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="dtNasc" class="cols-sm-2 control-label">Data Nascimento</label>
+				</div>
+				<div class="col-md-6">
+					<span id="dtNasc">{{dcc.usuario.dtNasc}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="sexo" class="cols-sm-2 control-label">Sexo</label>
+				</div>
+				<div class="col-md-6">
+					<span id="sexo">{{dcc.usuario.sexo}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nacionalidade" class="cols-sm-2 control-label">Nacionalidade</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nacionalidade">{{dcc.usuario.nacionalidade}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="perfil" class="cols-sm-2 control-label">Perfil</label>
+				</div>
+				<div class="col-md-6">
+					<span id="telefone">{{dcc.usuario.perfil}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="telefone" class="cols-sm-2 control-label">Telefone</label>
+				</div>
+				<div class="col-md-6">
+					<span id="telefone">{{dcc.usuario.telefone}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="email" class="cols-sm-2 control-label">E-mail</label>
+				</div>
+				<div class="col-md-6">
+					<span id="email">{{dcc.usuario.email}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="senha" class="cols-sm-2 control-label">Senha</label>
+				</div>
+				<div class="col-md-6">
+					<span id="senha">{{dcc.usuario.senha}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<span id="status">{{dcc.usuario.status}}</span>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+
+
+			<!-- FAZER RESTO DO FORMULARIO PARA OS DEMAIS CAMPOS:
+			Passaporte 
+			EndRua 
+			EndNro 
+			EndBairro 
+			EndCidade 
+			EndUf 
+			EndCompl 
+			SenhaAcesso 
+			Status  --> 
+			
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 lazarus-align">
+				<div class="lazarus-align">
+					<button ng-click="dcc.voltarParaTelaAnterior()" class="btn btn-primary">Voltar</button>
+					<button ng-click="dcc.irParaTelaEdicao(dcc.usuario.codUsuario)" class="btn btn-primary">Editar</button>
+					<button ng-click="dcc.excluir(dcc.usuario.codUsuario)" class="btn btn-primary">Excluir</button>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+</div>

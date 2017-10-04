@@ -1,0 +1,40 @@
+===========================================
+backend nao recebe requisicoes do frontend
+===========================================
+Para todos os servidores: tanto o livereload quanto o wildfly
+Maven build no projeto: olhar no console pra ver se nao ha erro de compilacao
+Full publish no projeto com o wildfly ainda desligado
+Abrir a pasta wildfly/standalone/deployments e verificar se nao ha arquivos indicando erros. Ex: 
+    Lazarus.war.failed, Lazarus.war.undeployed, Lazarus.war.dodeploy
+     (Clique com o direito no Servidor WildFly > Show in > File Browser)
+     
+Reiniciar o servidor wildfly: acompanhar no console pra ver se nao ocorrem erros
+Procurar o arquivo index.html do teu projeto, clique com o direito > open with > open with livereload
+
+
+
+
+============================================
+Erros estranhos no codigo java que passam a aparecer de uma hora para outra
+=============================================
+Maven build no projeto: olhar no console pra ver se nao ha erro de compilacao. Se tiver corrigir!
+ALT+F5 no projeto apos ter feito uma compilacao bem sucedida
+
+
+=============================================
+Verificar se a parte REST ta funcionando no backend
+=============================================
+# listar todos os clientes
+http://localhost:8080/LazarusHotelaria/rest-clovis/cliente  
+
+# obter cliente com codigo 2
+http://localhost:8080/LazarusHotelaria/rest-clovis/cliente/2
+
+
+=============================================
+Verificar se frontend e backend funcionam SEM USAR livereload
+=============================================
+
+Acesse a aplicacao na porta 8080:
+
+http://localhost:8080/LazarusHotelaria
