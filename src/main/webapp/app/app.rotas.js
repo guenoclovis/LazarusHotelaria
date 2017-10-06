@@ -175,6 +175,34 @@
 			}
 		}		
 		
+		var usuarioConsultarState = {
+				name : 'usuarioConsultar',
+				url : '/usuarioConsultar',
+				controller : 'ConsultarUsuarioController',
+				templateUrl : './usuario/usuario-consultar.html'
+			}
+
+			var usuarioEditarState = {
+				name : 'usuarioEditar',
+				url : '/usuarioEditar',
+				controller : 'EditarUsuarioController',
+				templateUrl : './usuario/usuario-editar.html',
+				params : {
+					codUsuario : undefined
+				}
+			}
+
+			var usuarioDetalharState = {
+				name : 'usuarioDetalhar',
+				url : '/usuarioDetalhar',
+				controller : 'DetalharUsuarioController',
+				templateUrl : './usuario/usuario-detalhar.html',
+				params : {
+					codUsuario : undefined
+				}
+			}
+
+
 		var showcaseConsultarState = {
 				name : 'showcaseConsultar',
 				url : '/showcaseConsultar',
@@ -226,6 +254,9 @@
 		$stateProvider.state(tipoquartoConsultarState);
 		$stateProvider.state(tipoquartoEditarState);
 		$stateProvider.state(tipoquartoDetalharState);
+		$stateProvider.state(usuarioConsultarState);
+		$stateProvider.state(usuarioEditarState);
+		$stateProvider.state(usuarioDetalharState);
 		$stateProvider.state(showcaseConsultarState);
 		$stateProvider.state(showcaseEditarState);
 		$stateProvider.state(showcaseDetalharState);

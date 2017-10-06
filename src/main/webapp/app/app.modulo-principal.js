@@ -15,7 +15,8 @@
 			'cliente', 
 			'filial', 
 			'atributo', 
-			'tipoquarto', 
+			'tipoquarto',
+			'usuario',
 			'showcase']);
 
 })();
