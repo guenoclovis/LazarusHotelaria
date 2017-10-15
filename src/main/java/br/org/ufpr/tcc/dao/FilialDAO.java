@@ -1,210 +1,48 @@
 package br.org.ufpr.tcc.dao;
 
-import java.nio.charset.Charset;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.org.ufpr.tcc.dto.FilialFiltroDTO;
 import br.org.ufpr.tcc.entity.Filial;
+import br.org.ufpr.tcc.entity.Pagina;
+import br.org.ufpr.tcc.util.Util;
 
+public class FilialDAO extends LazarusDAO<Filial>{
 
+    public List<Filial> listar(FilialFiltroDTO filtros) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Filial> cq = cb.createQuery(Filial.class);
+        Root<Filial> root = cq.from(Filial.class);
+        Predicate[] predicados = buildPredicatePesquisa(filtros, cb, root);
 
+        cq.where(cb.and(predicados));
 
-public class FilialDAO {
-    
-    private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
+        Pagina pagina = filtros.getPagina();
 
-    private final String stmtInserir = "INSERT INTO filiais(NOME, EMAIL1, DESCRICAO, EXIBIR_SITE, STATUS) VALUES(?, ?, ?, ?, ?)";
-    private final String stmtObter = "SELECT * FROM filiais WHERE cod_filial = ?";
-    private final String stmtExcluir = "UPDATE clientes SET STATUS = 'E' WHERE cod_clientes = ? ";
-    private final String stmtListar = "SELECT * FROM filiais";
-    private final String stmtListarPaginado = "SELECT * FROM filiais WHERE nome ilike ? ";
-    private final String stmtAlterar = "UPDATE filiais SET NOME = ?, EMAIL = ?, DESCRICAO = ?, EXIBIR_SITE = ?, STATUS = ? WHERE COD_FILIAL = ? ";
-
-    public void inserir(Filial filial) {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        try{
-            con = ConnectionManager.getConnection();
-            stmt = con.prepareStatement(stmtInserir,PreparedStatement.RETURN_GENERATED_KEYS);
-            
-            stmt.setString(1 ,filial.getNome());
-            stmt.setString(2 , filial.getEmail());
-            stmt.setString(3 , filial.getDescricao());
-            stmt.setString(4 ,filial.getExibirSite());
-            stmt.setString(5 ,String.valueOf(filial.getStatus()));
-
-            stmt.executeUpdate();
-            filial.setCodFilial(lerIdFilial(stmt));
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao inserir um filial no banco de dados.", ex);
-        } finally{
-            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
-            try{con.close();}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
-        }
-     }
-    
-    private Integer lerIdFilial(PreparedStatement stmt) throws SQLException {
-        ResultSet rs = stmt.getGeneratedKeys();
-        rs.next();
-        return rs.getInt(1);
+        return findByCriteriaQuery(cq, pagina);
     }
 
-    public Filial obter(Integer id) {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        Filial filialLida;
-        try{
-            con = ConnectionManager.getConnection();
-            stmt = con.prepareStatement(stmtObter);
-            stmt.setInt(1, id);
-            rs = stmt.executeQuery();
-            
-            if(rs.next()){
-            	
-                filialLida = extrairFilialDoResultSet(rs);
-                
-                return filialLida;
-                
-            }else{
-                throw new RuntimeException("Não existe Filial com este id. Id="+id);
-            }
-            
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao consultar um Filial no banco de dados. Origem="+ex.getMessage());
-        } finally{
-            try{rs.close();}catch(Exception ex){System.out.println("Erro ao fechar result set. Ex="+ex.getMessage());};
-            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
-            try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};
-        }
-
-    }
-
-	private Filial extrairFilialDoResultSet(ResultSet rs) throws SQLException {
-		Filial filialLida;
-		filialLida = new Filial();
-		
-		filialLida.setCodFilial(rs.getInt("COD_FILIAL"));
-		filialLida.setNome(rs.getString("NOME"));
-		filialLida.setEmail(rs.getString("EMAIL"));
-		filialLida.setDescricao(rs.getString("DESCRICAO"));
-		filialLida.setExibirSite(rs.getString("EXIBIR_SITE"));
-		filialLida.setStatus(rs.getString("STATUS").charAt(0));
-		return filialLida;
-	}
-
-    public List<Filial> listar() throws Exception {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Filial> lista = new ArrayList();
-        try{
-            con = ConnectionManager.getConnection();
-            stmt = con.prepareStatement(stmtListar);
-            rs = stmt.executeQuery();
-            
-            Filial filial = null;
-            
-            while(rs.next()){
-            	
-            	filial = extrairFilialDoResultSet(rs);
-                /*if(filial.getStatus() != String.charAt("I") ){
-                	
-                }*/
-            	lista.add(filial);
-            }
-            return lista;
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao consultar uma lista de Filial. Origem="+ex.getMessage());
-        }finally{
-            try{rs.close();}catch(Exception ex){System.out.println("Erro ao fechar result set. Ex="+ex.getMessage());};
-            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
-            try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               
-        }
-
-    }
-    
-    public List<Filial> listar(FilialFiltroDTO filtros) throws Exception {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        ResultSet rs = null;
-        List<Filial> lista = new ArrayList();
+    private Predicate[] buildPredicatePesquisa(FilialFiltroDTO filtros, CriteriaBuilder cb,
+        Root<Filial> root) {
+        Predicate[] predicados = { };
         
-        String logMsg = "Iniciando a listagens de Filial DAO";
-        log.info(logMsg);
+        Path<String> pathCampoTexto = root.get(Filial.NOME);
         
-        try{
-            con = ConnectionManager.getConnection();
-            stmt = con.prepareStatement(stmtListar);
-            rs = stmt.executeQuery();
-            
-            
-            //TODO: tratar os filtros aqui!
-            
-            Filial filial = null;
-            
-            while(rs.next()){
-            	
-            	filial = extrairFilialDoResultSet(rs);
-                
-                lista.add(filial);
-            }
-            return lista;
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao consultar uma lista de Filial. Origem="+ex.getMessage());
-        }finally{
-            try{rs.close();}catch(Exception ex){System.out.println("Erro ao fechar result set. Ex="+ex.getMessage());};
-            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
-            try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               
+        if(StringUtils.isNotBlank(filtros.getNome())){
+            predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getNome())));
         }
-
+        
+        //... outros predicados/filtros se houver
+        
+        return predicados;
     }
-    
-    public void excluir(Integer id) throws Exception {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        try{
-            con = ConnectionManager.getConnection();
-            stmt = con.prepareStatement(stmtExcluir);
-            stmt.setInt(1, id);
-            stmt.executeUpdate();
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao excliur um Filial. Origem="+ex.getMessage());
-        }finally{
-            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
-            try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               
-        }
-    }
-    
-        public void alterar(Filial filial) throws Exception {
-        Connection con = null;
-        PreparedStatement stmt = null;
-        List<Filial> lista = new ArrayList();
-        try{
-            con = ConnectionManager.getConnection();
-            stmt = con.prepareStatement(stmtAlterar);
-            
-            stmt.setString(1 ,filial.getNome());
-            stmt.setString(2 ,filial.getEmail());
-            stmt.setString(3 ,filial.getDescricao());
-            stmt.setString(4 ,filial.getExibirSite());
-            stmt.setString(5 ,String.valueOf(filial.getStatus()));
-            //where
-            stmt.setInt(6 ,filial.getCodFilial());
-            
-            stmt.executeUpdate();
-        } catch (SQLException ex) {
-            throw new RuntimeException("Erro ao alterar um Filial. Origem="+ex.getMessage());
-        }finally{
-            try{stmt.close();}catch(Exception ex){System.out.println("Erro ao fechar stmt. Ex="+ex.getMessage());};
-            try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               
-        }
-    }
-
+	
 }

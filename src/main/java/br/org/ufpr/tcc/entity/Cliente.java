@@ -2,27 +2,79 @@ package br.org.ufpr.tcc.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "clientes", schema="public")
 public class Cliente {
 
+	@Id
+    @Column(name = "cod_cliente")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "clientes_cod_cliente_seq", allocationSize = 1)
 	private Integer codCliente;
+	
+	@Column(name = "nome")
     private String nome;
+	
+	@Column(name = "dt_nasc")
     private Date dtNasc;
+	
+	@Column(name = "sexo")
     private Integer sexo;
+	
+	@Column(name = "nacionalidade")
     private String nacionalidade;
+	
+	@Column(name = "telefone1")
     private String telefone1;
+	
+	@Column(name = "telefone2")
     private String telefone2;
+	
+	@Column(name = "email1")
     private String email1;
+	
+	@Column(name = "email2")
     private String email2;
+	
+	@Column(name = "cpf")
     private String cpf;
+
+	@Column(name = "rg")
     private String rg;
+
+	@Column(name = "passaporte")
     private String passaporte;
+
+	@Column(name = "end_rua")
     private String endRua;
+
+	@Column(name = "end_nro")
     private Integer endNro;
+
+	@Column(name = "end_bairro")
     private String endBairro;
+
+	@Column(name = "end_cidade")
     private String endCidade;
+
+	@Column(name = "end_uf")
     private String endUf;
+
+	@Column(name = "end_compl")
     private String endCompl;
+
+	@Column(name = "senha_acesso")
     private String senhaAcesso;
+
+	@Column(name = "status")
     private char status;
     
 	public Integer getCodCliente() {

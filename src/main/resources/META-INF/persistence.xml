@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.0"
+	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
+
+	<persistence-unit name="lazarus-pu"  transaction-type="RESOURCE_LOCAL">
+	
+		<!-- Implementação de JPA escolhida -->
+		<provider>org.hibernate.ejb.HibernatePersistence</provider>
+
+		<!-- Tabelas/Classes que serão gerenciadas por esta PU -->
+		<mapping-file>META-INF/lazarus-orm.xml</mapping-file>
+		<exclude-unlisted-classes>true</exclude-unlisted-classes>
+		
+		<!-- Não chamar validação dos beans na persistência -->
+		<validation-mode>NONE</validation-mode>
+
+		<properties>
+		
+			<!-- Dados de Conexao -->
+			<!-- Para POSTGRESQL -->
+						 
+            <property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+            <property name="javax.persistence.jdbc.url" value="jdbc:postgresql://localhost:5432/lazarus" />
+            <property name="javax.persistence.jdbc.user" value="postgres" />
+            <property name="javax.persistence.jdbc.password" value="1" />
+
+			<!-- Propriedades do Hibernate -->
+			<property name="hibernate.show_sql" value="true" />
+			<property name="hibernate.format_sql" value="true" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+			<property name="hibernate.jdbc.batch_size" value="32" />
+			<property name="hibernate.default_batch_fetch_size" value="32" />			
+			
+			<!-- Configuração Envers -->
+			
+			<!-- <property name="org.hibernate.envers.auditTablePrefix" value="" />
+			<property name="org.hibernate.envers.auditTableSuffix" value="_AUD" />
+   			<property name="org.hibernate.envers.revisionFieldName" value="ID_REVISAO" />
+   			<property name="org.hibernate.envers.revisionTypeFieldName" value="TP_OPERACAO" />
+			<property name="org.hibernate.envers.revision_on_collection_change" value="true" />
+			<property name="org.hibernate.envers.store_data_at_delete" value="true" /> -->
+		</properties>
+	</persistence-unit>
+
+</persistence>

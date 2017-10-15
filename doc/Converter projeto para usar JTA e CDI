@@ -1,0 +1,8 @@
+==============================================================
+ * JTA: Java Transactional Architecture
+ * CDI: Context Dependency Injection
+==============================================================
+
+- Instalar o driver do postgresql dentro do wildfly em:
+   module/system/layers/base/org/postgresql/main
+

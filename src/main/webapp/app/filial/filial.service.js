@@ -14,7 +14,8 @@
         var service = {
             obter : obter,            
             listar : listar,
-            salvar : salvar
+            salvar : salvar,
+            excluir : excluir
         };
 
         return service;
@@ -34,6 +35,10 @@
             } else {
             	return Restangular.all(apiURLCompleta).post(filial);
             }
+        }
+        
+        function excluir(codFilial) {
+            return Restangular.one(apiURLCompleta, codFilial).remove();
         }
     }
 })();

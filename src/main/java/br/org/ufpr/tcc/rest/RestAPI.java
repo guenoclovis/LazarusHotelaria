@@ -6,6 +6,8 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import br.org.ufpr.tcc.exception.handler.NegocioExceptionHandler;
+
 @ApplicationPath("/rest-clovis")
 public class RestAPI extends Application {
 	private Set<Object> singletons = new HashSet<Object>();
@@ -15,7 +17,17 @@ public class RestAPI extends Application {
 		singletons.add(new FilialREST());
 		singletons.add(new AtributoREST());
 		singletons.add(new ShowcaseREST());
+		
+		
 	}
+	
+	@Override
+    public Set<Class<?>> getClasses() {
+        Set<Class<?>> classes = new HashSet<Class<?>>();
+        classes.add(NegocioExceptionHandler.class); 
+        return classes;
+
+    }
 
 	
 	@Override

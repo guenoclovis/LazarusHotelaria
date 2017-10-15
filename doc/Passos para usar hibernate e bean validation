@@ -1,0 +1,42 @@
+0. Colocar as dependencias do hibernate no pom.xml (
+   IMPORTANTE: em version, coloque a mesma versao que esta no wildfly em modules/system/layers/base/org/hibernate!!! 
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.18.Final</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>4.2.18.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>4.2.18.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-envers</artifactId>
+			<version>4.2.18.Final</version>
+		</dependency>
+
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+			<version>3.4</version>
+		</dependency>
+
+1. Criar em src/main/resources:
+     META-INF
+        persistence.xml
+        nomeProjeto-orm.xml
+        
+2. Colocar anotacoes nas entidades a serem controladas e registra-las em nomeProjeto-orm.xml
+
+3. Criar um entityManager na camada DAO
+
+4. Criar um GenericDAO + NomeSistemaDAO na camada DAO para CRUD's genericos

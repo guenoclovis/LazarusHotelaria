@@ -1,0 +1,35 @@
+<div id="mc-messages-wrapper">
+	<div
+		class="alert alert-{{ message.type }} {{ animation }}"
+		ng-repeat="message in mcMessages"
+		ng-if="message.target == target">
+		<a
+			class="close"
+			ng-click="message.close();"
+			data-dismiss="alert"
+			aria-hidden="true">&times;</a>
+		<span
+			ng-switch on="message.html"> 
+			<span ng-switch-when="true">
+				<span ng-bind-html="message.message"></span>
+			</span> 
+			<span ng-switch-default>
+				<span
+					ng-switch on="message.type">
+					<span ng-switch-when="info">
+						<span class="fa fa-info-circle"></span>
+					</span>
+					<span ng-switch-when="warning">
+						<span class="fa fa-exclamation-circle"></span>
+					</span>
+					<span ng-switch-when="danger">
+						<span class="fa fa-times-circle"></span>
+					</span>
+					<span ng-switch-when="success">
+						<span class="fa fa-check-circle"></span>
+					</span>{{ message.message }}
+				</span>
+			</span>
+		</span>
+	</div>
+</div>

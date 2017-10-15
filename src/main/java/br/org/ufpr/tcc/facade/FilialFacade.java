@@ -13,6 +13,7 @@ import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Pagina;
+import br.org.ufpr.tcc.exception.handler.NegocioException;
 
 
 

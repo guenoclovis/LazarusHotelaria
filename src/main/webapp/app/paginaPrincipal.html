@@ -119,6 +119,13 @@
 <script type="text/javascript" src="app.modulo-principal.js"></script>
 <script type="text/javascript" src="app.rotas.js"></script>
 
+<!-- MsgCenter -->
+<script type="text/javascript" src="msgcenter/msgcenter.module.js"></script>
+<script type="text/javascript" src="msgcenter/msgcenter.service.js"></script>
+<script type="text/javascript" src="msgcenter/msgcenter.provider.js"></script>
+<script type="text/javascript" src="msgcenter/msgcenter.directive.js"></script>
+<script type="text/javascript" src="msgcenter/msgcenter.httpinterceptor.js"></script>
+
 <!-- Bootstrap core JavaScript -->
 <script src="../lib/vendor/jquery/jquery.min.js"></script>
 
@@ -160,6 +167,9 @@
       		</ul>
 		</div>
 	</nav>
+
+	<!-- =============== LOCAL ONDE MSG's SAO INSERIDAS ========== -->
+	<div mc-messages></div>
 
 	<!-- =============== LOCAL ONDE HTMLs SAO INSERIDOS ========== -->
 	<ui-view></ui-view>

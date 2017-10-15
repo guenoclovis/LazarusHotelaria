@@ -1,15 +1,90 @@
 package br.org.ufpr.tcc.entity;
 
-import java.util.Date;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.Size;
 
+@Entity
+@Table(name = "filiais", schema="public")
 public class Filial {
 
-	private Integer codFilial;
+	public static final String NOME = "nome";
+	
+	@Id
+    @Column(name = "cod_filial")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "filiais_cod_filial_seq", allocationSize = 1)
+	private Integer codFilial; 
+	
+	@Size(min=3, max=10)
+	@Column(name="nome")	
 	private String nome;
+	
+	@Column(name="email")
 	private String email;
+	
+	@Column(name="descricao")
 	private String descricao;
+	
+	@Column(name="exibir_site")
 	private String exibirSite;
+	
+	@Column(name="status")
 	private char status;
+	
+	public Integer getCodFilial() {
+		return codFilial;
+	}
+
+	public void setCodFilial(Integer codFilial) {
+		this.codFilial = codFilial;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public String getExibirSite() {
+		return exibirSite;
+	}
+
+	public void setExibirSite(String exibirSite) {
+		this.exibirSite = exibirSite;
+	}
+
+	public char getStatus() {
+		return status;
+	}
+
+	public void setStatus(char status) {
+		this.status = status;
+	}
+
 
 	@Override
 	public String toString() {
@@ -67,54 +142,6 @@ public class Filial {
 		if (status != other.status)
 			return false;
 		return true;
-	}
-
-	public Integer getCodFilial() {
-		return codFilial;
-	}
-
-	public void setCodFilial(Integer codFilial) {
-		this.codFilial = codFilial;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getDescricao() {
-		return descricao;
-	}
-
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-
-	public String getExibirSite() {
-		return exibirSite;
-	}
-
-	public void setExibirSite(String exibirSite) {
-		this.exibirSite = exibirSite;
-	}
-
-	public char getStatus() {
-		return status;
-	}
-
-	public void setStatus(char status) {
-		this.status = status;
 	}
 
 }

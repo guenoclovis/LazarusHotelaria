@@ -22,6 +22,13 @@ public class Mensagem {
 	public void setSeveridade(int severidade) {
 		this.severidade = severidade;
 	}
-	
+
+	public String getTexto() {
+		return texto;
+	}
+
+	public void setTexto(String texto) {
+		this.texto = texto;
+	}
 	
 }

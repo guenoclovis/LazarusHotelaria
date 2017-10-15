@@ -10,6 +10,7 @@
             'datepicker-localdate',
             //'ng-file-upload',
             'ui.bootstrap',
+            'msgcenter',
             
             //Sub-modulos que sao funcionalidades do sistema
 			'cliente', 
