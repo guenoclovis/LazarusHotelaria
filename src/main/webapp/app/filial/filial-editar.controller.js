@@ -13,7 +13,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'editar' do modulo 'Filial'
     /* @ngInject */
     function EditarFilialController($controller, $scope, $state, $stateParams,
-    		FilialData) {
+    		FilialData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -43,15 +43,18 @@
         }
 
         function irParaTelaConsultar() {
+        	MsgCenter.clear();
+        	
             $state.go('filialConsultar');
         }
         
         function incluir() {
-
+        	MsgCenter.clear();
+        	
             vm.filial.codFilial = undefined;
 
             FilialData.salvar(vm.filial).then(function (data) {
-                vm.msgs = "Filial incluído com sucesso!";
+            	MsgCenter.add("INFO", "Filial incluído(a) com sucesso!", undefined, undefined);                
                 limparFormulario();
             });
         }
@@ -61,9 +64,11 @@
         }
 
         function alterar() {
+        	MsgCenter.clear();
 
         	FilialData.salvar(vm.filial).then(function (data) {
-                vm.msgs = "Filial salvo com sucesso!";
+        		MsgCenter.add("INFO", "Filial alterado(a) com sucesso!", undefined, undefined);
+                
                 $state.go('filialDetalhar', {
                     'codFilial': vm.filial.codFilial
                 });

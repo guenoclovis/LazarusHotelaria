@@ -28,7 +28,7 @@ public class LazarusDAO<E> extends GenericDAO<E> {
 	}
 	
 	
-	public void remove(E entity) {
+	public void remover(E entity) {
 		
 		EntityTransaction transaction = getEntityManager().getTransaction();
 		transaction.begin();

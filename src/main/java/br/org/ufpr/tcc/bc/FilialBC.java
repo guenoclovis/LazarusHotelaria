@@ -62,7 +62,7 @@ public class FilialBC {
     public ResponseDTO remover(Integer id) {
     	ResponseDTO response = new ResponseDTO();
     	try {
-			dao.remove(dao.load(id));
+			dao.remover(dao.load(id));
 		} catch (Exception e) {
 			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Não foi possível excluir Filial com id=" + id));
 			e.printStackTrace();

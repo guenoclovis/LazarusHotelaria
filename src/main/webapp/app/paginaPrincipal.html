@@ -124,7 +124,8 @@
 <script type="text/javascript" src="msgcenter/msgcenter.service.js"></script>
 <script type="text/javascript" src="msgcenter/msgcenter.provider.js"></script>
 <script type="text/javascript" src="msgcenter/msgcenter.directive.js"></script>
-<script type="text/javascript" src="msgcenter/msgcenter.httpinterceptor.js"></script>
+<script type="text/javascript"
+	src="msgcenter/msgcenter.httpinterceptor.js"></script>
 
 <!-- Bootstrap core JavaScript -->
 <script src="../lib/vendor/jquery/jquery.min.js"></script>
@@ -135,7 +136,8 @@
 
 <body ng-app="lazarusApp">
 	<!-- ======================= MENU =========================== -->
-	<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top menu_lazarus">
+	<nav
+		class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top menu_lazarus">
 		<a id="titulo-site" class="navbar-brand" href="#">LAZARUS</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse"
 			data-target="#navbarResponsive" aria-controls="navbarResponsive"
@@ -144,32 +146,44 @@
 		</button>
 		<div class="collapse navbar-collapse" id="navbarResponsive">
 			<ul class="navbar-nav ml-auto">
-				<!-- ========================= TELAS DO SITE ABERTO ========================= -->											
-				<li class="nav-item active"><a class="nav-link" ui-sref="inicio">Início</a></li>				
+				<!-- ========================= TELAS DO SITE ABERTO ========================= -->
+				<li class="nav-item active"><a class="nav-link"
+					ui-sref="inicio">Início</a></li>
 				<li class="nav-item"><a class="nav-link" ui-sref="quartos">Quartos</a></li>
 				<li class="nav-item"><a class="nav-link" ui-sref="reserva">Reserva</a></li>
 				<li class="nav-item"><a class="nav-link" ui-sref="contato">Contato</a></li>
 				<!-- ========================= TELAS DE CLIENTE ============================= -->
-				
+
 				<!-- ========================= TELAS DE FUNCIONÁRIO ========================= -->
-				<li class="nav-item"><a class="nav-link" ui-sref="clienteConsultar">Cliente</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="filialConsultar">Filial</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="atributoConsultar">Atributo</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="tipoquartoConsultar">Tipo de Quarto</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="usuarioConsultar">Usuário</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="clienteConsultar">Cliente</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="filialConsultar">Filial</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="atributoConsultar">Atributo</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="tipoquartoConsultar">Tipo de Quarto</a></li>
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="usuarioConsultar">Usuário</a></li>
 				<!-- ========================= OUTRAS ==================================== -->
-				<li class="nav-item"><a class="nav-link" ui-sref="showcaseConsultar">Showcase</a></li>				
+				<li class="nav-item"><a class="nav-link"
+					ui-sref="showcaseConsultar">Showcase</a></li>
 				<!-- ===================================================================== -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="\clienteEditar" class="menu-opcoes-acesso"><span class="glyphicon glyphicon-log-in menu-opcoes-acesso"></span> Cadastre-se</a></li>
-        		<li><a href="#" class="menu-opcoes-acesso"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-      		</ul>
+				<li><a href="\clienteEditar" class="menu-opcoes-acesso"><span
+						class="glyphicon glyphicon-log-in menu-opcoes-acesso"></span>
+						Cadastre-se</a></li>
+				<li><a href="#" class="menu-opcoes-acesso"><span
+						class="glyphicon glyphicon-log-in"></span> Login</a></li>
+			</ul>
 		</div>
 	</nav>
 
 	<!-- =============== LOCAL ONDE MSG's SAO INSERIDAS ========== -->
-	<div mc-messages></div>
+	<div>
+		<div mc-messages></div>
+	</div>
 
 	<!-- =============== LOCAL ONDE HTMLs SAO INSERIDOS ========== -->
 	<ui-view></ui-view>
@@ -183,3 +197,4 @@
 
 </body>
 </html>
+
