@@ -8,6 +8,7 @@
 
     /* @ngInject */
     function FilialData(Restangular, $q) {
+    	Restangular.setBaseUrl('http://localhost\:8080');
         var apiURL = '/filial';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 

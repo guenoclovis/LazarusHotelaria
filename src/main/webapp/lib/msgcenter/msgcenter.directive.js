@@ -11,7 +11,7 @@
 		var directive = {
 			restrict : 'EA',
 			scope: true,
-			templateUrl : 'msgcenter/msgcenter.html',
+			templateUrl : '../lib/msgcenter/msgcenter.html',
 			link : link
 		};
 		return directive;

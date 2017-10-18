@@ -3,6 +3,13 @@
 
 	angular.module('lazarusApp').config(function($stateProvider) {
 
+		var root = {
+			name : "root",
+		    url: "/",
+		    abstract : true,
+		    templateUrl: 'carrossel.html'
+		}
+		
 		var inicioState = {
 			name : 'inicio',
 			url : '/inicio',
@@ -233,6 +240,7 @@
 			}
 		}		
 
+		$stateProvider.state(root);
 		$stateProvider.state(inicioState);
 		$stateProvider.state(reservaState);
 		$stateProvider.state(quartosState);
