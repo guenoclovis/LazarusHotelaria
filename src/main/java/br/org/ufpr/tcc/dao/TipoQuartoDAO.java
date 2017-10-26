@@ -8,13 +8,53 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.apache.commons.lang3.StringUtils;
+
 import br.org.ufpr.tcc.dto.TipoQuartoFiltroDTO;
+import br.org.ufpr.tcc.dto.TipoQuartoFiltroDTO;
+import br.org.ufpr.tcc.entity.Filial;
+import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.entity.TipoQuarto;
+import br.org.ufpr.tcc.util.Util;
 
-public class TipoQuartoDAO {
+public class TipoQuartoDAO extends LazarusDAO<TipoQuarto> {
     
-    private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
+	public List<TipoQuarto> listar(TipoQuartoFiltroDTO filtros) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<TipoQuarto> cq = cb.createQuery(TipoQuarto.class);
+        Root<TipoQuarto> root = cq.from(TipoQuarto.class);
+        Predicate[] predicados = buildPredicatePesquisa(filtros, cb, root);
 
+        cq.where(cb.and(predicados));
+
+        Pagina pagina = filtros.getPagina();
+
+        return findByCriteriaQuery(cq, pagina);
+    }
+
+    private Predicate[] buildPredicatePesquisa(TipoQuartoFiltroDTO filtros, CriteriaBuilder cb,
+        Root<TipoQuarto> root) {
+        Predicate[] predicados = { };
+        
+        Path<String> pathCampoTexto = root.get(TipoQuarto.NOME);
+        
+        if(StringUtils.isNotBlank(filtros.getNome())){
+            predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getNome())));
+        }
+        
+        //... outros predicados/filtros se houver
+        
+        return predicados;
+    }
+
+    /*
+    private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
     private final String stmtInserir = "INSERT INTO ATRIBUTOS (TIPO, NOME, DESCRICAO, STATUS) VALUES(?, ?, ?, ?)";
     private final String stmtObter = "SELECT * FROM ATRIBUTOS WHERE COD_ATRIBUTO = ?";
     private final String stmtExcluir = "UPDATE ATRIBUTOS SET STATUS = 'E' WHERE COD_ATRIBUTO = ? ";
@@ -196,4 +236,5 @@ public class TipoQuartoDAO {
             try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexao. Ex="+ex.getMessage());};               
         }
     }
+    */
 }

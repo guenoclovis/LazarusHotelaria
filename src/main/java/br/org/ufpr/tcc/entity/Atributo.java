@@ -1,13 +1,44 @@
 package br.org.ufpr.tcc.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
 //import java.util.Date;
+@Entity
+@Table(name = "atributos", schema="public")
 
 public class Atributo {
 
+public static final String NOME = "nome";
+	
+	@Id
+    @Column(name = "cod_atributo")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "atributos_cod_atributo_seq", allocationSize = 1)
 	private Integer codAtributo;
+	
+	@Column(name="tipo")
 	private String tipo;
+	
+	@Size(min=3, max=200)
+	@NotNull
+	@NotEmpty
+	@Column(name="nome")
 	private String nome;
+	
+	@Column(name="descricao")
 	private String descricao;
+	
+	@Column(name="status")
 	private char status;	
 	
 	@Override

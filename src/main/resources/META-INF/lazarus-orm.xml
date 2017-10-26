@@ -6,5 +6,9 @@
 	version="2.0">
 
 	<entity class="br.org.ufpr.tcc.entity.Filial" />
+	<entity class="br.org.ufpr.tcc.entity.Cliente" />
+	<entity class="br.org.ufpr.tcc.entity.Usuario" />
+	<entity class="br.org.ufpr.tcc.entity.Atributo" />
+	<entity class="br.org.ufpr.tcc.entity.TipoQuarto" />
 	
 </entity-mappings>

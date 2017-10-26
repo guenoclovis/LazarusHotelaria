@@ -9,6 +9,8 @@ import br.org.ufpr.tcc.dto.UsuarioFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Usuario;
+import br.org.ufpr.tcc.validator.FilialValidator;
+import br.org.ufpr.tcc.validator.UsuarioValidator;
 import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.entity.Pagina;
 
@@ -17,9 +19,10 @@ public class UsuarioBC {
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
     private UsuarioDAO dao = new UsuarioDAO();
+    private UsuarioValidator validator = new UsuarioValidator();
 
     public Usuario obter(Integer id) {
-        return dao.obter(id);
+        return dao.load(id);
     }
 
     public ResultadoPaginadoDTO<Usuario> listar(UsuarioFiltroDTO filtros) throws Exception {
@@ -33,12 +36,12 @@ public class UsuarioBC {
     }
 
     public ResponseDTO persistir(Usuario usuario) {
-        String descricaoOperacao = "";
 
-        //VALIDAR A ENTIDADE ANTES DE PERSISTIR
+    	validator.validateAndThrow(usuario);
+    	
         if (usuario.getCodUsuario() == null) {
             log.info("Inicia a persistência de um novo usuario.");
-            dao.inserir(usuario);
+            dao.persistir(usuario);
             log.info("Persistiu novo usuario na base de dados.");
 
         } else {
@@ -46,7 +49,7 @@ public class UsuarioBC {
 
             try {
                 //TODO: PENDENTE
-                dao.alterar(usuario);
+                dao.persistir(usuario);
             } catch (Exception ex) {
                 Logger.getLogger(UsuarioBC.class.getName()).log(Level.SEVERE, "Erro ao alterar.", ex);
             }
@@ -59,7 +62,7 @@ public class UsuarioBC {
     public ResponseDTO remover(Integer id) {
     	ResponseDTO response = new ResponseDTO();
     	try {
-			dao.excluir(id);
+    		dao.remover(dao.load(id));
 		} catch (Exception e) {
 			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Não foi possível excluir usuario com id=" + id));
 			e.printStackTrace();

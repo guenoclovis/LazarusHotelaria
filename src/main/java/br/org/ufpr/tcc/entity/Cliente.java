@@ -9,20 +9,30 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "clientes", schema="public")
 public class Cliente {
 
+	public static final String NOME = "nome";
+	
 	@Id
     @Column(name = "cod_cliente")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
     @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "clientes_cod_cliente_seq", allocationSize = 1)
 	private Integer codCliente;
 	
+	@Size(min=3, max=200)
+	@NotNull
+	@NotEmpty
 	@Column(name = "nome")
     private String nome;
 	
+	@NotNull	
 	@Column(name = "dt_nasc")
     private Date dtNasc;
 	
@@ -32,12 +42,16 @@ public class Cliente {
 	@Column(name = "nacionalidade")
     private String nacionalidade;
 	
+	@NotNull
+	@NotEmpty
 	@Column(name = "telefone1")
     private String telefone1;
 	
 	@Column(name = "telefone2")
     private String telefone2;
 	
+	@NotNull
+	@NotEmpty
 	@Column(name = "email1")
     private String email1;
 	
@@ -71,6 +85,8 @@ public class Cliente {
 	@Column(name = "end_compl")
     private String endCompl;
 
+	@NotNull
+	@NotEmpty
 	@Column(name = "senha_acesso")
     private String senhaAcesso;
 

@@ -9,6 +9,8 @@ import br.org.ufpr.tcc.dto.TipoQuartoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.TipoQuarto;
+import br.org.ufpr.tcc.validator.FilialValidator;
+import br.org.ufpr.tcc.validator.TipoQuartoValidator;
 import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.entity.Pagina;
 
@@ -17,9 +19,10 @@ public class TipoQuartoBC {
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
     private TipoQuartoDAO dao = new TipoQuartoDAO();
-
+    private TipoQuartoValidator validator = new TipoQuartoValidator();
+    
     public TipoQuarto obter(Integer id) {
-        return dao.obter(id);
+        return dao.load(id);
     }
 
     public ResultadoPaginadoDTO<TipoQuarto> listar(TipoQuartoFiltroDTO filtros) throws Exception {
@@ -33,12 +36,13 @@ public class TipoQuartoBC {
     }
 
     public ResponseDTO persistir(TipoQuarto tipoquarto) {
-        String descricaoOperacao = "";
+        
+    	validator.validateAndThrow(tipoquarto);
 
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
         if (tipoquarto.getCodTipoQuarto() == null) {
             log.info("Inicia a persistencia de um novo Tipo de Quarto.");
-            dao.inserir(tipoquarto);
+            dao.persistir(tipoquarto);
             log.info("Persistiu novo Tipo de Quarto na base de dados.");
 
         } else {
@@ -46,7 +50,7 @@ public class TipoQuartoBC {
 
             try {
                 //TODO: PENDENTE
-                dao.alterar(tipoquarto);
+                dao.persistir(tipoquarto);
             } catch (Exception ex) {
                 Logger.getLogger(TipoQuartoBC.class.getName()).log(Level.SEVERE, "Erro ao alterar Tipo de Quarto.", ex);
             }
@@ -59,7 +63,7 @@ public class TipoQuartoBC {
     public ResponseDTO remover(Integer id) {
     	ResponseDTO response = new ResponseDTO();
     	try {
-			dao.excluir(id);
+			dao.remover(dao.load(id));
 		} catch (Exception e) {
 			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Nao foi possivel excluir Tipo de Quarto com id=" + id));
 			e.printStackTrace();

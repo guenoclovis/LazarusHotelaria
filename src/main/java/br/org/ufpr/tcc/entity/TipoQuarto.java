@@ -1,13 +1,37 @@
 package br.org.ufpr.tcc.entity;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 //import java.util.Date;
 
+@Entity
+@Table(name = "TipoQuarto", schema="public")
 public class TipoQuarto {
 
+	public static final String NOME = "nome";
+	
+	@Id
+    @Column(name = "cod_tipo_quarto")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "tipos_de_quarto_cod_tipos_quarto_seq", allocationSize = 1)
 	private Integer codTipoQuarto;
+	
+	@Column(name = "tipo")
 	private String tipo;
+	
+	@Column(name = "nome")
 	private String nome;
+	
+	@Column(name = "descricao")
 	private String descricao;
+	
+	@Column(name = "status")
 	private char status;	
 	
 	@Override

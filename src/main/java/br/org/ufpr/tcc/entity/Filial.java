@@ -7,7 +7,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "filiais", schema="public")
@@ -21,7 +24,9 @@ public class Filial {
     @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "filiais_cod_filial_seq", allocationSize = 1)
 	private Integer codFilial; 
 	
-	@Size(min=3, max=10)
+	@Size(min=3, max=200)
+	@NotNull
+	@NotEmpty
 	@Column(name="nome")	
 	private String nome;
 	

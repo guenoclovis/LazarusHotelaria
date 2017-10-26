@@ -11,15 +11,17 @@ import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.entity.Pagina;
+import br.org.ufpr.tcc.validator.ClienteValidator;
 
 public class ClienteBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
     private ClienteDAO dao = new ClienteDAO();
+    private ClienteValidator validator = new ClienteValidator();
 
     public Cliente obter(Integer id) {
-        return dao.obter(id);
+        return dao.load(id);
     }
 
     public ResultadoPaginadoDTO<Cliente> listar(ClienteFiltroDTO filtros) throws Exception {
@@ -33,20 +35,20 @@ public class ClienteBC {
     }
 
     public ResponseDTO persistir(Cliente cliente) {
-        String descricaoOperacao = "";
+    	validator.validateAndThrow(cliente);
 
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
         if (cliente.getCodCliente() == null) {
             log.info("Inicia a persistÃªncia de um novo cliente.");
-            dao.inserir(cliente);
+            dao.persistir(cliente);
             log.info("Persistiu novo cliente na base de dados.");
 
         } else {
-            log.info("Inicia a atualizaÃ§Ã£o do cliente [id=%d]" + cliente.getCodCliente());
+            log.info("Inicia a atualização do cliente [id=%d]" + cliente.getCodCliente());
 
             try {
                 //TODO: PENDENTE
-                dao.alterar(cliente);
+                dao.persistir(cliente);
             } catch (Exception ex) {
                 Logger.getLogger(ClienteBC.class.getName()).log(Level.SEVERE, "Erro ao alterar.", ex);
             }
@@ -59,9 +61,9 @@ public class ClienteBC {
     public ResponseDTO remover(Integer id) {
     	ResponseDTO response = new ResponseDTO();
     	try {
-			dao.excluir(id);
+    		dao.remover(dao.load(id));
 		} catch (Exception e) {
-			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "NÃ£o foi possÃ­vel excluir cliente com id=" + id));
+			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Não foi possível excluir cliente com id=" + id));
 			e.printStackTrace();
 		}
     	return response;

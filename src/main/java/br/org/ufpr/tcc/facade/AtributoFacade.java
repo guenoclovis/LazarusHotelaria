@@ -78,12 +78,12 @@ public class AtributoFacade {
         DTOtoAtributo converter = new DTOtoAtributo();
         Atributo atributo = converter.convert(dto);
         
-		ResponseDTO responseDTO = bc.persistir(atributo);
+		bc.persistir(atributo);
 
         logMsg = "Registro de Atributo persistido";
         log.info(logMsg);
 
-        return responseDTO;
+        return new ResponseDTO();
     }
     
     public ResponseDTO remover(Long... ids) {
@@ -106,12 +106,12 @@ public class AtributoFacade {
         DTOtoAtributo converter = new DTOtoAtributo();
         Atributo atributo = converter.convert(dto);
         
-		ResponseDTO responseDTO = bc.persistir(atributo);
+		bc.persistir(atributo);
 
         logMsg = "Registro de Atributo persistido";
         log.info(logMsg);
 
-        return responseDTO;
+        return new ResponseDTO();
 	}
 
 }

@@ -1,20 +1,53 @@
 package br.org.ufpr.tcc.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
+
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Path;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+
+import org.apache.commons.lang3.StringUtils;
 
 import br.org.ufpr.tcc.dto.UsuarioFiltroDTO;
+import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.entity.Usuario;
+import br.org.ufpr.tcc.util.Util;
 
 
 
-public class UsuarioDAO {
-    
+public class UsuarioDAO extends LazarusDAO<Usuario> {
+
+	public List<Usuario> listar(UsuarioFiltroDTO filtros) {
+        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);
+        Root<Usuario> root = cq.from(Usuario.class);
+        Predicate[] predicados = buildPredicatePesquisa(filtros, cb, root);
+
+        cq.where(cb.and(predicados));
+
+        Pagina pagina = filtros.getPagina();
+
+        return findByCriteriaQuery(cq, pagina);
+    }
+
+    private Predicate[] buildPredicatePesquisa(UsuarioFiltroDTO filtros, CriteriaBuilder cb,
+        Root<Usuario> root) {
+        Predicate[] predicados = { };
+        
+        Path<String> pathCampoTexto = root.get(Usuario.NOME);
+        
+        if(StringUtils.isNotBlank(filtros.getNome())){
+            predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getNome())));
+        }
+        
+        //... outros predicados/filtros se houver
+        
+        return predicados;
+    }
+
+	/*
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
     private final String stmtInserir = "INSERT INTO usuarios(NOME, ATIVO, DT_NASC, SEXO, NACIONALIDADE, PERFIL, TELEFONE, EMAIL, CPF, RG, PASSAPORTE, END_RUA, END_NRO, END_BAIRRO, END_CIDADE, END_UF, END_COMPL, SENHA, STATUS) VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
@@ -244,5 +277,5 @@ public class UsuarioDAO {
             try{con.close();;}catch(Exception ex){System.out.println("Erro ao fechar conexão. Ex="+ex.getMessage());};               
         }
     }
-
+*/
 }

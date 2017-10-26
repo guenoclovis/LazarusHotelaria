@@ -17,7 +17,7 @@ import br.org.ufpr.tcc.util.Util;
 
 public class FilialDAO extends LazarusDAO<Filial>{
 
-    public List<Filial> listar(FilialFiltroDTO filtros) {
+	public List<Filial> listar(FilialFiltroDTO filtros) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Filial> cq = cb.createQuery(Filial.class);
         Root<Filial> root = cq.from(Filial.class);

@@ -2,28 +2,91 @@ package br.org.ufpr.tcc.entity;
 
 import java.util.Date;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+
+@Entity
+@Table(name = "usuarios", schema="public")
 public class Usuario {
 
+	public static final String NOME = "nome";
+
+	@Id
+    @Column(name = "cod_usuario")
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
+    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "usuarios_cod_usuario_seq", allocationSize = 1)
 	private Integer codUsuario;
+
+	@Size(min=3, max=200)
+	@NotNull
+	@NotEmpty
+	@Column(name="nome")
     private String nome;
+	
+	@Column(name="ativo")
     private char Ativo;
+	
+	@Column(name="dt_nasc")
     private Date dtNasc;
+	
+	@Column(name="sexo")
     private Integer sexo;
+	
+	@Column(name="nacionalidade")
     private String nacionalidade;
+	
+	@Column(name="perfil")
     private String perfil;
+	
+	@Column(name="telefone")
     private String telefone;
+	
+	@Column(name="email")
     private String email;
+	
+	@Column(name="cpf")
     private String cpf;
+	
+	@Column(name="rg")
     private String rg;
+	
+	@Column(name="passaporte")
     private String passaporte;
+	
+	@Column(name="end_rua")
     private String endRua;
+	
+	@Column(name="end_nro")
     private Integer endNro;
+	
+	@Column(name="end_bairro")
     private String endBairro;
+	
+	@Column(name="end_cidade")
     private String endCidade;
+	
+	@Column(name="end_uf")
     private String endUf;
+	
+	@Column(name="end_complemento")
     private String endCompl;
+	
+	@Column(name="senha")
     private String senha;
+	
+	@Column(name="status")
     private char status;
+	
 	public Integer getCodUsuario() {
 		return codUsuario;
 	}
