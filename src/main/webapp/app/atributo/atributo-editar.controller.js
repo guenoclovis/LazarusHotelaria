@@ -13,7 +13,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'editar' do modulo 'Atributo'
     /* @ngInject */
     function EditarAtributoController($controller, $scope, $state, $stateParams,
-    		AtributoData) {
+    		AtributoData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -64,7 +64,7 @@
             vm.atributo.codAtributo = undefined;
 
             AtributoData.salvar(vm.atributo).then(function (data) {
-                vm.msgs = "Atributo incluído com sucesso!";
+            	MsgCenter.add("INFO", "Atributo incluído(a) com sucesso!", undefined, undefined);    
                 limparFormulario();
             });
         }
@@ -76,7 +76,7 @@
         function alterar() {
 
         	AtributoData.salvar(vm.atributo).then(function (data) {
-                vm.msgs = "Atributo salvo com sucesso!";
+        		MsgCenter.add("INFO", "Atributo alterado(a) com sucesso!", undefined, undefined);
                 $state.go('atributoDetalhar', {
                     'codAtributo': vm.atributo.codAtributo
                 });

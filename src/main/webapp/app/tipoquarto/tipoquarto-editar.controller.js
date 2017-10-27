@@ -13,7 +13,7 @@
     // Definindo tipoquartos e operacoes do Controlador da tela 'editar' do modulo 'TipoQuarto'
     /* @ngInject */
     function EditarTipoQuartoController($controller, $scope, $state, $stateParams,
-    		TipoQuartoData) {
+    		TipoQuartoData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -51,7 +51,7 @@
             vm.tipoquarto.codTipoQuarto = undefined;
 
             TipoQuartoData.salvar(vm.tipoquarto).then(function (data) {
-                vm.msgs = "TipoQuarto incluído com sucesso!";
+            	MsgCenter.add("INFO", "Tipo de Quarto incluído(a) com sucesso!", undefined, undefined);    
                 limparFormulario();
             });
         }
@@ -63,7 +63,7 @@
         function alterar() {
 
         	TipoQuartoData.salvar(vm.tipoquarto).then(function (data) {
-                vm.msgs = "TipoQuarto salvo com sucesso!";
+        		MsgCenter.add("INFO", "Tipo de Quarto alterado(a) com sucesso!", undefined, undefined);
                 $state.go('tipoquartoDetalhar', {
                     'codTipoQuarto': vm.tipoquarto.codTipoQuarto
                 });

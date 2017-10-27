@@ -12,7 +12,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'atributo'
     /* @ngInject */
     function ConsultarAtributoController($controller, $scope, $state,
-    		AtributoData) {
+    		AtributoData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -109,8 +109,7 @@
                     vm.totalresults = page.totalResults;
                 }
                 if (data.mensagens) {
-                    //MsgCenter.addMessages(data.mensagens);
-                    vm.msgs = "pesquisou"
+                	MsgCenter.add("INFO", "Pesquisa realizada.", undefined, undefined);  
                 }
             });
         }

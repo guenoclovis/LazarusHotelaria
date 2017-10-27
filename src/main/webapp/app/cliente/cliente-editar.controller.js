@@ -12,7 +12,7 @@
 	// 'cliente'
 	/* @ngInject */
 	function EditarClienteController($controller, $scope, $state, $stateParams,
-			ClienteData) {
+			ClienteData, MsgCenter) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
@@ -165,7 +165,7 @@
 			vm.cliente.codCliente = undefined;
 
 			ClienteData.salvar(vm.cliente).then(function(data) {
-				vm.msgs = "Cliente incluído com sucesso!";
+				MsgCenter.add("INFO", "Cliente incluído(a) com sucesso!", undefined, undefined);    
 				limparFormulario();
 			});
 		}
@@ -177,7 +177,7 @@
 		function alterar() {
 
 			ClienteData.salvar(vm.cliente).then(function(data) {
-				vm.msgs = "Cliente salvo com sucesso!";
+				MsgCenter.add("INFO", "Cliente alterado(a) com sucesso!", undefined, undefined);
 				$state.go('clienteDetalhar', {
 					'codCliente' : vm.cliente.codCliente
 				});

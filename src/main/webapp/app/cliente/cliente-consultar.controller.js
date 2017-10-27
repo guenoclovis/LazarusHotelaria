@@ -12,7 +12,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'cliente'
     /* @ngInject */
     function ConsultarClienteController($controller, $scope, $state,
-            ClienteData) {
+            ClienteData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -108,8 +108,7 @@
                     vm.totalresults = page.totalResults;
                 }
                 if (data.mensagens) {
-                    //MsgCenter.addMessages(data.mensagens);
-                    vm.msgs = "pesquisou"
+                	MsgCenter.add("INFO", "Pesquisa realizada.", undefined, undefined);  
                 }
             });
         }

@@ -12,7 +12,7 @@
 	// 'usuario'
 	/* @ngInject */
 	function EditarUsuarioController($controller, $scope, $state, $stateParams,
-			UsuarioData) {
+			UsuarioData, MsgCenter) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
@@ -177,7 +177,7 @@
 			vm.usuario.codUsuario = undefined;
 
 			UsuarioData.salvar(vm.usuario).then(function(data) {
-				vm.msgs = "Usuario incluído com sucesso!";
+				MsgCenter.add("INFO", "Usuário incluído(a) com sucesso!", undefined, undefined);    
 				limparFormulario();
 			});
 		}
@@ -189,7 +189,7 @@
 		function alterar() {
 
 			UsuarioData.salvar(vm.usuario).then(function(data) {
-				vm.msgs = "Usuario salvo com sucesso!";
+				MsgCenter.add("INFO", "Usuário alterado(a) com sucesso!", undefined, undefined);
 				$state.go('usuarioDetalhar', {
 					'codUsuario' : vm.usuario.codUsuario
 				});
