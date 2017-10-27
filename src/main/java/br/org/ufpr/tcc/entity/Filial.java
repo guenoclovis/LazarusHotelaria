@@ -17,11 +17,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Filial {
 
 	public static final String NOME = "nome";
+	public static final String ID = "codFilial";
 	
 	@Id
     @Column(name = "cod_filial")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
-    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "filiais_cod_filial_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_FILIAL")
+    @SequenceGenerator(name = "SEQ_FILIAL", schema="public", sequenceName = "filiais_cod_filial_seq", allocationSize = 1)
 	private Integer codFilial; 
 	
 	@Size(min=3, max=200)

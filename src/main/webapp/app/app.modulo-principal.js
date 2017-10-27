@@ -19,5 +19,5 @@
 			'tipoquarto',
 			'usuario',
 			'showcase']);
-
+	
 })();

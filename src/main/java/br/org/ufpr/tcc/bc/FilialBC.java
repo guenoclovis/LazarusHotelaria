@@ -33,7 +33,7 @@ public class FilialBC {
 
         List<Filial> lista = dao.listar(filtros);
 
-        return new ResultadoPaginadoDTO<Filial>(lista, new Pagina());
+        return new ResultadoPaginadoDTO<Filial>(lista, filtros.getPagina());
     }
 
     public ResponseDTO persistir(Filial filial) {

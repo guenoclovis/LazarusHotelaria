@@ -15,7 +15,7 @@ public class Util {
 
 	public static Predicate[] add(Predicate[] predicados, Predicate novoPredicado) {
 		List<Predicate> arrAux = Arrays.asList(predicados);
-		arrAux.add(novoPredicado);
+		arrAux.add((Predicate)novoPredicado);
 		return (Predicate[]) arrAux.toArray();
 	}
 }

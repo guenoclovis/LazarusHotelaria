@@ -42,11 +42,12 @@ public class FilialREST {
     @Produces("application/json")
 	public ResultadoPaginadoDTO<FilialDTO> listar(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
+	        @QueryParam("nome") String nome, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {
 
         FilialFiltroDTO filtro = new FilialFiltroDTO();
         
+        filtro.setNome(nome);
 
         // Paginação
         if (pageSize != 0) {

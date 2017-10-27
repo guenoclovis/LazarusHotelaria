@@ -2,6 +2,7 @@ package br.org.ufpr.tcc.dao;
 
 import java.util.List;
 
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Path;
@@ -18,20 +19,40 @@ import br.org.ufpr.tcc.util.Util;
 public class FilialDAO extends LazarusDAO<Filial>{
 
 	public List<Filial> listar(FilialFiltroDTO filtros) {
-        CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+		
+		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Filial> cq = cb.createQuery(Filial.class);
         Root<Filial> root = cq.from(Filial.class);
-        Predicate[] predicados = buildPredicatePesquisa(filtros, cb, root);
 
-        cq.where(cb.and(predicados));
+        Predicate[] predicadosList = buildPredicatePesquisa(filtros, cb, root, cq);
+
+        cq.where(cb.and(predicadosList)).orderBy(cb.asc(root.get(Filial.NOME)));
+
+        TypedQuery<Filial> listQuery = getEntityManager().createQuery(cq.distinct(true));
 
         Pagina pagina = filtros.getPagina();
 
-        return findByCriteriaQuery(cq, pagina);
+        if (pagina != null) {
+            CriteriaQuery<Long> cqCount = cb.createQuery(Long.class);
+            Root<Filial> rootCount = cqCount.from(Filial.class);
+            Path<Long> pathID = rootCount.get(Filial.ID);
+            Predicate[] predicadosCount = buildPredicatePesquisa(filtros, cb, rootCount, cqCount);
+
+            cqCount.select(cb.countDistinct(pathID));
+            cqCount.where(predicadosCount);
+
+            pagina.setTotalResults((int) (getEntityManager().createQuery(cqCount).getSingleResult() + 0));
+
+            listQuery.setFirstResult(pagina.getFirstResult());
+            listQuery.setMaxResults(pagina.getPageSize());
+
+        }
+
+        return listQuery.getResultList();        
     }
 
     private Predicate[] buildPredicatePesquisa(FilialFiltroDTO filtros, CriteriaBuilder cb,
-        Root<Filial> root) {
+        Root<Filial> root, CriteriaQuery<?> cq) {
         Predicate[] predicados = { };
         
         Path<String> pathCampoTexto = root.get(Filial.NOME);
