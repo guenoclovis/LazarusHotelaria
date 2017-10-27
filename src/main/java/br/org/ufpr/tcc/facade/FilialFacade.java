@@ -64,7 +64,7 @@ public class FilialFacade {
             filiaisDTO.add(filialDTO);
         }
 		
-		ResultadoPaginadoDTO<FilialDTO> responseDTO = new ResultadoPaginadoDTO<FilialDTO>(filiaisDTO, listagem.getPagina());
+		ResultadoPaginadoDTO<FilialDTO> responseDTO = new ResultadoPaginadoDTO<FilialDTO>(filiaisDTO, listagem.getPagina(), listagem.getMensagens());
 
         logMsg = "Finalizando listagem de Filial";
         log.info(logMsg);

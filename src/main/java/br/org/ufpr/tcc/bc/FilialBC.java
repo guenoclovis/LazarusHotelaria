@@ -4,6 +4,8 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import javax.print.attribute.standard.Severity;
+
 import br.org.ufpr.tcc.dao.FilialDAO;
 import br.org.ufpr.tcc.dao.FilialJDBCDAO;
 import br.org.ufpr.tcc.dto.FilialFiltroDTO;
@@ -32,8 +34,13 @@ public class FilialBC {
         log.info(logMsg);
 
         List<Filial> lista = dao.listar(filtros);
+        ResultadoPaginadoDTO<Filial> resultadoPaginadoDTO = new ResultadoPaginadoDTO<Filial>(lista, filtros.getPagina());
+        
+        if(lista.isEmpty()){
+        	resultadoPaginadoDTO.getMensagens().add(new Mensagem(Mensagem.AVISO, "Nenhum registro encontrado!"));
+        }
 
-        return new ResultadoPaginadoDTO<Filial>(lista, filtros.getPagina());
+		return resultadoPaginadoDTO;
     }
 
     public ResponseDTO persistir(Filial filial) {

@@ -6,31 +6,31 @@ public class Mensagem {
 	public static final String AVISO = "WARN";
 	public static final String ERRO = "ERROR";
 	
-	private String severidade;
+	private String severity;
 	
-	private String texto;
+	private String message;
 	
 	public Mensagem(String severidade, String texto) {
-		this.severidade = severidade;
-		this.texto = texto;
+		this.severity = severidade;
+		this.message = texto;
 	}
 
-	public String getSeveridade() {
-		return severidade;
+	public String getSeverity() {
+		return severity;
 	}
 
-
-	public void setSeveridade(String severidade) {
-		this.severidade = severidade;
+	public void setSeverity(String severity) {
+		this.severity = severity;
 	}
 
-
-	public String getTexto() {
-		return texto;
+	public String getMessage() {
+		return message;
 	}
 
-	public void setTexto(String texto) {
-		this.texto = texto;
+	public void setMessage(String message) {
+		this.message = message;
 	}
+
+	
 	
 }
