@@ -108,11 +108,7 @@
                     vm.totalresults = page.totalResults;
                 }
                 if (data.mensagens) {
-<<<<<<< HEAD
                     MsgCenter.addMessages(data.mensagens);                    
-=======
-                	MsgCenter.add("INFO", "Pesquisa realizada.", undefined, undefined);  
->>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
                 }
             });
         }

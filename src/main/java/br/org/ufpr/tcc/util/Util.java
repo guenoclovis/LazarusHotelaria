@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.criteria.Predicate;
 
+import org.apache.commons.lang3.ArrayUtils;
 import org.apache.commons.lang3.StringUtils;
 
 public class Util {
@@ -14,8 +15,8 @@ public class Util {
     }
 
 	public static Predicate[] add(Predicate[] predicados, Predicate novoPredicado) {
-		List<Predicate> arrAux = Arrays.asList(predicados);
-		arrAux.add((Predicate)novoPredicado);
-		return (Predicate[]) arrAux.toArray();
+		List<Predicate> listaAux = new ArrayList<Predicate>();
+		listaAux.add(novoPredicado);
+		return (Predicate[]) ArrayUtils.addAll(predicados,listaAux.toArray());		
 	}
 }
