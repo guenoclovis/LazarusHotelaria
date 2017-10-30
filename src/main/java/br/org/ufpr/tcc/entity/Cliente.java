@@ -18,12 +18,13 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "clientes", schema="public")
 public class Cliente {
 
+	public static final String ID = "codCliente";
 	public static final String NOME = "nome";
 	
 	@Id
     @Column(name = "cod_cliente")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
-    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "clientes_cod_cliente_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_CLIENTE")
+    @SequenceGenerator(name = "SEQ_CLIENTE", schema="public", sequenceName = "clientes_cod_cliente_seq", allocationSize = 1)
 	private Integer codCliente;
 	
 	@Size(min=3, max=200)

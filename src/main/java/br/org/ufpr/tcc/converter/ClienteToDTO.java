@@ -2,6 +2,7 @@ package br.org.ufpr.tcc.converter;
 
 import br.org.ufpr.tcc.dto.ClienteDTO;
 import br.org.ufpr.tcc.entity.Cliente;
+import br.org.ufpr.tcc.util.DataUtil;
 
 public class ClienteToDTO {
 
@@ -10,7 +11,7 @@ public class ClienteToDTO {
 
 		dto.setCodCliente(cliente.getCodCliente());
 		dto.setNome(cliente.getNome());
-		//dto.setDtNasc(cliente.getDtNasc());
+		dto.setDtNasc(DataUtil.fromDateToString(cliente.getDtNasc()));
 		dto.setSexo(cliente.getSexo());
 		dto.setNacionalidade(cliente.getNacionalidade());
 		dto.setTelefone1(cliente.getTelefone1());

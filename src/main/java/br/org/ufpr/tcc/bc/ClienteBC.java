@@ -9,6 +9,7 @@ import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
+import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.validator.ClienteValidator;
@@ -30,8 +31,13 @@ public class ClienteBC {
         log.info(logMsg);
 
         List<Cliente> lista = dao.listar(filtros);
-
-        return new ResultadoPaginadoDTO<Cliente>(lista, new Pagina());
+        ResultadoPaginadoDTO<Cliente> resultadoPaginadoDTO = new ResultadoPaginadoDTO<Cliente>(lista, filtros.getPagina());
+        
+        if(lista.isEmpty()){
+        	resultadoPaginadoDTO.getMensagens().add(new Mensagem(Mensagem.AVISO, "Nenhum registro encontrado!"));
+        }
+        
+		return resultadoPaginadoDTO;
     }
 
     public ResponseDTO persistir(Cliente cliente) {
@@ -44,7 +50,7 @@ public class ClienteBC {
             log.info("Persistiu novo cliente na base de dados.");
 
         } else {
-            log.info("Inicia a atualização do cliente [id=%d]" + cliente.getCodCliente());
+            log.info("Inicia a atualizaï¿½ï¿½o do cliente [id=%d]" + cliente.getCodCliente());
 
             try {
                 //TODO: PENDENTE
@@ -63,7 +69,7 @@ public class ClienteBC {
     	try {
     		dao.remover(dao.load(id));
 		} catch (Exception e) {
-			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Não foi possível excluir cliente com id=" + id));
+			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Nï¿½o foi possï¿½vel excluir cliente com id=" + id));
 			e.printStackTrace();
 		}
     	return response;

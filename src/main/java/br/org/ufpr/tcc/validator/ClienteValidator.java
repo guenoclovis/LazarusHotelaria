@@ -1,5 +1,6 @@
 package br.org.ufpr.tcc.validator;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -11,6 +12,7 @@ import javax.validation.ValidatorFactory;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.exception.handler.NegocioException;
+import br.org.ufpr.tcc.util.DataUtil;
 
 public class ClienteValidator {
 
@@ -31,7 +33,14 @@ public class ClienteValidator {
 	    	}
 	    	
 	    	
-	    	//OUTRAS VALIDAÇOES
+	    	//OUTRAS VALIDAï¿½OES
+	    	
+	    	//data nascimento <= data_atual
+	    	if(DataUtil.isDataPassado(cliente.getDtNasc())){
+	    		mensagem = new Mensagem(Mensagem.ERRO, "Data de nascimento deve ser menor ou igual a data atual!");
+	    		
+	    		mensagens.add(mensagem);
+	    	}
 	    	
 	    	throw new NegocioException(mensagens);
 	    }

@@ -20,6 +20,8 @@ public class FilialDAO extends LazarusDAO<Filial>{
 
 	public List<Filial> listar(FilialFiltroDTO filtros) {
 		
+		//SELECT a, b,c FROM filial WHERE nome like 'clov%' and idade > 30 and r3  ... ORDER BY b
+		
 		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Filial> cq = cb.createQuery(Filial.class);
         Root<Filial> root = cq.from(Filial.class);

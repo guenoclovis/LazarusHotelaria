@@ -48,7 +48,7 @@
 
         function pesquisarLimpar() {
             vm.filtros.currentpage = 0;
-            //MsgCenter.clear();
+            MsgCenter.clear();
             pesquisar();
         }
 
