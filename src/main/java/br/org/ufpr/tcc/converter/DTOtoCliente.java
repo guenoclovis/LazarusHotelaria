@@ -16,7 +16,7 @@ public class DTOtoCliente {
 		
 		cliente.setCodCliente(dto.getCodCliente());
 		cliente.setNome(dto.getNome());
-		if(cliente.getDtNasc() != null){
+		if(dto.getDtNasc() != null){
 			cliente.setDtNasc(DataUtil.toDate(dto.getDtNasc().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
 		}
 		cliente.setSexo(dto.getSexo());

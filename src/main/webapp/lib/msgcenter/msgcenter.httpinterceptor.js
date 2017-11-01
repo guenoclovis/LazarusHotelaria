@@ -18,7 +18,7 @@
 			    	var msgs = response.data.mensagens;
 			    	for (var i = 0; i < msgs.length; i++) {
 			    		var msg = msgs[i];
-			    		MsgCenter.add(msg.severidade, msg.texto, msg.path, {target: headerTarget}); 
+			    		MsgCenter.add(msg.severity, msg.message, msg.path, {target: headerTarget}); 
 			    	}
 			    	MsgCenter.notify();
                 }

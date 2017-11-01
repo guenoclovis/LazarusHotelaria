@@ -1,6 +1,5 @@
 package br.org.ufpr.tcc.validator;
 
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -22,29 +21,30 @@ public class ClienteValidator {
 	    
 	    Set<ConstraintViolation<Cliente>> constraintViolations = validator.validate(cliente);
 	    
+	    List<Mensagem> mensagens = new ArrayList<Mensagem>();
+	    Mensagem mensagem = null;
+
+	    //Validações feitas via annotations, direto na entidade
 	    if(constraintViolations.size() > 0){
-	    	
-	    	List<Mensagem> mensagens = new ArrayList<Mensagem>();
-	    	Mensagem mensagem = null;
 	    	for(ConstraintViolation<Cliente> violacao : constraintViolations){
 	    		mensagem = new Mensagem(Mensagem.ERRO, violacao.getMessage());
 	    		
 	    		mensagens.add(mensagem);
 	    	}
-	    	
-	    	
-	    	//OUTRAS VALIDA�OES
-	    	
-	    	//data nascimento <= data_atual
-	    	if(DataUtil.isDataPassado(cliente.getDtNasc())){
-	    		mensagem = new Mensagem(Mensagem.ERRO, "Data de nascimento deve ser menor ou igual a data atual!");
-	    		
-	    		mensagens.add(mensagem);
-	    	}
-	    	
-	    	throw new NegocioException(mensagens);
 	    }
 	    
+		//OUTRAS VALIDACOES
+    	
+    	//data nascimento <= data_atual
+    	if(DataUtil.isDataFuturo(cliente.getDtNasc())){
+    		mensagem = new Mensagem(Mensagem.ERRO, "Data de nascimento deve ser menor ou igual a data atual!");
+    		
+    		mensagens.add(mensagem);
+    	}
+	    
+    	if(!mensagens.isEmpty()){
+    		throw new NegocioException(mensagens);
+    	}
 	    
 	}
 

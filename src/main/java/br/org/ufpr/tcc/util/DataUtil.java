@@ -25,13 +25,25 @@ public class DataUtil {
 	public static boolean isDataPassado(Date date) {
         return isDataPassado(toLocalDateTime(date));
     }
+	
+	public static boolean isDataFuturo(Date date) {
+        return isDataFuturo(toLocalDateTime(date));
+    }
 
     public static boolean isDataPassado(LocalDateTime date) {
         return date.isBefore(LocalDateTime.now());
     }
+    
+    public static boolean isDataFuturo(LocalDateTime date) {
+        return date.isAfter(LocalDateTime.now());
+    }
 
     public static boolean isDataPassado(Date date, ZoneId zoneId) {
         return isDataPassado(toLocalDateTime(date, zoneId));
+    }
+    
+    public static boolean isDataFuturo(Date date, ZoneId zoneId) {
+        return isDataFuturo(toLocalDateTime(date, zoneId));
     }
 
     public static boolean isDataPassado(LocalDateTime date, ZoneId zoneId) {
