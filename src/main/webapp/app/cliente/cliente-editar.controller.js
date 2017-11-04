@@ -162,6 +162,8 @@
 
 		function incluir() {
 
+			MsgCenter.clear();
+			
 			vm.cliente.codCliente = undefined;
 
 			ClienteData.salvar(vm.cliente).then(function(data) {
