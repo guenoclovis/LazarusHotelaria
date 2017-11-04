@@ -22,8 +22,8 @@ public static final String NOME = "nome";
 	
 	@Id
     @Column(name = "cod_atributo")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
-    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "atributos_cod_atributo_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_ATRIBUTO")
+    @SequenceGenerator(name = "SEQ_ATRIBUTO", schema="public", sequenceName = "atributos_cod_atributo_seq", allocationSize = 1)
 	private Integer codAtributo;
 	
 	@Column(name="tipo")
