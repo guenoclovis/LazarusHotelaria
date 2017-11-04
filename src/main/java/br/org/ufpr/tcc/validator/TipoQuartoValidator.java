@@ -31,7 +31,7 @@ public class TipoQuartoValidator {
 	    		mensagens.add(mensagem);
 	    	}
 	    	
-	    	//OUTRAS VALIDAÇOES
+	    	//OUTRAS VALIDACOES
 	    	
 	    	throw new NegocioException(mensagens);
 	    }
