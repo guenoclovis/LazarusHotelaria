@@ -103,7 +103,7 @@ public class AtributoDAO extends LazarusDAO<Atributo> {
                 return atributoLido;
                 
             }else{
-                throw new RuntimeException("Nao existe Atributo correspondente ao código = " + CodAtributo);
+                throw new RuntimeException("Nao existe Atributo correspondente ao codigo = " + CodAtributo);
             }
             
         } catch (SQLException ex) {

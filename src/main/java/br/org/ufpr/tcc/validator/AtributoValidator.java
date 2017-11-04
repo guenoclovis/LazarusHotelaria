@@ -31,7 +31,7 @@ public class AtributoValidator {
 	    	}
 	    	
 	    	
-	    	//OUTRAS VALIDAÇOES
+	    	//OUTRAS VALIDACOES
 	    	
 	    	throw new NegocioException(mensagens);
 	    }
