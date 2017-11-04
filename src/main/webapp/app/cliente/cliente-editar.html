@@ -40,24 +40,26 @@
 			</div>
 			
 			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-2">
 					<label for="dtNasc" class="cols-sm-2 control-label">Data Nascimento</label>
 				</div>
-				<div class="col-md-6">
-					<!-- <input type="text" class="form-control" name="dtNasc" id="dtNasc" ng-model="vm.cliente.dtNasc"
-							placeholder="Ex: 11/12/2013" /> -->
+				<div class="col-sm-2">
+				 	<p class="input-group">
 					<input type="text" class="form-control" id="dtNasc" uib-datepicker-popup="{{format}}"
 							ng-model="vm.cliente.dtNasc" is-open="vm.popup1.opened"
 							datepicker-options="dateOptions" ng-required="true" close-text="Close"
 							alt-input-formats="altInputFormats" />
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" ng-click="vm.open1()">
-								Calendário
-							</button>		
+				
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="vm.open1()">
+						<i class="glyphicon glyphicon-calendar"></i></button>
+					</button>
+					</span>
+					</p>		
 				</div>
 				
-				<div class="col-md-2"></div>
+				
 			</div>
 			
 			<div class="row">
