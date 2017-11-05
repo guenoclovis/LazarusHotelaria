@@ -23,6 +23,7 @@ public class LazarusDAO<E> extends GenericDAO<E> {
 			transaction.commit();
 			
 		} catch (Exception e) {
+			e.printStackTrace();
 			transaction.rollback();
 		}
 	}
