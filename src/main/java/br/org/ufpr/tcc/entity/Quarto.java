@@ -18,8 +18,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class Quarto {
 
 	public static final String ID = "codQuarto";
-	public static final String NOME = "idQuarto";
-
+	public static final String NUMERO_QUARTO = "idQuarto";
+	
 	@Id
 	@Column(name = "cod_quarto")
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_QUARTO")
@@ -44,5 +44,55 @@ public class Quarto {
 
 	@Column(name = "status")
     private char status;
+	
+	public Integer getCodQuarto() {
+		return codQuarto;
+	}
+
+	public void setCodQuarto(Integer codQuarto) {
+		this.codQuarto = codQuarto;
+	}
+
+	public Integer getIdQuarto() {
+		return idQuarto;
+	}
+
+	public void setIdQuarto(Integer idQuarto) {
+		this.idQuarto = idQuarto;
+	}
+
+	public Integer getCodTipoQuarto() {
+		return codTipoQuarto;
+	}
+
+	public void setCodTipoQuarto(Integer codTipoQuarto) {
+		this.codTipoQuarto = codTipoQuarto;
+	}
+
+	public Integer getNrCamas() {
+		return nrCamas;
+	}
+
+	public void setNrCamas(Integer nrCamas) {
+		this.nrCamas = nrCamas;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public char getStatus() {
+		return status;
+	}
+
+	public void setStatus(char status) {
+		this.status = status;
+	}
+	
+	
 
 }

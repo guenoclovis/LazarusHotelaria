@@ -59,11 +59,14 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
     		Root<Quarto> root, CriteriaQuery<?> cq) {
         Predicate[] predicados = { };
         
-        Path<String> pathCampoTexto = root.get(Quarto.ID);
-        
-        if(StringUtils.isNotBlank(filtros.getCodQuarto())){
-            predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getCodQuarto())));
+        Path<String> pathNumeroQuarto = root.get(Quarto.NUMERO_QUARTO);
+        /*
+         * TODO: PENDENTE
+         
+        if(filtros.getIdHotel() != null){
+            predicados = Util.add(predicados, cb.equal(pathNumeroQuarto, filtros.getId));
         }
+        */
         
         //... outros predicados/filtros se houver
         
