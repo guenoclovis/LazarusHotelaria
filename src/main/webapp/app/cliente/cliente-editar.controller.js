@@ -161,7 +161,7 @@
 		}
 
 		function incluir() {
-
+			MsgCenter.clear();
 			vm.cliente.codCliente = undefined;
 
 			ClienteData.salvar(vm.cliente).then(function(data) {
@@ -175,7 +175,7 @@
 		}
 
 		function alterar() {
-
+			MsgCenter.clear();
 			ClienteData.salvar(vm.cliente).then(function(data) {
 				MsgCenter.add("INFO", "Cliente alterado(a) com sucesso!", undefined, undefined);
 				$state.go('clienteDetalhar', {
