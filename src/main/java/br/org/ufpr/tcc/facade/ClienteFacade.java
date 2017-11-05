@@ -61,7 +61,7 @@ public class ClienteFacade {
             clientesDTO.add(clienteDTO);
         }
 		
-		ResultadoPaginadoDTO<ClienteDTO> responseDTO = new ResultadoPaginadoDTO<ClienteDTO>(clientesDTO, new Pagina());
+		ResultadoPaginadoDTO<ClienteDTO> responseDTO = new ResultadoPaginadoDTO<ClienteDTO>(clientesDTO, listagem.getPagina(), listagem.getMensagens());
 
         logMsg = "Finalizando listagem de Cliente";
         log.info(logMsg);
