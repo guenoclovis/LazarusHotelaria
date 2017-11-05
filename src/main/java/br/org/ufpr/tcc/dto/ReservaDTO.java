@@ -5,36 +5,35 @@ import java.util.Date;
 public class ReservaDTO {
 
 	private Integer codReserva;
-    private Date dtEntrada;
-    private Date dtSaida;
-    private Date dtReserva;
+    private String dtEntrada;
+    private String dtSaida;
+    private String dtReserva;
     private long preco;
     private char status;
     private Integer codCliente;
     private Integer codQuarto;
-    
 	public Integer getCodReserva() {
 		return codReserva;
 	}
 	public void setCodReserva(Integer codReserva) {
 		this.codReserva = codReserva;
 	}
-	public Date getDtEntrada() {
+	public String getDtEntrada() {
 		return dtEntrada;
 	}
-	public void setDtEntrada(Date dtEntrada) {
+	public void setDtEntrada(String dtEntrada) {
 		this.dtEntrada = dtEntrada;
 	}
-	public Date getDtSaida() {
+	public String getDtSaida() {
 		return dtSaida;
 	}
-	public void setDtSaida(Date dtSaida) {
+	public void setDtSaida(String dtSaida) {
 		this.dtSaida = dtSaida;
 	}
-	public Date getDtReserva() {
+	public String getDtReserva() {
 		return dtReserva;
 	}
-	public void setDtReserva(Date dtReserva) {
+	public void setDtReserva(String dtReserva) {
 		this.dtReserva = dtReserva;
 	}
 	public long getPreco() {
@@ -62,6 +61,5 @@ public class ReservaDTO {
 		this.codQuarto = codQuarto;
 	}
     
-    
-	
+		
 }

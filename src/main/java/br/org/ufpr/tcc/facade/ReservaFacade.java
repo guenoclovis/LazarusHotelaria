@@ -75,7 +75,7 @@ public class ReservaFacade {
 
         //CONVERTER
         DTOtoReserva converter = new DTOtoReserva();
-        Reserva reserva = converter.Reserva(dto);
+        Reserva reserva = converter.convert(dto);
         
 		ResponseDTO responseDTO = bc.persistir(reserva);
 

@@ -23,6 +23,7 @@ public class ReservaDAO extends LazarusDAO<Reserva> {
     
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
+    
     public List<Reserva> listar(ReservaFiltroDTO filtros) {
     	CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Reserva> cq = cb.createQuery(Reserva.class);
@@ -30,7 +31,7 @@ public class ReservaDAO extends LazarusDAO<Reserva> {
 
         Predicate[] predicadosList = buildPredicatePesquisa(filtros, cb, root, cq);
 
-        cq.where(cb.and(predicadosList)).orderBy(cb.asc(root.get(Reserva.NOME)));
+        cq.where(cb.and(predicadosList)).orderBy(cb.asc(root.get(Reserva.ID)));
 
         TypedQuery<Reserva> listQuery = getEntityManager().createQuery(cq.distinct(true));
 
@@ -55,18 +56,22 @@ public class ReservaDAO extends LazarusDAO<Reserva> {
         return listQuery.getResultList();        
     }
 
+    
     private Predicate[] buildPredicatePesquisa(ReservaFiltroDTO filtros, CriteriaBuilder cb,
     		Root<Reserva> root, CriteriaQuery<?> cq) {
         Predicate[] predicados = { };
         
-        Path<String> pathCampoTexto = root.get(Reserva.NOME);
+        Path<String> pathCampoTexto = root.get(Reserva.ID);
         
+        /*
         if(StringUtils.isNotBlank(filtros.getIdReserva())){
             predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getIdReserva())));
         }
+        */
         
         //... outros predicados/filtros se houver
         
         return predicados;
     }
+   
 }
