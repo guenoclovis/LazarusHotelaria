@@ -109,7 +109,7 @@ public class TipoQuartoDAO extends LazarusDAO<TipoQuarto> {
                 return tipoquartoLido;
                 
             }else{
-                throw new RuntimeException("Nao existe TipoQuarto correspondente ao código = " + CodTipoQuarto);
+                throw new RuntimeException("Nao existe TipoQuarto correspondente ao codigo = " + CodTipoQuarto);
             }
             
         } catch (SQLException ex) {

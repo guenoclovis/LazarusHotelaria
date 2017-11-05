@@ -18,8 +18,8 @@ public class TipoQuarto {
 	
 	@Id
     @Column(name = "cod_tipo_quarto")
-    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ")
-    @SequenceGenerator(name = "SEQ", schema="public", sequenceName = "tipos_de_quarto_cod_tipos_quarto_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_TIPO_QUARTO")
+    @SequenceGenerator(name = "SEQ_TIPO_QUARTO", schema="public", sequenceName = "tipos_de_quarto_cod_tipos_quarto_seq", allocationSize = 1)
 	private Integer codTipoQuarto;
 	
 	@Column(name = "tipo")

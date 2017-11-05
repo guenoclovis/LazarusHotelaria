@@ -31,7 +31,7 @@ public class FilialValidator {
 	    	}
 	    	
 	    	
-	    	//OUTRAS VALIDAÇOES
+	    	//OUTRAS VALIDACOES
 	    	
 	    	throw new NegocioException(mensagens);
 	    }

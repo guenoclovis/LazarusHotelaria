@@ -9,10 +9,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
+
+import br.org.ufpr.tcc.validator.validacoes.NaoNulo;
+import br.org.ufpr.tcc.validator.validacoes.NaoVazio;
 
 @Entity
 @Table(name = "clientes", schema="public")
@@ -27,13 +29,13 @@ public class Cliente {
     @SequenceGenerator(name = "SEQ_CLIENTE", schema="public", sequenceName = "clientes_cod_cliente_seq", allocationSize = 1)
 	private Integer codCliente;
 	
+	@NaoNulo(nomeCampo = "Nome")
+	@NaoVazio(nomeCampo = "Nome")
 	@Size(min=3, max=200)
-	@NotNull
-	@NotEmpty
 	@Column(name = "nome")
     private String nome;
 	
-	@NotNull	
+	@NaoNulo(message = "{ER001}", nomeCampo = "Data de Nascimento")	
 	@Column(name = "dt_nasc")
     private Date dtNasc;
 	
@@ -43,22 +45,25 @@ public class Cliente {
 	@Column(name = "nacionalidade")
     private String nacionalidade;
 	
-	@NotNull
-	@NotEmpty
+	@NaoNulo(nomeCampo = "Telefone 1")
+	@NaoVazio(nomeCampo = "Telefone 1")
 	@Column(name = "telefone1")
     private String telefone1;
 	
 	@Column(name = "telefone2")
     private String telefone2;
 	
-	@NotNull
-	@NotEmpty
+	@NaoNulo(nomeCampo = "Email 1")
+	@NaoVazio(nomeCampo = "Nome")
 	@Column(name = "email1")
     private String email1;
 	
 	@Column(name = "email2")
     private String email2;
 	
+	@NaoNulo(nomeCampo = "CPF")
+	@NaoVazio(nomeCampo = "CPF")
+	@CPF
 	@Column(name = "cpf")
     private String cpf;
 
@@ -86,8 +91,8 @@ public class Cliente {
 	@Column(name = "end_compl")
     private String endCompl;
 
-	@NotNull
-	@NotEmpty
+	@NaoNulo(nomeCampo = "Senha")
+	@NaoVazio(nomeCampo = "Nome")
 	@Column(name = "senha_acesso")
     private String senhaAcesso;
 
@@ -234,7 +239,7 @@ public class Cliente {
 		result = prime * result + ((passaporte == null) ? 0 : passaporte.hashCode());
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		result = prime * result + ((senhaAcesso == null) ? 0 : senhaAcesso.hashCode());
-		result = prime * result + sexo;
+		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
 		result = prime * result + status;
 		result = prime * result + ((telefone1 == null) ? 0 : telefone1.hashCode());
 		result = prime * result + ((telefone2 == null) ? 0 : telefone2.hashCode());
@@ -329,7 +334,10 @@ public class Cliente {
 				return false;
 		} else if (!senhaAcesso.equals(other.senhaAcesso))
 			return false;
-		if (sexo != other.sexo)
+		if (sexo == null) {
+			if (other.sexo != null)
+				return false;
+		} else if (!sexo.equals(other.sexo))
 			return false;
 		if (status != other.status)
 			return false;
@@ -347,49 +355,13 @@ public class Cliente {
 	}
 	@Override
 	public String toString() {
-		StringBuilder builder = new StringBuilder();
-		builder.append("Cliente [codCliente=");
-		builder.append(codCliente);
-		builder.append(", nome=");
-		builder.append(nome);
-		builder.append(", dtNasc=");
-		builder.append(dtNasc);
-		builder.append(", sexo=");
-		builder.append(sexo);
-		builder.append(", nacionalidade=");
-		builder.append(nacionalidade);
-		builder.append(", telefone1=");
-		builder.append(telefone1);
-		builder.append(", telefone2=");
-		builder.append(telefone2);
-		builder.append(", email1=");
-		builder.append(email1);
-		builder.append(", email2=");
-		builder.append(email2);
-		builder.append(", cpf=");
-		builder.append(cpf);
-		builder.append(", rg=");
-		builder.append(rg);
-		builder.append(", passaporte=");
-		builder.append(passaporte);
-		builder.append(", endRua=");
-		builder.append(endRua);
-		builder.append(", endNro=");
-		builder.append(endNro);
-		builder.append(", endBairro=");
-		builder.append(endBairro);
-		builder.append(", endCidade=");
-		builder.append(endCidade);
-		builder.append(", endUf=");
-		builder.append(endUf);
-		builder.append(", endCompl=");
-		builder.append(endCompl);
-		builder.append(", senhaAcesso=");
-		builder.append(senhaAcesso);
-		builder.append(", status=");
-		builder.append(status);
-		builder.append("]");
-		return builder.toString();
+		return "Cliente [codCliente=" + codCliente + ", nome=" + nome + ", dtNasc=" + dtNasc + ", sexo=" + sexo
+				+ ", nacionalidade=" + nacionalidade + ", telefone1=" + telefone1 + ", telefone2=" + telefone2
+				+ ", email1=" + email1 + ", email2=" + email2 + ", cpf=" + cpf + ", rg=" + rg + ", passaporte="
+				+ passaporte + ", endRua=" + endRua + ", endNro=" + endNro + ", endBairro=" + endBairro + ", endCidade="
+				+ endCidade + ", endUf=" + endUf + ", endCompl=" + endCompl + ", senhaAcesso=" + senhaAcesso
+				+ ", status=" + status + "]";
 	}
+	
 
 }
