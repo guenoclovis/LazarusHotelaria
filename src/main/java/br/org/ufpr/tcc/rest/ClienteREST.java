@@ -47,7 +47,7 @@ public class ClienteREST {
         ClienteFiltroDTO filtro = new ClienteFiltroDTO();
         
 
-        // Paginação
+        // Paginacao
         if (pageSize != 0) {
             filtro.getPagina().setPageSize(pageSize);
         }
