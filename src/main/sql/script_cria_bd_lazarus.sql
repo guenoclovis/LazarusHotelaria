@@ -190,7 +190,7 @@ CREATE TABLE QUARTOS(
 );
 -- DROP TABLE QUARTOS
 -- SELECT * FROM QUARTOS
-INSERT INTO QUARTOS VALUES(1, 1, 1, 1, 'I')
+INSERT INTO QUARTOS VALUES(1, 1, 1, 1, 'I');
 ----------------------------------------------------------------------
 -- 9 - TABELA DE RELACIONAMENTO QUARTOS X ATRIBUTOS
 ----------------------------------------------------------------------
