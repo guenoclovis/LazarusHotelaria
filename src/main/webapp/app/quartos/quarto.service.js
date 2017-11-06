@@ -4,12 +4,12 @@
 (function() {
     'use strict';
 
-    angular.module('filial').factory('FilialData', FilialData);
+    angular.module('quarto').factory('ReservaData', ReservaData);
 
     /* @ngInject */
-    function FilialData(Restangular, $q) {
+    function ReservaData(Restangular, $q) {
     	Restangular.setBaseUrl('http://localhost\:8080');
-        var apiURL = '/filial';
+        var apiURL = '/quarto';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 
         var service = {
@@ -20,26 +20,26 @@
         };
 
         return service;
-        // //////////////não esou ouvindo
+        // //////////////
 
-        function obter(id, filtros) {
-            return Restangular.one(apiURLCompleta, id).get(filtros);
+        function obter(codReserva, filtros) {
+            return Restangular.one(apiURLCompleta, codReserva).get(filtros);
         }
 
         function listar(filtros) {
             return Restangular.one(apiURLCompleta).get(filtros);
         }
         
-        function salvar(filial) {
-            if (filial.id) {
-                return Restangular.all(apiURLCompleta + "/" + filial.id).customPUT(filial);
+        function salvar(quarto) {
+            if (quarto.codReserva) {
+                return Restangular.all(apiURLCompleta + "/" + quarto.codReserva).customPUT(quarto);
             } else {
-            	return Restangular.all(apiURLCompleta).post(filial);
+            	return Restangular.all(apiURLCompleta).post(quarto);
             }
         }
         
-        function excluir(codFilial) {
-            return Restangular.one(apiURLCompleta, codFilial).remove();
+        function excluir(codReserva) {
+            return Restangular.one(apiURLCompleta, codReserva).remove();
         }
     }
 })();

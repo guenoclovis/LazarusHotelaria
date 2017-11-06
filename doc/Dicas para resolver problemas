@@ -1,3 +1,19 @@
+==========================
+Acentuação
+==========================
+
+& + letra a ser acentuada + nome do acento conforme abaixo + ;
+
+				acute 
+				circ  
+				tilde
+				grave
+				cedil
+				
+Ex: 
+
+  a&ccedil;&atilde;o = acao corretamente acentuada com cedilha e a com til
+				
 ===========================================
 backend nao recebe requisicoes do frontend
 ===========================================

@@ -18,6 +18,8 @@
 			'atributo', 
 			'tipoquarto',
 			'usuario',
+			'quarto',
+			'reserva',
 			'showcase']);
 	
 })();
