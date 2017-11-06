@@ -19,7 +19,8 @@
 			'tipoquarto',
 			'usuario',
 			'quarto',
-			'reserva',
-			'showcase']);
+//			'reserva',
+//			'showcase'
+			]);
 	
 })();

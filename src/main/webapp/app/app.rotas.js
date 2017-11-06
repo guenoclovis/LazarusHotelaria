@@ -16,14 +16,13 @@
 			templateUrl : 'carrossel.html'
 			// controller : 'InicioController'
 		}
-
+		
 		var reservaConsultarState = {
 			name : 'reserva',
 			url : '/reserva',
 			templateUrl : './reserva/reserva-consultar.html',			
 			controller : 'ConsultarReservaController'
 		}
-
 
 		var reservaEditarState = {
 			name : 'reservaEditar',
@@ -44,7 +43,6 @@
 				codReserva : undefined
 			}
 		}
-
 		
 		var tipoquartositeState = {
 				name : 'tipoquartosite',
@@ -79,7 +77,8 @@
 				}
 			}
 
-		var quartoConsultarState = {
+		/*
+			var quartoConsultarState = {
 				name : 'quartoConsultar',
 				url : '/quartoConsultar',
 				controller : 'ConsultarQuartoController',
@@ -105,7 +104,7 @@
 					codQuarto : undefined
 				}
 			}
-
+*/
 
 		var loginState = {
 			name : 'login',
@@ -299,11 +298,13 @@
 		$stateProvider.state(reservaConsultarState);
 		$stateProvider.state(reservaEditarState);
 		$stateProvider.state(reservaDetalharState);
-		$stateProvider.state(quartosState);
 		$stateProvider.state(tipoquartositeState);
+		/*
+		$stateProvider.state(quartosState);
 		$stateProvider.state(quartoConsultarState);
 		$stateProvider.state(quartoEditarState);
 		$stateProvider.state(quartoDetalharState);
+		*/
 		$stateProvider.state(clienteConsultarState);
 		$stateProvider.state(clienteEditarState);
 		$stateProvider.state(clienteDetalharState);
