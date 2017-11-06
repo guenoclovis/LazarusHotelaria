@@ -109,7 +109,7 @@
                     vm.totalresults = page.totalResults;
                 }
                 if (data.mensagens) {
-                    MsgCenter.addMessages(data.mensagens);                    
+                	MsgCenter.addMessages(data.mensagens);  
                 }
                 
             });

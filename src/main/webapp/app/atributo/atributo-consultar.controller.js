@@ -97,6 +97,7 @@
         }
 
         function pesquisar() {
+        	MsgCenter.clear();
             var filtros = vm.filtros;
 
             AtributoData.listar(filtros).then(function (data) {
@@ -109,7 +110,7 @@
                     vm.totalresults = page.totalResults;
                 }
                 if (data.mensagens) {
-                	MsgCenter.add("INFO", "Pesquisa realizada.", undefined, undefined);  
+                	MsgCenter.addMessages(data.mensagens);  
                 }
             });
         }

@@ -17,37 +17,37 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.org.ufpr.tcc.dto.ClienteDTO;
-import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
+import br.org.ufpr.tcc.dto.QuartoDTO;
+import br.org.ufpr.tcc.dto.QuartoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 //import br.org.ufpr.tcc.entity.Pagina;
-import br.org.ufpr.tcc.facade.ClienteFacade;
+import br.org.ufpr.tcc.facade.QuartoFacade;
 
-@Path("/cliente")
-public class ClienteREST {
+@Path("/quarto")
+public class QuartoREST {
 
-	ClienteFacade facade = new ClienteFacade();
+	QuartoFacade facade = new QuartoFacade();
 	
 	@GET
-    @Path("{codCliente}")
+    @Path("{codQuarto}")
     @Produces("application/json") 
-    public ClienteDTO obter(@PathParam("codCliente") Long id, @QueryParam("fields") String fields) {
-        ClienteDTO clienteDTO = facade.obter(id, fields);
-		return clienteDTO;
+    public QuartoDTO obter(@PathParam("codQuarto") Long id, @QueryParam("fields") String fields) {
+		QuartoDTO quartoDTO = facade.obter(id, fields);
+		return quartoDTO;
     }
 	
 	@GET
     @Produces("application/json")
-	public ResultadoPaginadoDTO<ClienteDTO> listar(@QueryParam("currentpage") int currentPage,
+	public ResultadoPaginadoDTO<QuartoDTO> listar(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,
 	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {
 
-        ClienteFiltroDTO filtro = new ClienteFiltroDTO();
+		QuartoFiltroDTO filtro = new QuartoFiltroDTO();
         
 
-        // Paginacao
+        // Paginação
         if (pageSize != 0) {
             filtro.getPagina().setPageSize(pageSize);
         }
@@ -61,8 +61,8 @@ public class ClienteREST {
 	@POST
     @Produces("application/json")
     @Consumes("application/json")
-    public Response inserir(ClienteDTO clienteDTO, @Context UriInfo uriInfo) {
-        ResponseDTO response = facade.persistir(clienteDTO);        
+    public Response inserir(QuartoDTO quartoDTO, @Context UriInfo uriInfo) {
+        ResponseDTO response = facade.persistir(quartoDTO);        
         URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
         return Response.created(location).entity(response).build();
     }
@@ -75,9 +75,9 @@ public class ClienteREST {
     }
     
     @DELETE
-    @Path("{codCliente}")
+    @Path("{codQuarto}")
     @Produces("application/json")    
-    public Response remover(@PathParam("codCliente") Long id) {
+    public Response remover(@PathParam("codQuarto") Long id) {
     	List<Long> ids = new ArrayList<Long>();
     	ids.add(id);
         
@@ -85,12 +85,12 @@ public class ClienteREST {
     }
     
     @PUT
-    @Path("{codCliente}")
+    @Path("{codQuarto}")
     @Consumes("application/json")
     @Produces("application/json")    
-    public Response alterar(@PathParam("codCliente") Long id, ClienteDTO clienteDTO) {
-    	clienteDTO.setCodCliente(id.intValue());
-        ResponseDTO response = facade.persistir(clienteDTO);
+    public Response alterar(@PathParam("codQuarto") Long id, QuartoDTO quartoDTO) {
+    	quartoDTO.setCodQuarto(id.intValue());
+        ResponseDTO response = facade.persistir(quartoDTO);
         return Response.ok(response).build();
     }
 	

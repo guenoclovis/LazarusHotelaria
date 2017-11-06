@@ -66,12 +66,21 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="sexo" class="cols-sm-2 control-label">Site</label>
+					<label for="exibirSite" class="cols-sm-2 control-label">Exibir Site</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="exibirSite"
-						id="exibirSite" ng-model="vm.filial.exibirSite"
-						placeholder="S ou N" />
+					<div class="form-inline" id="exibirSite">
+						<div class="radio col-sm-2">
+							<input ng-model="vm.filial.exibirSite" type="radio"
+								name="radio-situacao" id="ex-s" ng-value="1"> <label
+								for="ex-s">Sim</label>
+						</div>
+						<div class="radio col-sm-2">
+							<input ng-model="vm.filial.exibirSite" type="radio"
+								name="radio-situacao" id="ex-n" ng-value="2"> <label
+								for="ex-n">N&atilde;o</label>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-2"></div>
 			</div>

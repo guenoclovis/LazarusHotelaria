@@ -14,44 +14,98 @@
 			name : 'inicio',
 			url : '/inicio',
 			templateUrl : 'carrossel.html'
-			//controller : 'InicioController'
+			// controller : 'InicioController'
 		}
 
-		var reservaState = {
+		var reservaConsultarState = {
 			name : 'reserva',
 			url : '/reserva',
-			templateUrl : './reserva/reserva.html'
+			templateUrl : './reserva/reserva-consultar.html',			
+			controller : 'ConsultarReservaController'
 		}
 
+
+		var reservaEditarState = {
+			name : 'reservaEditar',
+			url : '/reservaEditar',
+			controller : 'EditarReservaController',
+			templateUrl : './reserva/reserva-editar.html',
+			params : {
+				codReserva : undefined
+			}
+		}
+
+		var reservaDetalharState = {
+			name : 'reservaDetalhar',
+			url : '/reservaDetalhar',
+			controller : 'DetalharReservaController',
+			templateUrl : './reserva/reserva-detalhar.html',
+			params : {
+				codReserva : undefined
+			}
+		}
+
+		
 		var tipoquartositeState = {
 				name : 'tipoquartosite',
 				url : '/tipoquarto',
 				templateUrl : './quartos/tipoquartosite.html'
 			}				
 		
-		var quartosState = {
-			name : 'quartos',
-			url : '/quartos',
-			templateUrl : './quartos/quartos.html'
-		}
+		var clienteConsultarState = {
+				name : 'clienteConsultar',
+				url : '/clienteConsultar',
+				controller : 'ConsultarClienteController',
+				templateUrl : './cliente/cliente-consultar.html'
+			}
 
-		var quartosProfileState = {
-			name : 'quartos.profile',
-			url : '/quartos/profile',
-			templateUrl : './quartos/profile.html'
-		}
+			var clienteEditarState = {
+				name : 'clienteEditar',
+				url : '/clienteEditar',
+				controller : 'EditarClienteController',
+				templateUrl : './cliente/cliente-editar.html',
+				params : {
+					codCliente : undefined
+				}
+			}
 
-		var quartosAccountState = {
-			name : 'quartos.account',
-			url : '/quartos/account',
-			templateUrl : './quartos/account.html'
-		}
+			var clienteDetalharState = {
+				name : 'clienteDetalhar',
+				url : '/clienteDetalhar',
+				controller : 'DetalharClienteController',
+				templateUrl : './cliente/cliente-detalhar.html',
+				params : {
+					codCliente : undefined
+				}
+			}
 
-		var quartosInfosState = {
-			name : 'quartos.infos',
-			url : '/quartos/infos',
-			templateUrl : './quartos/infos.html'
-		}	
+		var quartoConsultarState = {
+				name : 'quartoConsultar',
+				url : '/quartoConsultar',
+				controller : 'ConsultarQuartoController',
+				templateUrl : './quarto/quarto-consultar.html'
+			}
+
+			var quartoEditarState = {
+				name : 'quartoEditar',
+				url : '/quartoEditar',
+				controller : 'EditarQuartoController',
+				templateUrl : './quarto/quarto-editar.html',
+				params : {
+					codQuarto : undefined
+				}
+			}
+
+			var quartoDetalharState = {
+				name : 'quartoDetalhar',
+				url : '/quartoDetalhar',
+				controller : 'DetalharQuartoController',
+				templateUrl : './quarto/quarto-detalhar.html',
+				params : {
+					codQuarto : undefined
+				}
+			}
+
 
 		var loginState = {
 			name : 'login',
@@ -242,12 +296,14 @@
 
 		$stateProvider.state(root);
 		$stateProvider.state(inicioState);
-		$stateProvider.state(reservaState);
+		$stateProvider.state(reservaConsultarState);
+		$stateProvider.state(reservaEditarState);
+		$stateProvider.state(reservaDetalharState);
 		$stateProvider.state(quartosState);
 		$stateProvider.state(tipoquartositeState);
-		$stateProvider.state(quartosProfileState);
-		$stateProvider.state(quartosAccountState);
-		$stateProvider.state(quartosInfosState);
+		$stateProvider.state(quartoConsultarState);
+		$stateProvider.state(quartoEditarState);
+		$stateProvider.state(quartoDetalharState);
 		$stateProvider.state(clienteConsultarState);
 		$stateProvider.state(clienteEditarState);
 		$stateProvider.state(clienteDetalharState);

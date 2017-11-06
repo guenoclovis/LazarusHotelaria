@@ -96,6 +96,7 @@
         }
 
         function pesquisar() {
+        	MsgCenter.clear();
             var filtros = vm.filtros;
 
             FilialData.listar(filtros).then(function (data) {

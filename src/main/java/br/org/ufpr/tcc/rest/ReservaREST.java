@@ -17,37 +17,37 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
-import br.org.ufpr.tcc.dto.ClienteDTO;
-import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
+import br.org.ufpr.tcc.dto.ReservaDTO;
+import br.org.ufpr.tcc.dto.ReservaFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 //import br.org.ufpr.tcc.entity.Pagina;
-import br.org.ufpr.tcc.facade.ClienteFacade;
+import br.org.ufpr.tcc.facade.ReservaFacade;
 
-@Path("/cliente")
-public class ClienteREST {
+@Path("/reserva")
+public class ReservaREST {
 
-	ClienteFacade facade = new ClienteFacade();
+	ReservaFacade facade = new ReservaFacade();
 	
 	@GET
-    @Path("{codCliente}")
+    @Path("{codReserva}")
     @Produces("application/json") 
-    public ClienteDTO obter(@PathParam("codCliente") Long id, @QueryParam("fields") String fields) {
-        ClienteDTO clienteDTO = facade.obter(id, fields);
-		return clienteDTO;
+    public ReservaDTO obter(@PathParam("codReserva") Long id, @QueryParam("fields") String fields) {
+		ReservaDTO reservaDTO = facade.obter(id, fields);
+		return reservaDTO;
     }
 	
 	@GET
     @Produces("application/json")
-	public ResultadoPaginadoDTO<ClienteDTO> listar(@QueryParam("currentpage") int currentPage,
+	public ResultadoPaginadoDTO<ReservaDTO> listar(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,
 	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {
 
-        ClienteFiltroDTO filtro = new ClienteFiltroDTO();
+		ReservaFiltroDTO filtro = new ReservaFiltroDTO();
         
 
-        // Paginacao
+        // Paginação
         if (pageSize != 0) {
             filtro.getPagina().setPageSize(pageSize);
         }
@@ -61,8 +61,8 @@ public class ClienteREST {
 	@POST
     @Produces("application/json")
     @Consumes("application/json")
-    public Response inserir(ClienteDTO clienteDTO, @Context UriInfo uriInfo) {
-        ResponseDTO response = facade.persistir(clienteDTO);        
+    public Response inserir(ReservaDTO reservaDTO, @Context UriInfo uriInfo) {
+        ResponseDTO response = facade.persistir(reservaDTO);        
         URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
         return Response.created(location).entity(response).build();
     }
@@ -75,9 +75,9 @@ public class ClienteREST {
     }
     
     @DELETE
-    @Path("{codCliente}")
+    @Path("{codReserva}")
     @Produces("application/json")    
-    public Response remover(@PathParam("codCliente") Long id) {
+    public Response remover(@PathParam("codReserva") Long id) {
     	List<Long> ids = new ArrayList<Long>();
     	ids.add(id);
         
@@ -85,12 +85,12 @@ public class ClienteREST {
     }
     
     @PUT
-    @Path("{codCliente}")
+    @Path("{codReserva}")
     @Consumes("application/json")
     @Produces("application/json")    
-    public Response alterar(@PathParam("codCliente") Long id, ClienteDTO clienteDTO) {
-    	clienteDTO.setCodCliente(id.intValue());
-        ResponseDTO response = facade.persistir(clienteDTO);
+    public Response alterar(@PathParam("codReserva") Long id, ReservaDTO reservaDTO) {
+    	reservaDTO.setCodReserva(id.intValue());
+        ResponseDTO response = facade.persistir(reservaDTO);
         return Response.ok(response).build();
     }
 	

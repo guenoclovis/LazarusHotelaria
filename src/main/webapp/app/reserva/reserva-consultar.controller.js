@@ -1,18 +1,18 @@
 //-----------------------------------------------------
-// CONTROLADOR CONSULTA ATRIBUTO
+// CONTROLADOR CONSULTA
 //-----------------------------------------------------
 (function () {
     'use strict';
 
-    // Adicionando um Controlador para a tela 'consultar' do modulo 'tipoquarto'
-    angular.module('tipoquarto').controller(
-            'ConsultarTipoQuartoController',
-            ConsultarTipoQuartoController);
+    // Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
+    angular.module('reserva').controller(
+            'ConsultarReservaController',
+            ConsultarReservaController);
 
-    // Definindo tipoquartos e operacoes do Controlador da tela 'consultar' do modulo 'tipoquarto'
+    // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'Reserva'
     /* @ngInject */
-    function ConsultarTipoQuartoController($controller, $scope, $state,
-    		TipoQuartoData, MsgCenter) {
+    function ConsultarReservaController($controller, $scope, $state,
+    		ReservaData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -20,8 +20,8 @@
         vm.msgs = "";
 
         vm.filtros = {};
-        vm.tipoquartoS = [];
-        vm.tipoquarto = {};
+        vm.reservas = [];
+        vm.reserva = {};
 
         // Paginação
         vm.totalresults = 0;
@@ -48,7 +48,7 @@
 
         function pesquisarLimpar() {
             vm.filtros.currentpage = 0;
-            //MsgCenter.clear();
+            MsgCenter.clear();
             pesquisar();
         }
 
@@ -67,21 +67,20 @@
             $state.reload();
         }
 
-
-        function irParaTelaDetalhamento(CodTipoQuarto) {
+        function irParaTelaDetalhamento(codReserva) {
             //salvarEstadoTela();			
-            $state.go('tipoquartoDetalhar', {
-                'codTipoQuarto': codTipoQuarto
+            $state.go('reservaDetalhar', {
+                'codReserva': codReserva
             });
         }
 
         function irParaTelaInclusao() {
             //salvarEstadoTela();
-            $state.go('tipoquartoEditar');
+            $state.go('reservaEditar');
         }
 
         function salvarEstadoTela() {
-            var devePesquisar = vm.tipoquartos.length > 0;
+            var devePesquisar = vm.reservas.length > 0;
             //FiltroService.salvarFiltros(vm.filtros, devePesquisar);
         }
 
@@ -100,8 +99,8 @@
         	MsgCenter.clear();
             var filtros = vm.filtros;
 
-            TipoQuartoData.listar(filtros).then(function (data) {
-                vm.tipoquartos = data.entidades;
+            ReservaData.listar(filtros).then(function (data) {
+                vm.reservas = data.entidades;
 
                 if (data.pagina) {
                     var page = data.pagina;
