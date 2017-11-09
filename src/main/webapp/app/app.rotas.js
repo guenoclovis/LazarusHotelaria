@@ -8,7 +8,8 @@
 		    url: "/",
 		    abstract : true,
 		    templateUrl: 'carrossel.html'
-		}
+		}		
+		$stateProvider.state(root);
 		
 		var inicioState = {
 			name : 'inicio',
@@ -16,6 +17,7 @@
 			templateUrl : 'carrossel.html'
 			// controller : 'InicioController'
 		}
+		$stateProvider.state(inicioState);
 		
 		var reservaConsultarState = {
 			name : 'reserva',
@@ -23,7 +25,9 @@
 			templateUrl : './reserva/reserva-consultar.html',			
 			controller : 'ConsultarReservaController'
 		}
-
+		$stateProvider.state(reservaConsultarState);
+		
+		
 		var reservaEditarState = {
 			name : 'reservaEditar',
 			url : '/reservaEditar',
@@ -33,6 +37,7 @@
 				codReserva : undefined
 			}
 		}
+		$stateProvider.state(reservaEditarState);
 
 		var reservaDetalharState = {
 			name : 'reservaDetalhar',
@@ -43,80 +48,58 @@
 				codReserva : undefined
 			}
 		}
+		$stateProvider.state(reservaDetalharState);
 		
 		var tipoquartositeState = {
-				name : 'tipoquartosite',
-				url : '/tipoquarto',
-				templateUrl : './quartos/tipoquartosite.html'
-			}				
+			name : 'tipoquartosite',
+			url : '/tipoquarto',
+			templateUrl : './quartos/tipoquartosite.html'
+		}
+		$stateProvider.state(tipoquartositeState);
 		
-		var clienteConsultarState = {
-				name : 'clienteConsultar',
-				url : '/clienteConsultar',
-				controller : 'ConsultarClienteController',
-				templateUrl : './cliente/cliente-consultar.html'
-			}
+		var quartoConsultarState = {
+			name : 'quartoConsultar',
+			url : '/quartoConsultar',
+			controller : 'ConsultarQuartoController',
+			templateUrl : './quarto/quarto-consultar.html'
+		}
+		$stateProvider.state(quartoConsultarState);
 
-			var clienteEditarState = {
-				name : 'clienteEditar',
-				url : '/clienteEditar',
-				controller : 'EditarClienteController',
-				templateUrl : './cliente/cliente-editar.html',
-				params : {
-					codCliente : undefined
-				}
+		var quartoEditarState = {
+			name : 'quartoEditar',
+			url : '/quartoEditar',
+			controller : 'EditarQuartoController',
+			templateUrl : './quarto/quarto-editar.html',
+			params : {
+				codQuarto : undefined
 			}
+		}
+		$stateProvider.state(quartoEditarState);
 
-			var clienteDetalharState = {
-				name : 'clienteDetalhar',
-				url : '/clienteDetalhar',
-				controller : 'DetalharClienteController',
-				templateUrl : './cliente/cliente-detalhar.html',
-				params : {
-					codCliente : undefined
-				}
+		var quartoDetalharState = {
+			name : 'quartoDetalhar',
+			url : '/quartoDetalhar',
+			controller : 'DetalharQuartoController',
+			templateUrl : './quarto/quarto-detalhar.html',
+			params : {
+				codQuarto : undefined
 			}
-
-		/*
-			var quartoConsultarState = {
-				name : 'quartoConsultar',
-				url : '/quartoConsultar',
-				controller : 'ConsultarQuartoController',
-				templateUrl : './quarto/quarto-consultar.html'
-			}
-
-			var quartoEditarState = {
-				name : 'quartoEditar',
-				url : '/quartoEditar',
-				controller : 'EditarQuartoController',
-				templateUrl : './quarto/quarto-editar.html',
-				params : {
-					codQuarto : undefined
-				}
-			}
-
-			var quartoDetalharState = {
-				name : 'quartoDetalhar',
-				url : '/quartoDetalhar',
-				controller : 'DetalharQuartoController',
-				templateUrl : './quarto/quarto-detalhar.html',
-				params : {
-					codQuarto : undefined
-				}
-			}
-*/
+		}
+		$stateProvider.state(quartoDetalharState);
 
 		var loginState = {
 			name : 'login',
 			url : '/login',
 			templateUrl : './login/login.html'
 		}
+		$stateProvider.state(loginState);
 		
 		var contatoState = {
-				name : 'contato',
-				url : '/contato',
-				templateUrl : './contato/contato.html'
-			}
+			name : 'contato',
+			url : '/contato',
+			templateUrl : './contato/contato.html'
+		}
+		$stateProvider.state(contatoState);
 
 		var clienteConsultarState = {
 			name : 'clienteConsultar',
@@ -124,6 +107,7 @@
 			controller : 'ConsultarClienteController',
 			templateUrl : './cliente/cliente-consultar.html'
 		}
+		$stateProvider.state(clienteConsultarState);
 
 		var clienteEditarState = {
 			name : 'clienteEditar',
@@ -134,6 +118,7 @@
 				codCliente : undefined
 			}
 		}
+		$stateProvider.state(clienteEditarState);
 
 		var clienteDetalharState = {
 			name : 'clienteDetalhar',
@@ -144,6 +129,7 @@
 				codCliente : undefined
 			}
 		}
+		$stateProvider.state(clienteDetalharState);
 
 		var filialConsultarState = {
 			name : 'filialConsultar',
@@ -154,6 +140,7 @@
 				codFilial : undefined
 			}
 		}
+		$stateProvider.state(filialConsultarState);
 
 		var filialEditarState = {
 			name : 'filialEditar',
@@ -164,6 +151,7 @@
 				codFilial : undefined
 			}
 		}
+		$stateProvider.state(filialEditarState);
 
 		var filialDetalharState = {
 			name : 'filialDetalhar',
@@ -174,6 +162,7 @@
 				codFilial : undefined
 			}
 		}
+		$stateProvider.state(filialDetalharState);
 
 		var atributoConsultarState = {
 			name : 'atributoConsultar',
@@ -184,6 +173,7 @@
 				codAtributo : undefined
 			}
 		}
+		$stateProvider.state(atributoConsultarState);
 
 		var atributoEditarState = {
 			name : 'atributoEditar',
@@ -194,6 +184,7 @@
 				codAtributo : undefined
 			}
 		}
+		$stateProvider.state(atributoEditarState);
 
 		var atributoDetalharState = {
 			name : 'atributoDetalhar',
@@ -204,16 +195,18 @@
 				codAtributo : undefined
 			}
 		}
+		$stateProvider.state(atributoDetalharState);
 		
 		var tipoquartoConsultarState = {
-				name : 'tipoquartoConsultar',
-				url : '/tipoquartoConsultar',
-				controller : 'ConsultarTipoQuartoController',
-				templateUrl : './tipoquarto/tipoquarto-consultar.html',
-				params : {
-					codTipoQuarto : undefined
-				}
+			name : 'tipoquartoConsultar',
+			url : '/tipoquartoConsultar',
+			controller : 'ConsultarTipoQuartoController',
+			templateUrl : './tipoquarto/tipoquarto-consultar.html',
+			params : {
+				codTipoQuarto : undefined
 			}
+		}
+		$stateProvider.state(tipoquartoConsultarState);
 
 		var tipoquartoEditarState = {
 			name : 'tipoquartoEditar',
@@ -224,7 +217,8 @@
 				codTipoQuarto : undefined
 			}
 		}
-
+		$stateProvider.state(tipoquartoEditarState);
+		
 		var tipoquartoDetalharState = {
 			name : 'tipoquartoDetalhar',
 			url : '/tipoquartoDetalhar',
@@ -233,45 +227,49 @@
 			params : {
 				codTipoQuarto : undefined
 			}
-		}		
+		}
+		$stateProvider.state(tipoquartoDetalharState);
 		
 		var usuarioConsultarState = {
-				name : 'usuarioConsultar',
-				url : '/usuarioConsultar',
-				controller : 'ConsultarUsuarioController',
-				templateUrl : './usuario/usuario-consultar.html'
-			}
+			name : 'usuarioConsultar',
+			url : '/usuarioConsultar',
+			controller : 'ConsultarUsuarioController',
+			templateUrl : './usuario/usuario-consultar.html'
+		}
+		$stateProvider.state(usuarioConsultarState);
 
-			var usuarioEditarState = {
-				name : 'usuarioEditar',
-				url : '/usuarioEditar',
-				controller : 'EditarUsuarioController',
-				templateUrl : './usuario/usuario-editar.html',
-				params : {
-					codUsuario : undefined
-				}
+		var usuarioEditarState = {
+			name : 'usuarioEditar',
+			url : '/usuarioEditar',
+			controller : 'EditarUsuarioController',
+			templateUrl : './usuario/usuario-editar.html',
+			params : {
+				codUsuario : undefined
 			}
+		}
+		$stateProvider.state(usuarioEditarState);
 
-			var usuarioDetalharState = {
-				name : 'usuarioDetalhar',
-				url : '/usuarioDetalhar',
-				controller : 'DetalharUsuarioController',
-				templateUrl : './usuario/usuario-detalhar.html',
-				params : {
-					codUsuario : undefined
-				}
+		var usuarioDetalharState = {
+			name : 'usuarioDetalhar',
+			url : '/usuarioDetalhar',
+			controller : 'DetalharUsuarioController',
+			templateUrl : './usuario/usuario-detalhar.html',
+			params : {
+				codUsuario : undefined
 			}
-
+		}
+		$stateProvider.state(usuarioDetalharState);
 
 		var showcaseConsultarState = {
-				name : 'showcaseConsultar',
-				url : '/showcaseConsultar',
-				controller : 'ConsultarShowcaseController',
-				templateUrl : './showcase/showcase-consultar.html',
-				params : {
-					codShowcase : undefined
-				}
+			name : 'showcaseConsultar',
+			url : '/showcaseConsultar',
+			controller : 'ConsultarShowcaseController',
+			templateUrl : './showcase/showcase-consultar.html',
+			params : {
+				codShowcase : undefined
 			}
+		}
+		$stateProvider.state(showcaseConsultarState);
 
 		var showcaseEditarState = {
 			name : 'showcaseEditar',
@@ -282,6 +280,7 @@
 				codShowcase : undefined
 			}
 		}
+		$stateProvider.state(showcaseEditarState);
 
 		var showcaseDetalharState = {
 			name : 'showcaseDetalhar',
@@ -291,40 +290,9 @@
 			params : {
 				codShowcase : undefined
 			}
-		}		
-
-		$stateProvider.state(root);
-		$stateProvider.state(inicioState);
-		$stateProvider.state(reservaConsultarState);
-		$stateProvider.state(reservaEditarState);
-		$stateProvider.state(reservaDetalharState);
-		$stateProvider.state(tipoquartositeState);
-		/*
-		$stateProvider.state(quartosState);
-		$stateProvider.state(quartoConsultarState);
-		$stateProvider.state(quartoEditarState);
-		$stateProvider.state(quartoDetalharState);
-		*/
-		$stateProvider.state(clienteConsultarState);
-		$stateProvider.state(clienteEditarState);
-		$stateProvider.state(clienteDetalharState);
-		$stateProvider.state(loginState);
-		$stateProvider.state(contatoState);
-		$stateProvider.state(filialConsultarState);
-		$stateProvider.state(filialEditarState);
-		$stateProvider.state(filialDetalharState);
-		$stateProvider.state(atributoConsultarState);
-		$stateProvider.state(atributoEditarState);
-		$stateProvider.state(atributoDetalharState);
-		$stateProvider.state(tipoquartoConsultarState);
-		$stateProvider.state(tipoquartoEditarState);
-		$stateProvider.state(tipoquartoDetalharState);
-		$stateProvider.state(usuarioConsultarState);
-		$stateProvider.state(usuarioEditarState);
-		$stateProvider.state(usuarioDetalharState);
-		$stateProvider.state(showcaseConsultarState);
-		$stateProvider.state(showcaseEditarState);
+		}
 		$stateProvider.state(showcaseDetalharState);
+
 	});
 
 })();
