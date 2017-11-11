@@ -12,7 +12,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'Reserva'
     /* @ngInject */
     function ConsultarReservaController($controller, $scope, $state,
-    		ReservaData, MsgCenter) {
+    		ReservaData, MsgCenter, FilialData) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -42,6 +42,7 @@
         //////// OPERACOES DO CONTROLADOR ////////////////////
 
         function activate() {
+        	carregarFiliais();
             //vm.deveRestaurar = FiltroService.deveRestaurar();
             //restaurarEstadoTela();
         }
@@ -93,6 +94,16 @@
              }
              FiltroService.marcarRestaurado();
              }*/
+        }
+        
+        function carregarFiliais(){
+        	MsgCenter.clear();
+        	var filtros = {};
+
+            FilialData.listar(filtros).then(function (data) {
+                vm.filiais = data.entidades;
+
+            });        	
         }
 
         function pesquisar() {
