@@ -123,14 +123,24 @@
 			});
 		}
 
-		function pesquisar() {
-			MsgCenter.clear();
-			var filtros = {};
+        function pesquisar() {
+        	MsgCenter.clear();
+            var filtros = vm.filtros;
 
-			ReservaData.listar(filtros).then(function(data) {
-				vm.filiais = data.entidades;
-			});
-		}
+            ReservaData.listar(filtros).then(function (data) {
+                vm.reservas = data.entidades;
+
+                if (data.pagina) {
+                    var page = data.pagina;
+                    vm.currentpage = page.currentPage + 1;
+                    vm.pagesize = page.pageSize;
+                    vm.totalresults = page.totalResults;
+                }
+                if (data.mensagens) {
+                	MsgCenter.addMessages(data.mensagens);  
+                }
+            });
+        }
 	}
 
 })();
