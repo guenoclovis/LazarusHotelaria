@@ -36,7 +36,10 @@
 			// Evento "notify"
 			var notifyReaction = function(event, args) {
 				// limpar marcação de erro
-				angular.element('.has-error').removeClass('has-error');
+				var elementFound = angular.element(document).find('body').css('.has-error');
+				if(elementFound != undefined){
+					elementoFound.removeClass('has-error');
+				}
                 
                 var primeiroElemento = undefined;
                 var possuiTarget = false;
