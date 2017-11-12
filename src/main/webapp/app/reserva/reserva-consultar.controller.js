@@ -1,119 +1,136 @@
 //-----------------------------------------------------
 // CONTROLADOR CONSULTA
 //-----------------------------------------------------
-(function () {
-    'use strict';
+(function() {
+	'use strict';
 
-    // Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
-    angular.module('reserva').controller(
-            'ConsultarReservaController',
-            ConsultarReservaController);
+	// Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
+	angular.module('reserva').controller('ConsultarReservaController',
+			ConsultarReservaController);
 
-    // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'Reserva'
-    /* @ngInject */
-    function ConsultarReservaController($controller, $scope, $state,
-    		ReservaData, MsgCenter) {
+	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
+	// modulo 'Reserva'
+	/* @ngInject */
+	function ConsultarReservaController($controller, $scope, $state,
+			ReservaData, MsgCenter, FilialData) {
 
-        //////// ATRIBUTOS DO CONTROLADOR ////////////////////
-        var vm = this;
+		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
+		var vm = this;
 
-        vm.msgs = "";
+		vm.popupDataEntrada = {
+			opened : false,
+		};
 
-        vm.filtros = {};
-        vm.reservas = [];
-        vm.reserva = {};
+		vm.popupDataSaida = {
+			opened : false
+		};
+		
+		vm.openDataEntrada = openDataEntrada;
+		vm.openDataSaida = openDataSaida;
 
-        // Paginação
-        vm.totalresults = 0;
-        vm.pagesize = 0;
-        vm.currentpage = 0;
-        vm.pageoptions = [10, 25, 50, 100];
+		vm.msgs = "";
 
-        // Operacoes acessiveis no html
-        vm.pesquisarLimpar = pesquisarLimpar;
-        vm.pageSizeAlterado = pageSizeAlterado;
-        vm.paginaAlterada = paginaAlterada;
-        vm.limpar = limpar;
-        vm.irParaTelaInclusao = irParaTelaInclusao;
-        vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
+		vm.filtros = {};
+		vm.reservas = [];
+		vm.reserva = {};
 
-        activate();
+		// Paginação
+		vm.totalresults = 0;
+		vm.pagesize = 0;
+		vm.currentpage = 0;
+		vm.pageoptions = [ 10, 25, 50, 100 ];
 
-        //////// OPERACOES DO CONTROLADOR ////////////////////
+		// Operacoes acessiveis no html
+		vm.pesquisarLimpar = pesquisarLimpar;
+		vm.pageSizeAlterado = pageSizeAlterado;
+		vm.paginaAlterada = paginaAlterada;
+		vm.limpar = limpar;
+		vm.irParaTelaInclusao = irParaTelaInclusao;
+		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 
-        function activate() {
-            //vm.deveRestaurar = FiltroService.deveRestaurar();
-            //restaurarEstadoTela();
-        }
+		activate();
 
-        function pesquisarLimpar() {
-            vm.filtros.currentpage = 0;
-            MsgCenter.clear();
-            pesquisar();
-        }
+		// ////// OPERACOES DO CONTROLADOR ////////////////////
+		
+		function openDataEntrada() {
+			vm.popupDataEntrada.opened = true;
+		}
 
-        function paginaAlterada() {
-            vm.filtros.pagesize = vm.pagesize;
-            vm.filtros.currentpage = vm.currentpage - 1;
-            pesquisar();
-        }
+		function openDataSaida() {
+			vm.popupDataSaida.opened = true;
+		}
 
-        function pageSizeAlterado() {
-            vm.currentpage = 1;
-            paginaAlterada();
-        }
+		function activate() {
+			// vm.deveRestaurar = FiltroService.deveRestaurar();
+			// restaurarEstadoTela();
+			carregarFiliais();
+		}
 
-        function limpar() {
-            $state.reload();
-        }
+		function pesquisarLimpar() {
+			vm.filtros.currentpage = 0;
+			MsgCenter.clear();
+			pesquisar();
+		}
 
-        function irParaTelaDetalhamento(codReserva) {
-            //salvarEstadoTela();			
-            $state.go('reservaDetalhar', {
-                'codReserva': codReserva
-            });
-        }
+		function paginaAlterada() {
+			vm.filtros.pagesize = vm.pagesize;
+			vm.filtros.currentpage = vm.currentpage - 1;
+			pesquisar();
+		}
 
-        function irParaTelaInclusao() {
-            //salvarEstadoTela();
-            $state.go('reservaEditar');
-        }
+		function pageSizeAlterado() {
+			vm.currentpage = 1;
+			paginaAlterada();
+		}
 
-        function salvarEstadoTela() {
-            var devePesquisar = vm.reservas.length > 0;
-            //FiltroService.salvarFiltros(vm.filtros, devePesquisar);
-        }
+		function limpar() {
+			$state.reload();
+		}
 
-        function restaurarEstadoTela() {
-            /*if (FiltroService.deveRestaurar()) {
-             vm.filtros = FiltroService.obterFiltros();
-             
-             if (FiltroService.devePesquisar()) {
-             pesquisar();
-             }
-             FiltroService.marcarRestaurado();
-             }*/
-        }
+		function irParaTelaDetalhamento(codReserva) {
+			// salvarEstadoTela();
+			$state.go('reservaDetalhar', {
+				'codReserva' : codReserva
+			});
+		}
 
-        function pesquisar() {
-        	MsgCenter.clear();
-            var filtros = vm.filtros;
+		function irParaTelaInclusao() {
+			// salvarEstadoTela();
+			$state.go('reservaEditar');
+		}
 
-            ReservaData.listar(filtros).then(function (data) {
-                vm.reservas = data.entidades;
+		function salvarEstadoTela() {
+			var devePesquisar = vm.reservas.length > 0;
+			// FiltroService.salvarFiltros(vm.filtros, devePesquisar);
+		}
 
-                if (data.pagina) {
-                    var page = data.pagina;
-                    vm.currentpage = page.currentPage + 1;
-                    vm.pagesize = page.pageSize;
-                    vm.totalresults = page.totalResults;
-                }
-                if (data.mensagens) {
-                	MsgCenter.addMessages(data.mensagens);  
-                }
-            });
-        }
-    }
+		function restaurarEstadoTela() {
+			/*
+			 * if (FiltroService.deveRestaurar()) { vm.filtros =
+			 * FiltroService.obterFiltros();
+			 * 
+			 * if (FiltroService.devePesquisar()) { pesquisar(); }
+			 * FiltroService.marcarRestaurado(); }
+			 */
+		}
+
+		function carregarFiliais() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			FilialData.listar(filtros).then(function(data) {
+				vm.filiais = data.entidades;
+			});
+		}
+
+		function pesquisar() {
+			MsgCenter.clear();
+			var filtros = {};
+
+			ReservaData.listar(filtros).then(function(data) {
+				vm.filiais = data.entidades;
+			});
+		}
+	}
 
 })();
-
