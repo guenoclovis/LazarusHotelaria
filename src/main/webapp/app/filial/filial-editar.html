@@ -11,6 +11,7 @@
 
 		<div>
 			<pre>{{vm.filial | json}}</pre>
+			<pre>{{vm.uploadme}}</pre>
 		</div>
 
 		<form>
@@ -18,7 +19,7 @@
 			<div class="row" ng-if="vm.filial.codFilial">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Código</label>
+					<label for="nome" class="cols-sm-2 control-label">Cï¿½digo</label>
 				</div>
 				<div class="col-md-6">
 					<span id="nome">{{vm.filial.codFilial}}</span>
@@ -66,7 +67,8 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="exibirSite" class="cols-sm-2 control-label">Exibir Site</label>
+					<label for="exibirSite" class="cols-sm-2 control-label">Exibir
+						Site</label>
 				</div>
 				<div class="col-md-6">
 					<div class="form-inline" id="exibirSite">
@@ -88,14 +90,44 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nacionalidade" class="cols-sm-2 control-label">Status</label>
+					<label for="foto" class="cols-sm-2 control-label">Foto</label>
+				</div>
+				<div class="col-sm-6">
+
+
+					<input type="file" fileread="vm.uploadme" /> 
+					
+					<img ng-if="vm.uploadme" src="{{vm.uploadme}}" width="100" height="50" alt="Image preview..."> <br />
+					
+					<br />
+					<button ng-click="vm.uploadImage()">upload image</button>
+
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Status</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="status" id="status"
-						ng-model="vm.filial.status" placeholder="Nome da Filial" />
+					<div class="form-inline" id="status">
+						<div class="radio col-sm-2">
+							<input ng-model="vm.filial.status" type="radio"
+								name="radio-situacao" id="ex-a" ng-value="A"> <label
+								for="ex-s">A</label>
+						</div>
+						<div class="radio col-sm-2">
+							<input ng-model="vm.filial.status" type="radio"
+								name="radio-situacao" id="ex-i" ng-value="I"> <label
+								for="ex-n">I</label>
+						</div>
+					</div>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
+			
+			<div class="row"><br></div>
 
 			<div class="form-group ">
 				<button ng-if="!vm.filial.codFilial" ng-click="vm.incluir()"
@@ -104,7 +136,6 @@
 					class="btn btn-primary">Alterar</button>
 				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
 			</div>
-
 		</form>
 
 	</div>

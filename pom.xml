@@ -28,6 +28,14 @@
 			<version>2.2.1.GA</version>
 		</dependency>
 
+		<!-- Para envio de fotos -->
+		<dependency>
+			<groupId>org.jboss.resteasy</groupId>
+			<artifactId>resteasy-multipart-provider</artifactId>
+			<version>2.2.0.GA</version>
+		</dependency>
+
+
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
 			<groupId>org.postgresql</groupId>
@@ -60,7 +68,7 @@
 			<version>5.0.10.Final</version>
 		</dependency>
 		<!-- Hibernate: fim -->
-		
+
 		<!-- Bean Validation: inicio -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -74,8 +82,14 @@
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 			<version>3.4</version>
-		</dependency>		
-		
+		</dependency>
+
+		<!-- optional, good for handle I/O task -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.0.1</version>
+		</dependency>
 
 
 	</dependencies>
