@@ -8,7 +8,7 @@
             'checklist-model',
             'ngMask',
             'datepicker-localdate',
-            //'ng-file-upload',
+            //'ng-file-upload',            
             'ui.bootstrap',
             'msgcenter',
             
@@ -19,7 +19,7 @@
 			'tipoquarto',
 			'usuario',
 			'quarto',
-//			'reserva',
+			'reserva',
 //			'showcase'
 			]);
 	
