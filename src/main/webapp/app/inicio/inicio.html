@@ -49,7 +49,6 @@
 		<div class="row linha-site">
 			<div class="container">
 
-
 				<div class="col-sm-8">
 					<h1>Nossos Hot&eacute;is</h1>
 					<p>Nossa rede de hoteis esta presente em todos os estados.
@@ -60,9 +59,9 @@
 
 							<div ng-if="!($index % 3) && ($index != 0)">
 								<div class="row">
-									<div class="col-sm-4 linha-item"
-										ng-click="vm.irParaTelaPesquisaReserva()">
-										<a ng-keyup="vm.irParaTelaPesquisaReserva()">
+									<div class="col-sm-4 linha-item">
+										<button class="btn btn-sucess" ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver Quartos</button>
+										<a>
 											<h4>{{filial.nome}}</h4> <img
 											src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
 											class="img-responsive" style="width: 100%" alt="Image">
@@ -72,9 +71,10 @@
 								</div>
 							</div>
 
-							<div ng-if="($index % 3) || ($index == 0)">
+							<div ng-if="($index % 3) || ($index == 0)">						
 								<div class="col-sm-4 linha-item">
-									<a ng-keyup="vm.irParaTelaPesquisaReserva()">
+									<button class="btn btn-sucess" ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver Quartos</button>
+									<a>
 										<h4>{{filial.nome}}</h4> <img
 										src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
 										class="img-responsive" style="width: 100%" alt="Image">

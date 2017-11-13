@@ -11,12 +11,12 @@
 	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
 	// modulo 'Reserva'
 	/* @ngInject */
-	function ConsultarReservaController($controller, $scope, $state,
+	function ConsultarReservaController($controller, $scope, $state, $stateParams, 
 			ReservaData, MsgCenter, FilialData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
-
+		
 		vm.popupDataEntrada = {
 			opened : false,
 		};
@@ -31,6 +31,9 @@
 		vm.msgs = "";
 
 		vm.filtros = {};
+		
+		vm.filtros.filial = $stateParams.codFilial;
+		
 		vm.reservas = [];
 		vm.reserva = {};
 

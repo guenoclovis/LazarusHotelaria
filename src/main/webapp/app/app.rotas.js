@@ -22,7 +22,10 @@
 			name : 'reserva',
 			url : '/reserva',
 			templateUrl : './reserva/reserva-consultar.html',			
-			controller : 'ConsultarReservaController'
+			controller : 'ConsultarReservaController',
+			params : {
+				codFilial : undefined
+			}
 		}
 		$stateProvider.state(reservaConsultarState);
 		

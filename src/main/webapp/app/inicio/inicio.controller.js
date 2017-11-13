@@ -70,7 +70,7 @@
 
 		function irParaTelaPesquisaReserva(codFilial) {
 			// salvarEstadoTela();
-			$state.go('reservaConsultar', {
+			$state.go('reserva', {
 				'codFilial' : codFilial
 			});
 		}
