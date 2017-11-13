@@ -41,14 +41,15 @@
 		
 		// ////////
 		// the image
-		vm.uploadme;
+		vm.imagem = undefined;
+		
 
 		vm.uploadImage = function() {
 			
-			var imgBlob = dataURItoBlob(vm.uploadme);
+			var imgBlob = dataURItoBlob(vm.imagem);
 			
 			FilialData.uploadImage(imgBlob, 'teste.png', 'fjsadffsasadfas').then(function(data) {
-					//???
+				vm.imagem = undefined;
 			});
 		}
 

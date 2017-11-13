@@ -29,9 +29,11 @@ import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import br.org.ufpr.tcc.dto.FilialDTO;
 import br.org.ufpr.tcc.dto.FilialFiltroDTO;
+import br.org.ufpr.tcc.dto.FotoDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.facade.FilialFacade;
+import br.org.ufpr.tcc.facade.FotoFacade;
 
 
 
@@ -39,6 +41,7 @@ import br.org.ufpr.tcc.facade.FilialFacade;
 public class FilialREST {
 
 	FilialFacade facade = new FilialFacade();
+	FotoFacade fotoFacade = new FotoFacade();
 	
 	@GET
     @Path("{codFilial}")
@@ -109,19 +112,21 @@ public class FilialREST {
     @POST
 	@Path("/foto")
 	@Consumes("multipart/form-data")
-	public Response uploadFile(MultipartFormDataInput input) {
-
-		String fileName = "teste.png";
+	public Response uploadFile(MultipartFormDataInput input, 
+			@QueryParam("nomeArquivo") String nomeArquivo, 
+			@QueryParam("legenda") String legenda) {
 
 		Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
 		List<InputPart> inputParts = uploadForm.get("uploadedFile");
 
+		FotoDTO fotoDTO = null;
+		
 		for (InputPart inputPart : inputParts) {
 
 		 try {
 
 			MultivaluedMap<String, String> header = inputPart.getHeaders();
-			fileName = getFileName(header);
+			//fileName = getFileName(header);
 
 			//convert the uploaded file to inputstream
 			InputStream inputStream = inputPart.getBody(InputStream.class,null);
@@ -129,11 +134,15 @@ public class FilialREST {
 			byte [] bytes = IOUtils.toByteArray(inputStream);
 
 			//constructs upload file path
-			fileName = "/tmp/" + fileName;
+			String pathNomeArquivo = "/tmp/" + nomeArquivo;
 
-			writeFile(bytes,fileName);
+			writeFile(bytes,pathNomeArquivo);
+			
+			fotoDTO = new FotoDTO();
+			fotoDTO.setLegenda(legenda);
+			fotoDTO.setPath(pathNomeArquivo);
 
-			System.out.println("Done");
+			fotoFacade.inserir(fotoDTO);
 
 		  } catch (IOException e) {
 			e.printStackTrace();
@@ -141,8 +150,7 @@ public class FilialREST {
 
 		}
 
-		return Response.status(200)
-		    .entity("uploadFile is called, Uploaded file name : " + fileName).build();
+		return Response.ok(fotoDTO).build();
 
 	}
     

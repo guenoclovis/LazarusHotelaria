@@ -11,7 +11,7 @@
 
 		<div>
 			<pre>{{vm.filial | json}}</pre>
-			<pre>{{vm.uploadme}}</pre>
+			<pre>{{vm.imagem | json}}</pre>
 		</div>
 
 		<form>
@@ -19,7 +19,7 @@
 			<div class="row" ng-if="vm.filial.codFilial">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">C�digo</label>
+					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
 				</div>
 				<div class="col-md-6">
 					<span id="nome">{{vm.filial.codFilial}}</span>
@@ -92,16 +92,20 @@
 				<div class="col-md-2">
 					<label for="foto" class="cols-sm-2 control-label">Foto</label>
 				</div>
-				<div class="col-sm-6">
+				<div class="col-sm-8">
 
-
-					<input type="file" fileread="vm.uploadme" /> 
-					
-					<img ng-if="vm.uploadme" src="{{vm.uploadme}}" width="100" height="50" alt="Image preview..."> <br />
-					
-					<br />
-					<button ng-click="vm.uploadImage()">upload image</button>
-
+					<div class="row">
+						<div class="col-sm-2">
+							<input class="btn btn-sucess" type="file" fileread="vm.imagem" />
+						</div>
+						<div class="col-sm-2">
+							<img ng-if="vm.imagem" src="{{vm.imagem}}" width="100"
+								height="50" alt="Image preview..."> <br />
+						</div>
+						<div class="col-sm-2">
+							<button ng-click="vm.uploadImage()">upload image</button>
+						</div>
+					</div>
 				</div>
 			</div>
 
@@ -126,8 +130,10 @@
 				</div>
 				<div class="col-md-2"></div>
 			</div>
-			
-			<div class="row"><br></div>
+
+			<div class="row">
+				<br>
+			</div>
 
 			<div class="form-group ">
 				<button ng-if="!vm.filial.codFilial" ng-click="vm.incluir()"

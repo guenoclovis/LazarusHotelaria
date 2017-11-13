@@ -15,6 +15,10 @@ public class ResponseDTO {
         this(null, new ArrayList<Mensagem>());
     }
 
+    public ResponseDTO(Long id){
+    	this.id = id;
+    }
+    
     public ResponseDTO(Long id, List<Mensagem> mensagens) {
         this.id = id;
         this.mensagens = mensagens;

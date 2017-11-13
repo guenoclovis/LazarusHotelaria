@@ -47,16 +47,22 @@
         function uploadImage(imgBlob, nomeArquivo, legenda){
         	
 			var fd = new FormData();
-			fd.append('uploadedFile', imgBlob);
 			
-			$http.post(baseURL + apiURLCompleta + '/foto', fd, {
+			fd.append('uploadedFile', imgBlob);			
+			fd.append('nomeArquivo', nomeArquivo);
+			fd.append('legenda', legenda);
+			
+			$http.post(baseURL + apiURLCompleta + '/foto?nomeArquivo=' + nomeArquivo + "&legenda=" + legenda, fd, {
 				transformRequest : angular.identity,
 				headers : {
 					'Content-Type' : undefined					
 				}
-			}).success(function(response) {
+			}).then(
+			function(response) {
 				console.log('success', response);
-			}).error(function(response) {
+				
+			}
+			,function(response) {
 				console.log('error', response);
 			});
         }
