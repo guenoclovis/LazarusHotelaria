@@ -1,64 +1,14 @@
-<!-- ======================= QUARTOS DISPON�VEIS =========================== -->
+<!-- ======================= QUARTOS DISPONIVEIS =========================== -->
 <div>
 	<div ng-controller="ConsultarReservaController as vm">
 
-<<<<<<< HEAD
-		<div class="row">
-			<div class="col-sm-2"></div>
-			<div class="col-sm-8">
-				<pre>{{vm.filtros | json}}</pre>
-			</div>
-			<div class="col-sm-2"></div>
-		</div>
-=======
 		<div class="row linha-site">
 			<div class="container">
 				<div class="col-sm-4">
 
-					<!-- TITULO -->
-					<h3 align="left">
-						Quartos dispon&iacute;veis
-						</h1>
-					</h3>
-					</br>
-
-<!-- 					<div class="col-md-12 lazarus-align"> -->
-<!-- 						<div> -->
-<!-- 							<pre>{{vm.filiais | json}}</pre> -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-
-					<!-- FILIAL -->
-					<p class="input-group">
-						<label for="filiais" class="control-label">Hotel Destino</label> <select
-							id="filiais" class="btn btn-sucess"
-							ng-options="item.codFilial as item.nome for item in vm.filiais"
-							ng-model="vm.reserva.filial" selectpicker>
-							<option value="" selected>Selecione</option>
-						</select>
-
-					</p>
-
-					<!-- DATA ENTRADA -->
-					<p class="input-group">
-						<label for="data-entrada">Data de Entrada</label> <input
-							type="text" class="form-control"
-							uib-datepicker-popup="{{format}}"
-							ng-model="vm.showcase.dataEntrada" is-open="vm.popup1.opened"
-							datepicker-options="dateOptions" ng-required="true"
-							close-text="Close" alt-input-formats="altInputFormats"
-							id="data-entrada" /> <span
-							class="input-group-btn btn-calendario">
-							<button type="button" class="btn btn-default"
-								ng-click="vm.open1()">C</button>
-						</span>
-					</p>
->>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
-
-<<<<<<< HEAD
-		<div class="row linha-site">
-			<div class="container">
-				<div class="col-sm-4">
+					<div>
+						<pre>{{vm.filtros | json}}</pre>
+					</div>
 
 					<!-- TITULO -->
 					<div class="row">
@@ -132,22 +82,8 @@
 							</p>
 						</div>
 					</div>
-=======
-					<!-- DATA SA�DA -->
-					<p class="input-group">
-						<label for="data-saida">Data de Sa&iacute;da</label> <input
-							type="text" class="form-control" uib-datepicker-popup
-							ng-model="vm.showcase.dataSaida" is-open="vm.popup2.opened"
-							datepicker-options="dateOptions" ng-required="true"
-							close-text="Close" id="data-saida" /> <span
-							class="input-group-btn btn-calendario">
-							<button type="button" class="btn btn-default"
-								ng-click="vm.open1()">C</button>
-						</span>
-					</p>
->>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
 
-					<!-- BOT�O BUSCAR -->
+					<!-- BOTAO BUSCAR -->
 					<div class="botoes-meio" align="center">
 						<button ng-click="vm.irParaTelaInclusao()" name="buscar"
 							class="btn btn-primary">Buscar</button>
@@ -160,7 +96,6 @@
 						Confira e explore nossas filiais:</p>
 
 					<div class="container-fluid bg-4 text-center">
-<<<<<<< HEAD
 						<div ng-repeat="filial in vm.filiais track by filial.codFilial">
 
 							<div ng-if="!($index % 3) && ($index != 0)">
@@ -186,67 +121,6 @@
 									</a>
 								</div>
 							</div>
-
-=======
-						<div class="row">
-							<div class="col-sm-4 linha-item">
-								<a ui-sref="quartos">
-									<h4>Curitiba-PR</h4> <img
-									src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
-									class="img-responsive" style="width: 100%" alt="Image">
-									<p>Descricao da filial que continua por mais de uma linha
-										para testar...</p>
-								</a>
-							</div>
-							<div class="col-sm-4 linha-item">
-								<a ui-sref="quartos">
-									<h4>Curitiba-PR</h4> <img
-									src="https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg"
-									class="img-responsive" style="width: 100%" alt="Image">
-									<p>Descricao da filial que continua por mais de uma linha
-										para testar...</p>
-								</a>
-							</div>
-							<div class="col-sm-4 linha-item">
-								<a ui-sref="quartos">
-									<h4>Curitiba-PR</h4> <img
-									src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg"
-									class="img-responsive" style="width: 100%" alt="Image">
-									<p>Descricao da filial que continua por mais de uma linha
-										para testar...</p>
-								</a>
-							</div>
-						</div>
-						</br>
-						<div class="row">
-							<div class="col-sm-4 linha-item">
-								<a ui-sref="quartos">
-									<h4>Curitiba-PR</h4> <img
-									src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
-									class="img-responsive" style="width: 100%" alt="Image">
-									<p>Descricao da filial que continua por mais de uma linha
-										para testar...</p>
-								</a>
-							</div>
-							<div class="col-sm-4 linha-item">
-								<a ui-sref="quartos">
-									<h4>Curitiba-PR</h4> <img
-									src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
-									class="img-responsive" style="width: 100%" alt="Image">
-									<p>Descricao da filial que continua por mais de uma linha
-										para testar...</p>
-								</a>
-							</div>
-							<div class="col-sm-4 linha-item">
-								<a ui-sref="quartos">
-									<h4>Curitiba-PR</h4> <img
-									src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
-									class="img-responsive" style="width: 100%" alt="Image">
-									<p>Descricao da filial que continua por mais de uma linha
-										para testar...</p>
-								</a>
-							</div>
->>>>>>> branch 'master' of https://github.com/guenoclovis/LazarusHotelaria.git
 						</div>
 					</div>
 				</div>
