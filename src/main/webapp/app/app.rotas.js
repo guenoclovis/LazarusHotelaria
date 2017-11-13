@@ -6,16 +6,15 @@
 		var root = {
 			name : "root",
 		    url: "/",
-		    abstract : true,
-		    templateUrl: 'carrossel.html'
+		    abstract : true
 		}		
 		$stateProvider.state(root);
 		
 		var inicioState = {
 			name : 'inicio',
 			url : '/inicio',
-			templateUrl : 'carrossel.html'
-			// controller : 'InicioController'
+			templateUrl : './inicio/inicio.html',
+			controller : 'InicioController'
 		}
 		$stateProvider.state(inicioState);
 		

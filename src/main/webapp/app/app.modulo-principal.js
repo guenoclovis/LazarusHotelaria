@@ -13,6 +13,7 @@
             'msgcenter',
             
             //Sub-modulos que sao funcionalidades do sistema
+			'inicio',
 			'cliente', 
 			'filial', 
 			'atributo', 
