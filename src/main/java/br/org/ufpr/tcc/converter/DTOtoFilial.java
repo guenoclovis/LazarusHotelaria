@@ -18,7 +18,7 @@ public class DTOtoFilial {
 		filial.setEmail(dto.getEmail());
 		filial.setDescricao(dto.getDescricao());
 		filial.setExibirSite(dto.getExibirSite());
-		filial.setStatus(dto.getStatus());
+		filial.setStatus(dto.getStatus().charAt(0));
 
 		return filial;
 	}

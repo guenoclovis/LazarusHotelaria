@@ -13,7 +13,7 @@ public class FilialToDTO {
 		dto.setEmail(filial.getEmail());
 		dto.setDescricao(filial.getDescricao());
 		dto.setExibirSite(filial.getExibirSite());
-		dto.setStatus(filial.getStatus());
+		dto.setStatus(String.valueOf(filial.getStatus()));
 		
 		
 

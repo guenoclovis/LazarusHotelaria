@@ -129,7 +129,7 @@ INSERT INTO FILIAIS VALUES(1, 'Curitiba (Centro)', 'Belissimo hotel de 6 andares
 INSERT INTO FILIAIS VALUES(2, 'Florianopolis (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital de Santa Catarina.', 'S', 'I');
 INSERT INTO FILIAIS VALUES(3, 'Rio de Janeiro (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Rio de Janeiro.', 'S', 'I');
 
-SELECT setval('atributos_cod_atributo_seq', COALESCE((SELECT MAX(cod_atributo)+1 FROM atributos), 1), false);
+SELECT setval('filiais_cod_filial_seq', COALESCE((SELECT MAX(cod_filial)+1 FROM filiais), 1), false);
 
 ----------------------------------------------------------------------
 -- 5 - TABELA DE RELACIONAMENTO FILIAIS X ATRIBUTOS
