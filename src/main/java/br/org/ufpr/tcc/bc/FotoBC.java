@@ -34,26 +34,30 @@ public class FotoBC extends LazarusDAO<Foto> {
         return new ResultadoPaginadoDTO<Foto>(lista, new Pagina());
     }
 
-    public void persistir(Foto foto) {
+    public Foto persistir(Foto foto) {
 
     	//validator.validateAndThrow(foto);
     	
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
+    	Foto fotoSalva = null;
+    	
         if (foto.getCodFoto() == null) {
             log.info("Inicia a persistencia de um novo Foto.");
-            dao.persistir(foto);
+            fotoSalva = dao.persistir(foto);
             log.info("Persistiu novo Foto na base de dados.");
 
         } else {
             log.info("Inicia a atualizacao do Foto [id=%d]" + foto.getCodFoto());
 
             try {
-                dao.persistir(foto);
+            	fotoSalva = dao.persistir(foto);
             } catch (Exception ex) {
                 Logger.getLogger(FotoBC.class.getName()).log(Level.SEVERE, "Erro ao alterar.", ex);
             }
             log.info("Alterou Foto na base de dados.");
         }
+        
+        return fotoSalva;
     }
 
     public ResponseDTO remover(Integer id) {

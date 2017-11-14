@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 import br.org.ufpr.tcc.bc.FotoBC;
 import br.org.ufpr.tcc.converter.DTOtoFoto;
 import br.org.ufpr.tcc.converter.FotoToDTO;
+import br.org.ufpr.tcc.dao.FotoDAO;
 import br.org.ufpr.tcc.dto.FotoDTO;
 import br.org.ufpr.tcc.dto.FotoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
@@ -78,12 +79,12 @@ public class FotoFacade {
         DTOtoFoto converter = new DTOtoFoto();
         Foto foto = converter.convert(dto);
         
-		bc.persistir(foto);
+		Foto fotoSalva = bc.persistir(foto);
 
         logMsg = "Registro de Foto persistido";
         log.info(logMsg);
 
-        return new ResponseDTO();
+        return new ResponseDTO(Long.valueOf(fotoSalva.getCodFoto()));
     }
     
     public ResponseDTO remover(Long... ids) {
@@ -98,7 +99,7 @@ public class FotoFacade {
     	 
     }
 
-	public ResponseDTO inserir(FotoDTO dto) {
+	public FotoDTO inserir(FotoDTO dto) {
 		String logMsg = "Iniciando a persistencia de Foto";
         log.info(logMsg);
 
@@ -106,12 +107,15 @@ public class FotoFacade {
         DTOtoFoto converter = new DTOtoFoto();
         Foto foto = converter.convert(dto);
         
-		bc.persistir(foto);
+		Foto fotoSalva = bc.persistir(foto);
 
         logMsg = "Registro de Foto persistido";
         log.info(logMsg);
 
-        return new ResponseDTO();
+        FotoToDTO toDTOConverter = new FotoToDTO();
+        FotoDTO fotoSalvaDTO = toDTOConverter.convert(fotoSalva);
+        
+        return fotoSalvaDTO;
 	}
 
 }

@@ -34,7 +34,7 @@
 	// 'Filial'
 	/* @ngInject */
 	function EditarFilialController($controller, $scope,  $http, $state, $stateParams,
-			FilialData, MsgCenter) {
+			FilialData, MsgCenter, FotoData) {
 
 		
 		var vm = this;
@@ -48,7 +48,8 @@
 			
 			var imgBlob = dataURItoBlob(vm.imagem);
 			
-			FilialData.uploadImage(imgBlob, 'teste.png', 'fjsadffsasadfas').then(function(data) {
+			FotoData.incluir(imgBlob, 'teste.png', 'fjsadffsasadfas').then(function(response) {
+				vm.filial.foto = response.data;
 				vm.imagem = undefined;
 			});
 		}

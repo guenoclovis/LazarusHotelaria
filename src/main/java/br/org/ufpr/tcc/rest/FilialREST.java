@@ -34,165 +34,80 @@ import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.facade.FilialFacade;
 import br.org.ufpr.tcc.facade.FotoFacade;
-
-
+import br.org.ufpr.tcc.util.Constantes;
+import br.org.ufpr.tcc.util.ImageUtil;
 
 @Path("/filial")
 public class FilialREST {
 
 	FilialFacade facade = new FilialFacade();
 	FotoFacade fotoFacade = new FotoFacade();
-	
+
 	@GET
-    @Path("{codFilial}")
-    @Produces("application/json") 
-    public FilialDTO obter(@PathParam("codFilial") Long id, @QueryParam("fields") String fields) {
+	@Path("{codFilial}")
+	@Produces("application/json")
+	public FilialDTO obter(@PathParam("codFilial") Long id, @QueryParam("fields") String fields) {
 		FilialDTO filialDTO = facade.obter(id, fields);
 		return filialDTO;
-    }
-	
+	}
+
 	@GET
-    @Produces("application/json")
+	@Produces("application/json")
 	public ResultadoPaginadoDTO<FilialDTO> listar(@QueryParam("currentpage") int currentPage,
-	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String nome, @QueryParam("ativo") Boolean ativo,	        
-	        @QueryParam("fields") String fields) {
+			@QueryParam("pagesize") int pageSize, @QueryParam("nome") String nome, @QueryParam("ativo") Boolean ativo,
+			@QueryParam("fields") String fields) {
 
-        FilialFiltroDTO filtro = new FilialFiltroDTO();
-        
-        filtro.setNome(nome);
+		FilialFiltroDTO filtro = new FilialFiltroDTO();
 
-        // Paginação
-        if (pageSize != 0) {
-            filtro.getPagina().setPageSize(pageSize);
-        }
-        if (currentPage != 0) {
-            filtro.getPagina().setCurrentPage(currentPage);
-        }
+		filtro.setNome(nome);
 
-        return facade.listar(filtro, fields);
-    }
-	
+		// Paginação
+		if (pageSize != 0) {
+			filtro.getPagina().setPageSize(pageSize);
+		}
+		if (currentPage != 0) {
+			filtro.getPagina().setCurrentPage(currentPage);
+		}
+
+		return facade.listar(filtro, fields);
+	}
+
 	@POST
-    @Produces("application/json")
-    @Consumes("application/json")
-    public Response inserir(FilialDTO filialDTO, @Context UriInfo uriInfo) {
-        ResponseDTO response = facade.persistir(filialDTO);        
-        URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
-        return Response.created(location).entity(response).build();
-    }
-
-    @DELETE
-    @Produces("application/json")    
-    public Response remover(@QueryParam("ids") List<Long> ids) {
-        ResponseDTO response = facade.remover(ids.toArray(new Long[ids.size()]));
-        return Response.ok(response).build();
-    }
-    
-    @DELETE
-    @Path("{codFilial}")
-    @Produces("application/json")    
-    public Response remover(@PathParam("codFilial") Long id) {
-    	List<Long> ids = new ArrayList<Long>();
-    	ids.add(id);
-        
-        return remover(ids);
-    }
-    
-    @PUT
-    @Path("{codFilial}")
-    @Consumes("application/json")
-    @Produces("application/json")    
-    public Response alterar(@PathParam("codFilial") Long id, FilialDTO filialDTO) {
-    	filialDTO.setCodFilial(Integer.valueOf(id.intValue()));
-        ResponseDTO response = facade.persistir(filialDTO);
-        return Response.ok(response).build();
-    }
-    
-    @POST
-	@Path("/foto")
-	@Consumes("multipart/form-data")
-	public Response uploadFile(MultipartFormDataInput input, 
-			@QueryParam("nomeArquivo") String nomeArquivo, 
-			@QueryParam("legenda") String legenda) {
-
-		Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
-		List<InputPart> inputParts = uploadForm.get("uploadedFile");
-
-		FotoDTO fotoDTO = null;
-		
-		for (InputPart inputPart : inputParts) {
-
-		 try {
-
-			MultivaluedMap<String, String> header = inputPart.getHeaders();
-			//fileName = getFileName(header);
-
-			//convert the uploaded file to inputstream
-			InputStream inputStream = inputPart.getBody(InputStream.class,null);
-
-			byte [] bytes = IOUtils.toByteArray(inputStream);
-
-			//constructs upload file path
-			String pathNomeArquivo = "/tmp/" + nomeArquivo;
-
-			writeFile(bytes,pathNomeArquivo);
-			
-			fotoDTO = new FotoDTO();
-			fotoDTO.setLegenda(legenda);
-			fotoDTO.setPath(pathNomeArquivo);
-
-			fotoFacade.inserir(fotoDTO);
-
-		  } catch (IOException e) {
-			e.printStackTrace();
-		  }
-
-		}
-
-		return Response.ok(fotoDTO).build();
-
-	}
-    
-    /**
-	 * header sample
-	 * {
-	 * 	Content-Type=[image/png],
-	 * 	Content-Disposition=[form-data; name="file"; filename="filename.extension"]
-	 * }
-	 **/
-	//get uploaded filename, is there a easy way in RESTEasy?
-	private String getFileName(MultivaluedMap<String, String> header) {
-
-		String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
-
-		for (String filename : contentDisposition) {
-			if ((filename.trim().startsWith("filename"))) {
-
-				String[] name = filename.split("=");
-
-				String finalFileName = name[1].trim().replaceAll("\"", "");
-				return finalFileName;
-			}
-		}
-		return "unknown";
+	@Produces("application/json")
+	@Consumes("application/json")
+	public Response inserir(FilialDTO filialDTO, @Context UriInfo uriInfo) {
+		ResponseDTO response = facade.persistir(filialDTO);
+		URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
+		return Response.created(location).entity(response).build();
 	}
 
-	//save to somewhere
-	private void writeFile(byte[] content, String filename) throws IOException {
-
-		File file = new File(filename);
-
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-
-		FileOutputStream fop = new FileOutputStream(file);
-
-		fop.write(content);
-		fop.flush();
-		fop.close();
-
+	@DELETE
+	@Produces("application/json")
+	public Response remover(@QueryParam("ids") List<Long> ids) {
+		ResponseDTO response = facade.remover(ids.toArray(new Long[ids.size()]));
+		return Response.ok(response).build();
 	}
+
+	@DELETE
+	@Path("{codFilial}")
+	@Produces("application/json")
+	public Response remover(@PathParam("codFilial") Long id) {
+		List<Long> ids = new ArrayList<Long>();
+		ids.add(id);
+
+		return remover(ids);
+	}
+
+	@PUT
+	@Path("{codFilial}")
+	@Consumes("application/json")
+	@Produces("application/json")
+	public Response alterar(@PathParam("codFilial") Long id, FilialDTO filialDTO) {
+		filialDTO.setCodFilial(Integer.valueOf(id.intValue()));
+		ResponseDTO response = facade.persistir(filialDTO);
+		return Response.ok(response).build();
+	}
+
 	
+
 }

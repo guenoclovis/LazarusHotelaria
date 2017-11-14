@@ -1,8 +1,12 @@
 package br.org.ufpr.tcc.rest;
 
-import java.net.URI;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -13,17 +17,22 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
-import javax.ws.rs.core.Context;
+import javax.ws.rs.core.MultivaluedMap;
 import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriInfo;
+
+import org.apache.commons.io.IOUtils;
+import org.jboss.resteasy.plugins.providers.multipart.InputPart;
+import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
 import br.org.ufpr.tcc.dto.FotoDTO;
 import br.org.ufpr.tcc.dto.FotoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.facade.FotoFacade;
+import br.org.ufpr.tcc.util.Constantes;
+import br.org.ufpr.tcc.util.ImageUtil;
 
-@Path("/atributo")
+@Path("/foto")
 public class FotoREST {
 
 	FotoFacade facade = new FotoFacade();
@@ -58,13 +67,84 @@ public class FotoREST {
     }
 	
 	@POST
-    @Produces("application/json")
-    @Consumes("application/json")
-    public Response inserir(FotoDTO atributoDTO, @Context UriInfo uriInfo) {
-        ResponseDTO response = facade.persistir(atributoDTO);        
-        URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
-        return Response.created(location).entity(response).build();
-    }
+	@Consumes("multipart/form-data")
+	public Response uploadFile(MultipartFormDataInput input, @QueryParam("nomeArquivo") String nomeArquivo,
+			@QueryParam("legenda") String legenda) {
+
+		Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
+		List<InputPart> inputParts = uploadForm.get("uploadedFile");
+
+		FotoDTO fotoDTO = null;
+		FotoDTO fotoSalvaDTO = null;
+
+		for (InputPart inputPart : inputParts) {
+
+			try {
+				InputStream inputStream = inputPart.getBody(InputStream.class, null);
+
+				byte[] bytesImgOriginal = IOUtils.toByteArray(inputStream);
+				byte[] bytesImgMiniatura = ImageUtil.resize(bytesImgOriginal, 180, 130, "jpg");
+
+				String nomeArquivoOriginal = nomeArquivo;
+				String nomeArquivoMiniatura = nomeArquivo + ".min";
+
+				writeFile(bytesImgOriginal, Constantes.PATH_ARMAZENAMENTO_FOTOS + nomeArquivoOriginal);
+				writeFile(bytesImgMiniatura, Constantes.PATH_ARMAZENAMENTO_FOTOS + nomeArquivoMiniatura);
+
+				fotoDTO = new FotoDTO();
+				fotoDTO.setLegenda(legenda);
+				fotoDTO.setNomeFotoOriginal(nomeArquivo);
+				fotoDTO.setNomeFotoMiniatura(nomeArquivoMiniatura);
+
+				fotoSalvaDTO = facade.inserir(fotoDTO);
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+
+		}
+		
+		return Response.ok(fotoSalvaDTO).build();
+
+	}
+
+	/**
+	 * header sample { Content-Type=[image/png], Content-Disposition=[form-data;
+	 * name="file"; filename="filename.extension"] }
+	 **/
+	// get uploaded filename, is there a easy way in RESTEasy?
+	private String getFileName(MultivaluedMap<String, String> header) {
+
+		String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
+
+		for (String filename : contentDisposition) {
+			if ((filename.trim().startsWith("filename"))) {
+
+				String[] name = filename.split("=");
+
+				String finalFileName = name[1].trim().replaceAll("\"", "");
+				return finalFileName;
+			}
+		}
+		return "unknown";
+	}
+
+	// save to somewhere
+	private void writeFile(byte[] content, String filename) throws IOException {
+
+		File file = new File(filename);
+
+		if (!file.exists()) {
+			file.createNewFile();
+		}
+
+		FileOutputStream fop = new FileOutputStream(file);
+
+		fop.write(content);
+		fop.flush();
+		fop.close();
+
+	}
 
     @DELETE
     @Produces("application/json")    
@@ -90,6 +170,7 @@ public class FotoREST {
     public Response alterar(@PathParam("codFoto") Long id, FotoDTO atributoDTO) {
     	atributoDTO.setCodFoto(Integer.valueOf(id.intValue()));
         ResponseDTO response = facade.persistir(atributoDTO);
+        facade.obter(response.getId(), null);
         return Response.ok(response).build();
     }
 	

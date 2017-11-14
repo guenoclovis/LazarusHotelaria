@@ -17,8 +17,7 @@
             obter : obter,            
             listar : listar,
             salvar : salvar,
-            excluir : excluir,
-            uploadImage : uploadImage
+            excluir : excluir           
         };
 
         return service;
@@ -42,29 +41,6 @@
         
         function excluir(codFilial) {
             return Restangular.one(apiURLCompleta, codFilial).remove();
-        }
-        
-        function uploadImage(imgBlob, nomeArquivo, legenda){
-        	
-			var fd = new FormData();
-			
-			fd.append('uploadedFile', imgBlob);			
-			fd.append('nomeArquivo', nomeArquivo);
-			fd.append('legenda', legenda);
-			
-			$http.post(baseURL + apiURLCompleta + '/foto?nomeArquivo=' + nomeArquivo + "&legenda=" + legenda, fd, {
-				transformRequest : angular.identity,
-				headers : {
-					'Content-Type' : undefined					
-				}
-			}).then(
-			function(response) {
-				console.log('success', response);
-				
-			}
-			,function(response) {
-				console.log('error', response);
-			});
         }
     }
 })();

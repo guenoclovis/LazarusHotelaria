@@ -3,7 +3,8 @@ package br.org.ufpr.tcc.dto;
 public class FotoDTO {
 
 	private Integer codFoto;
-    private String path;	
+    private String nomeFotoOriginal;	
+    private String nomeFotoMiniatura;
     private String legenda;
     
 	public Integer getCodFoto() {
@@ -12,11 +13,17 @@ public class FotoDTO {
 	public void setCodFoto(Integer codFoto) {
 		this.codFoto = codFoto;
 	}
-	public String getPath() {
-		return path;
+	public String getNomeFotoOriginal() {
+		return nomeFotoOriginal;
 	}
-	public void setPath(String path) {
-		this.path = path;
+	public void setNomeFotoOriginal(String nomeFotoOriginal) {
+		this.nomeFotoOriginal = nomeFotoOriginal;
+	}
+	public String getNomeFotoMiniatura() {
+		return nomeFotoMiniatura;
+	}
+	public void setNomeFotoMiniatura(String nomeFotoMiniatura) {
+		this.nomeFotoMiniatura = nomeFotoMiniatura;
 	}
 	public String getLegenda() {
 		return legenda;

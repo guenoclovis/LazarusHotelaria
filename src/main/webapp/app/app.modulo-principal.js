@@ -21,6 +21,7 @@
 			'usuario',
 			'quarto',
 			'reserva',
+			'foto',
 //			'showcase'
 			]);
 	

@@ -14,7 +14,8 @@ public class DTOtoFoto {
 		}
 		
 		atributo.setCodFoto(dto.getCodFoto());
-		atributo.setPath(dto.getPath());		
+		atributo.setNomeFotoOriginal(dto.getNomeFotoOriginal());		
+		atributo.setNomeFotoMiniatura(dto.getNomeFotoMiniatura());
 		atributo.setLegenda(dto.getLegenda());
 
 		return atributo;

@@ -58,7 +58,7 @@ public class FotoDAO extends LazarusDAO<Foto> {
         Predicate[] predicados = { };
         
         Path<String> pathLegenda = root.get(Foto.LEGENDA);
-        Path<String> pathPath = root.get(Foto.PATH);
+        Path<String> pathPath = root.get(Foto.NOME_FOTO_ORIGINAL);
         
         if(StringUtils.isNotBlank(filtros.getLegenda())){
             predicados = Util.add(predicados, cb.like(pathLegenda, Util.likeFormat(filtros.getLegenda())));

@@ -16,7 +16,8 @@ import br.org.ufpr.tcc.validator.validacoes.NaoVazio;
 public class Foto {
 
 	public static final String ID = "codFoto";
-	public static final String PATH = "path";
+	public static final String NOME_FOTO_ORIGINAL = "nomeFoto";
+	public static final String NOME_FOTO_MINIATURA = "nomeFotoMiniatura";
 	public static final String LEGENDA = "legenda";
 	
 	@Id
@@ -25,10 +26,15 @@ public class Foto {
     @SequenceGenerator(name = "SEQ_FOTO", schema="public", sequenceName = "fotos_cod_foto_seq", allocationSize = 1)
 	private Integer codFoto;
 	
-	@NaoNulo(nomeCampo = "Path")
-	@NaoVazio(nomeCampo = "Path")
-	@Column(name = "path")
-    private String path;
+	@NaoNulo(nomeCampo = "Nome da Foto Original")
+	@NaoVazio(nomeCampo = "Nome da Foto Original")
+	@Column(name = "nome_foto_original")
+    private String nomeFotoOriginal;
+	
+	@NaoNulo(nomeCampo = "Nome da Foto Miniatura")
+	@NaoVazio(nomeCampo = "Nome da Foto Miniatura")
+	@Column(name = "nome_foto_miniatura")
+    private String nomeFotoMiniatura;
 	
 	@NaoNulo(nomeCampo = "Legenda")
 	@NaoVazio(nomeCampo = "Legenda")
@@ -43,12 +49,20 @@ public class Foto {
 		this.codFoto = codFoto;
 	}
 
-	public String getPath() {
-		return path;
+	public String getNomeFotoOriginal() {
+		return nomeFotoOriginal;
 	}
 
-	public void setPath(String path) {
-		this.path = path;
+	public void setNomeFotoOriginal(String nomeFotoOriginal) {
+		this.nomeFotoOriginal = nomeFotoOriginal;
+	}
+
+	public String getNomeFotoMiniatura() {
+		return nomeFotoMiniatura;
+	}
+
+	public void setNomeFotoMiniatura(String nomeFotoMiniatura) {
+		this.nomeFotoMiniatura = nomeFotoMiniatura;
 	}
 
 	public String getLegenda() {
@@ -65,7 +79,8 @@ public class Foto {
 		int result = 1;
 		result = prime * result + ((codFoto == null) ? 0 : codFoto.hashCode());
 		result = prime * result + ((legenda == null) ? 0 : legenda.hashCode());
-		result = prime * result + ((path == null) ? 0 : path.hashCode());
+		result = prime * result + ((nomeFotoMiniatura == null) ? 0 : nomeFotoMiniatura.hashCode());
+		result = prime * result + ((nomeFotoOriginal == null) ? 0 : nomeFotoOriginal.hashCode());
 		return result;
 	}
 
@@ -88,17 +103,23 @@ public class Foto {
 				return false;
 		} else if (!legenda.equals(other.legenda))
 			return false;
-		if (path == null) {
-			if (other.path != null)
+		if (nomeFotoMiniatura == null) {
+			if (other.nomeFotoMiniatura != null)
 				return false;
-		} else if (!path.equals(other.path))
+		} else if (!nomeFotoMiniatura.equals(other.nomeFotoMiniatura))
+			return false;
+		if (nomeFotoOriginal == null) {
+			if (other.nomeFotoOriginal != null)
+				return false;
+		} else if (!nomeFotoOriginal.equals(other.nomeFotoOriginal))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Foto [codFoto=" + codFoto + ", path=" + path + ", legenda=" + legenda + "]";
+		return "Foto [codFoto=" + codFoto + ", nomeFotoOriginal=" + nomeFotoOriginal + ", nomeFotoMiniatura="
+				+ nomeFotoMiniatura + ", legenda=" + legenda + "]";
 	}
-	
+
 }
