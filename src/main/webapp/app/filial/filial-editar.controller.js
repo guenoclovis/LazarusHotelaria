@@ -48,9 +48,8 @@
 			
 			var imgBlob = dataURItoBlob(vm.imagem);
 			
-			FotoData.incluir(imgBlob, 'teste.png', 'fjsadffsasadfas').then(function(response) {
-				vm.filial.foto = response.data;
-				vm.imagem = undefined;
+			FotoData.incluir(imgBlob, 'teste123', 'fjsadffsasadfas').then(function(response) {
+				vm.filial.foto = response.data;				
 			});
 		}
 

@@ -77,6 +77,10 @@ public class DataUtil {
     public static String fromLocalDateTimeToString(LocalDateTime dateTime) {
         return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
     }
+    
+    public static String fromLocalDateTimeToString(LocalDateTime dateTime, String format) {
+        return dateTime.format(DateTimeFormatter.ofPattern(format));
+    }
 
     public static String fromLocalDateToString(LocalDate dateTime) {
         return dateTime.format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));

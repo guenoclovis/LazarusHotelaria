@@ -24,10 +24,13 @@ import org.apache.commons.io.IOUtils;
 import org.jboss.resteasy.plugins.providers.multipart.InputPart;
 import org.jboss.resteasy.plugins.providers.multipart.MultipartFormDataInput;
 
+import br.org.ufpr.tcc.bc.FotoBC;
 import br.org.ufpr.tcc.dto.FotoDTO;
 import br.org.ufpr.tcc.dto.FotoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
+import br.org.ufpr.tcc.entity.Mensagem;
+import br.org.ufpr.tcc.exception.handler.NegocioException;
 import br.org.ufpr.tcc.facade.FotoFacade;
 import br.org.ufpr.tcc.util.Constantes;
 import br.org.ufpr.tcc.util.ImageUtil;
@@ -74,75 +77,9 @@ public class FotoREST {
 		Map<String, List<InputPart>> uploadForm = input.getFormDataMap();
 		List<InputPart> inputParts = uploadForm.get("uploadedFile");
 
-		FotoDTO fotoDTO = null;
-		FotoDTO fotoSalvaDTO = null;
-
-		for (InputPart inputPart : inputParts) {
-
-			try {
-				InputStream inputStream = inputPart.getBody(InputStream.class, null);
-
-				byte[] bytesImgOriginal = IOUtils.toByteArray(inputStream);
-				byte[] bytesImgMiniatura = ImageUtil.resize(bytesImgOriginal, 180, 130, "jpg");
-
-				String nomeArquivoOriginal = nomeArquivo;
-				String nomeArquivoMiniatura = nomeArquivo + ".min";
-
-				writeFile(bytesImgOriginal, Constantes.PATH_ARMAZENAMENTO_FOTOS + nomeArquivoOriginal);
-				writeFile(bytesImgMiniatura, Constantes.PATH_ARMAZENAMENTO_FOTOS + nomeArquivoMiniatura);
-
-				fotoDTO = new FotoDTO();
-				fotoDTO.setLegenda(legenda);
-				fotoDTO.setNomeFotoOriginal(nomeArquivo);
-				fotoDTO.setNomeFotoMiniatura(nomeArquivoMiniatura);
-
-				fotoSalvaDTO = facade.inserir(fotoDTO);
-
-			} catch (IOException e) {
-				e.printStackTrace();
-			}
-
-		}
+		FotoDTO fotoSalvaDTO = facade.gravarFotoPastaTemporaria(inputParts, nomeArquivo, "");
 		
 		return Response.ok(fotoSalvaDTO).build();
-
-	}
-
-	/**
-	 * header sample { Content-Type=[image/png], Content-Disposition=[form-data;
-	 * name="file"; filename="filename.extension"] }
-	 **/
-	// get uploaded filename, is there a easy way in RESTEasy?
-	private String getFileName(MultivaluedMap<String, String> header) {
-
-		String[] contentDisposition = header.getFirst("Content-Disposition").split(";");
-
-		for (String filename : contentDisposition) {
-			if ((filename.trim().startsWith("filename"))) {
-
-				String[] name = filename.split("=");
-
-				String finalFileName = name[1].trim().replaceAll("\"", "");
-				return finalFileName;
-			}
-		}
-		return "unknown";
-	}
-
-	// save to somewhere
-	private void writeFile(byte[] content, String filename) throws IOException {
-
-		File file = new File(filename);
-
-		if (!file.exists()) {
-			file.createNewFile();
-		}
-
-		FileOutputStream fop = new FileOutputStream(file);
-
-		fop.write(content);
-		fop.flush();
-		fop.close();
 
 	}
 

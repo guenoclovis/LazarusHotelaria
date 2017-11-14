@@ -9,6 +9,8 @@ public class FilialDTO {
     private String exibirSite;
     private String status;
     
+    private FotoDTO foto;
+    
     public String getEmail() {
     	return email;
     }
@@ -45,5 +47,11 @@ public class FilialDTO {
 	}
 	public void setStatus(String status) {
 		this.status = status;
+	}
+	public FotoDTO getFoto() {
+		return foto;
+	}
+	public void setFoto(FotoDTO foto) {
+		this.foto = foto;
 	}
 }

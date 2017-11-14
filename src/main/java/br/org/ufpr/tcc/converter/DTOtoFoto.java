@@ -7,18 +7,17 @@ import br.org.ufpr.tcc.entity.Foto;
 public class DTOtoFoto {
 	
 	public Foto convert(FotoDTO dto){
-		Foto atributo = new Foto();
+		Foto foto = new Foto();
 
 		if(dto.getCodFoto() != null){
-			atributo = new FotoBC().obter(dto.getCodFoto());
+			foto = new FotoBC().obter(dto.getCodFoto());
 		}
-		
-		atributo.setCodFoto(dto.getCodFoto());
-		atributo.setNomeFotoOriginal(dto.getNomeFotoOriginal());		
-		atributo.setNomeFotoMiniatura(dto.getNomeFotoMiniatura());
-		atributo.setLegenda(dto.getLegenda());
+				
+		foto.setNomeFotoOriginal(dto.getNomeFotoOriginal());		
+		foto.setNomeFotoMiniatura(dto.getNomeFotoMiniatura());
+		foto.setLegenda(dto.getLegenda());
 
-		return atributo;
+		return foto;
 	}
 
 }
