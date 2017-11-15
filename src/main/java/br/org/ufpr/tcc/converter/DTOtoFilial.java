@@ -6,6 +6,7 @@ import br.org.ufpr.tcc.entity.Filial;
 
 public class DTOtoFilial {
 	
+	
 	DTOtoFoto converterFoto = new DTOtoFoto();
 	
 	public Filial convert(FilialDTO dto){

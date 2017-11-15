@@ -92,6 +92,18 @@
 		</dependency>
 
 
+		<!-- https://mvnrepository.com/artifact/javax.ejb/ejb-api -->
+		<!-- for use @Singleton, @Startup and @Schedule for schedule tasks -->
+		<!-- https://mvnrepository.com/artifact/javax.ejb/javax.ejb-api -->
+		<dependency>
+			<groupId>javax.ejb</groupId>
+			<artifactId>javax.ejb-api</artifactId>
+			<version>3.2</version>
+		</dependency>
+
+
+
+
 	</dependencies>
 
 	<!-- comentario para teste alterado de novo -->

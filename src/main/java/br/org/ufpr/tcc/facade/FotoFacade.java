@@ -160,8 +160,6 @@ public class FotoFacade {
 				String nomeArquivoOriginal = nomeArquivo + "_" + dataHora + "." + extensaoFoto;
 				String nomeArquivoMiniatura = nomeArquivo + "_" + dataHora + ".min." + extensaoFoto;
 				
-				criarRepositorioDeFotos(nomePastaTmpFotos,nomePastaDefinitivaFoto);
-
 				writeFile(bytesImgOriginal, Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + nomePastaTmpFotos + File.separator + nomeArquivoOriginal);
 				writeFile(bytesImgMiniatura, Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + nomePastaTmpFotos + File.separator + nomeArquivoMiniatura);
 
@@ -181,36 +179,7 @@ public class FotoFacade {
 		return fotoSalvaDTO;
 	}
 
-	private void criarRepositorioDeFotos(String nomePastaTemporariaFotos, String nomePastaDefinitivaFotos) {
-		File f = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS);
-		if(!f.exists()){
-			if(f.mkdirs()){
-				
-				
-				File fTmp = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + nomePastaTemporariaFotos);
-				
-				if(!fTmp.exists()){
-					if(!fTmp.mkdirs()){
-						Mensagem m = new Mensagem(Mensagem.ERRO, "Não conseguiu criar pasta de fotos " + nomePastaTemporariaFotos);
-						throw new NegocioException(m);
-					}							
-				}
-				
-				File fDefinitivo = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + nomePastaDefinitivaFotos);
-				
-				if(!fDefinitivo.exists()){
-					if(!fDefinitivo.mkdirs()){
-						Mensagem m = new Mensagem(Mensagem.ERRO, "Não conseguiu criar pasta de fotos " + nomePastaDefinitivaFotos);
-						throw new NegocioException(m);
-					}							
-				}
-			} else {
-				Mensagem m = new Mensagem(Mensagem.ERRO, "Não conseguiu criar repositorio de fotos");
-				throw new NegocioException(m);
-			}
-			
-		}
-	}
+	
 	
 	/**
 	 * header sample { Content-Type=[image/png], Content-Disposition=[form-data;
