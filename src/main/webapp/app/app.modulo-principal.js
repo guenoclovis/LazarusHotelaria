@@ -8,18 +8,20 @@
             'checklist-model',
             'ngMask',
             'datepicker-localdate',
-            //'ng-file-upload',
+            //'ng-file-upload',            
             'ui.bootstrap',
             'msgcenter',
             
             //Sub-modulos que sao funcionalidades do sistema
+			'inicio',
 			'cliente', 
 			'filial', 
 			'atributo', 
 			'tipoquarto',
 			'usuario',
 			'quarto',
-//			'reserva',
+			'reserva',
+			'foto',
 //			'showcase'
 			]);
 	

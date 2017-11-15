@@ -7,7 +7,7 @@ Comando:
 Exemplo de como fazer:
  - Abrir o cmd
  - Digitar o comando
-	mklink /h "C:\Users\USUARIO\WILDFLY_HOME\standalone\deployments\LazarusHotelaria.war" "C:\Users\USUARIO\GIT_HOME\LazarusHotelaria\target\LazarusHotelaria.war"
+	mklink /h "C:\wildfly-10.1.0.Final\standalone\deployments\LazarusHotelaria.war" "C:\Users\GUENO\git\LazarusHotelaria\target\LazarusHotelaria.war"
 
 
 
