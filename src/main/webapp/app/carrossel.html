@@ -1,0 +1,138 @@
+<!-- ======================= CARROSSEL DE FOTOS =========================== -->
+
+            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+                    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner" role="listbox">
+                    <!-- Slide One - Set the background image for this slide in the line below -->
+                    <div class="carousel-item active" style="background-image: url('https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg')">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Lazer</h3>
+                            <p>Aproveite a vida.</p>
+                        </div>
+                    </div>
+                    <!-- Slide Two - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg')">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Bem estar</h3>
+                            <p>Lindos lugares.</p>
+                        </div>
+                    </div>
+                    <!-- Slide Three - Set the background image for this slide in the line below -->
+                    <div class="carousel-item" style="background-image: url('https://r-ec.bstatic.com/images/hotel/max1024x768/134/13487911.jpg')">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h3>Férias</h3>
+                            <p>Relaxe e desfrute de bons momentos.</p>
+                        </div>
+                    </div>
+                </div>
+                <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Anterior</span>
+                </a>
+                <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Proximo</span>
+                </a>
+            </div>
+        </header>
+		</br>
+<!-- ======================= QUARTOS DISPON�VEIS =========================== -->
+        <div class="row linha-site">
+        <div class="container">
+            <div class="col-sm-4">             
+               
+				<!-- T�TULO -->
+				<h3 align="left">Quartos disponíveis</h1></h3></br>
+				
+				<!-- FILIAL -->			
+				<div class="form-group">
+					<label for="combo-filial-lateral" class="control-label">Hotel Destino</label>
+					<select id="combo-filial-lateral" class="form-control" selectpicker>
+<!-- 					ng-options="item.codigo as item.descricao for item in vm.ufs" ng-model="vm.showcase.uf" -->
+						<option value="" selected>Curitiba-PR</option>
+						<option value="">Florianopolis-SC</option>
+						<option value="">Porto Alegre-RS</option>
+					</select>
+				</div>
+				
+                <!-- DATA ENTRADA -->              
+				<p class="input-group">
+					<label for="data-entrada">Data de Entrada</label>
+					<input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+						ng-model="vm.showcase.dataEntrada" is-open="vm.popup1.opened"
+						datepicker-options="dateOptions" ng-required="true" close-text="Close"
+						alt-input-formats="altInputFormats" id="data-entrada" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="vm.open1()">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>
+				
+                <!-- DATA SA�DA -->
+				<p class="input-group">
+					<label for="data-saida">Data de Saída</label>
+					<input type="text" class="form-control" uib-datepicker-popup
+						ng-model="vm.showcase.dataSaida" is-open="vm.popup2.opened"
+						datepicker-options="dateOptions" ng-required="true" close-text="Close" id="data-saida" />
+					<span class="input-group-btn">
+						<button type="button" class="btn btn-default" ng-click="vm.open1()">
+							<i class="glyphicon glyphicon-calendar"></i>
+						</button>
+					</span>
+				</p>      
+					              
+				<!-- BOT�O BUSCAR -->                    
+				<div class="botoes-meio" align="center">
+					<button ng-click="vm.irParaTelaInclusao()" name="buscar" class="btn btn-primary">Buscar</button>
+				</div>           		
+		</div>    
+<!-- ======================= FILIAIS OU TIPOS DE QUARTO =========================== -->
+		<div class="col-sm-8">
+	            <h1>Nossos Hoteis</h1>
+	            <p>Nossa rede de hoteis esta presente em todos os estados. Confira e explore nossas filiais:</p>
+	            
+				<div class="container-fluid bg-4 text-center">
+				  <div class="row">
+					<div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>				    
+				  </div></br>
+				  <div class="row">
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				    <div class="col-sm-4 linha-item"><a ui-sref="quartos">
+				    	<h4>Curitiba-PR</h4>						
+						<img src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<p>Descricao da filial que continua por mais de uma linha para testar...</p>
+				    </a></div>
+				  </div>					  
+				</div>
+	        </div>
+		</div>
+	</div>
+	

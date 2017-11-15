@@ -23,6 +23,5 @@
 			'reserva',
 			'foto',
 //			'showcase'
-			]);
-	
+	]);
 })();
