@@ -36,7 +36,7 @@ public class ReservaValidator {
 		//OUTRAS VALIDACOES
     	
 
-    	//data saída > dt entrada
+    	//data saida > dt entrada
     	/*
 	    if(DataUtil.is(quarto.getDtReserva())){
     		mensagem = new Mensagem(Mensagem.ERRO, "Data de nascimento deve ser menor ou igual a data atual!");

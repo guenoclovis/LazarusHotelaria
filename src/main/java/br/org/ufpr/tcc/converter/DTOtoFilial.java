@@ -6,6 +6,8 @@ import br.org.ufpr.tcc.entity.Filial;
 
 public class DTOtoFilial {
 	
+	DTOtoFoto converterFoto = new DTOtoFoto();
+	
 	public Filial convert(FilialDTO dto){
 		Filial filial = new Filial();
 
@@ -18,7 +20,11 @@ public class DTOtoFilial {
 		filial.setEmail(dto.getEmail());
 		filial.setDescricao(dto.getDescricao());
 		filial.setExibirSite(dto.getExibirSite());
-		filial.setStatus(dto.getStatus());
+		filial.setStatus(dto.getStatus().charAt(0));
+	
+		if(dto.getFoto() != null){
+			filial.setFoto(converterFoto.convert(dto.getFoto()));
+		}
 
 		return filial;
 	}

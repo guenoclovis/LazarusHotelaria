@@ -73,6 +73,7 @@ CREATE TABLE CLIENTES(
 	END_COMPL		VARCHAR(100)	NULL,
 	SENHA_ACESSO		VARCHAR(100)	NOT NULL,
 	STATUS			CHAR(1)		NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	COD_FOTO        INTEGER,
 	CONSTRAINT PK_CLIENTES	PRIMARY KEY (COD_CLIENTE)
 );
 -- DROP TABLE CLIENTES
@@ -120,7 +121,8 @@ CREATE TABLE FILIAIS(
 	DESCRICAO		TEXT			NULL,
 	EXIBIR_SITE		CHAR(1)			NOT NULL	DEFAULT 'S', -- 'S' (EXIBIR); 'N' (NAO EXIBIR)
 	EMAIL			VARCHAR(100)		NULL,
-	STATUS			CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)	
+	STATUS			CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	COD_FOTO        INTEGER,	
 	CONSTRAINT PK_FILIAIS PRIMARY KEY (COD_FILIAL)
 );
 -- DROP TABLE FILIAIS
@@ -129,7 +131,7 @@ INSERT INTO FILIAIS VALUES(1, 'Curitiba (Centro)', 'Belissimo hotel de 6 andares
 INSERT INTO FILIAIS VALUES(2, 'Florianopolis (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital de Santa Catarina.', 'S', 'I');
 INSERT INTO FILIAIS VALUES(3, 'Rio de Janeiro (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Rio de Janeiro.', 'S', 'I');
 
-SELECT setval('atributos_cod_atributo_seq', COALESCE((SELECT MAX(cod_atributo)+1 FROM atributos), 1), false);
+SELECT setval('filiais_cod_filial_seq', COALESCE((SELECT MAX(cod_filial)+1 FROM filiais), 1), false);
 
 ----------------------------------------------------------------------
 -- 5 - TABELA DE RELACIONAMENTO FILIAIS X ATRIBUTOS
@@ -219,3 +221,12 @@ CREATE TABLE RESERVA(
 	FOREIGN KEY (COD_CLIENTE) REFERENCES CLIENTES(COD_CLIENTE),
 	FOREIGN KEY (COD_QUARTO) REFERENCES QUARTOS(COD_QUARTO)
 );
+
+CREATE TABLE FOTOS(
+	COD_FOTO SERIAL  NOT NULL,
+	LEGENDA  VARCHAR NOT NULL,
+	NOME_FOTO_ORIGINAL     VARCHAR NOT NULL,
+	NOME_FOTO_MINIATURA     VARCHAR NOT NULL
+);
+
+SELECT setval('fotos_cod_foto_seq', COALESCE((SELECT MAX(cod_foto)+1 FROM fotos), 1), false);

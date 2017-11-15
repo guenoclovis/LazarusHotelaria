@@ -50,7 +50,7 @@ public class QuartoBC {
             log.info("Persistiu novo quarto na base de dados.");
 
         } else {
-            log.info("Inicia a atualização do quarto [id=%d]" + quarto.getCodQuarto());
+            log.info("Inicia a atualizacao do quarto [id=%d]" + quarto.getCodQuarto());
 
             try {
                 //TODO: PENDENTE
@@ -69,7 +69,7 @@ public class QuartoBC {
     	try {
     		dao.remover(dao.load(id));
 		} catch (Exception e) {
-			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Nï¿½o foi possï¿½vel excluir quarto com id=" + id));
+			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Nao foi possivel excluir quarto com id=" + id));
 			e.printStackTrace();
 		}
     	return response;

@@ -35,13 +35,14 @@ public class AtributoBC extends LazarusDAO<Atributo> {
         return new ResultadoPaginadoDTO<Atributo>(lista, new Pagina());
     }
 
-    public void persistir(Atributo atributo) {
+    public Atributo persistir(Atributo atributo) {
 
     	validator.validateAndThrow(atributo);
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
+    	Atributo atributoSalvo = null;
         if (atributo.getCodAtributo() == null) {
             log.info("Inicia a persistencia de um novo Atributo.");
-            dao.persistir(atributo);
+            atributoSalvo = dao.persistir(atributo);
             log.info("Persistiu novo Atributo na base de dados.");
 
         } else {
@@ -49,12 +50,14 @@ public class AtributoBC extends LazarusDAO<Atributo> {
 
             try {
                 //TODO: PENDENTE
-                dao.persistir(atributo);
+            	atributoSalvo = dao.persistir(atributo);
             } catch (Exception ex) {
                 Logger.getLogger(AtributoBC.class.getName()).log(Level.SEVERE, "Erro ao alterar.", ex);
             }
             log.info("Alterou Atributo na base de dados.");
         }
+        
+        return atributoSalvo;
     }
 
     public ResponseDTO remover(Integer id) {

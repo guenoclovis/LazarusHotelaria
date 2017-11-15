@@ -1,7 +1,5 @@
 package br.org.ufpr.tcc.dto;
 
-import java.util.Date;
-
 public class FilialDTO {
 
 	private Integer codFilial;
@@ -9,7 +7,9 @@ public class FilialDTO {
     private String email;
 	private String descricao;
     private String exibirSite;
-    private char status;
+    private String status;
+    
+    private FotoDTO foto;
     
     public String getEmail() {
     	return email;
@@ -42,13 +42,16 @@ public class FilialDTO {
 	public void setExibirSite(String exibirSite) {
 		this.exibirSite = exibirSite;
 	}
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-    
-	    
-	
+	public FotoDTO getFoto() {
+		return foto;
+	}
+	public void setFoto(FotoDTO foto) {
+		this.foto = foto;
+	}
 }

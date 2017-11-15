@@ -1,110 +1,130 @@
 //-----------------------------------------------------
 // CONTROLADOR CONSULTA
 //-----------------------------------------------------
-(function () {
-    'use strict';
+(function() {
+	'use strict';
 
-    // Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
-    angular.module('reserva').controller(
-            'ConsultarReservaController',
-            ConsultarReservaController);
+	// Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
+	angular.module('reserva').controller('ConsultarReservaController',
+			ConsultarReservaController);
 
-    // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'Reserva'
-    /* @ngInject */
-    function ConsultarReservaController($controller, $scope, $state,
-    		ReservaData, MsgCenter, FilialData) {
+	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
+	// modulo 'Reserva'
+	/* @ngInject */
+	function ConsultarReservaController($controller, $scope, $state, $stateParams, 
+			ReservaData, MsgCenter, FilialData) {
 
-        //////// ATRIBUTOS DO CONTROLADOR ////////////////////
-        var vm = this;
+		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
+		var vm = this;
+		
+		vm.popupDataEntrada = {
+			opened : false,
+		};
 
-        vm.msgs = "";
+		vm.popupDataSaida = {
+			opened : false
+		};
+		
+		vm.openDataEntrada = openDataEntrada;
+		vm.openDataSaida = openDataSaida;
 
-        vm.filtros = {};
-        vm.reservas = [];
-        vm.reserva = {};
+		vm.msgs = "";
 
-        // Paginação
-        vm.totalresults = 0;
-        vm.pagesize = 0;
-        vm.currentpage = 0;
-        vm.pageoptions = [10, 25, 50, 100];
+		vm.filtros = {};
+		
+		vm.filtros.filial = $stateParams.codFilial;
+		
+		vm.reservas = [];
+		vm.reserva = {};
 
-        // Operacoes acessiveis no html
-        vm.pesquisarLimpar = pesquisarLimpar;
-        vm.pageSizeAlterado = pageSizeAlterado;
-        vm.paginaAlterada = paginaAlterada;
-        vm.limpar = limpar;
-        vm.irParaTelaInclusao = irParaTelaInclusao;
-        vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
+		// Paginação
+		vm.totalresults = 0;
+		vm.pagesize = 0;
+		vm.currentpage = 0;
+		vm.pageoptions = [ 10, 25, 50, 100 ];
 
-        activate();
+		// Operacoes acessiveis no html
+		vm.pesquisarLimpar = pesquisarLimpar;
+		vm.pageSizeAlterado = pageSizeAlterado;
+		vm.paginaAlterada = paginaAlterada;
+		vm.limpar = limpar;
+		vm.irParaTelaInclusao = irParaTelaInclusao;
+		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 
-        //////// OPERACOES DO CONTROLADOR ////////////////////
+		activate();
 
-        function activate() {
-        	carregarFiliais();
-            //vm.deveRestaurar = FiltroService.deveRestaurar();
-            //restaurarEstadoTela();
-        }
+		// ////// OPERACOES DO CONTROLADOR ////////////////////
+		
+		function openDataEntrada() {
+			vm.popupDataEntrada.opened = true;
+		}
 
-        function pesquisarLimpar() {
-            vm.filtros.currentpage = 0;
-            MsgCenter.clear();
-            pesquisar();
-        }
+		function openDataSaida() {
+			vm.popupDataSaida.opened = true;
+		}
 
-        function paginaAlterada() {
-            vm.filtros.pagesize = vm.pagesize;
-            vm.filtros.currentpage = vm.currentpage - 1;
-            pesquisar();
-        }
+		function activate() {
+			// vm.deveRestaurar = FiltroService.deveRestaurar();
+			// restaurarEstadoTela();
+			carregarFiliais();
+		}
 
-        function pageSizeAlterado() {
-            vm.currentpage = 1;
-            paginaAlterada();
-        }
+		function pesquisarLimpar() {
+			vm.filtros.currentpage = 0;
+			MsgCenter.clear();
+			pesquisar();
+		}
 
-        function limpar() {
-            $state.reload();
-        }
+		function paginaAlterada() {
+			vm.filtros.pagesize = vm.pagesize;
+			vm.filtros.currentpage = vm.currentpage - 1;
+			pesquisar();
+		}
 
-        function irParaTelaDetalhamento(codReserva) {
-            //salvarEstadoTela();			
-            $state.go('reservaDetalhar', {
-                'codReserva': codReserva
-            });
-        }
+		function pageSizeAlterado() {
+			vm.currentpage = 1;
+			paginaAlterada();
+		}
 
-        function irParaTelaInclusao() {
-            //salvarEstadoTela();
-            $state.go('reservaEditar');
-        }
+		function limpar() {
+			$state.reload();
+		}
 
-        function salvarEstadoTela() {
-            var devePesquisar = vm.reservas.length > 0;
-            //FiltroService.salvarFiltros(vm.filtros, devePesquisar);
-        }
+		function irParaTelaDetalhamento(codReserva) {
+			// salvarEstadoTela();
+			$state.go('reservaDetalhar', {
+				'codReserva' : codReserva
+			});
+		}
 
-        function restaurarEstadoTela() {
-            /*if (FiltroService.deveRestaurar()) {
-             vm.filtros = FiltroService.obterFiltros();
-             
-             if (FiltroService.devePesquisar()) {
-             pesquisar();
-             }
-             FiltroService.marcarRestaurado();
-             }*/
-        }
-        
-        function carregarFiliais(){
-        	MsgCenter.clear();
-        	var filtros = {};
+		function irParaTelaInclusao() {
+			// salvarEstadoTela();
+			$state.go('reservaEditar');
+		}
 
-            FilialData.listar(filtros).then(function (data) {
-                vm.filiais = data.entidades;
+		function salvarEstadoTela() {
+			var devePesquisar = vm.reservas.length > 0;
+			// FiltroService.salvarFiltros(vm.filtros, devePesquisar);
+		}
 
-            });        	
-        }
+		function restaurarEstadoTela() {
+			/*
+			 * if (FiltroService.deveRestaurar()) { vm.filtros =
+			 * FiltroService.obterFiltros();
+			 * 
+			 * if (FiltroService.devePesquisar()) { pesquisar(); }
+			 * FiltroService.marcarRestaurado(); }
+			 */
+		}
+
+		function carregarFiliais() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			FilialData.listar(filtros).then(function(data) {
+				vm.filiais = data.entidades;
+			});
+		}
 
         function pesquisar() {
         	MsgCenter.clear();
@@ -124,7 +144,6 @@
                 }
             });
         }
-    }
+	}
 
 })();
-

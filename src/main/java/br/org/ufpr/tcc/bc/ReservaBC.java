@@ -45,12 +45,12 @@ public class ReservaBC {
 
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
         if (reserva.getCodReserva() == null) {
-            log.info("Inicia a persistência de uma nova reserva.");
+            log.info("Inicia a persistencia de uma nova reserva.");
             dao.persistir(reserva);
             log.info("Persistiu novo reserva na base de dados.");
 
         } else {
-            log.info("Inicia a atualização da reserva [id=%d]" + reserva.getCodReserva());
+            log.info("Inicia a atualizacao da reserva [id=%d]" + reserva.getCodReserva());
 
             try {
                 //TODO: PENDENTE
@@ -69,7 +69,7 @@ public class ReservaBC {
     	try {
     		dao.remover(dao.load(id));
 		} catch (Exception e) {
-			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Nï¿½o foi possï¿½vel excluir reserva com id=" + id));
+			response.getMensagens().add(new Mensagem(Mensagem.ERRO, "Nao foi possivel excluir reserva com id=" + id));
 			e.printStackTrace();
 		}
     	return response;

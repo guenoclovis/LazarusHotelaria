@@ -11,13 +11,14 @@ public class LazarusDAO<E> extends GenericDAO<E> {
 		super(EntityManagerUtil.LAZARUS_PU);
 	}
 	
-	public void persistir(E entity) {
+	public E persistir(E entity) {
 		
 		EntityTransaction transaction = getEntityManager().getTransaction();
 		transaction.begin();
+		E entitySaved = null;
 		
 		try {
-			merge(entity);
+			entitySaved = merge(entity);
 			flush();
 			
 			transaction.commit();
@@ -26,6 +27,8 @@ public class LazarusDAO<E> extends GenericDAO<E> {
 			e.printStackTrace();
 			transaction.rollback();
 		}
+		
+		return entitySaved;
 	}
 	
 	

@@ -1,15 +1,21 @@
 package br.org.ufpr.tcc.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -42,6 +48,11 @@ public class Filial {
 	
 	@Column(name="status")
 	private char status;
+	
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH })
+	@JoinColumn(name = "COD_FOTO", nullable = false)
+	@Fetch(FetchMode.SELECT)
+	private Foto foto;
 	
 	public Integer getCodFilial() {
 		return codFilial;
@@ -90,7 +101,14 @@ public class Filial {
 	public void setStatus(char status) {
 		this.status = status;
 	}
+	
+	public Foto getFoto() {
+		return foto;
+	}
 
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
 
 	@Override
 	public String toString() {
