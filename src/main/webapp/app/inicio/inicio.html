@@ -60,7 +60,7 @@
 							<div ng-repeat="filial in vm.filiais track by filial.codFilial">
 
 
-								<div class="col-sm-4 linha-item">
+								<div ng-if="filial.exibirSite == 1" class="col-sm-4 linha-item">
 
 									<button class="btn btn-sucess"
 										ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver

@@ -19,152 +19,151 @@ import br.org.ufpr.tcc.exception.handler.NegocioException;
 import br.org.ufpr.tcc.util.Constantes;
 import br.org.ufpr.tcc.util.ImageUtil;
 
-
-
 public class FilialFacade {
 
-    private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
-    
-    private FilialBC bc = new FilialBC();    
+	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    public FilialDTO obter(Long id, String fields) {
-        String logMsg = "Iniciando a busca de filial id[%d]" + id;
-        
-        log.info(logMsg);
+	private FilialBC bc = new FilialBC();
 
-        Filial f = bc.obter(id.intValue());
+	public FilialDTO obter(Long id, String fields) {
+		String logMsg = "Iniciando a busca de filial id[%d]" + id;
 
-        logMsg = "Busca de filial finalizada";
-        log.info(logMsg);
+		log.info(logMsg);
 
-        //CONVERTER
-        FilialToDTO converter = new FilialToDTO();
-        FilialDTO filialDTO = converter.convert(f);
-    	
-        return filialDTO;
-    }
+		Filial f = bc.obter(id.intValue());
 
-    public ResultadoPaginadoDTO<FilialDTO> listar(FilialFiltroDTO filtros, String fields) {
-        String logMsg = "Iniciando a listagens de Filial Facade";
-        log.info(logMsg);
+		logMsg = "Busca de filial finalizada";
+		log.info(logMsg);
 
-        ResultadoPaginadoDTO<Filial> listagem = null;
-        try {
+		// CONVERTER
+		FilialToDTO converter = new FilialToDTO();
+		FilialDTO filialDTO = converter.convert(f);
+
+		return filialDTO;
+	}
+
+	public ResultadoPaginadoDTO<FilialDTO> listar(FilialFiltroDTO filtros, String fields) {
+		String logMsg = "Iniciando a listagens de Filial Facade";
+		log.info(logMsg);
+
+		ResultadoPaginadoDTO<Filial> listagem = null;
+		try {
 			listagem = bc.listar(filtros);
 		} catch (Exception e) {
 			log.severe("Erro ao listar");
 			e.printStackTrace();
 		}
-        
-        log.info("Convertendo resultados obtidos");
 
-        
-        //CONVERTER
-        List<FilialDTO> filiaisDTO = new ArrayList<FilialDTO>();
-        for(Filial f : listagem.getEntidades()){
-        	FilialToDTO converter = new FilialToDTO();
-        	FilialDTO filialDTO = converter.convert(f);
-            
-            filiaisDTO.add(filialDTO);
-        }
-		
-		ResultadoPaginadoDTO<FilialDTO> responseDTO = new ResultadoPaginadoDTO<FilialDTO>(filiaisDTO, listagem.getPagina(), listagem.getMensagens());
+		log.info("Convertendo resultados obtidos");
 
-        logMsg = "Finalizando listagem de Filial";
-        log.info(logMsg);
+		// CONVERTER
+		List<FilialDTO> filiaisDTO = new ArrayList<FilialDTO>();
+		for (Filial f : listagem.getEntidades()) {
+			FilialToDTO converter = new FilialToDTO();
+			FilialDTO filialDTO = converter.convert(f);
 
-        return responseDTO;
-    }
+			filiaisDTO.add(filialDTO);
+		}
 
-    public ResponseDTO persistir(FilialDTO dto) {
-        String logMsg = "Iniciando a persistencia de Filial";
-        log.info(logMsg);
+		ResultadoPaginadoDTO<FilialDTO> responseDTO = new ResultadoPaginadoDTO<FilialDTO>(filiaisDTO,
+				listagem.getPagina(), listagem.getMensagens());
 
-        //CONVERTER
-        DTOtoFilial converter = new DTOtoFilial();
-        Filial filial = converter.convert(dto);
-        
+		logMsg = "Finalizando listagem de Filial";
+		log.info(logMsg);
+
+		return responseDTO;
+	}
+
+	public ResponseDTO persistir(FilialDTO dto) {
+		String logMsg = "Iniciando a persistencia de Filial";
+		log.info(logMsg);
+
+		// CONVERTER
+		DTOtoFilial converter = new DTOtoFilial();
+		Filial filial = converter.convert(dto);
+
 		ResponseDTO responseDTO = bc.persistir(filial);
-		
+
 		moverFotosPastaTMPParaPastaDefinitiva(dto);
 
-        logMsg = "Registro de Filial persistido";
-        log.info(logMsg);
+		logMsg = "Registro de Filial persistido";
+		log.info(logMsg);
 
-        return responseDTO;
-    }
-    
-    private void moverFotosPastaTMPParaPastaDefinitiva(FilialDTO dto) {
-    	
-    	if(dto.getFoto() != null){
-    		
-    		String nomeArquivo = null;
-    		File src = null;
-    		File dst = null;
-    		
-    		//foto original
-    		nomeArquivo = dto.getFoto().getNomeFotoOriginal();
+		return responseDTO;
+	}
 
-    		src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
-    				+ File.separator + nomeArquivo);
-    		dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
-    				+ File.separator + nomeArquivo);
+	private void moverFotosPastaTMPParaPastaDefinitiva(FilialDTO dto) {
 
-    		try {
-    			ImageUtil.copiarArquivos(src, dst);
-    		} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-    		
-    		
-    		//Foto miniatura
-    		nomeArquivo = dto.getFoto().getNomeFotoMiniatura();
+		if (dto.getFoto() != null) {
 
-    		src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
-    				+ File.separator + nomeArquivo);
-    		dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
-    				+ File.separator + nomeArquivo);
+			String nomeArquivo = null;
+			File src = null;
+			File dst = null;
 
-    		try {
-    			ImageUtil.copiarArquivos(src, dst);
-    		} catch (IOException e) {
-    			// TODO Auto-generated catch block
-    			e.printStackTrace();
-    		}
-	
-    	}
-    	
-    	
-    			
+			if (dto.getFoto().getNomeFotoOriginal() != null) {
+
+				// foto original
+				nomeArquivo = dto.getFoto().getNomeFotoOriginal();
+
+				src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+						+ File.separator + nomeArquivo);
+				dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+						+ File.separator + nomeArquivo);
+
+				try {
+					ImageUtil.copiarArquivos(src, dst);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (dto.getFoto().getNomeFotoMiniatura() != null) {
+				// Foto miniatura
+				nomeArquivo = dto.getFoto().getNomeFotoMiniatura();
+
+				src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+						+ File.separator + nomeArquivo);
+				dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+						+ File.separator + nomeArquivo);
+
+				try {
+					ImageUtil.copiarArquivos(src, dst);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
 	}
 
 	public ResponseDTO remover(Long... ids) {
-    	ResponseDTO retorno = new ResponseDTO();
-    	
-    	for(Long id : ids){
-    		ResponseDTO aux = bc.remover(id.intValue());
-    		retorno.getMensagens().addAll(aux.getMensagens());
-    	}
-    	
-    	return retorno;
-    	 
-    }
+		ResponseDTO retorno = new ResponseDTO();
+
+		for (Long id : ids) {
+			ResponseDTO aux = bc.remover(id.intValue());
+			retorno.getMensagens().addAll(aux.getMensagens());
+		}
+
+		return retorno;
+
+	}
 
 	public ResponseDTO inserir(FilialDTO dto) {
 		String logMsg = "Iniciando a persistência de Filial";
-        log.info(logMsg);
+		log.info(logMsg);
 
-        //CONVERTER
-        DTOtoFilial converter = new DTOtoFilial();
-        Filial filial = converter.convert(dto);
-        
+		// CONVERTER
+		DTOtoFilial converter = new DTOtoFilial();
+		Filial filial = converter.convert(dto);
+
 		ResponseDTO responseDTO = bc.persistir(filial);
 
-        logMsg = "Registro de Filial persistido";
-        log.info(logMsg);
+		logMsg = "Registro de Filial persistido";
+		log.info(logMsg);
 
-        return responseDTO;
+		return responseDTO;
 	}
 
 }

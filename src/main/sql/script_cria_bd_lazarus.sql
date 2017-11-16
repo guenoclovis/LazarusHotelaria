@@ -119,17 +119,17 @@ CREATE TABLE FILIAIS(
 	COD_FILIAL		SERIAL			NOT NULL,
 	NOME			VARCHAR(200)		NOT NULL,
 	DESCRICAO		TEXT			NULL,
-	EXIBIR_SITE		CHAR(1)			NOT NULL	DEFAULT 'S', -- 'S' (EXIBIR); 'N' (NAO EXIBIR)
+	EXIBIR_SITE		CHAR(1)			NOT NULL	DEFAULT '1', -- '1' (EXIBIR); '0' (NAO EXIBIR)
 	EMAIL			VARCHAR(100)		NULL,
-	STATUS			CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS			CHAR(1)			NOT NULL	DEFAULT '1', -- '1' (INCLUIDO); '0' (EXCLUIDO)
 	COD_FOTO        INTEGER,	
 	CONSTRAINT PK_FILIAIS PRIMARY KEY (COD_FILIAL)
 );
 -- DROP TABLE FILIAIS
 -- SELECT * FROM FILIAIS
-INSERT INTO FILIAIS VALUES(1, 'Curitiba (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Parana.', 'S', 'I');
-INSERT INTO FILIAIS VALUES(2, 'Florianopolis (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital de Santa Catarina.', 'S', 'I');
-INSERT INTO FILIAIS VALUES(3, 'Rio de Janeiro (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Rio de Janeiro.', 'S', 'I');
+INSERT INTO FILIAIS VALUES(1, 'Curitiba (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Parana.', '1', '1');
+INSERT INTO FILIAIS VALUES(2, 'Florianopolis (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital de Santa Catarina.', '1', '1');
+INSERT INTO FILIAIS VALUES(3, 'Rio de Janeiro (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Rio de Janeiro.', '1', '1');
 
 SELECT setval('filiais_cod_filial_seq', COALESCE((SELECT MAX(cod_filial)+1 FROM filiais), 1), false);
 
