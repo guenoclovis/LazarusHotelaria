@@ -1,5 +1,7 @@
 package br.org.ufpr.tcc.facade;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
@@ -14,6 +16,8 @@ import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.exception.handler.NegocioException;
+import br.org.ufpr.tcc.util.Constantes;
+import br.org.ufpr.tcc.util.ImageUtil;
 
 
 
@@ -81,6 +85,8 @@ public class FilialFacade {
         Filial filial = converter.convert(dto);
         
 		ResponseDTO responseDTO = bc.persistir(filial);
+		
+		moverFotosPastaTMPParaPastaDefinitiva(dto);
 
         logMsg = "Registro de Filial persistido";
         log.info(logMsg);
@@ -88,7 +94,52 @@ public class FilialFacade {
         return responseDTO;
     }
     
-    public ResponseDTO remover(Long... ids) {
+    private void moverFotosPastaTMPParaPastaDefinitiva(FilialDTO dto) {
+    	
+    	if(dto.getFoto() != null){
+    		
+    		String nomeArquivo = null;
+    		File src = null;
+    		File dst = null;
+    		
+    		//foto original
+    		nomeArquivo = dto.getFoto().getNomeFotoOriginal();
+
+    		src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+    				+ File.separator + nomeArquivo);
+    		dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+    				+ File.separator + nomeArquivo);
+
+    		try {
+    			ImageUtil.copiarArquivos(src, dst);
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+    		
+    		
+    		//Foto miniatura
+    		nomeArquivo = dto.getFoto().getNomeFotoMiniatura();
+
+    		src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+    				+ File.separator + nomeArquivo);
+    		dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+    				+ File.separator + nomeArquivo);
+
+    		try {
+    			ImageUtil.copiarArquivos(src, dst);
+    		} catch (IOException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+	
+    	}
+    	
+    	
+    			
+	}
+
+	public ResponseDTO remover(Long... ids) {
     	ResponseDTO retorno = new ResponseDTO();
     	
     	for(Long id : ids){

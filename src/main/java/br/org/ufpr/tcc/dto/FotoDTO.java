@@ -7,6 +7,21 @@ public class FotoDTO {
     private String nomeFotoMiniatura;
     private String legenda;
     
+    private byte[] imagemOriginal;
+    private byte[] imagemMiniatura;
+    
+	public byte[] getImagemOriginal() {
+		return imagemOriginal;
+	}
+	public void setImagemOriginal(byte[] imagemOriginal) {
+		this.imagemOriginal = imagemOriginal;
+	}
+	public byte[] getImagemMiniatura() {
+		return imagemMiniatura;
+	}
+	public void setImagemMiniatura(byte[] imagemMiniatura) {
+		this.imagemMiniatura = imagemMiniatura;
+	}
 	public Integer getCodFoto() {
 		return codFoto;
 	}
@@ -31,6 +46,4 @@ public class FotoDTO {
 	public void setLegenda(String legenda) {
 		this.legenda = legenda;
 	}
-    
-    
 }

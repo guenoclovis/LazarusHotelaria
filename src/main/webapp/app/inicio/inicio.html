@@ -46,6 +46,9 @@
 			</a>
 		</div>
 		<!-- ======================= FILIAIS/HOTEIS =========================== -->
+		<div>
+			<pre>{{vm.filiais | json}}</pre>
+		</div>
 		<div class="row linha-site">
 			<div class="container">
 
@@ -60,24 +63,27 @@
 							<div ng-if="!($index % 3) && ($index != 0)">
 								<div class="row">
 									<div class="col-sm-4 linha-item">
-										<button class="btn btn-sucess" ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver Quartos</button>
+										<button class="btn btn-sucess"
+											ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver
+											Quartos</button>
 										<a>
-											<h4>{{filial.nome}}</h4> <img
-											src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
-											class="img-responsive" style="width: 100%" alt="Image">
+											<h4>{{filial.nome}}</h4>
+											<img ng-src="data:image/JPEG;base64,{{filial.imagemMiniatura}}">
 											<p>{{filial.descricao}}</p>
 										</a>
 									</div>
 								</div>
 							</div>
 
-							<div ng-if="($index % 3) || ($index == 0)">						
+							<div ng-if="($index % 3) || ($index == 0)">
 								<div class="col-sm-4 linha-item">
-									<button class="btn btn-sucess" ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver Quartos</button>
+									<button class="btn btn-sucess"
+										ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver
+										Quartos</button>
 									<a>
-										<h4>{{filial.nome}}</h4> <img
-										src="http://mundoeducacao.bol.uol.com.br/upload/conteudo/paisagem-natural.jpg"
-										class="img-responsive" style="width: 100%" alt="Image">
+										<h4>{{filial.nome}}</h4> 
+										<img ng-src="data:image/JPEG;base64,{{filial.imagemMiniatura}}">
+<!-- 										 class="img-responsive" style="width: 100%" alt="Image"> -->
 										<p>{{filial.descricao}}</p>
 									</a>
 								</div>

@@ -4,10 +4,16 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
+import java.awt.image.DataBufferByte;
+import java.awt.image.WritableRaster;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 
 import javax.imageio.ImageIO;
 
@@ -63,4 +69,48 @@ public class ImageUtil {
 		ByteArrayInputStream in = new ByteArrayInputStream(byteArray);
 		return ImageIO.read(in);
 	}
+
+	public static void copiarArquivos(File src, File dst) throws IOException {
+
+		InputStream in = new FileInputStream(src);
+		OutputStream out = new FileOutputStream(dst);
+		byte[] buf = new byte[1024];
+		int len;
+		while ((len = in.read(buf)) > 0) {
+			out.write(buf, 0, len);
+		}
+		in.close();
+		out.close();
+		src.delete();
+
+	}
+
+	public static byte[] lerFotoParaByteArray(String pathFoto) throws IOException {
+		// open image
+		File imgPath = new File(pathFoto);
+		BufferedImage bufferedImage = ImageIO.read(imgPath);
+
+		// get DataBufferBytes from Raster
+		WritableRaster raster = bufferedImage.getRaster();
+		DataBufferByte data = (DataBufferByte) raster.getDataBuffer();
+
+		return (data.getData());
+	}
+
+	public static void main(String[] args) {
+		String nomeArquivo = "teste123_2017-11-15_215038.min.jpg";
+
+		File src = new File("C:\\wildfly-10.1.0.Final\\bin\\fotos" + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+				+ File.separator + nomeArquivo);
+		File dst = new File("C:\\wildfly-10.1.0.Final\\bin\\fotos" + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+				+ File.separator + nomeArquivo);
+
+		try {
+			copiarArquivos(src, dst);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
