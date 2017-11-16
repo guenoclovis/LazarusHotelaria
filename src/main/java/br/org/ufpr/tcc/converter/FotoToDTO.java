@@ -27,7 +27,7 @@ public class FotoToDTO {
 			if(foto.getNomeFotoMiniatura() != null){
 				try {
 					byte[] img = ImageUtil.lerFotoParaByteArray(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator
-							+ Constantes.NOME_PASTA_TMP_FOTOS + File.separator + foto.getNomeFotoMiniatura());
+							+ Constantes.NOME_PASTA_DEF_FOTOS + File.separator + foto.getNomeFotoMiniatura());
 					
 					dto.setImagemMiniatura(img);
 				} catch (IOException e) {
@@ -39,7 +39,7 @@ public class FotoToDTO {
 			if(foto.getNomeFotoOriginal() != null){
 				try {
 					byte[] img = ImageUtil.lerFotoParaByteArray(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator
-							+ Constantes.NOME_PASTA_TMP_FOTOS + File.separator + foto.getNomeFotoOriginal());
+							+ Constantes.NOME_PASTA_DEF_FOTOS + File.separator + foto.getNomeFotoOriginal());
 					
 					dto.setImagemOriginal(img);
 					

@@ -13,17 +13,21 @@
 	  function() {
 	    return {
 	      scope: {
-	        fileread: "="
+	        fileread: '='	         
 	      },
 	      link: function(scope, element, attributes) {
+	    	  
 	        element.bind("change", function(changeEvent) {
+	        	
 	          var reader = new FileReader();
 	          reader.onload = function(loadEvent) {
 	            scope.$apply(function() {
-	              scope.fileread = loadEvent.target.result;
+	              scope.fileread = loadEvent.target.result;	               	              
+	              //TODO: USAR O NOME PARA ENVIAR AO BACKEND changeEvent.target.files[0].name;
 	            });
 	          }
 	          reader.readAsDataURL(changeEvent.target.files[0]);
+	          
 	        });
 	      }
 	    }
@@ -42,13 +46,14 @@
 		// ////////
 		// the image
 		vm.imagem = undefined;
+		vm.nomeImagem = $scope.nomeArquivo;
 		
 
 		vm.uploadImage = function() {
 			
 			var imgBlob = dataURItoBlob(vm.imagem);
 			
-			FotoData.incluir(imgBlob, 'teste123', 'fjsadffsasadfas').then(function(response) {
+			FotoData.incluir(imgBlob, "filial.jpg", 'fjsadffsasadfas').then(function(response) {
 				vm.filial.foto = response.data;				
 			});
 		}

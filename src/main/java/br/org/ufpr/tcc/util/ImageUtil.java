@@ -4,8 +4,6 @@ import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferByte;
-import java.awt.image.WritableRaster;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -86,15 +84,36 @@ public class ImageUtil {
 	}
 
 	public static byte[] lerFotoParaByteArray(String pathFoto) throws IOException {
-		// open image
-		File imgPath = new File(pathFoto);
-		BufferedImage bufferedImage = ImageIO.read(imgPath);
 
-		// get DataBufferBytes from Raster
-		WritableRaster raster = bufferedImage.getRaster();
-		DataBufferByte data = (DataBufferByte) raster.getDataBuffer();
+		BufferedImage img = null;
+		File file = null;
+		byte[] imageData = null;
 
-		return (data.getData());
+		try {
+
+			file = new File(pathFoto);
+			String extensao = obterExtensaoArquivo(pathFoto);
+			img = ImageIO.read(file);
+			ByteArrayOutputStream baos = new ByteArrayOutputStream();
+			ImageIO.write(img, extensao, baos);
+			imageData = baos.toByteArray();
+		} catch (IOException e) {
+			throw e;
+		}
+
+		return imageData;
+	}
+
+	public static String obterExtensaoArquivo(String nomeArquivo) {
+		String extensao = null;
+		if (nomeArquivo != null) {
+			String[] parts = nomeArquivo.split("[.]");
+			if (parts.length > 0) {
+				extensao = parts[parts.length - 1].toLowerCase();
+			}
+		}
+		
+		return extensao;
 	}
 
 	public static void main(String[] args) {

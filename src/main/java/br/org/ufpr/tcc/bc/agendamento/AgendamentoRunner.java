@@ -69,6 +69,7 @@ public class AgendamentoRunner {
 	@Schedule( minute = "30", hour="*", dayOfWeek="*")
 	public void esvaziarPastaFotosTemporarias(){
 		log.info("Esvaziando pasta para armazenamento temporario de fotos ...");
-		//TODO: PENDENTE
+		//TODO: limpar pasta tmp
+		//TODO: remover do BD fotos que nao estao vinculadas a filial/quarto
 	}
 }

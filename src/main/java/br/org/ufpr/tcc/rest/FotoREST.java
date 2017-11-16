@@ -43,9 +43,9 @@ public class FotoREST {
 	@GET
     @Path("{codFoto}")
     @Produces("application/json") 
-    public FotoDTO obter(@PathParam("codFoto") Long id, @QueryParam("fields") String fields) {
-		FotoDTO atributoDTO = facade.obter(id, fields);
-		return atributoDTO;
+    public Response obter(@PathParam("codFoto") Long codFoto) {
+		FotoDTO fotoDTO = facade.obter(codFoto);
+		return Response.ok(fotoDTO).build();
     }
 	
 	@GET
@@ -107,7 +107,7 @@ public class FotoREST {
     public Response alterar(@PathParam("codFoto") Long id, FotoDTO atributoDTO) {
     	atributoDTO.setCodFoto(Integer.valueOf(id.intValue()));
         ResponseDTO response = facade.persistir(atributoDTO);
-        facade.obter(response.getId(), null);
+        facade.obter(response.getId());
         return Response.ok(response).build();
     }
 	

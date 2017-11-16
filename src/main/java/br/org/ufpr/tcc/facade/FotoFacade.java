@@ -40,7 +40,7 @@ public class FotoFacade {
     
     private FotoBC bc = new FotoBC();    
 
-    public FotoDTO obter(Long id, String fields) {
+    public FotoDTO obter(Long id) {
         String logMsg = "Iniciando a busca de foto id[%d]" + id;
         
         log.info(logMsg);
@@ -137,10 +137,7 @@ public class FotoFacade {
 
 	public FotoDTO gravarFotoPastaTemporaria(List<InputPart> inputParts, String nomeArquivo, String legenda) {
 		
-		String nomePastaTmpFotos = "tmp";
-		String nomePastaDefinitivaFoto = "definitivo";
-		
-		String logMsg = "Iniciando gravação da imagem da Foto na pasta" + nomePastaTmpFotos;
+		String logMsg = "Iniciando gravação da imagem da Foto na pasta" + Constantes.NOME_PASTA_TMP_FOTOS;
         log.info(logMsg);
         FotoDTO fotoDTO = null;
 		FotoDTO fotoSalvaDTO = null;
@@ -150,7 +147,19 @@ public class FotoFacade {
 			try {
 				InputStream inputStream = inputPart.getBody(InputStream.class, null);
 				
-				String extensaoFoto = "jpg";
+				String[] partesDoNome = nomeArquivo.split("\\.");
+				
+				String extensaoFoto = "";
+				if(partesDoNome.length >= 1){
+					extensaoFoto = partesDoNome[partesDoNome.length-1];
+					extensaoFoto = extensaoFoto.trim().toLowerCase();
+					if(!extensaoFoto.equals("jpg") && !extensaoFoto.equals("jpeg")){
+						Mensagem m = new Mensagem(Mensagem.ERRO, "Extensão inválida");
+						throw new NegocioException(m);
+					} else {
+						extensaoFoto = "jpg";
+					}
+				}
 				
 				byte[] bytesImgOriginal = IOUtils.toByteArray(inputStream);
 				byte[] bytesImgMiniatura = ImageUtil.resize(bytesImgOriginal, 180, 130, extensaoFoto);
@@ -160,12 +169,12 @@ public class FotoFacade {
 				String nomeArquivoOriginal = nomeArquivo + "_" + dataHora + "." + extensaoFoto;
 				String nomeArquivoMiniatura = nomeArquivo + "_" + dataHora + ".min." + extensaoFoto;
 				
-				writeFile(bytesImgOriginal, Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + nomePastaTmpFotos + File.separator + nomeArquivoOriginal);
-				writeFile(bytesImgMiniatura, Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + nomePastaTmpFotos + File.separator + nomeArquivoMiniatura);
+				writeFile(bytesImgOriginal, Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS + File.separator + nomeArquivoOriginal);
+				writeFile(bytesImgMiniatura, Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS + File.separator + nomeArquivoMiniatura);
 
 				fotoDTO = new FotoDTO();
 				fotoDTO.setLegenda(legenda);
-				fotoDTO.setNomeFotoOriginal(nomeArquivo);
+				fotoDTO.setNomeFotoOriginal(nomeArquivoOriginal);
 				fotoDTO.setNomeFotoMiniatura(nomeArquivoMiniatura);
 
 				fotoSalvaDTO = inserir(fotoDTO);
