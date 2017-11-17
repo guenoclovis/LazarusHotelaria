@@ -116,20 +116,4 @@ public class ImageUtil {
 		return extensao;
 	}
 
-	public static void main(String[] args) {
-		String nomeArquivo = "teste123_2017-11-15_215038.min.jpg";
-
-		File src = new File("C:\\wildfly-10.1.0.Final\\bin\\fotos" + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
-				+ File.separator + nomeArquivo);
-		File dst = new File("C:\\wildfly-10.1.0.Final\\bin\\fotos" + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
-				+ File.separator + nomeArquivo);
-
-		try {
-			copiarArquivos(src, dst);
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-	}
-
 }
