@@ -11,12 +11,13 @@
 	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
 	// modulo 'Reserva'
 	/* @ngInject */
-	function ConsultarReservaController($controller, $scope, $state, $stateParams, 
-			ReservaData, MsgCenter, FilialData) {
+	function ConsultarReservaController($controller, $scope, $state,
+			$stateParams, ReservaData, MsgCenter, FilialData, FiltroService,
+			QuartoData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
-		
+
 		vm.popupDataEntrada = {
 			opened : false,
 		};
@@ -24,18 +25,18 @@
 		vm.popupDataSaida = {
 			opened : false
 		};
-		
+
 		vm.openDataEntrada = openDataEntrada;
 		vm.openDataSaida = openDataSaida;
 
 		vm.msgs = "";
 
 		vm.filtros = {};
-		
+
 		vm.filtros.filial = $stateParams.codFilial;
 		vm.filtros.dataEntrada = $stateParams.dataEntrada;
 		vm.filtros.dataSaida = $stateParams.dataSaida;
-		
+
 		vm.reservas = [];
 		vm.reserva = {};
 
@@ -56,7 +57,7 @@
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
-		
+
 		function openDataEntrada() {
 			vm.popupDataEntrada.opened = true;
 		}
@@ -66,9 +67,9 @@
 		}
 
 		function activate() {
-			// vm.deveRestaurar = FiltroService.deveRestaurar();
-			// restaurarEstadoTela();
-			carregarFiliais();
+			vm.deveRestaurar = FiltroService.deveRestaurar();
+			restaurarEstadoTela();
+			carregarQuartos();
 		}
 
 		function pesquisarLimpar() {
@@ -93,30 +94,33 @@
 		}
 
 		function irParaTelaDetalhamento(codReserva) {
-			// salvarEstadoTela();
+			salvarEstadoTela();
 			$state.go('reservaDetalhar', {
 				'codReserva' : codReserva
 			});
 		}
 
 		function irParaTelaInclusao() {
-			// salvarEstadoTela();
+			salvarEstadoTela();
 			$state.go('reservaEditar');
 		}
 
 		function salvarEstadoTela() {
 			var devePesquisar = vm.reservas.length > 0;
-			// FiltroService.salvarFiltros(vm.filtros, devePesquisar);
+			FiltroService.salvarFiltros(vm.filtros, devePesquisar);
 		}
 
 		function restaurarEstadoTela() {
-			/*
-			 * if (FiltroService.deveRestaurar()) { vm.filtros =
-			 * FiltroService.obterFiltros();
-			 * 
-			 * if (FiltroService.devePesquisar()) { pesquisar(); }
-			 * FiltroService.marcarRestaurado(); }
-			 */
+
+			if (FiltroService.deveRestaurar()) {
+				vm.filtros = FiltroService.obterFiltros();
+
+				if (FiltroService.devePesquisar()) {
+					pesquisar();
+				}
+				FiltroService.marcarRestaurado();
+			}
+
 		}
 
 		function carregarFiliais() {
@@ -127,25 +131,34 @@
 				vm.filiais = data.entidades;
 			});
 		}
+		
+		function carregarQuartos() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
 
-        function pesquisar() {
-        	MsgCenter.clear();
-            var filtros = vm.filtros;
+			QuartoData.listar(filtros).then(function(data) {
+				vm.quartos = data.entidades;
+			});
+		}
 
-            ReservaData.listar(filtros).then(function (data) {
-                vm.reservas = data.entidades;
+		function pesquisar() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
 
-                if (data.pagina) {
-                    var page = data.pagina;
-                    vm.currentpage = page.currentPage + 1;
-                    vm.pagesize = page.pageSize;
-                    vm.totalresults = page.totalResults;
-                }
-                if (data.mensagens) {
-                	MsgCenter.addMessages(data.mensagens);  
-                }
-            });
-        }
+			ReservaData.listar(filtros).then(function(data) {
+				vm.reservas = data.entidades;
+
+				if (data.pagina) {
+					var page = data.pagina;
+					vm.currentpage = page.currentPage + 1;
+					vm.pagesize = page.pageSize;
+					vm.totalresults = page.totalResults;
+				}
+				if (data.mensagens) {
+					MsgCenter.addMessages(data.mensagens);
+				}
+			});
+		}
 	}
 
 })();
