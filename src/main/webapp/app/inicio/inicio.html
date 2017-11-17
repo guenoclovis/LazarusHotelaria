@@ -51,10 +51,6 @@
 			<div class="container">
 				<div class="col-sm-4">
 
-					<div>
-						<pre>{{vm.filtros | json}}</pre>
-					</div>
-
 					<!-- TITULO -->
 					<div class="row">
 						<h3 align="left">
@@ -136,43 +132,47 @@
 				</div>
 				<!-- ======================= FILIAIS/HOTEIS =========================== -->
 
-				<div class="row linha-site">
-					<div class="container">
-
-						<div class="col-sm-8">
-							<h1>Nossos Hot&eacute;is</h1>
-							<p>Nossa rede de hoteis esta presente em todos os estados.
-								Confira e explore nossas filiais:</p>
-
-							<div class="row">
-								<div class="container-fluid bg-4 text-center">
-									<div ng-repeat="filial in vm.filiais track by filial.codFilial">
 
 
-										<div ng-if="filial.exibirSite == 1"
-											class="col-sm-4 linha-item">
+				<div class="col-sm-8">
+					<h1>Nossos Hot&eacute;is</h1>
+					<p>Nossa rede de hoteis esta presente em todos os estados.
+						Confira e explore nossas filiais:</p>
 
-											<button class="btn btn-sucess"
-												ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver
-												Quartos</button>
+					<div class="row">
+						<div class="container-fluid bg-4 text-center">
+							<div ng-repeat="filial in vm.filiais track by filial.codFilial">
 
-											<a>
-												<h4>{{filial.nome}}</h4> <img
-												ng-src="data:image/jpeg;base64,{{filial.foto.imagemMiniatura}}"
-												class="img-responsive" style="width: 100%" alt="Image" />
 
-												<p>{{filial.descricao}}</p>
-											</a>
-										</div>
-									</div>
+								<div ng-if="filial.exibirSite == 1" class="col-sm-4 linha-item">
+
+									<button class="btn btn-primary"
+										ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver
+										Quartos</button>
+
+									<a>
+										<h4>{{filial.nome}}</h4> <img
+										ng-src="data:image/jpeg;base64,{{filial.foto.imagemMiniatura}}"
+										class="img-responsive" style="width: 100%" alt="Image" />
+
+										<p>{{filial.descricao}}</p>
+									</a>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
+
+			</div>
+
+
+		</div>
+		<div class="row linha-site">
+			<div class="col-sm-12">
+				<pre>{{vm.filtros | json}}</pre>
 			</div>
 		</div>
-
 	</div>
 </div>
-</div>
+
+
