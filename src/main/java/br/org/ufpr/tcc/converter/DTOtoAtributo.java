@@ -14,11 +14,15 @@ public class DTOtoAtributo {
 		}
 		
 		atributo.setCodAtributo(dto.getCodAtributo());
-		atributo.setTipo(dto.getTipo());		
+		if(dto.getTipo().equals("1")){
+			atributo.setTipo("H");					
+		} else {
+			atributo.setTipo("Q");
+		}
 		atributo.setNome(dto.getNome());
-		atributo.setDescricao(dto.getDescricao());		
-		atributo.setStatus(dto.getStatus());
-
+		atributo.setDescricao(dto.getDescricao());
+		atributo.setStatus('I');
+		
 		return atributo;
 	}
 

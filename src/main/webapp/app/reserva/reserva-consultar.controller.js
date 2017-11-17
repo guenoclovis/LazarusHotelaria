@@ -33,7 +33,7 @@
 
 		vm.filtros = {};
 
-		vm.filtros.filial = $stateParams.codFilial;
+		vm.filtros.codFilial = $stateParams.codFilial;
 		vm.filtros.dataEntrada = $stateParams.dataEntrada;
 		vm.filtros.dataSaida = $stateParams.dataSaida;
 

@@ -126,7 +126,7 @@
 
 					<!-- BOTAO BUSCAR -->
 					<div class="botoes-meio" align="center">
-						<button ng-click="vm.irParaTelaInclusao()" name="buscar"
+						<button ng-click="vm.irParaTelaPesquisaReserva()" name="buscar"
 							class="btn btn-primary">Buscar</button>
 					</div>
 				</div>
@@ -147,7 +147,7 @@
 								<div ng-if="filial.exibirSite == 1" class="col-sm-4 linha-item">
 
 									<button class="btn btn-primary"
-										ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Ver
+										ng-click="vm.pesquisarReservasFilial(filial.codFilial)">Ver
 										Quartos</button>
 
 									<a>
