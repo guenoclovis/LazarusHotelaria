@@ -89,7 +89,7 @@
 							class="btn btn-primary">Buscar</button>
 					</div>
 				</div>
-				<!-- ======================= FILIAIS/HOTEIS =========================== -->
+				<!-- ======================= QUARTOS DISPONIVEIS PARA RESERVA =========================== -->
 
 				<div class="row linha-site">
 					<div class="container">
@@ -101,18 +101,17 @@
 
 							<div class="row">
 								<div class="container-fluid bg-4 text-center">
-									<div ng-repeat="filial in vm.filiais track by filial.codFilial">
+									<div ng-repeat="quarto in vm.quartos track by quarto.codQuarto">
 
 
-										<div ng-if="filial.exibirSite == 1"
-											class="col-sm-4 linha-item">
+										<div class="col-sm-4 linha-item">
 
 											<button class="btn btn-sucess"
-												ng-click="vm.irParaTelaPesquisaReserva(filial.codFilial)">Reservar</button>
+												ng-click="vm.irParaTelaEdicaoReserva(quarto.codQuarto)">Reservar</button>
 
 											<a>
 												<h4>{{filial.nome}}</h4> <img
-												ng-src="data:image/jpeg;base64,{{filial.foto.imagemMiniatura}}"
+												ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}"
 												class="img-responsive" style="width: 100%" alt="Image" />
 
 												<p>{{filial.descricao}}</p>

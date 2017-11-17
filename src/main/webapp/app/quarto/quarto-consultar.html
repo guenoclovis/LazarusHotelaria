@@ -1,164 +1,95 @@
+<div>
+	<div ng-controller="ConsultarQuartoController as vm">
 
-<!-- ======================= TIPOS DE QUARTO =========================== -->
-<!-- ======================= TÍTULO + INFO =========================== -->
-<div class="row linha-site">
-<div class="container">
-	<div class="col-sm-12">
-	
-		<!-- ================= TÍTULO ================= -->
-		<div class="titulo-paginas-meio">
-		<div class="col-sm-12">
-			<h1>Rio de Janeiro</h1>
-		</div>
-		</div>
-		<!-- ================= COMBO FILIAL ================= -->			
-		<div class="form-group">
-			<label for="combo-filial" class="control-label">Hotel</label>
-			<select id="combo-filial" class="form-control" selectpicker>
-		<!-- 					ng-options="item.codigo as item.descricao for item in vm.ufs" ng-model="vm.showcase.uf" -->
-				<option value="" selected>Curitiba-PR</option>
-				<option value="">Florianopolis-SC</option>
-				<option value="">Porto Alegre-RS</option>
-			</select>
-		</div>	
-		<br>
-		<!-- ================ CARROSSEL DE FOTOS =========================== -->
-		<div class="col-sm-8 carrossel-lateral">
-		    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-		        <ol class="carousel-indicators">
-		            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-		            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-		            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-		        </ol>
-		        <div class="carousel-inner" role="listbox">
-		            <!-- Slide One - Set the background image for this slide in the line below -->
-		            <div class="carousel-item active" style="background-image: url('https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg')">
-		                <div class="carousel-caption d-none d-md-block">
-		                    <h3>Lazer</h3>
-		                    <p>Aproveite a vida.</p>
-		                </div>
-		            </div>
-		            <!-- Slide Two - Set the background image for this slide in the line below -->
-		            <div class="carousel-item" style="background-image: url('https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg')">
-		                <div class="carousel-caption d-none d-md-block">
-		                    <h3>Bem estar</h3>
-		                    <p>Lindos lugares.</p>
-		                </div>
-		            </div>
-		            <!-- Slide Three - Set the background image for this slide in the line below -->
-					<div class="carousel-item" style="background-image: url('https://r-ec.bstatic.com/images/hotel/max1024x768/134/13487911.jpg')">
-						<div class="carousel-caption d-none d-md-block">
-				        	<h3>FÃ©rias</h3>
-				            <p>Relaxe e desfrute de bons momentos.</p>
-						</div>
-				    </div>
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
 				</div>
-				<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Anterior</span>
-				</a>
-				<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-				    <span class="sr-only">Proximo</span>
-				</a>
 			</div>
-		</div>
-	<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
-		<div class="col-sm-4 atributos">	
-			<h3 align="left">Caractersticas</h1></h3></br>
-			<div>
-				<h5>Atributo 1</h5>
-				<p>Descricao do atributo 1...</p>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Consultar Quartos</h2>
+				</div>
 			</div>
-			<div>
-				<h5>Atributo 2</h5>
-				<p>Descricao do atributo 2...</p>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<div>
+						<pre>{{vm.quarto | json}}</pre>
+					</div>
+				</div>
 			</div>
-			<div>
-				<h5>Atributo 3</h5>
-				<p>Descricao do atributo 3...</p>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">
+					<div class="form-group">
+						<label for="nome" class="cols-sm-2 control-label">Nome</label>
+						<div class="cols-sm-4">
+							<div class="input-group">
+								<input type="text" class="form-control" name="nome" id="nome"
+									ng-model="vm.filtros.nome" placeholder="Nome da Quarto" />
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
 			</div>
-			<div>
-				<h5>Atributo 4</h5>
-				<p>Descricao do atributo 4...</p>
+
+			<div class="row">
+				<div class="col-md-12">
+					<div align="center">
+						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
+						<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+					</div>
+				</div>
 			</div>
-			<div>
-				<h5>Atributo 5</h5>
-				<p>Descricao do atributo 5...</p>
+
+			<!-- TESTE BUSCA PAGINADA -->
+			<div ng-show="vm.filiais.length > 0" class="well">
+				<div class="clearfix">
+					<div class="pull-right">
+						<select id="pageSize" class="form-control"
+							ng-options="item for item in vm.pageoptions"
+							ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
+							selectpicker>
+						</select>
+					</div>
+					<br> <br>
+					<table id="table-results" data-searching="false"
+						data-ordering="false" class="table">
+						<thead>
+							<tr>
+								<th>Nome</th>
+								<th>Descri&ccedil;&atilde;o</th>
+								<th>E-mail</th>
+								<th class="text-center">A&ccedil;&atilde;o</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="quarto in vm.filiais">
+								<td ng-bind="quarto.nome"></td>
+								<td ng-bind="quarto.descricao"></td>
+								<td ng-bind="quarto.email"></td>
+								<td class="text-center"><a
+									ng-click="vm.irParaTelaDetalhamento(quarto.codQuarto)"
+									class="btn btn-primary btn-xs">Detalhar</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-center">
+						<div uib-pagination total-items="vm.totalresults"
+							items-per-page="vm.pagesize" ng-model="vm.currentpage"
+							ng-change="vm.paginaAlterada()" max-size="10" rotate="false"
+							boundary-links="true" previous-text="&lt;" next-text="&gt;"
+							first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
+					</div>
+
+				</div>
 			</div>
-			<div>
-				<h5>Atributo 6</h5>
-				<p>Descricao do atributo 6...</p>
-			</div>	
-		</div>
-		<!-- ================= DESCRIÇÃO DO TIPO DE QUARTO ================= -->
-		<div class="col-sm-12 corpo-descricao">
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tristique consequat eros, sed sagittis magna fermentum nec. Phasellus id lobortis felis. Donec ut luctus urna, ut euismod metus. Pellentesque laoreet massa eget sagittis viverra. Nam mattis in lacus vitae porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas quis consectetur diam. Vivamus semper nec nibh at aliquam. Curabitur feugiat mi at consequat imperdiet. Integer volutpat mi tortor, et sodales dui mollis nec. Curabitur id facilisis elit. Morbi lacinia orci nec mauris fringilla, ut suscipit turpis faucibus.		   
-			</p>
+
+
+
 		</div>
 	</div>
-	<div class="col-sm-12">
-		<!-- ================= TÍTULO + MSG ================= -->
-		<div class="titulo-paginas-meio">
-	    	<h1>Tipos de Quartos</h1>
-	    	<p>Confira nossos os tipos de quartos e encontre o que combina com a sua viagem.</p>
-	    </div>
-		<!-- ======================= TIPOS DE QUARTOS  =========================== -->
-		<div class="container-fluid bg-4 text-center">
-		<div class="row">
-		    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Quarto Solteiro</h4>						
-				<img src="https://static1.eskypartners.com/travelguide/hotel.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 200,00</h5></div>
-				<p>Quarto amplo de solteiro simples ideal para viagens de trabalho...</p>
-		    </a></div>
-		    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Casal Premium</h4>						
-				<img src="http://www.miraparque.com/media/hotel-miraparque-room-12-quarto-duplo.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 850,00</h5></div>
-				<p>Quarto de casal de luxo com suite. Perfeito para o casal que deseja ter uma estadia pra la de confortavel.</p>
-		    </a></div>
-		    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Casal Simples</h4>						
-				<img src="http://media-room5.trivago.com/wp-content/uploads/sites/14/2017/01/02140043/melhores-quartos-hotel-portugal-CascaisMiragem.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 600,00</h5></div>
-				<p>Passe dias maravilhosos neste quarto radicional do hotel, o quarto conta com TV, suite...</p>
-		    </a></div>
-			<div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Solteiro Duplo</h4>						
-				<img src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 400,00</h5></div>
-				<p>Quarto de solteiro com duas camas. Economize na sua estadia dividindo um quarto durante sua viagem...</p>
-		    </a></div>	    
-		</div></br>
-		<div class="row">
-			<div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-				<h4>Quarto Solteiro</h4>						
-				<img src="https://static1.eskypartners.com/travelguide/hotel.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 200,00</h5></div>
-				<p>Quarto amplo de solteiro simples ideal para viagens de trabalho...</p>
-		    </a></div>
-		    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Casal Premium</h4>						
-				<img src="http://www.miraparque.com/media/hotel-miraparque-room-12-quarto-duplo.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 850,00</h5></div>
-				<p>Quarto de casal de luxo com suite. Perfeito para o casal que deseja ter uma estadia pra la de confortavel.</p>
-		    </a></div>
-		    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Casal Simples</h4>						
-				<img src="http://media-room5.trivago.com/wp-content/uploads/sites/14/2017/01/02140043/melhores-quartos-hotel-portugal-CascaisMiragem.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 600,00</h5></div>
-				<p>Passe dias maravilhosos neste quarto radicional do hotel, o quarto conta com TV, suite...</p>
-		    </a></div>
-			<div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
-		    	<h4>Solteiro Duplo</h4>						
-				<img src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg" class="img-responsive" style="width:100%" alt="Image">
-				<div class="quarto_valor"><h5>R$ 400,00</h5></div>
-				<p>Quarto de solteiro com duas camas. Economize na sua estadia dividindo um quarto durante sua viagem...</p>
-		    </a></div>	
-		</div>					  
-		</div>
-	</div>			
-</div>
 </div>

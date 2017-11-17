@@ -68,6 +68,14 @@
 			templateUrl : './quarto/quarto-consultar.html'
 		}
 		$stateProvider.state(quartoConsultarState);
+		
+		var quartoConsultarSiteAbertoState = {
+				name : 'quartoConsultarSiteAberto',
+				url : '/quartoConsultarSiteAberto',
+				controller : 'ConsultarQuartoSiteAbertoController',
+				templateUrl : './quarto/quarto-consultar-siteaberto.html'
+		}
+		$stateProvider.state(quartoConsultarSiteAbertoState);
 
 		var quartoEditarState = {
 			name : 'quartoEditar',
