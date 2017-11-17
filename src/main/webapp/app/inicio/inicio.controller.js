@@ -45,6 +45,7 @@
 		vm.paginaAlterada = paginaAlterada;
 		vm.limpar = limpar;
 		vm.irParaTelaPesquisaReserva = irParaTelaPesquisaReserva;
+		vm.irParaTelaInclusao = irParaTelaInclusao;
 
 		activate();
 
@@ -55,7 +56,7 @@
 			// restaurarEstadoTela();
 			carregarFiliais();
 		}
-		
+
 		function openDataEntrada() {
 			vm.popupDataEntrada.opened = true;
 		}
@@ -99,6 +100,16 @@
 			FilialData.listar(filtros).then(function(data) {
 				vm.filiais = data.entidades;
 			});
+		}
+
+		function irParaTelaInclusao() {
+			// salvarEstadoTela();
+			$state.go('reserva', {
+				'codFilial' : vm.filtros.codFilial,
+				'dataEntrada' : vm.filtros.dataEntrada,
+				'dataSaida': vm.filtros.dataSaida
+			});
+
 		}
 
 	}

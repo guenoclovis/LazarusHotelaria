@@ -24,7 +24,9 @@
 			templateUrl : './reserva/reserva-consultar.html',			
 			controller : 'ConsultarReservaController',
 			params : {
-				codFilial : undefined
+				codFilial : undefined,
+				dataEntrada : undefined,
+				dataSaida : undefined
 			}
 		}
 		$stateProvider.state(reservaConsultarState);
