@@ -13,7 +13,7 @@ public class FotoToDTO {
 	
 	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 	
-	public FotoDTO convert(Foto foto){
+	public FotoDTO convert(Foto foto, boolean carregarImagemMiniatura, boolean carregarImagemOriginal){
 		
 		FotoDTO dto = new FotoDTO();
 		
@@ -24,7 +24,7 @@ public class FotoToDTO {
 			dto.setNomeFotoMiniatura(foto.getNomeFotoMiniatura());
 			dto.setLegenda(foto.getLegenda());
 			
-			if(foto.getNomeFotoMiniatura() != null){
+			if(carregarImagemMiniatura && foto.getNomeFotoMiniatura() != null){
 				try {
 					byte[] img = ImageUtil.lerFotoParaByteArray(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator
 							+ Constantes.NOME_PASTA_DEF_FOTOS + File.separator + foto.getNomeFotoMiniatura());
@@ -36,7 +36,7 @@ public class FotoToDTO {
 				}
 			}
 			
-			if(foto.getNomeFotoOriginal() != null){
+			if(carregarImagemOriginal && foto.getNomeFotoOriginal() != null){
 				try {
 					byte[] img = ImageUtil.lerFotoParaByteArray(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator
 							+ Constantes.NOME_PASTA_DEF_FOTOS + File.separator + foto.getNomeFotoOriginal());

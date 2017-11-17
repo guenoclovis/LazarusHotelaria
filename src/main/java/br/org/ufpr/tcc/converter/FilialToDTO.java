@@ -17,7 +17,7 @@ public class FilialToDTO {
 		dto.setExibirSite(filial.getExibirSite());
 		dto.setStatus(String.valueOf(filial.getStatus()));
 		
-		dto.setFoto(converterFoto.convert(filial.getFoto()));
+		dto.setFoto(converterFoto.convert(filial.getFoto(), true, false));
 
 		return dto;
 	}
