@@ -5,18 +5,28 @@
 	'use strict';
 
 	// Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
-	angular.module('inicio').controller('InicioController',
-			InicioController);
+	angular.module('inicio').controller('InicioController', InicioController);
 
 	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
 	// modulo 'Reserva'
 	/* @ngInject */
-	function InicioController($controller, $scope, $state,
-			ReservaData, MsgCenter, FilialData) {
+	function InicioController($controller, $scope, $state, ReservaData,
+			MsgCenter, FilialData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
-		
+
+		vm.popupDataEntrada = {
+			opened : false,
+		};
+
+		vm.popupDataSaida = {
+			opened : false
+		};
+
+		vm.openDataEntrada = openDataEntrada;
+		vm.openDataSaida = openDataSaida;
+
 		vm.filiais = {};
 
 		vm.msgs = "";
@@ -39,12 +49,19 @@
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
-		
 
 		function activate() {
 			// vm.deveRestaurar = FiltroService.deveRestaurar();
 			// restaurarEstadoTela();
 			carregarFiliais();
+		}
+		
+		function openDataEntrada() {
+			vm.popupDataEntrada.opened = true;
+		}
+
+		function openDataSaida() {
+			vm.popupDataSaida.opened = true;
 		}
 
 		function pesquisarLimpar() {
@@ -74,7 +91,6 @@
 				'codFilial' : codFilial
 			});
 		}
-
 
 		function carregarFiliais() {
 			MsgCenter.clear();
