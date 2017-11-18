@@ -1,69 +1,97 @@
 <div>
-	<div ng-controller="EditarQuartoController as vm">
+	<div ng-controller="ConsultarQuartoSiteAbertoController as vm">
 		<!-- ======================= TIPOS DE QUARTO =========================== -->
-		<!-- ======================= T�TULO + INFO =========================== -->
+		<!-- ======================= TITULO + INFO =========================== -->
 		<div class="row linha-site">
+		
+		<!-- ================= DEBUG ================= -->
+<!-- 		<debug objeto="{{vm.filtros | json}}"></debug> -->
+<!-- 		<debug objeto="{{vm.filial | json}}"></debug> -->
+		
 		<div class="container">
-			<div class="col-sm-12">
+			<div class="row campo-form">
+				<div class="col-sm-2">
+					<label for="combo-filial" class="cols-sm-2 control-label">Hotel</label>
+				</div>			
+				<div class="col-sm-4">						
+					<select id="filiais" class="btn btn-primary" ng-click="vm.carregarFilial()"
+						ng-options="item.codFilial as item.nome for item in vm.filiais"
+						ng-model="vm.filtros.codFilial"	>
+						<option value="" selected>Selecione</option>
+					</select>
+				</div>
+			</div>
+			<!-- DATA ENTRADA -->
+			<div class="row campo-form">
+				<div class="col-sm-2">
+					<label for="dtNasc" class="cols-sm-2 control-label">Data
+						de Entrada</label>
+				</div>
+				<div class="col-sm-4">
+					<p class="input-group">
+						<input type="text" class="form-control" id="dtNasc"
+							uib-datepicker-popup="{{format}}"
+							ng-model="vm.filtros.dataEntrada"
+							is-open="vm.popupDataEntrada.opened"
+							datepicker-options="dateOptions" ng-required="true"
+							close-text="Close" alt-input-formats="altInputFormats" /> <span
+							class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="vm.openDataEntrada()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<!-- DATA SAIDA -->
+			<div class="row campo-form">
+				<div class="col-sm-2">
+					<label for="dtNasc" class="cols-sm-2 control-label">Data
+						de Sa&iacute;da</label>
+				</div>
+				<div class="col-sm-4">
+					<p class="input-group">
+						<input type="text" class="form-control" id="dtNasc"
+							uib-datepicker-popup="{{format}}"
+							ng-model="vm.filtros.dataSaida"
+							is-open="vm.popupDataSaida.opened"
+							datepicker-options="dateOptions" ng-required="true"
+							close-text="Close" alt-input-formats="altInputFormats" /> <span
+							class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="vm.openDataSaida()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+						
+			<!-- BOTAO BUSCAR -->
+			<div class="botoes-meio" align="center">
+				<button ng-click="vm.pesquisarQuartosDisponiveis()" name="buscar"
+					class="btn btn-primary">Buscar</button>
+			</div>
 			
-				<!-- ================= T�TULO ================= -->
+			<div ng-if="vm.filial.codFilial" class="col-sm-12">
+				
+				<!-- ================= TITULO ================= -->
 				<div class="titulo-paginas-meio">
-				<div class="col-sm-12">
-					<h1>Rio de Janeiro</h1>
-				</div>
-				</div>
-				<!-- ================= COMBO FILIAL ================= -->			
-				<div class="form-group">
-					<label for="combo-filial" class="control-label">Hotel</label>
-					<select id="filiais" class="btn btn-sucess"
-								ng-options="item.codFilial as item.nome for item in vm.filiais"
-								ng-model="vm.filtros.codFilial" selectpicker>
-								<option value="" selected>Selecione</option>
-							</select>
-				</div>	
-				<br>
-				<!-- ================ CARROSSEL DE FOTOS =========================== -->
-				<div class="col-sm-8 carrossel-lateral">
-				    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-				        <ol class="carousel-indicators">
-				            <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-				            <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-				            <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-				        </ol>
-				        <div class="carousel-inner" role="listbox">
-				            <!-- Slide One - Set the background image for this slide in the line below -->
-				            <div class="carousel-item active" style="background-image: url('https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg')">
-				                <div class="carousel-caption d-none d-md-block">
-				                    <h3>Lazer</h3>
-				                    <p>Aproveite a vida.</p>
-				                </div>
-				            </div>
-				            <!-- Slide Two - Set the background image for this slide in the line below -->
-				            <div class="carousel-item" style="background-image: url('https://www.todoestudo.com.br/wp-content/uploads/2015/03/paisagem-rio-de-janeiro-1024x669.jpg')">
-				                <div class="carousel-caption d-none d-md-block">
-				                    <h3>Bem estar</h3>
-				                    <p>Lindos lugares.</p>
-				                </div>
-				            </div>
-				            <!-- Slide Three - Set the background image for this slide in the line below -->
-							<div class="carousel-item" style="background-image: url('https://r-ec.bstatic.com/images/hotel/max1024x768/134/13487911.jpg')">
-								<div class="carousel-caption d-none d-md-block">
-						        	<h3>Férias</h3>
-						            <p>Relaxe e desfrute de bons momentos.</p>
-								</div>
-						    </div>
-						</div>
-						<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-						    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Anterior</span>
-						</a>
-						<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-						    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-						    <span class="sr-only">Proximo</span>
-						</a>
+					<div class="col-sm-12">
+						<h1>{{vm.filial.nome}}</h1>
 					</div>
 				</div>
-			<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
+				<!-- ================ CARROSSEL DE FOTOS =========================== -->
+				<div class="col-sm-8 carrossel-lateral">
+				<img
+						ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemOriginal}}"
+						class="img-original-responsive" alt="Image" />
+				
+				</div>
+				
+				<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
 				<div class="col-sm-4 atributos">	
 					<h3 align="left">Caractersticas</h1></h3></br>
 					<div>
@@ -91,14 +119,15 @@
 						<p>Descricao do atributo 6...</p>
 					</div>	
 				</div>
-				<!-- ================= DESCRI��O DO TIPO DE QUARTO ================= -->
+				<!-- ================= DESCRICAO DO HOTEL ================= -->
 				<div class="col-sm-12 corpo-descricao">
 					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut tristique consequat eros, sed sagittis magna fermentum nec. Phasellus id lobortis felis. Donec ut luctus urna, ut euismod metus. Pellentesque laoreet massa eget sagittis viverra. Nam mattis in lacus vitae porttitor. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Maecenas quis consectetur diam. Vivamus semper nec nibh at aliquam. Curabitur feugiat mi at consequat imperdiet. Integer volutpat mi tortor, et sodales dui mollis nec. Curabitur id facilisis elit. Morbi lacinia orci nec mauris fringilla, ut suscipit turpis faucibus.		   
+						{{vm.filial.descricao}}		   
 					</p>
 				</div>
-			</div>
-			<div class="col-sm-12">
+			
+				<br>
+				
 				<!-- ================= T�TULO + MSG ================= -->
 				<div class="titulo-paginas-meio">
 			    	<h1>Tipos de Quartos</h1>

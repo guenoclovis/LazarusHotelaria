@@ -65,6 +65,13 @@
     height: 100px;
 }
 
+.img-original-responsive {    
+    height: 400px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
 /* Para colocar o '*' indicativo de campo obrigatorio */
 .required {
     vertical-align: top;

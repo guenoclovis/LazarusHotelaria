@@ -11,17 +11,32 @@
 	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
 	// modulo 'quarto'
 	/* @ngInject */
-	function ConsultarQuartoSiteAbertoController($controller, $scope, $state, QuartoData,
-			MsgCenter, FiltroService, FilialData) {
+	function ConsultarQuartoSiteAbertoController($controller, $scope, $state, $stateParams, QuartoData,
+			MsgCenter, FiltroService, FilialData, FotoData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
 
 		vm.msgs = "";
 
+		vm.popupDataEntrada = {
+			opened : false,
+		};
+
+		vm.popupDataSaida = {
+			opened : false
+		};
+
+		vm.openDataEntrada = openDataEntrada;
+		vm.openDataSaida = openDataSaida;
+		
 		vm.filtros = {};
 		vm.quartos = [];
 		vm.quarto = {};
+		
+		vm.filtros.codFilial = $stateParams.codFilial;
+		vm.filtros.dataEntrada = $stateParams.dataEntrada;
+		vm.filtros.dataSaida = $stateParams.dataSaida;
 
 		// Paginação
 		vm.totalresults = 0;
@@ -37,16 +52,27 @@
 		vm.irParaTelaInclusao = irParaTelaInclusao;
 		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 		vm.carregarFiliais = carregarFiliais;
+		vm.carregarFilial = carregarFilial;
+		vm.pesquisarQuartosDisponiveis = pesquisarQuartosDisponiveis; 
+		
 
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
+		
+		function openDataEntrada() {
+			vm.popupDataEntrada.opened = true;
+		}
+
+		function openDataSaida() {
+			vm.popupDataSaida.opened = true;
+		}
 
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
 			restaurarEstadoTela();
 			carregarFiliais();
-
+			carregarFilial();
 		}
 
 		function carregarFiliais() {
@@ -56,6 +82,24 @@
 			FilialData.listar(filtros).then(function(data) {
 				vm.filiais = data.entidades;
 			});
+		}
+		
+		function carregarFilial(){
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			FilialData.obter(vm.filtros.codFilial, filtros).then(function(data) {
+				vm.filial = data;
+				var filtros = { carregarImagemOriginal : true, carregarImagemMiniatura : true };
+				
+				FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
+					vm.filial.foto = data;
+				});
+			});
+		}
+		
+		function pesquisarQuartosDisponiveis(){
+			//TODO: Pendente
 		}
 		
 		function pesquisarLimpar() {

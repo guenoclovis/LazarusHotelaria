@@ -24,8 +24,8 @@
         return service;
         // //////////////
 
-        function obter(codReserva, filtros) {
-            return Restangular.one(apiURLCompleta, codReserva).get(filtros);
+        function obter(codFoto, filtros) {
+            return Restangular.one(apiURLCompleta, codFoto).get(filtros);
         }
 
         function listar(filtros) {

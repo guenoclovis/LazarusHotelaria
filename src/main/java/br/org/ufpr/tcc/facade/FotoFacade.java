@@ -52,7 +52,7 @@ public class FotoFacade {
 
         //CONVERTER
         FotoToDTO converter = new FotoToDTO();
-        FotoDTO fotoDTO = converter.convert(f, true, false);
+        FotoDTO fotoDTO = converter.convert(f, carregarFotoMiniatura, carregarFotoOriginal);
     	
         return fotoDTO;
     }
