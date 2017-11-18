@@ -69,7 +69,7 @@
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
 			restaurarEstadoTela();
-			carregarQuartos();
+			carregarFiliais();
 		}
 
 		function pesquisarLimpar() {
