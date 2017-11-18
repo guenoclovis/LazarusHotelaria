@@ -12,7 +12,7 @@ public class TipoQuartoToDTO {
 		dto.setTipo(tipoquarto.getTipo());		
 		dto.setNome(tipoquarto.getNome());
 		dto.setDescricao(tipoquarto.getDescricao());		
-		dto.setStatus(tipoquarto.getStatus());
+		dto.setStatus(String.valueOf(tipoquarto.getStatus()));
 		
 		return dto;
 	}
