@@ -141,9 +141,9 @@
 			</div>
 
 			<div class="form-group ">
-				<button ng-if="!vm.filial.codFilial" ng-click="vm.incluir()"
+				<button ng-disabled="vm.enviandoFoto" ng-if="!vm.filial.codFilial" ng-click="vm.incluir()"
 					class="btn btn-primary">Incluir</button>
-				<button ng-if="vm.filial.codFilial" ng-click="vm.alterar()"
+				<button ng-disabled="vm.enviandoFoto" ng-if="vm.filial.codFilial" ng-click="vm.alterar()"
 					class="btn btn-primary">Alterar</button>
 				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
 			</div>

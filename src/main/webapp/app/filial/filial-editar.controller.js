@@ -37,7 +37,7 @@
 	// Definindo atributos e operacoes do Controlador da tela 'editar' do modulo
 	// 'Filial'
 	/* @ngInject */
-	function EditarFilialController($controller, $scope,  $http, $state, $stateParams,
+	function EditarFilialController($controller, $scope,  $http, $state, $stateParams, $timeout,
 			FilialData, MsgCenter, FotoData) {
 
 		
@@ -47,14 +47,28 @@
 		// the image
 		vm.imagem = undefined;
 		vm.nomeImagem = $scope.nomeArquivo;
+		vm.enviandoFoto = false;
 		
 
 		vm.uploadImage = function() {
 			
 			var imgBlob = dataURItoBlob(vm.imagem);
+			MsgCenter.add("WARN",
+					"Enviando foto, Aguarde ...", undefined,
+					undefined);
+			vm.enviandoFoto = true;
 			
 			FotoData.incluir(imgBlob, "filial.jpg", 'fjsadffsasadfas').then(function(response) {
-				vm.filial.foto = response.data;				
+				vm.filial.foto = response.data;
+				
+				MsgCenter.clear();
+				MsgCenter.add("INFO",
+						"Foto enviada com sucesso", undefined,
+						undefined);
+				$timeout(function() { MsgCenter.clear();}, 2000);
+				
+				vm.enviandoFoto = false;
+				
 			});
 		}
 

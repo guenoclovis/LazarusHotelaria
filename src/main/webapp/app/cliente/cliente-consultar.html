@@ -1,24 +1,24 @@
 <div>
 	<div ng-controller="ConsultarClienteController as vm">
 
-		<div class=".container">
-			<div class="row">
-				<div class="col-md-12" align="center">
-					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 lazarus-align">
-					<h2>Consultar Clientes</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 lazarus-align">
+		<!-- ================= MENSAGENS da APLICACAO ================= -->
+		<h1>{{vm.msgs}}</h1>
+		<!-- ================= DEBUG - COMENTAR DEPOIS ================= -->
+		<div>
+			<pre>{{vm.atributo | json}}</pre>
+		</div>
+		
+		<!-- ================= CORPO DA PAGINA ================= -->
+	    <div class="row linha-site">
+	    	<div class="container">
+	    
+				<!-- ================= TITULO ================= -->
+				<div class="titulo-paginas-meio">
 					<div>
-						<pre>{{vm.cliente | json}}</pre>
+						<h1>Consultar Cliente</h1>
 					</div>
-				</div>
-			</div>
+					
+				</div>	
 
 			<div class="row">
 				<div class="col-md-2"></div>
@@ -56,7 +56,7 @@
 					</div>
 					<br> <br>
 					<table id="table-results" data-searching="false"
-						data-ordering="false" class="table">
+						data-ordering="false" class="table table-striped grid-pesquisa">
 						<thead>
 							<tr>
 								<th>Nome</th>
@@ -68,8 +68,8 @@
 						<tbody>
 							<tr ng-repeat="cliente in vm.clientes">
 								<td ng-bind="cliente.nome"></td>
-								<td ng-bind="cliente.dtNasc"></td>
-								<td ng-bind="cliente.sexo"></td>
+								<td ng-bind="cliente.dataExibicao"></td>
+								<td ng-bind="cliente.sexoExibicao"></td>
 								<td class="text-center"><a
 									ng-click="vm.irParaTelaDetalhamento(cliente.codCliente)"
 									class="btn btn-primary btn-xs">Detalhar</a></td>

@@ -101,7 +101,7 @@
 .corpo-descricao p{
 	text-align: left;
 } 	
-/* T�TULOS */
+/* TITULOS */
 .titulo-paginas-meio{
 	padding-bottom: 30px;	
 }
@@ -122,7 +122,7 @@
 }
 /* GRIDS */
 .grid-pesquisa{
- 	background-color: #98FB98;
+ 	background-color: #95c495;
     margin-top: 15px;
     border-radius: 5px;
 }
@@ -145,7 +145,12 @@
 	font-style: italic;
 	vertical-align: top;
 }
-/* BOT�ES */
+.campo-form select{
+	height: 40px;
+    width: 95%;
+    margin-left: 15px;
+}
+/* BOTOES */
 .botoes-meio{
     margin-top: 15px;
     text-align: center;
