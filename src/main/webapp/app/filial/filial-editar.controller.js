@@ -8,32 +8,6 @@
 	angular.module('filial').controller('EditarFilialController',
 			EditarFilialController);
 
-	//your directive
-	angular.module('filial').directive("fileread", [
-	  function() {
-	    return {
-	      scope: {
-	        fileread: '='	         
-	      },
-	      link: function(scope, element, attributes) {
-	    	  
-	        element.bind("change", function(changeEvent) {
-	        	
-	          var reader = new FileReader();
-	          reader.onload = function(loadEvent) {
-	            scope.$apply(function() {
-	              scope.fileread = loadEvent.target.result;	               	              
-	              //TODO: USAR O NOME PARA ENVIAR AO BACKEND changeEvent.target.files[0].name;
-	            });
-	          }
-	          reader.readAsDataURL(changeEvent.target.files[0]);
-	          
-	        });
-	      }
-	    }
-	  }
-	]);
-	
 	// Definindo atributos e operacoes do Controlador da tela 'editar' do modulo
 	// 'Filial'
 	/* @ngInject */
