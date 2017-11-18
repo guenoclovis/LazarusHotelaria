@@ -11,7 +11,14 @@ public class ClienteToDTO {
 
 		dto.setCodCliente(cliente.getCodCliente());
 		dto.setNome(cliente.getNome());
-		dto.setDtNasc(DataUtil.fromDateToString(cliente.getDtNasc()));
+		
+		String dataAux = DataUtil.fromDateToString(cliente.getDtNasc(),"yyyy-MM-dd");
+		String horaAux = DataUtil.fromDateToString(cliente.getDtNasc(),"HH:mm:ss.SSS");
+		
+		dto.setDtNasc(dataAux+"T"+"02:00:00.000"+"Z");
+		
+		dto.setDataExibicao(DataUtil.fromDateToString(cliente.getDtNasc(), "dd/MM/yyyy"));
+		
 		dto.setSexo(cliente.getSexo());
 		dto.setNacionalidade(cliente.getNacionalidade());
 		dto.setTelefone1(cliente.getTelefone1());

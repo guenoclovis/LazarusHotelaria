@@ -3,7 +3,7 @@
 	<div ng-controller="DetalharClienteController as dcc">
 
 		<div class=".container">
-			<div class="row">
+			<div class="row  campo-form">
 				<div class="col-md-12" align="center">
 					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
 				</div>
@@ -13,13 +13,8 @@
 					<h2>Detalhar do Cliente</h2>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div><pre>{{dcc.cliente | json}}</pre></div>
-				</div>
-			</div>
 
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="nome" class="cols-sm-2 control-label">Código</label>
@@ -30,7 +25,7 @@
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
 			</div>
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="nome" class="cols-sm-2 control-label">Nome</label>
@@ -41,29 +36,29 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="dtNasc" class="cols-sm-2 control-label">Data Nascimento</label>
 				</div>
 				<div class="col-md-6">
-					<span id="dtNasc">{{dcc.cliente.dtNasc}}</span>
+					<span id="dtNasc">{{dcc.cliente.dataExibicao}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="sexo" class="cols-sm-2 control-label">Sexo</label>
 				</div>
 				<div class="col-md-6">
-					<span id="sexo">{{dcc.cliente.sexo}}</span>
+					<span id="sexo">{{dcc.cliente.sexoExibicao}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="nacionalidade" class="cols-sm-2 control-label">Nacionalidade</label>
@@ -74,7 +69,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="Telefone1" class="cols-sm-2 control-label">Telefone1</label>
@@ -85,7 +80,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="Telefone2" class="cols-sm-2 control-label">Telefone2</label>
@@ -96,7 +91,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="email1" class="cols-sm-2 control-label">E-mail1</label>
@@ -107,7 +102,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="email2" class="cols-sm-2 control-label">E-mail2</label>
@@ -118,7 +113,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="cpf" class="cols-sm-2 control-label">CPF</label>
@@ -129,7 +124,7 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="rg" class="cols-sm-2 control-label">RG</label>
@@ -139,18 +134,6 @@
 				</div>
 				<div class="col-md-2"></div>
 			</div>
-			
-
-			<!-- FAZER RESTO DO FORMULARIO PARA OS DEMAIS CAMPOS:
-			Passaporte 
-			EndRua 
-			EndNro 
-			EndBairro 
-			EndCidade 
-			EndUf 
-			EndCompl 
-			SenhaAcesso 
-			Status  --> 
 			
 		</div>
 
@@ -163,7 +146,9 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{dcc.cliente | json}}"></debug>
 
 	</div>
-
 </div>

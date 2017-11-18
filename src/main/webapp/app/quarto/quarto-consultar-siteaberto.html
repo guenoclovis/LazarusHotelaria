@@ -1,0 +1,196 @@
+<div>
+	<div ng-controller="ConsultarQuartoSiteAbertoController as vm">
+		<!-- ======================= TIPOS DE QUARTO =========================== -->
+		<!-- ======================= TITULO + INFO =========================== -->
+		<div class="row linha-site">
+		
+		<!-- ================= DEBUG ================= -->
+<!-- 		<debug objeto="{{vm.filtros | json}}"></debug> -->
+<!-- 		<debug objeto="{{vm.filial | json}}"></debug> -->
+		
+		<div class="container">
+			<div class="row campo-form">
+				<div class="col-sm-2">
+					<label for="combo-filial" class="cols-sm-2 control-label">Hotel</label>
+				</div>			
+				<div class="col-sm-4">						
+					<select id="filiais" class="btn btn-primary" ng-click="vm.carregarFilial()"
+						ng-options="item.codFilial as item.nome for item in vm.filiais"
+						ng-model="vm.filtros.codFilial"	>
+						<option value="" selected>Selecione</option>
+					</select>
+				</div>
+			</div>
+			<!-- DATA ENTRADA -->
+			<div class="row campo-form">
+				<div class="col-sm-2">
+					<label for="dtNasc" class="cols-sm-2 control-label">Data
+						de Entrada</label>
+				</div>
+				<div class="col-sm-4">
+					<p class="input-group">
+						<input type="text" class="form-control" id="dtNasc"
+							uib-datepicker-popup="{{format}}"
+							ng-model="vm.filtros.dataEntrada"
+							is-open="vm.popupDataEntrada.opened"
+							datepicker-options="dateOptions" ng-required="true"
+							close-text="Close" alt-input-formats="altInputFormats" /> <span
+							class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="vm.openDataEntrada()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+
+			<!-- DATA SAIDA -->
+			<div class="row campo-form">
+				<div class="col-sm-2">
+					<label for="dtNasc" class="cols-sm-2 control-label">Data
+						de Sa&iacute;da</label>
+				</div>
+				<div class="col-sm-4">
+					<p class="input-group">
+						<input type="text" class="form-control" id="dtNasc"
+							uib-datepicker-popup="{{format}}"
+							ng-model="vm.filtros.dataSaida"
+							is-open="vm.popupDataSaida.opened"
+							datepicker-options="dateOptions" ng-required="true"
+							close-text="Close" alt-input-formats="altInputFormats" /> <span
+							class="input-group-btn">
+							<button type="button" class="btn btn-default"
+								ng-click="vm.openDataSaida()">
+								<i class="glyphicon glyphicon-calendar"></i>
+							</button>
+						</span>
+					</p>
+				</div>
+			</div>
+						
+			<!-- BOTAO BUSCAR -->
+			<div class="botoes-meio" align="center">
+				<button ng-click="vm.pesquisarQuartosDisponiveis()" name="buscar"
+					class="btn btn-primary">Buscar</button>
+			</div>
+			
+			<div ng-if="vm.filial.codFilial" class="col-sm-12">
+				
+				<!-- ================= TITULO ================= -->
+				<div class="titulo-paginas-meio">
+					<div class="col-sm-12">
+						<h1>{{vm.filial.nome}}</h1>
+					</div>
+				</div>
+				<!-- ================ CARROSSEL DE FOTOS =========================== -->
+				<div class="col-sm-8 carrossel-lateral">
+				<img
+						ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemOriginal}}"
+						class="img-original-responsive" alt="Image" />
+				
+				</div>
+				
+				<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
+				<div class="col-sm-4 atributos">	
+					<h3 align="left">Caractersticas</h1></h3></br>
+					<div>
+						<h5>Atributo 1</h5>
+						<p>Descricao do atributo 1...</p>
+					</div>
+					<div>
+						<h5>Atributo 2</h5>
+						<p>Descricao do atributo 2...</p>
+					</div>
+					<div>
+						<h5>Atributo 3</h5>
+						<p>Descricao do atributo 3...</p>
+					</div>
+					<div>
+						<h5>Atributo 4</h5>
+						<p>Descricao do atributo 4...</p>
+					</div>
+					<div>
+						<h5>Atributo 5</h5>
+						<p>Descricao do atributo 5...</p>
+					</div>
+					<div>
+						<h5>Atributo 6</h5>
+						<p>Descricao do atributo 6...</p>
+					</div>	
+				</div>
+				<!-- ================= DESCRICAO DO HOTEL ================= -->
+				<div class="col-sm-12 corpo-descricao">
+					<p>
+						{{vm.filial.descricao}}		   
+					</p>
+				</div>
+			
+				<br>
+				
+				<!-- ================= T�TULO + MSG ================= -->
+				<div class="titulo-paginas-meio">
+			    	<h1>Tipos de Quartos</h1>
+			    	<p>Confira nossos os tipos de quartos e encontre o que combina com a sua viagem.</p>
+			    </div>
+				<!-- ======================= TIPOS DE QUARTOS  =========================== -->
+				<div class="container-fluid bg-4 text-center">
+				<div class="row">
+				    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Quarto Solteiro</h4>						
+						<img src="https://static1.eskypartners.com/travelguide/hotel.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 200,00</h5></div>
+						<p>Quarto amplo de solteiro simples ideal para viagens de trabalho...</p>
+				    </a></div>
+				    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Casal Premium</h4>						
+						<img src="http://www.miraparque.com/media/hotel-miraparque-room-12-quarto-duplo.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 850,00</h5></div>
+						<p>Quarto de casal de luxo com suite. Perfeito para o casal que deseja ter uma estadia pra la de confortavel.</p>
+				    </a></div>
+				    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Casal Simples</h4>						
+						<img src="http://media-room5.trivago.com/wp-content/uploads/sites/14/2017/01/02140043/melhores-quartos-hotel-portugal-CascaisMiragem.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 600,00</h5></div>
+						<p>Passe dias maravilhosos neste quarto radicional do hotel, o quarto conta com TV, suite...</p>
+				    </a></div>
+					<div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Solteiro Duplo</h4>						
+						<img src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 400,00</h5></div>
+						<p>Quarto de solteiro com duas camas. Economize na sua estadia dividindo um quarto durante sua viagem...</p>
+				    </a></div>	    
+				</div></br>
+				<div class="row">
+					<div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+						<h4>Quarto Solteiro</h4>						
+						<img src="https://static1.eskypartners.com/travelguide/hotel.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 200,00</h5></div>
+						<p>Quarto amplo de solteiro simples ideal para viagens de trabalho...</p>
+				    </a></div>
+				    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Casal Premium</h4>						
+						<img src="http://www.miraparque.com/media/hotel-miraparque-room-12-quarto-duplo.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 850,00</h5></div>
+						<p>Quarto de casal de luxo com suite. Perfeito para o casal que deseja ter uma estadia pra la de confortavel.</p>
+				    </a></div>
+				    <div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Casal Simples</h4>						
+						<img src="http://media-room5.trivago.com/wp-content/uploads/sites/14/2017/01/02140043/melhores-quartos-hotel-portugal-CascaisMiragem.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 600,00</h5></div>
+						<p>Passe dias maravilhosos neste quarto radicional do hotel, o quarto conta com TV, suite...</p>
+				    </a></div>
+					<div class="col-sm-3 item-quarto"><a ui-sref="tipoquartosite">
+				    	<h4>Solteiro Duplo</h4>						
+						<img src="https://s-media-cache-ak0.pinimg.com/originals/ab/45/78/ab4578e742018724392cec80e3869247.jpg" class="img-responsive" style="width:100%" alt="Image">
+						<div class="quarto_valor"><h5>R$ 400,00</h5></div>
+						<p>Quarto de solteiro com duas camas. Economize na sua estadia dividindo um quarto durante sua viagem...</p>
+				    </a></div>	
+				</div>					  
+				</div>
+			</div>			
+		</div>
+		</div>
+
+	</div>
+</div>

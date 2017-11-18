@@ -3,106 +3,92 @@
 <div>
 	<div ng-controller="EditarAtributoController as vm">
 	
-	<!-- ================= MENSAGENS DE CONTRUÇÃO - COMENTAR ================= -->
-	<h1>{{vm.msgs}}</h1>
-		<div>
-			<pre>{{vm.atributo | json}}</pre>
+		<!-- ================= MENSAGENS da APLICACAO ================= -->
+		<h1>{{vm.msgs}}</h1>
+		
+		<!-- ================= CORPO DA PAGINA ================= -->
+	    <div class="row linha-site">
+	    	<div class="container">
+	    
+				<!-- ================= TITULO ================= -->
+				<div class="titulo-paginas-meio">
+					<div ng-if="vm.atributo.codAtributo">
+						<h1>Editar Atributo</h1>
+					</div>
+					<div ng-if="!vm.atributo.codAtributo">
+						<h1>Incluir Atributo</h1>
+					</div>
+				</div>	
+				
+				<!-- ======================= FORMULARIO =========================== -->
+				<form>
+				<!-- CoDIGO -->
+					<div class="row campo-form" ng-if="vm.atributo.codAtributo">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
+						</div>
+						<div class="col-md-6">
+							<span id="nome">{{vm.atributo.codAtributo}}</span>
+						</div>
+						<div class="col-md-2"></div>
+						<div class="col-md-2"></div>
+					</div>		
+						
+					<!-- TIPO -->
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="combo-tipo" class="cols-sm-2 control-label">Tipo</label>
+						</div>
+						<div class="col-md-6">
+							<select id="combo-tipo" class="form-control"
+								ng-options="item.codigo as item.descricao for item in vm.tipos" ng-model="vm.atributo.tipo"
+								placeholder="Tipo do Atributo"
+								selectpicker>
+							</select>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					
+					<!-- NOME -->			
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="nome" class="cols-sm-2 control-label">Nome</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.atributo.nome"
+									placeholder="Nome do Atributo" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					
+					<!-- DESCRICAO -->			
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control campo-descricao" name="descricao" id="descricao" ng-model="vm.atributo.descricao"
+								placeholder="Descricao do Atributo" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>	
+						
+					<!-- BOTOES -->
+					<div class="col-sm-10">
+						<div class="row botoes-direita">
+							<button ng-if="!vm.atributo.codAtributo" ng-click="vm.incluir()" class="btn btn-primary">Salvar</button>
+							<button ng-if="vm.atributo.codAtributo" ng-click="vm.alterar()" class="btn btn-primary">Alterar</button>
+							<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
+						</div>
+					</div>
+				</form>
+			</div>
 		</div>
-	
-	<!-- ================= CORPO DA PÁGINA ================= -->
-       <div class="row linha-site">
-       <div class="container">
-		<!-- ================= TÍTULO + MSG ================= -->
-		<div class="titulo-paginas-meio">
-			<div ng-if="vm.atributo.codAtributo">
-				<h1>Editar Atributo</h1>
-			</div>
-			<div ng-if="!vm.atributo.codAtributo">
-				<h1>Incluir Atributo</h1>
-			</div>
-		</div>	
-			
-		<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
-		<form>
-		<!-- CÓDIGO -->
-			<div class="row campo-form" ng-if="vm.atributo.codAtributo">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Código</label>
-				</div>
-				<div class="col-md-6">
-					<span id="nome">{{vm.atributo.codAtributo}}</span>
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-			</div>		
-				
-			<!-- TIPO -->
-			<div class="row campo-form">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="combo-tipo" class="cols-sm-2 control-label">Tipo</label>
-				</div>
-				<div class="col-md-6">
-					<select id="combo-tipo" class="form-control"
-						ng-options="item.codigo as item.descricao for item in vm.tipos" ng-model="vm.atributo.tipo"
-						placeholder="Tipo do Atributo"
-						selectpicker>
-						<!-- option value="2" selected>Quarto</option-->
-					</select>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<!-- NOME -->			
-			<div class="row campo-form">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Nome</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.atributo.nome"
-							placeholder="Nome do Atributo" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<!-- DESCRIÇÃO -->			
-			<div class="row campo-form">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descricao</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control campo-descricao" name="descricao" id="descricao" ng-model="vm.atributo.descricao"
-						placeholder="Descricao do Atributo" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>	
-				
-			<!-- STATUS (?) -->
-			<!--<div class="row campo-form">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nacionalidade" class="cols-sm-2 control-label">Status</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="status" id="status" ng-model="vm.atributo.status"
-							placeholder="Nome da Atributo" />
-				</div>
-				<div class="col-md-2"></div>
-			</div-->
-			
-			<!-- BOTÕES -->
-			<div class="col-sm-10">
-				<div class="row botoes-direita">
-					<button ng-if="!vm.atributo.codAtributo" ng-click="vm.incluir()" class="btn btn-primary">Salvar</button>
-					<button ng-if="vm.atributo.codAtributo" ng-click="vm.alterar()" class="btn btn-primary">Salvar</button>
-					<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
-				</div>
-			</div>
-		</form>
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.atributo | json}}"></debug>
 	</div>
-	</div>
-</div>
 </div>

@@ -14,16 +14,9 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
-					<div>
-						<pre>{{dcc.atributo | json}}</pre>
-					</div>
-				</div>
-			</div>
-			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Código</label>
+					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
 				</div>
 				<div class="col-md-6">
 					<span id="nome">{{dcc.atributo.codAtributo}}</span>
@@ -57,7 +50,7 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
+					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
 				</div>
 				<div class="col-md-6">
 					<span id="dtNasc">{{dcc.atributo.descricao}}</span>
@@ -90,6 +83,9 @@
 				</div>
 			</div>
 		</div>
+
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{dcc.atributo | json}}"></debug>
 
 	</div>
 

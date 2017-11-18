@@ -1,24 +1,24 @@
 <div>
-	<div ng-controller="ConsultarClienteController as vm">
+	<div ng-controller="ConsultarQuartoController as vm">
 
-		<!-- ================= MENSAGENS da APLICACAO ================= -->
-		<h1>{{vm.msgs}}</h1>
-		<!-- ================= DEBUG - COMENTAR DEPOIS ================= -->
-		<div>
-			<pre>{{vm.atributo | json}}</pre>
-		</div>
-		
-		<!-- ================= CORPO DA PAGINA ================= -->
-	    <div class="row linha-site">
-	    	<div class="container">
-	    
-				<!-- ================= TITULO ================= -->
-				<div class="titulo-paginas-meio">
+		<div class=".container">
+			<div class="row">
+				<div class="col-md-12" align="center">
+					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
+					<h2>Consultar Quartos</h2>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 lazarus-align">
 					<div>
-						<h1>Consultar Cliente</h1>
+						<pre>{{vm.quarto | json}}</pre>
 					</div>
-					
-				</div>	
+				</div>
+			</div>
 
 			<div class="row">
 				<div class="col-md-2"></div>
@@ -28,7 +28,7 @@
 						<div class="cols-sm-4">
 							<div class="input-group">
 								<input type="text" class="form-control" name="nome" id="nome"
-									ng-model="vm.cliente.nome" placeholder="Nome do Fulano(a)" />
+									ng-model="vm.filtros.nome" placeholder="Nome da Quarto" />
 							</div>
 						</div>
 					</div>
@@ -44,8 +44,9 @@
 					</div>
 				</div>
 			</div>
+
 			<!-- TESTE BUSCA PAGINADA -->
-			<div ng-show="vm.clientes.length > 0" class="well">
+			<div ng-show="vm.filiais.length > 0" class="well">
 				<div class="clearfix">
 					<div class="pull-right">
 						<select id="pageSize" class="form-control"
@@ -56,22 +57,22 @@
 					</div>
 					<br> <br>
 					<table id="table-results" data-searching="false"
-						data-ordering="false" class="table table-striped grid-pesquisa">
+						data-ordering="false" class="table">
 						<thead>
 							<tr>
 								<th>Nome</th>
-								<th>Data Nascimento</th>
-								<th>Sexo</th>
+								<th>Descri&ccedil;&atilde;o</th>
+								<th>E-mail</th>
 								<th class="text-center">A&ccedil;&atilde;o</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="cliente in vm.clientes">
-								<td ng-bind="cliente.nome"></td>
-								<td ng-bind="cliente.dataExibicao"></td>
-								<td ng-bind="cliente.sexoExibicao"></td>
+							<tr ng-repeat="quarto in vm.filiais">
+								<td ng-bind="quarto.nome"></td>
+								<td ng-bind="quarto.descricao"></td>
+								<td ng-bind="quarto.email"></td>
 								<td class="text-center"><a
-									ng-click="vm.irParaTelaDetalhamento(cliente.codCliente)"
+									ng-click="vm.irParaTelaDetalhamento(quarto.codQuarto)"
 									class="btn btn-primary btn-xs">Detalhar</a></td>
 							</tr>
 						</tbody>
@@ -83,8 +84,12 @@
 							boundary-links="true" previous-text="&lt;" next-text="&gt;"
 							first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
 					</div>
+
 				</div>
 			</div>
+
+
+
 		</div>
 	</div>
 </div>

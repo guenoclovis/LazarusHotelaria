@@ -106,6 +106,8 @@
 <script type="text/javascript" src="quarto/quarto-consultar.controller.js"></script>
 <script type="text/javascript" src="quarto/quarto-editar.controller.js"></script>
 <script type="text/javascript" src="quarto/quarto-detalhar.controller.js"></script>
+<script type="text/javascript"
+	src="quarto/quarto-consultar-siteaberto.controller.js"></script>	
 <!-- <script type="text/javascript" -->
 <!-- 	src="quarto/quarto-editar.controller.js"></script> -->
 <!-- <script type="text/javascript" -->
@@ -152,6 +154,11 @@
 <script type="text/javascript" src="../lib/msgcenter/msgcenter.directive.js"></script>
 <script type="text/javascript" src="../lib/msgcenter/msgcenter.httpinterceptor.js"></script>
 
+<!-- Util -->
+<script type="text/javascript" src="util/filtro.service.js"></script>
+<script type="text/javascript" src="util/fileread.directive.js"></script>
+<script type="text/javascript" src="util/debug.directive.js"></script>
+
 <!-- Bootstrap core JavaScript -->
 <script src="../lib/vendor/jquery/jquery.min.js"></script>
 
@@ -174,13 +181,15 @@
 			<ul class="navbar-nav ml-auto">
 				<!-- ========================= TELAS DO SITE ABERTO ========================= -->
 				<li class="nav-item active"><a class="nav-link"
-					ui-sref="inicio">Início</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="quartos">Quartos</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="reserva">Reserva</a></li>
-				<li class="nav-item"><a class="nav-link" ui-sref="contato">Contato</a></li>
+					ui-sref="inicio">|Início|</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="reserva">|Reserva|</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="quartoConsultarSiteAberto">|Quartos|</a></li>
+				<li class="nav-item"><a class="nav-link" ui-sref="contato">|Contato|</a></li>
 				<!-- ========================= TELAS DE CLIENTE ============================= -->
 
 				<!-- ========================= TELAS DE FUNCIONÁRIO ========================= -->
+				<li class="nav-item"><a class="nav-link" 
+					ui-sref="quartoConsultar">Quarto</a></li>
 				<li class="nav-item"><a class="nav-link"
 					ui-sref="clienteConsultar">Cliente</a></li>
 				<li class="nav-item"><a class="nav-link"
@@ -192,8 +201,8 @@
 				<li class="nav-item"><a class="nav-link"
 					ui-sref="usuarioConsultar">Usuário</a></li>
 				<!-- ========================= OUTRAS ==================================== -->
-				<li class="nav-item"><a class="nav-link"
-					ui-sref="showcaseConsultar">Showcase</a></li>
+<!-- 				<li class="nav-item"><a class="nav-link" -->
+<!-- 					ui-sref="showcaseConsultar">Showcase</a></li> -->
 				<!-- ===================================================================== -->
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

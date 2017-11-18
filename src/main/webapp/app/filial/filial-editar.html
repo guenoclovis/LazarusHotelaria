@@ -9,11 +9,6 @@
 			<h1>Filial Incluir</h1>
 		</div>
 
-		<div>
-			<pre>{{vm.filial | json}}</pre>
-			<pre>{{vm.imagem | json}}</pre>
-		</div>
-
 		<form>
 
 			<div class="row" ng-if="vm.filial.codFilial">
@@ -95,13 +90,21 @@
 				<div class="col-sm-8">
 
 					<div class="row">
-						
-						&nbsp;<input class="btn btn-sucess" type="file" fileread="vm.imagem" />
-						
-						<div class="col-sm-2">
-							<img ng-if="vm.imagem" src="{{vm.imagem}}" width="100"
-								height="50" alt="Image preview..."> <br />
+
+						&nbsp;<input class="btn btn-sucess" type="file"
+							fileread="vm.imagem" />
+
+						<div class="col-sm-2" ng-if="vm.imagem">
+							<img src="{{vm.imagem}}" width="100" class="img-responsive"
+								style="width: 100%" alt="Image">
 						</div>
+
+						<div class="col-md-2" ng-if="!vm.imagem">
+							<img
+								ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemMiniatura}}"
+								class="img-responsive" style="width: 100%" alt="Image" />
+						</div>
+
 					</div>
 					<div class="row">
 						<div class="col-sm-4">
@@ -138,13 +141,18 @@
 			</div>
 
 			<div class="form-group ">
-				<button ng-if="!vm.filial.codFilial" ng-click="vm.incluir()"
+				<button ng-disabled="vm.enviandoFoto" ng-if="!vm.filial.codFilial" ng-click="vm.incluir()"
 					class="btn btn-primary">Incluir</button>
-				<button ng-if="vm.filial.codFilial" ng-click="vm.alterar()"
+				<button ng-disabled="vm.enviandoFoto" ng-if="vm.filial.codFilial" ng-click="vm.alterar()"
 					class="btn btn-primary">Alterar</button>
 				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
 			</div>
 		</form>
+
+		<div>
+			<pre>{{vm.filial | json}}</pre>
+			<pre>{{vm.imagem | json}}</pre>
+		</div>
 
 	</div>
 </div>

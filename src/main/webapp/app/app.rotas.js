@@ -24,7 +24,9 @@
 			templateUrl : './reserva/reserva-consultar.html',			
 			controller : 'ConsultarReservaController',
 			params : {
-				codFilial : undefined
+				codFilial : undefined,
+				dataEntrada : undefined,
+				dataSaida : undefined
 			}
 		}
 		$stateProvider.state(reservaConsultarState);
@@ -66,6 +68,19 @@
 			templateUrl : './quarto/quarto-consultar.html'
 		}
 		$stateProvider.state(quartoConsultarState);
+		
+		var quartoConsultarSiteAbertoState = {
+				name : 'quartoConsultarSiteAberto',
+				url : '/quartoConsultarSiteAberto',
+				controller : 'ConsultarQuartoSiteAbertoController',
+				templateUrl : './quarto/quarto-consultar-siteaberto.html',
+				params : {
+					codFilial : undefined,
+					dataEntrada : undefined,
+					dataSaida : undefined
+				}
+		}
+		$stateProvider.state(quartoConsultarSiteAbertoState);
 
 		var quartoEditarState = {
 			name : 'quartoEditar',

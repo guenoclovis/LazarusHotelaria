@@ -40,7 +40,7 @@ public class FotoFacade {
     
     private FotoBC bc = new FotoBC();    
 
-    public FotoDTO obter(Long id) {
+    public FotoDTO obter(Long id, boolean carregarFotoMiniatura, boolean carregarFotoOriginal) {
         String logMsg = "Iniciando a busca de foto id[%d]" + id;
         
         log.info(logMsg);
@@ -52,7 +52,7 @@ public class FotoFacade {
 
         //CONVERTER
         FotoToDTO converter = new FotoToDTO();
-        FotoDTO fotoDTO = converter.convert(f);
+        FotoDTO fotoDTO = converter.convert(f, carregarFotoMiniatura, carregarFotoOriginal);
     	
         return fotoDTO;
     }
@@ -76,7 +76,7 @@ public class FotoFacade {
         List<FotoDTO> fotosDTO = new ArrayList<FotoDTO>();
         for(Foto f : listagem.getEntidades()){
         	FotoToDTO converter = new FotoToDTO();
-        	FotoDTO fotoDTO = converter.convert(f);
+        	FotoDTO fotoDTO = converter.convert(f, true, false);
         	fotosDTO.add(fotoDTO);
         }
 		
@@ -130,7 +130,7 @@ public class FotoFacade {
         log.info(logMsg);
 
         FotoToDTO toDTOConverter = new FotoToDTO();
-        FotoDTO fotoSalvaDTO = toDTOConverter.convert(fotoSalva);
+        FotoDTO fotoSalvaDTO = toDTOConverter.convert(fotoSalva, true, false);
         
         return fotoSalvaDTO;
 	}

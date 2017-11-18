@@ -4,19 +4,20 @@
 (function() {
 	'use strict';
 
-	// Adicionando um Controlador para a tela 'consultar' do modulo 'reserva'
-	angular.module('reserva').controller('ConsultarReservaController',
-			ConsultarReservaController);
+	// Adicionando um Controlador para a tela 'consultar' do modulo 'quarto'
+	angular.module('quarto').controller('ConsultarQuartoSiteAbertoController',
+			ConsultarQuartoSiteAbertoController);
 
 	// Definindo atributos e operacoes do Controlador da tela 'consultar' do
-	// modulo 'Reserva'
+	// modulo 'quarto'
 	/* @ngInject */
-	function ConsultarReservaController($controller, $scope, $state,
-			$stateParams, ReservaData, MsgCenter, FilialData, FiltroService,
-			QuartoData) {
+	function ConsultarQuartoSiteAbertoController($controller, $scope, $state, $stateParams, QuartoData,
+			MsgCenter, FiltroService, FilialData, FotoData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
+
+		vm.msgs = "";
 
 		vm.popupDataEntrada = {
 			opened : false,
@@ -28,17 +29,14 @@
 
 		vm.openDataEntrada = openDataEntrada;
 		vm.openDataSaida = openDataSaida;
-
-		vm.msgs = "";
-
+		
 		vm.filtros = {};
-
+		vm.quartos = [];
+		vm.quarto = {};
+		
 		vm.filtros.codFilial = $stateParams.codFilial;
 		vm.filtros.dataEntrada = $stateParams.dataEntrada;
 		vm.filtros.dataSaida = $stateParams.dataSaida;
-
-		vm.reservas = [];
-		vm.reserva = {};
 
 		// Paginação
 		vm.totalresults = 0;
@@ -53,11 +51,15 @@
 		vm.limpar = limpar;
 		vm.irParaTelaInclusao = irParaTelaInclusao;
 		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
+		vm.carregarFiliais = carregarFiliais;
+		vm.carregarFilial = carregarFilial;
+		vm.pesquisarQuartosDisponiveis = pesquisarQuartosDisponiveis; 
+		
 
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
-
+		
 		function openDataEntrada() {
 			vm.popupDataEntrada.opened = true;
 		}
@@ -70,8 +72,36 @@
 			vm.deveRestaurar = FiltroService.deveRestaurar();
 			restaurarEstadoTela();
 			carregarFiliais();
+			carregarFilial();
 		}
 
+		function carregarFiliais() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			FilialData.listar(filtros).then(function(data) {
+				vm.filiais = data.entidades;
+			});
+		}
+		
+		function carregarFilial(){
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			FilialData.obter(vm.filtros.codFilial, filtros).then(function(data) {
+				vm.filial = data;
+				var filtros = { carregarImagemOriginal : true, carregarImagemMiniatura : true };
+				
+				FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
+					vm.filial.foto = data;
+				});
+			});
+		}
+		
+		function pesquisarQuartosDisponiveis(){
+			//TODO: Pendente
+		}
+		
 		function pesquisarLimpar() {
 			vm.filtros.currentpage = 0;
 			MsgCenter.clear();
@@ -93,25 +123,24 @@
 			$state.reload();
 		}
 
-		function irParaTelaDetalhamento(codReserva) {
+		function irParaTelaDetalhamento(codQuarto) {
 			salvarEstadoTela();
-			$state.go('reservaDetalhar', {
-				'codReserva' : codReserva
+			$state.go('quartoDetalhar', {
+				'codQuarto' : codQuarto
 			});
 		}
 
 		function irParaTelaInclusao() {
 			salvarEstadoTela();
-			$state.go('reservaEditar');
+			$state.go('quartoEditar');
 		}
 
 		function salvarEstadoTela() {
-			var devePesquisar = vm.reservas.length > 0;
+			var devePesquisar = vm.quartos.length > 0;
 			FiltroService.salvarFiltros(vm.filtros, devePesquisar);
 		}
 
 		function restaurarEstadoTela() {
-
 			if (FiltroService.deveRestaurar()) {
 				vm.filtros = FiltroService.obterFiltros();
 
@@ -120,33 +149,14 @@
 				}
 				FiltroService.marcarRestaurado();
 			}
-
-		}
-
-		function carregarFiliais() {
-			MsgCenter.clear();
-			var filtros = vm.filtros;
-
-			FilialData.listar(filtros).then(function(data) {
-				vm.filiais = data.entidades;
-			});
-		}
-		
-		function carregarQuartos() {
-			MsgCenter.clear();
-			var filtros = vm.filtros;
-
-			QuartoData.listar(filtros).then(function(data) {
-				vm.quartos = data.entidades;
-			});
 		}
 
 		function pesquisar() {
 			MsgCenter.clear();
 			var filtros = vm.filtros;
 
-			ReservaData.listar(filtros).then(function(data) {
-				vm.reservas = data.entidades;
+			QuartoData.listar(filtros).then(function(data) {
+				vm.quartos = data.entidades;
 
 				if (data.pagina) {
 					var page = data.pagina;

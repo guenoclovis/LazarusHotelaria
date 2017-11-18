@@ -2,6 +2,8 @@ package br.org.ufpr.tcc.dto;
 
 import java.util.Date;
 
+import br.org.ufpr.tcc.util.DataUtil;
+
 public class ClienteDTO {
 
 	private Integer codCliente;
@@ -24,6 +26,10 @@ public class ClienteDTO {
     private String endCompl;
     private String senhaAcesso;
     private char status;
+    
+    private String sexoExibicao;
+    private String dataExibicao;
+    
 	public Integer getCodCliente() {
 		return codCliente;
 	}
@@ -144,6 +150,35 @@ public class ClienteDTO {
 	public void setStatus(char status) {
 		this.status = status;
 	}
+	public String getSexoExibicao() {
+		if(getSexo() != null){
+			if(getSexo().equals(1)){
+				this.sexoExibicao = "Masculino";
+			}
+			if(getSexo().equals(2)){
+				this.sexoExibicao = "Feminino";
+			}
+			if(getSexo().equals(0)){
+				this.sexoExibicao = "Outro";
+			}
+			
+		} else {
+			this.sexoExibicao = "-";
+		}
+		
+		return this.sexoExibicao;
+	}
+	public void setSexoExibicao(String sexoExibicao) {
+		this.sexoExibicao = sexoExibicao;
+	}
+	public String getDataExibicao() {
+		return this.dataExibicao;
+	}
+	public void setDataExibicao(String dataExibicao) {
+		this.dataExibicao = dataExibicao;
+	}
     
 
+	
+	
 }

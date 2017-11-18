@@ -14,16 +14,21 @@
 				</div>
 			</div>
 			<div class="row">
-				<div class="col-md-12">
-					<div>
-						<pre>{{dcc.filial | json}}</pre>
-					</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Foto</label>
 				</div>
+				<div class="col-md-2">
+					<img
+						ng-src="data:image/jpeg;base64,{{dcc.filial.foto.imagemMiniatura}}"
+						class="img-responsive" style="width: 100%" alt="Image" />
+				</div>
+				<div class="col-md-2"></div>
 			</div>
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Código</label>
+					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
 				</div>
 				<div class="col-md-6">
 					<span id="nome">{{dcc.filial.codFilial}}</span>
@@ -55,7 +60,7 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
+					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
 				</div>
 				<div class="col-md-6">
 					<span id="dtNasc">{{dcc.filial.descricao}}</span>
@@ -84,7 +89,6 @@
 				</div>
 				<div class="col-md-2"></div>
 			</div>
-
 		</div>
 
 		<div class="row">
@@ -96,6 +100,14 @@
 						class="btn btn-primary">Editar</button>
 					<button ng-click="dcc.excluir(dcc.filial.codFilial)"
 						class="btn btn-primary">Excluir</button>
+				</div>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12">
+				<div>
+					<pre>{{dcc.filial | json}}</pre>
 				</div>
 			</div>
 		</div>

@@ -45,6 +45,7 @@
 		vm.paginaAlterada = paginaAlterada;
 		vm.limpar = limpar;
 		vm.irParaTelaPesquisaReserva = irParaTelaPesquisaReserva;
+		vm.pesquisarReservasFilial = pesquisarReservasFilial;
 
 		activate();
 
@@ -55,7 +56,7 @@
 			// restaurarEstadoTela();
 			carregarFiliais();
 		}
-		
+
 		function openDataEntrada() {
 			vm.popupDataEntrada.opened = true;
 		}
@@ -84,11 +85,18 @@
 		function limpar() {
 			$state.reload();
 		}
+		
+		
+		function pesquisarReservasFilial(codFilial){
+			vm.filtros.codFilial = codFilial;
+			irParaTelaPesquisaReserva();
+		}
 
-		function irParaTelaPesquisaReserva(codFilial) {
-			// salvarEstadoTela();
-			$state.go('reserva', {
-				'codFilial' : codFilial
+		function irParaTelaPesquisaReserva() {
+			$state.go('quartoConsultarSiteAberto', {
+				'codFilial' : vm.filtros.codFilial,
+				'dataEntrada' : vm.filtros.dataEntrada,
+				'dataSaida': vm.filtros.dataSaida
 			});
 		}
 

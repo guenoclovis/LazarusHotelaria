@@ -59,7 +59,39 @@
 	color: #ffff99;	
 }
 
-/* ===================== PÁGINAS ===================== */
+/* Para deixar todas as miniaturas das imagens com o mesmo tamanho */
+.img-responsive {
+    width: auto;
+    height: 100px;
+}
+
+.img-original-responsive {    
+    height: 400px;
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Para colocar o '*' indicativo de campo obrigatorio */
+.required {
+    vertical-align: top;
+}
+.required::before {
+    color: #d10307;
+    content: "*";
+    margin-right: 5px;
+}
+.required::after {
+    content: "";
+}
+.jumbotron .required::before {
+    color: #fea2a4;
+}
+.modal .required::before {
+    color: #d10307;
+}
+
+/* ===================== Pï¿½GINAS ===================== */
 /* ATRIBUTOS */
 .atributos h3{
 	margin-top: 20px;
@@ -76,7 +108,7 @@
 .corpo-descricao p{
 	text-align: left;
 } 	
-/* TÍTULOS */
+/* TITULOS */
 .titulo-paginas-meio{
 	padding-bottom: 30px;	
 }
@@ -97,7 +129,7 @@
 }
 /* GRIDS */
 .grid-pesquisa{
- 	background-color: #98FB98;
+ 	background-color: #95c495;
     margin-top: 15px;
     border-radius: 5px;
 }
@@ -120,7 +152,12 @@
 	font-style: italic;
 	vertical-align: top;
 }
-/* BOTÕES */
+.campo-form select{
+	height: 40px;
+    width: 95%;
+    margin-left: 15px;
+}
+/* BOTOES */
 .botoes-meio{
     margin-top: 15px;
     text-align: center;
