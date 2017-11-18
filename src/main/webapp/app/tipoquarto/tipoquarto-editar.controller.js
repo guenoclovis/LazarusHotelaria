@@ -18,8 +18,8 @@
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
 
-        vm.tipoquarto = {};
-        vm.tipoquarto.codTipoQuarto = $stateParams.codTipoQuarto;
+        vm.tipoQuarto = {};
+        vm.tipoQuarto.codTipoQuarto = $stateParams.codTipoQuarto;
 
         vm.msgs = "";
 
@@ -33,7 +33,7 @@
         //////// OPERACOES DO CONTROLADOR ////////////////////
 
         function activate() {
-            if (vm.tipoquarto.codTipoQuarto !== undefined) {
+            if (vm.tipoQuarto.codTipoQuarto !== undefined) {
                 obter();
             }
         }
@@ -48,31 +48,31 @@
         
         function incluir() {
 
-            vm.tipoquarto.codTipoQuarto = undefined;
+            vm.tipoQuarto.codTipoQuarto = undefined;
 
-            TipoQuartoData.salvar(vm.tipoquarto).then(function (data) {
+            TipoQuartoData.salvar(vm.tipoQuarto).then(function (data) {
             	MsgCenter.add("INFO", "Tipo de Quarto incluído(a) com sucesso!", undefined, undefined);    
                 limparFormulario();
             });
         }
         
         function limparFormulario() {
-        	vm.tipoquarto = {};
+        	vm.tipoQuarto = {};
         }
 
         function alterar() {
 
-        	TipoQuartoData.salvar(vm.tipoquarto).then(function (data) {
+        	TipoQuartoData.salvar(vm.tipoQuarto).then(function (data) {
         		MsgCenter.add("INFO", "Tipo de Quarto alterado(a) com sucesso!", undefined, undefined);
                 $state.go('tipoquartoDetalhar', {
-                    'codTipoQuarto': vm.tipoquarto.codTipoQuarto
+                    'codTipoQuarto': vm.tipoQuarto.codTipoQuarto
                 });
             });
         }
 
         function obter() {
-        	TipoQuartoData.obter(vm.tipoquarto.codTipoQuarto).then(function (data) {
-                vm.tipoquarto = data.plain();
+        	TipoQuartoData.obter(vm.tipoQuarto.codTipoQuarto).then(function (data) {
+                vm.tipoQuarto = data.plain();
             });
         }
     }

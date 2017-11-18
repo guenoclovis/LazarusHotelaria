@@ -14,10 +14,10 @@ public class DTOtoTipoQuarto {
 		}
 		
 		tipoquarto.setCodTipoQuarto(dto.getCodTipoQuarto());
-		tipoquarto.setTipo(dto.getTipo());		
+		tipoquarto.setTipo("1");		
 		tipoquarto.setNome(dto.getNome());
 		tipoquarto.setDescricao(dto.getDescricao());		
-		tipoquarto.setStatus(dto.getStatus());
+		tipoquarto.setStatus(dto.getStatus().charAt(0));
 
 		return tipoquarto;
 	}

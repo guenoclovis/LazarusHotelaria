@@ -3,27 +3,17 @@
 	<div ng-controller="DetalharTipoQuartoController as dcc">
 
 		<div class=".container">
-			<div class="row">
-				<div class="col-md-12" align="center">
-					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
-				</div>
-			</div>
+			
 			<div class="row">
 				<div class="col-md-12 lazarus-align">
-					<h2>Detalhar o TipoQuarto</h2>
+					<h2>Detalhar o Tipo de Quarto</h2>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div>
-						<pre>{{dcc.tipoquarto | json}}</pre>
-					</div>
-				</div>
-			</div>
+			
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Código</label>
+					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
 				</div>
 				<div class="col-md-6">
 					<span id="nome">{{dcc.tipoquarto.codTipoQuarto}}</span>
@@ -32,16 +22,16 @@
 				<div class="col-md-2"></div>
 			</div>
 			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="tipo" class="cols-sm-2 control-label">Tipo</label>
-				</div>
-				<div class="col-md-6">
-					<span id="tipo">{{dcc.tipoquarto.tipo}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>			
+<!-- 			<div class="row"> -->
+<!-- 				<div class="col-md-2"></div> -->
+<!-- 				<div class="col-md-2"> -->
+<!-- 					<label for="tipo" class="cols-sm-2 control-label">Tipo</label> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-6"> -->
+<!-- 					<span id="tipo">{{dcc.tipoquarto.tipo}}</span> -->
+<!-- 				</div> -->
+<!-- 				<div class="col-md-2"></div> -->
+<!-- 			</div>			 -->
 			
 			<div class="row">
 				<div class="col-md-2"></div>
@@ -57,7 +47,7 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descrição</label>
+					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
 				</div>
 				<div class="col-md-6">
 					<span id="dtNasc">{{dcc.tipoquarto.descricao}}</span>
@@ -65,7 +55,7 @@
 				<div class="col-md-2"></div>
 			</div>
 
-			<!-- <div class="row">
+			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
 					<label for="status" class="cols-sm-2 control-label">Status</label>
@@ -74,7 +64,7 @@
 					<span id="sexo">{{dcc.tipoquarto.status}}</span>
 				</div>
 				<div class="col-md-2"></div>
-			</div-->
+			</div>
 
 		</div>
 
@@ -90,7 +80,9 @@
 				</div>
 			</div>
 		</div>
-
+		
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.tipoQuarto | json}}"></debug>
+				
 	</div>
-
 </div>

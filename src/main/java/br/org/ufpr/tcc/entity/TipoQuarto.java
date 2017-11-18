@@ -11,7 +11,7 @@ import javax.persistence.Table;
 //import java.util.Date;
 
 @Entity
-@Table(name = "TipoQuarto", schema="public")
+@Table(name = "TIPOS_DE_QUARTO", schema="public")
 public class TipoQuarto {
 
 	public static final String NOME = "nome";
@@ -19,7 +19,7 @@ public class TipoQuarto {
 	@Id
     @Column(name = "cod_tipo_quarto")
     @GeneratedValue(strategy = GenerationType.AUTO, generator = "SEQ_TIPO_QUARTO")
-    @SequenceGenerator(name = "SEQ_TIPO_QUARTO", schema="public", sequenceName = "tipos_de_quarto_cod_tipos_quarto_seq", allocationSize = 1)
+    @SequenceGenerator(name = "SEQ_TIPO_QUARTO", schema="public", sequenceName = "tipos_de_quarto_cod_tipo_quarto_seq", allocationSize = 1)
 	private Integer codTipoQuarto;
 	
 	@Column(name = "tipo")
@@ -32,13 +32,48 @@ public class TipoQuarto {
 	private String descricao;
 	
 	@Column(name = "status")
-	private char status;	
-	
-	@Override
-	public String toString() {
-		return "TipoQuarto [codTipoQuarto=" + codTipoQuarto + ", tipo=" + tipo + ", nome=" + nome + ", descricao=" + descricao
-				+ ", status=" + status + "]";
+	private char status;
+
+	public Integer getCodTipoQuarto() {
+		return codTipoQuarto;
 	}
+
+	public void setCodTipoQuarto(Integer codTipoQuarto) {
+		this.codTipoQuarto = codTipoQuarto;
+	}
+
+	public String getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public char getStatus() {
+		return status;
+	}
+
+	public void setStatus(char status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -50,6 +85,7 @@ public class TipoQuarto {
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -83,35 +119,11 @@ public class TipoQuarto {
 			return false;
 		return true;
 	}
-	public Integer getCodTipoQuarto() {
-		return codTipoQuarto;
+
+	@Override
+	public String toString() {
+		return "TipoQuarto [codTipoQuarto=" + codTipoQuarto + ", tipo=" + tipo + ", nome=" + nome + ", descricao="
+				+ descricao + ", status=" + status + "]";
 	}
-	public void setCodTipoQuarto(Integer codTipoQuarto) {
-		this.codTipoQuarto = codTipoQuarto;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public char getStatus() {
-		return status;
-	}
-	public void setStatus(char status) {
-		this.status = status;
-	}	
-	
+
 }

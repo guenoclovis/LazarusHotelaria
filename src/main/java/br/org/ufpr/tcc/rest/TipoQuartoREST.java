@@ -42,10 +42,10 @@ public class TipoQuartoREST {
     @Produces("application/json")
 	public ResultadoPaginadoDTO<TipoQuartoDTO> listar(@QueryParam("currentpage") int currentPage,			
 	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
-	        @QueryParam("fields") String fields) {
+	        @QueryParam("nome") String nome) {
 
         TipoQuartoFiltroDTO filtro = new TipoQuartoFiltroDTO();
+        filtro.setNome(nome);
         
 
         // Paginação
@@ -56,7 +56,7 @@ public class TipoQuartoREST {
             filtro.getPagina().setCurrentPage(currentPage);
         }
 
-        return facade.listar(filtro, fields);
+        return facade.listar(filtro, null);
     }
 	
 	@POST

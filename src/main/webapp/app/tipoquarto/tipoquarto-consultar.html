@@ -1,23 +1,17 @@
 <div>
 	<div ng-controller="ConsultarTipoQuartoController as vm">
 
-		<div class=".container">
-			<div class="row">
-				<div class="col-md-12" align="center">
-					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 lazarus-align">
-					<h2>Consultar Tipos de Quartos</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 lazarus-align">
-					<div><pre>{{vm.tipoquarto | json}}</pre></div>
-				</div>
-			</div>
+		<!-- ================= CORPO DA PAGINA ================= -->
+		<div class="row linha-site">
+		<div class="container">
+		<!-- ================= TITULO ================= -->
+		<div class="titulo-paginas-meio">
+			<h1>Tipos de Quarto</h1>
+		</div>	
 
+
+		<div class=".container">
+			
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
@@ -25,7 +19,7 @@
 						<label for="nome" class="cols-sm-2 control-label">Nome</label>
 						<div class="cols-sm-4">
 							<div class="input-group">
-								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.tipoquarto.nome"
+								<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.filtros.nome"
 									placeholder="Nome do TipoQuarto" />
 							</div>
 						</div>
@@ -44,22 +38,22 @@
 			</div>
 			<div class="row">
 				<div class="col-md-12">
-					<div ng-if="vm.tipoquartos.length > 0">
-						<table class="table table-striped">
+					<div ng-if="vm.tiposquartos.length > 0">
+						<table class="table table-striped grid-pesquisa">
 							<thead>
 								<tr>
-									<td>Cód.</td>
-									<td>Tipo</td>
-		                            <td>Nome</td>
-		                            <td>Descrição</td>      
+									<td>Cod.</td>
+									<td>Nome</td>
+		                            <td>Descri&ccedil;&atilde;o</td>
+		                            <td>Status</td>      
 								</tr>
 							</thead>
 							<tbody>
-								<tr ng-repeat="tipoquarto in vm.tipoquartos">
+								<tr ng-repeat="tipoquarto in vm.tiposquartos">
 									<td>{{ tipoquarto.codTipoQuarto}}</td>
-									<td>{{ tipoquarto.tipo}}</td>
 									<td>{{ tipoquarto.nome}}</td>
 									<td>{{ tipoquarto.descricao}}</td>
+									<td>{{ tipoquarto.status}}</td>
 									<td>
 										<button ng-click="vm.irParaTelaDetalhamento(tipoquarto.codTipoQuarto)" class="btn btn-primary btn-xs">Detalhar</button>
 									</td>
@@ -70,5 +64,9 @@
 				</div>
 			</div>
 		</div>
+		
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.filtros | json}}"></debug>		
+		
 	</div>
 </div>

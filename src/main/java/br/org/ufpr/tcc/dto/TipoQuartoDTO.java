@@ -8,7 +8,7 @@ public class TipoQuartoDTO {
     private String tipo;	
     private String nome;
     private String descricao;
-    private char status;
+    private String status;
     
 	public Integer getCodTipoQuarto() {
 		return codTipoQuarto;
@@ -34,11 +34,10 @@ public class TipoQuartoDTO {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public char getStatus() {
+	public String getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
-        
 }
