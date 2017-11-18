@@ -65,12 +65,22 @@
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
+		
+		function carregarTipoQuarto() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			TipoQuartoData.listar(filtros).then(function(data) {
+				vm.tiposQuartos = data.entidades;
+			});
+		}
 
 		function activate() {
 			if (vm.quarto.codQuarto !== undefined) {
 				obter();
 			}
 			carregarFiliais();
+			carregarTipoQuarto();
 		}
 		
 		function carregarFiliais() {

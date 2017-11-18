@@ -27,7 +27,7 @@
 					<div class="row campo-form" ng-if="vm.quarto.codQuarto">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="nome" class="cols-sm-2 control-label">Código</label>
+							<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
 						</div>
 						<div class="col-md-6">
 							<span id="nome">{{vm.quarto.codQuarto}}</span>
@@ -40,7 +40,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="combo-tipo" class="cols-sm-2 control-label">Número
+							<label for="combo-tipo" class="cols-sm-2 control-label">N&uacute;mero
 								do Quarto</label>
 						</div>
 						<div class="col-md-6">
@@ -56,13 +56,12 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="nome" class="cols-sm-2 control-label">Tipo do
-								Quarto:</label>
+							<label for="nome" class="cols-sm-2 control-label">Tipo do Quarto</label>
 						</div>
 						<div class="col-md-6">
 							<select id="codTipoQuarto" class="campo-form"
-								ng-options="item.codigo as item.descricao for item in vm.tiposQuartos"
-								ng-model="vm.cliente.endUf" selectpicker>
+								ng-options="item.codTipoQuarto as item.descricao for item in vm.tiposQuartos"
+								ng-model="vm.quarto.codTipoQuarto" selectpicker>
 								<option value="" selected>Selecione</option>
 							</select>
 						</div>
@@ -73,7 +72,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="nome" class="cols-sm-2 control-label">Número
+							<label for="nome" class="cols-sm-2 control-label">N&uacute;mero
 								de Camas</label>
 						</div>
 						<div class="col-md-6">
@@ -87,7 +86,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="descricao" class="cols-sm-2 control-label">Descricao</label>
+							<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control campo-descricao"
