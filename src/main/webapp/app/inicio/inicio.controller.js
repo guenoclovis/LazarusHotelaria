@@ -93,7 +93,7 @@
 		}
 
 		function irParaTelaPesquisaReserva() {
-			$state.go('reserva', {
+			$state.go('quartoConsultarSiteAberto', {
 				'codFilial' : vm.filtros.codFilial,
 				'dataEntrada' : vm.filtros.dataEntrada,
 				'dataSaida': vm.filtros.dataSaida

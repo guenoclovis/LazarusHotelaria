@@ -73,7 +73,12 @@
 				name : 'quartoConsultarSiteAberto',
 				url : '/quartoConsultarSiteAberto',
 				controller : 'ConsultarQuartoSiteAbertoController',
-				templateUrl : './quarto/quarto-consultar-siteaberto.html'
+				templateUrl : './quarto/quarto-consultar-siteaberto.html',
+				params : {
+					codFilial : undefined,
+					dataEntrada : undefined,
+					dataSaida : undefined
+				}
 		}
 		$stateProvider.state(quartoConsultarSiteAbertoState);
 
