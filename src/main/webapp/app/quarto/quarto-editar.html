@@ -1,0 +1,117 @@
+
+<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
+<div>
+	<div ng-controller="EditarQuartoController as vm">
+	
+	<!-- ================= MENSAGENS DE CONTRUÇÃO - COMENTAR ================= -->
+	<h1>{{vm.msgs}}</h1>
+		<div>
+			<pre>{{vm.quarto | json}}</pre>
+		</div>
+	
+	<!-- ================= CORPO DA PÁGINA ================= -->
+       <div class="row linha-site">
+       <div class="container">
+		<!-- ================= TÍTULO + MSG ================= -->
+		<div class="titulo-paginas-meio">
+			<div ng-if="vm.quarto.codQuarto">
+				<h1>Editar Quarto</h1>
+			</div>
+			<div ng-if="!vm.quarto.codQuarto">
+				<h1>Incluir Quarto</h1>
+			</div>
+		</div>	
+			
+		<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
+		<form>
+		<!-- CÓDIGO -->
+			<div class="row campo-form" ng-if="vm.quarto.codQuarto">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Código</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{vm.quarto.codQuarto}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>		
+				
+			<!-- TIPO -->
+			<div class="row campo-form">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="combo-tipo" class="cols-sm-2 control-label">Número do Quarto</label>
+				</div>
+				<div class="col-md-6">
+					<select id="combo-tipo" class="form-control"
+						ng-options="item.codigo as item.descricao for item in vm.tipos" ng-model="vm.quarto.tipo"
+						placeholder=""
+						selectpicker>
+						<!-- option value="2" selected>Quarto</option-->
+					</select>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<!-- NOME -->			
+			<div class="row campo-form">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Número de Camas</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.quarto.nrCamas"
+							placeholder="Número de camas" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<!-- DESCRIÇÃO -->			
+			<div class="row campo-form">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="descricao" class="cols-sm-2 control-label">Descricao</label>
+				</div>
+				<div class="col-md-6">
+					<input type="text" class="form-control campo-descricao" name="descricao" id="descricao" ng-model="vm.quarto.descricao"
+						placeholder="Descricao do Quarto" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>	
+				
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Status</label>
+				</div>
+				<div class="col-md-6">
+					<div class="form-inline" id="status">
+						<div class="radio col-sm-2">
+							<input ng-model="vm.quartol.status" type="radio"
+								name="radio-status" id="ex-a" ng-value="1"> <label
+								for="ex-a">A</label>
+						</div>
+						<div class="radio col-sm-2">
+							<input ng-model="vm.quarto.status" type="radio"
+								name="radio-status" id="ex-i" ng-value="2"> <label
+								for="ex-i">I</label>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<!-- BOTÕES -->
+			<div class="col-sm-10">
+				<div class="row botoes-direita">
+					<button ng-if="!vm.quarto.codQuarto" ng-click="vm.incluir()" class="btn btn-primary">Salvar</button>
+					<button ng-if="vm.quarto.codQuarto" ng-click="vm.alterar()" class="btn btn-primary">Salvar</button>
+					<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+	</div>
+</div>
+</div>

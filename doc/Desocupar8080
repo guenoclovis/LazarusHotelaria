@@ -1,5 +1,6 @@
 Abrir cmd.exe como admin
-Executora o comando: netstat -a -n -b -o -p tcp
+Executora o comando: 
+netstat -a -n -b -o -p tcp
 Anotar o PID que está na 8080
 Encontrar o processo pelo gerenciador de tarefas aba detalhes
 Finalizar o processo
