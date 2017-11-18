@@ -2,12 +2,6 @@
 <div>
 	<div ng-controller="EditarQuartoController as vm">
 
-		<!-- ================= MENSAGENS DE CONTRUÇÃO - COMENTAR ================= -->
-		<h1>{{vm.msgs}}</h1>
-		<div>
-			<pre>{{vm.quarto | json}}</pre>
-		</div>
-
 		<!-- ================= CORPO DA PÁGINA ================= -->
 		<div class="row linha-site">
 			<div class="container">
@@ -23,6 +17,24 @@
 
 				<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
 				<form>
+					<!-- FILIAL -->
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-sm-2">
+							<label for="filiais" class="cols-sm-2 control-label required">Hotel
+								Destino</label>
+						</div>
+						<div class="col-sm-6">
+							<select id="filiais"
+								ng-options="item.codFilial as item.nome for item in vm.filiais"
+								ng-model="vm.filtros.codFilial" selectpicker>
+								<option value="" selected>Selecione</option>
+							</select>
+
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
 					<!-- CÓDIGO -->
 					<div class="row campo-form" ng-if="vm.quarto.codQuarto">
 						<div class="col-md-2"></div>
@@ -36,7 +48,7 @@
 						<div class="col-md-2"></div>
 					</div>
 
-					<!-- TIPO -->
+					<!-- Numero do Quarto -->
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
@@ -44,10 +56,8 @@
 								do Quarto</label>
 						</div>
 						<div class="col-md-6">
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="nome" id="nome"
-									ng-model="vm.quarto.idQuarto" placeholder="" />
-							</div>
+							<input type="text" class="form-control" name="nome" id="nome"
+								ng-model="vm.quarto.idQuarto" placeholder="" />
 						</div>
 						<div class="col-md-2"></div>
 					</div>
@@ -56,7 +66,8 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="nome" class="cols-sm-2 control-label">Tipo do Quarto</label>
+							<label for="nome" class="cols-sm-2 control-label">Tipo do
+								Quarto</label>
 						</div>
 						<div class="col-md-6">
 							<select id="codTipoQuarto" class="campo-form"
@@ -99,19 +110,51 @@
 					<div class="row">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
+							<label for="foto" class="cols-sm-2 control-label">Foto</label>
+						</div>
+						<div class="col-sm-8">
+
+							<div class="row">
+
+								&nbsp;<input class="btn btn-sucess" type="file"
+									fileread="vm.imagem" />
+
+								<div class="col-sm-2" ng-if="vm.imagem">
+									<img src="{{vm.imagem}}" width="100" class="img-responsive"
+										style="width: 100%" alt="Image">
+								</div>
+
+								<div class="col-md-2" ng-if="!vm.imagem">
+									<img
+										ng-src="data:image/jpeg;base64,{{vm.quarto.foto.imagemMiniatura}}"
+										class="img-responsive" style="width: 100%" alt="Image" />
+								</div>
+
+							</div>
+							<div class="row">
+								<div class="col-sm-4">
+									<button ng-click="vm.uploadImage()">Enviar Imagem</button>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
 							<label for="status" class="cols-sm-2 control-label">Status</label>
 						</div>
 						<div class="col-md-6">
 							<div class="form-inline" id="status">
 								<div class="radio col-sm-2">
-									<input ng-model="vm.quartol.status" type="radio"
+									<input ng-model="vm.quarto.status" type="radio"
 										name="radio-status" id="ex-a" ng-value="1"> <label
-										for="ex-a">A</label>
+										for="ex-a">Ativo</label>
 								</div>
 								<div class="radio col-sm-2">
 									<input ng-model="vm.quarto.status" type="radio"
 										name="radio-status" id="ex-i" ng-value="2"> <label
-										for="ex-i">I</label>
+										for="ex-i">Inativo</label>
 								</div>
 							</div>
 						</div>
@@ -132,5 +175,8 @@
 				</form>
 			</div>
 		</div>
+
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.quarto | json}}"></debug>
 	</div>
 </div>

@@ -10,6 +10,8 @@
 	<entity class="br.org.ufpr.tcc.entity.Usuario" />
 	<entity class="br.org.ufpr.tcc.entity.Atributo" />
 	<entity class="br.org.ufpr.tcc.entity.TipoQuarto" />
+	<entity class="br.org.ufpr.tcc.entity.Reserva" />
+	<entity class="br.org.ufpr.tcc.entity.Quarto" />
 	<entity class="br.org.ufpr.tcc.entity.Foto" />
 	
 </entity-mappings>

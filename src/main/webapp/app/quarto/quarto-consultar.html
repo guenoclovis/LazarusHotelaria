@@ -28,7 +28,7 @@
 						<div class="cols-sm-4">
 							<div class="input-group">
 								<input type="text" class="form-control" name="nome" id="nome"
-									ng-model="vm.filtros.nome" placeholder="Nome da Quarto" />
+									ng-model="vm.filtros.nome" placeholder="Quarto" />
 							</div>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 			</div>
 
 			<!-- TESTE BUSCA PAGINADA -->
-			<div ng-show="vm.filiais.length > 0" class="well">
+			<div ng-show="vm.quartos.length > 0" class="well">
 				<div class="clearfix">
 					<div class="pull-right">
 						<select id="pageSize" class="form-control"
@@ -60,17 +60,17 @@
 						data-ordering="false" class="table">
 						<thead>
 							<tr>
-								<th>Nome</th>
+								<th>N&uacute;mero do Quarto</th>
+								<th>N&uacute;mero de Camas</th>
 								<th>Descri&ccedil;&atilde;o</th>
-								<th>E-mail</th>
 								<th class="text-center">A&ccedil;&atilde;o</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr ng-repeat="quarto in vm.filiais">
-								<td ng-bind="quarto.nome"></td>
+							<tr ng-repeat="quarto in vm.quartos">
+								<td ng-bind="quarto.idQuarto"></td>
+								<td ng-bind="quarto.nrCamas"></td>
 								<td ng-bind="quarto.descricao"></td>
-								<td ng-bind="quarto.email"></td>
 								<td class="text-center"><a
 									ng-click="vm.irParaTelaDetalhamento(quarto.codQuarto)"
 									class="btn btn-primary btn-xs">Detalhar</a></td>
@@ -88,8 +88,10 @@
 				</div>
 			</div>
 
-
-
 		</div>
+		
+		<!-- ================= DEBUG ================= -->
+				<debug objeto="{{vm.quartos | json}}"></debug>
+		<debug objeto="{{vm.filtros | json}}"></debug>
 	</div>
 </div>

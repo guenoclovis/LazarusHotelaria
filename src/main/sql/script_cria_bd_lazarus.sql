@@ -182,17 +182,22 @@ INSERT INTO TIPO_QUARTO_ATRIBUTO VALUES(1, 1);
 ----------------------------------------------------------------------
 CREATE TABLE QUARTOS(
 	COD_QUARTO			SERIAL			NOT NULL,
+	COD_FILIAL      	INTEGER,	
 	ID_QUARTO			VARCHAR			NOT NULL,
 	COD_TIPO_QUARTO			INTEGER			NOT NULL,
 	NR_CAMAS			INTEGER			NOT NULL	DEFAULT 1,
 	DESCRICAO			VARCHAR(400)	NOT NULL,
+	COD_FOTO        INTEGER,	
 	STATUS				CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
 	CONSTRAINT PK_QUARTO PRIMARY KEY (COD_QUARTO),
 	FOREIGN KEY (COD_TIPO_QUARTO) REFERENCES TIPOS_DE_QUARTO(COD_TIPO_QUARTO)	
 );
 -- DROP TABLE QUARTOS
 -- SELECT * FROM QUARTOS
-INSERT INTO QUARTOS VALUES(1, 1, 1, 1, 'I');
+INSERT INTO QUARTOS VALUES(1, 1, 101, 1, 2, 'Quarto com vista para o mar.',1, 'I');
+INSERT INTO QUARTOS VALUES(2, 1, 102, 1, 2, 'Quarto com vista para o lago.',1, 'I');
+
+SELECT setval('Quartos_cod_quarto_seq', COALESCE((SELECT MAX(cod_quarto)+1 FROM quartos), 1), false);
 ----------------------------------------------------------------------
 -- 9 - TABELA DE RELACIONAMENTO QUARTOS X ATRIBUTOS
 ----------------------------------------------------------------------

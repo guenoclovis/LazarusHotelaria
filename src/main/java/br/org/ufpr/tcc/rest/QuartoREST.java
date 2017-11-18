@@ -21,6 +21,8 @@ import br.org.ufpr.tcc.dto.QuartoDTO;
 import br.org.ufpr.tcc.dto.QuartoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
+import br.org.ufpr.tcc.facade.FilialFacade;
+import br.org.ufpr.tcc.facade.FotoFacade;
 //import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.facade.QuartoFacade;
 
@@ -28,6 +30,7 @@ import br.org.ufpr.tcc.facade.QuartoFacade;
 public class QuartoREST {
 
 	QuartoFacade facade = new QuartoFacade();
+	FotoFacade fotoFacade = new FotoFacade();
 	
 	@GET
     @Path("{codQuarto}")

@@ -18,6 +18,9 @@ public class RestAPI extends Application {
 		singletons.add(new AtributoREST());
 		singletons.add(new FotoREST());
 		singletons.add(new TipoQuartoREST());
+		singletons.add(new ReservaREST());
+		singletons.add(new QuartoREST());
+		
 		singletons.add(new ShowcaseREST());
 		
 		

@@ -3,15 +3,31 @@ package br.org.ufpr.tcc.dto;
 public class QuartoDTO {
 
 	private Integer codQuarto;
+	private Integer codFilial;
 	private Integer idQuarto;
 	private Integer codTipoQuarto;
 	private Integer nrCamas;
     private String descricao;
     private char status;
+    private FotoDTO foto;
     
 	public Integer getCodQuarto() {
 		return codQuarto;
 	}
+	
+	public Integer getCodFilial() {
+		return codFilial;
+	}
+	public void setCodFilial(Integer codFilial) {
+		this.codFilial = codFilial;
+	}
+	public FotoDTO getFoto() {
+		return foto;
+	}
+	public void setFoto(FotoDTO foto) {
+		this.foto = foto;
+	}
+	
 	public void setCodQuarto(Integer codQuarto) {
 		this.codQuarto = codQuarto;
 	}

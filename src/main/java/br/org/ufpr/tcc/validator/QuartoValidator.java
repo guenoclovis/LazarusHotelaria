@@ -37,9 +37,6 @@ public class QuartoValidator {
     	
     	if(!mensagens.isEmpty()){
     		throw new NegocioException(mensagens);
-    	}
-	    
+    	}   
 	}
-
-	
 }

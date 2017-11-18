@@ -14,7 +14,7 @@
 	// 'Quarto'
 	/* @ngInject */
 	function EditarQuartoController($controller, $scope,  $http, $state, $stateParams,
-			QuartoData, MsgCenter, FotoData, FilialData) {
+			QuartoData, MsgCenter, FotoData, FilialData, TipoQuartoData) {
 
 		
 		var vm = this;

@@ -29,14 +29,10 @@ public class FilialValidator {
 	    		
 	    		mensagens.add(mensagem);
 	    	}
-	    	
-	    	
+	    		    	
 	    	//OUTRAS VALIDACOES
 	    	
 	    	throw new NegocioException(mensagens);
-	    }
-	    
-	    
+	    }	        
 	}
-
 }
