@@ -1,5 +1,7 @@
 package br.org.ufpr.tcc.dto;
 
+import java.util.List;
+
 public class FilialDTO {
 
 	private Integer codFilial;
@@ -10,6 +12,8 @@ public class FilialDTO {
     private String status;
     
     private FotoDTO foto;
+    
+    private List<AtributoDTO> atributos;
     
     public String getEmail() {
     	return email;
@@ -53,5 +57,11 @@ public class FilialDTO {
 	}
 	public void setFoto(FotoDTO foto) {
 		this.foto = foto;
+	}
+	public List<AtributoDTO> getAtributos() {
+		return atributos;
+	}
+	public void setAtributos(List<AtributoDTO> atributos) {
+		this.atributos = atributos;
 	}
 }

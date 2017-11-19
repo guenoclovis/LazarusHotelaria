@@ -188,7 +188,51 @@ public class FotoFacade {
 		return fotoSalvaDTO;
 	}
 
-	
+	public void moverFotosPastaTMPParaPastaDefinitiva(FotoDTO dto) {
+
+		if (dto != null) {
+
+			String nomeArquivo = null;
+			File src = null;
+			File dst = null;
+
+			if (dto.getNomeFotoOriginal() != null) {
+
+				// foto original
+				nomeArquivo = dto.getNomeFotoOriginal();
+
+				src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+						+ File.separator + nomeArquivo);
+				dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+						+ File.separator + nomeArquivo);
+
+				try {
+					ImageUtil.copiarArquivos(src, dst);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+
+			if (dto.getNomeFotoMiniatura() != null) {
+				// Foto miniatura
+				nomeArquivo = dto.getNomeFotoMiniatura();
+
+				src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
+						+ File.separator + nomeArquivo);
+				dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
+						+ File.separator + nomeArquivo);
+
+				try {
+					ImageUtil.copiarArquivos(src, dst);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			}
+		}
+
+	}
 	
 	/**
 	 * header sample { Content-Type=[image/png], Content-Disposition=[form-data;

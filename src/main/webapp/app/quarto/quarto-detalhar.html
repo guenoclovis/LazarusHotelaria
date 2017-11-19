@@ -1,23 +1,12 @@
 
 <div>
-	<div ng-controller="DetalharQuartoController as dcc">
+	<div ng-controller="DetalharQuartoController as vm">
 
 		<div class=".container">
-			<div class="row">
-				<div class="col-md-12" align="center">
-					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
-				</div>
-			</div>
+			
 			<div class="row">
 				<div class="col-md-12 lazarus-align">
 					<h2>Detalhar o Quarto</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div>
-						<pre>{{dcc.quarto | json}}</pre>
-					</div>
 				</div>
 			</div>
 			
@@ -28,7 +17,7 @@
 				</div>
 				<div class="col-md-2">
 					<img
-						ng-src="data:image/jpeg;base64,{{dcc.quarto.foto.imagemMiniatura}}"
+						ng-src="data:image/jpeg;base64,{{vm.quarto.foto.imagemMiniatura}}"
 						class="img-responsive" style="width: 100%" alt="Image" />
 				</div>
 				<div class="col-md-2"></div>
@@ -40,7 +29,7 @@
 					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.quarto.codQuarto}}</span>
+					<span id="nome">{{vm.quarto.codQuarto}}</span>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
@@ -52,7 +41,7 @@
 					<label for="nome" class="cols-sm-2 control-label">Hotel</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.quarto.codFilial}}</span>
+					<span id="nome">{{vm.quarto.codFilial}}</span>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
@@ -65,7 +54,7 @@
 						Quarto</label>
 				</div>
 				<div class="col-md-6">
-					<span id="tipo">{{dcc.quarto.IdQuarto}}</span>
+					<span id="tipo">{{vm.quarto.idQuarto}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -77,7 +66,7 @@
 						Quarto</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.quarto.codTipoQuarto}}</span>
+					<span id="nome">{{vm.quarto.codTipoQuarto}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -89,7 +78,7 @@
 						de Camas</label>
 				</div>
 				<div class="col-md-6">
-					<span id="dtNasc">{{dcc.quarto.nrCamas}}</span>
+					<span id="dtNasc">{{vm.quarto.nrCamas}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -97,10 +86,10 @@
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;ão</label>
+					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;ï¿½o</label>
 				</div>
 				<div class="col-md-6">
-					<span id="dtNasc">{{dcc.quarto.nrCamas}}</span>
+					<span id="dtNasc">{{vm.quarto.descricao}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -111,7 +100,7 @@
 					<label for="status" class="cols-sm-2 control-label">Status</label>
 				</div>
 				<div class="col-md-6">
-					<span id="sexo">{{dcc.quarto.status}}</span>
+					<span id="sexo">{{vm.quarto.status}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -120,15 +109,18 @@
 		<div class="row">
 			<div class="col-md-12 lazarus-align">
 				<div class="lazarus-align">
-					<button ng-click="dcc.voltarParaTelaAnterior()"
+					<button ng-click="vm.voltarParaTelaAnterior()"
 						class="btn btn-primary">Voltar</button>
-					<button ng-click="dcc.irParaTelaEdicao(dcc.quarto.codQuarto)"
+					<button ng-click="vm.irParaTelaEdicao(vm.quarto.codQuarto)"
 						class="btn btn-primary">Editar</button>
-					<button ng-click="dcc.excluir(dcc.quarto.codQuarto)"
+					<button ng-click="vm.excluir(vm.quarto.codQuarto)"
 						class="btn btn-primary">Excluir</button>
 				</div>
 			</div>
 		</div>
+
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.quarto | json}}"></debug>
 
 	</div>
 

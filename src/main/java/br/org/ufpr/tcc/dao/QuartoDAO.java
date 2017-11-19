@@ -43,7 +43,10 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
             Predicate[] predicadosCount = buildPredicatePesquisa(filtros, cb, rootCount, cqCount);
 
             cqCount.select(cb.countDistinct(pathID));
-            cqCount.where(predicadosCount);
+            
+            if(predicadosCount.length > 0){
+            	cqCount.where(predicadosCount);            	
+            }
 
             pagina.setTotalResults((int) (getEntityManager().createQuery(cqCount).getSingleResult() + 0));
 

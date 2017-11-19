@@ -1,5 +1,8 @@
 package br.org.ufpr.tcc.entity;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -8,6 +11,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -51,9 +56,14 @@ public class Filial {
 	private char status;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH })
-	@JoinColumn(name = "COD_FOTO", nullable = false)
+	@JoinColumn(name = "COD_FOTO", nullable = true)
 	@Fetch(FetchMode.SELECT)
 	private Foto foto;
+	
+	@ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(name = "FILIAL_ATRIBUTO", joinColumns = @JoinColumn(name = "COD_FILIAL"),
+    inverseJoinColumns = @JoinColumn(name = "COD_ATRIBUTO"))
+	private List<Atributo> atributos = new ArrayList();
 	
 	public Integer getCodFilial() {
 		return codFilial;
@@ -111,20 +121,24 @@ public class Filial {
 		this.foto = foto;
 	}
 
-	@Override
-	public String toString() {
-		return "Filial [codFilial=" + codFilial + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao
-				+ ", exibirSite=" + exibirSite + ", status=" + status + "]";
+	public List<Atributo> getAtributos() {
+		return atributos;
+	}
+
+	public void setAtributos(List<Atributo> atributos) {
+		this.atributos = atributos;
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((atributos == null) ? 0 : atributos.hashCode());
 		result = prime * result + ((codFilial == null) ? 0 : codFilial.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + ((exibirSite == null) ? 0 : exibirSite.hashCode());
+		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
 		result = prime * result + status;
 		return result;
@@ -139,6 +153,11 @@ public class Filial {
 		if (getClass() != obj.getClass())
 			return false;
 		Filial other = (Filial) obj;
+		if (atributos == null) {
+			if (other.atributos != null)
+				return false;
+		} else if (!atributos.equals(other.atributos))
+			return false;
 		if (codFilial == null) {
 			if (other.codFilial != null)
 				return false;
@@ -159,6 +178,11 @@ public class Filial {
 				return false;
 		} else if (!exibirSite.equals(other.exibirSite))
 			return false;
+		if (foto == null) {
+			if (other.foto != null)
+				return false;
+		} else if (!foto.equals(other.foto))
+			return false;
 		if (nome == null) {
 			if (other.nome != null)
 				return false;
@@ -167,6 +191,13 @@ public class Filial {
 		if (status != other.status)
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Filial [codFilial=" + codFilial + ", nome=" + nome + ", email=" + email + ", descricao=" + descricao
+				+ ", exibirSite=" + exibirSite + ", status=" + status + ", foto=" + foto + ", atributos=" + atributos
+				+ "]";
 	}
 
 }

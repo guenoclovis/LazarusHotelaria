@@ -1,5 +1,5 @@
 <div>
-	<div ng-controller="ConsultarTipoQuartoController as vm">
+<div ng-controller="ConsultarTipoQuartoController as vm">
 
 		<!-- ================= CORPO DA PAGINA ================= -->
 		<div class="row linha-site">
@@ -36,9 +36,16 @@
 					</div>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div ng-if="vm.tiposquartos.length > 0">
+			<div ng-show="vm.tiposquartos.length > 0" class="well">
+				<div class="clearfix">
+					<div class="pull-right">
+						<select id="pageSize" class="form-control"
+							ng-options="item for item in vm.pageoptions"
+							ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
+							selectpicker>
+						</select>
+					</div>
+					<br> <br>
 						<table class="table table-striped grid-pesquisa">
 							<thead>
 								<tr>
@@ -60,13 +67,23 @@
 								</tr>
 							</tbody>
 						</table>
+					<div class="text-center">
+						<div uib-pagination total-items="vm.totalresults"
+							items-per-page="vm.pagesize" ng-model="vm.currentpage"
+							ng-change="vm.paginaAlterada()" max-size="10" rotate="false"
+							boundary-links="true" previous-text="&lt;" next-text="&gt;"
+							first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
 					</div>
+
 				</div>
 			</div>
+
 		</div>
 		
 		<!-- ================= DEBUG ================= -->
 		<debug objeto="{{vm.filtros | json}}"></debug>		
 		
 	</div>
+	</div>
+</div>
 </div>

@@ -12,7 +12,7 @@
 	// 'Filial'
 	/* @ngInject */
 	function EditarFilialController($controller, $scope,  $http, $state, $stateParams, $timeout,
-			FilialData, MsgCenter, FotoData) {
+			FilialData, MsgCenter, FotoData, AtributoData) {
 
 		
 		var vm = this;
@@ -65,6 +65,8 @@
 
 		vm.filial = {};
 		vm.filial.codFilial = $stateParams.codFilial;
+		vm.filial.atributos = [];
+		vm.atributos = [];
 
 		vm.msgs = "";
 
@@ -72,6 +74,9 @@
 		vm.irParaTelaConsultar = irParaTelaConsultar;
 		vm.incluir = incluir;
 		vm.alterar = alterar;
+		vm.inserirAtributoNaLista = inserirAtributoNaLista;
+		vm.carregarAtributos = carregarAtributos;
+		vm.removerAtributoDaLista = removerAtributoDaLista;
 
 		activate();
 
@@ -81,6 +86,29 @@
 			if (vm.filial.codFilial !== undefined) {
 				obter();
 			}
+			carregarAtributos();
+		}
+		
+		function carregarAtributos() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			AtributoData.listar(filtros).then(function(data) {
+				vm.atributos = data.entidades;
+			});
+		}
+		
+		function inserirAtributoNaLista(){
+			var attr = vm.atributo;
+			vm.filial.atributos.push(attr);
+		}
+
+		function removerAtributoDaLista(codAtributo){			
+			angular.forEach(vm.filial.atributos, function(item, index){
+			      if(item.codAtributo == codAtributo){
+			    	  vm.filial.atributos.splice(index, 1);
+			      }
+			   });
 		}
 
 		function recarregarTela() {

@@ -1,5 +1,7 @@
 package br.org.ufpr.tcc.dto;
 
+import java.util.List;
+
 public class QuartoDTO {
 
 	private Integer codQuarto;
@@ -10,6 +12,8 @@ public class QuartoDTO {
     private String descricao;
     private char status;
     private FotoDTO foto;
+    
+    private List<AtributoDTO> atributos;
     
 	public Integer getCodQuarto() {
 		return codQuarto;
@@ -61,6 +65,11 @@ public class QuartoDTO {
 	public void setStatus(char status) {
 		this.status = status;
 	}
-
+	public List<AtributoDTO> getAtributos() {
+		return atributos;
+	}
+	public void setAtributos(List<AtributoDTO> atributos) {
+		this.atributos = atributos;
+	}
 	
 }

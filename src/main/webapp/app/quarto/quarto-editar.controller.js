@@ -14,7 +14,7 @@
 	// 'Quarto'
 	/* @ngInject */
 	function EditarQuartoController($controller, $scope,  $http, $state, $stateParams,
-			QuartoData, MsgCenter, FotoData, FilialData, TipoQuartoData) {
+			QuartoData, MsgCenter, FotoData, FilialData, TipoQuartoData, AtributoData) {
 
 		
 		var vm = this;
@@ -66,6 +66,8 @@
 
 		vm.quarto = {};
 		vm.quarto.codQuarto = $stateParams.codQuarto;
+		vm.quarto.atributos = [];
+		vm.atributos = [];
 
 		vm.msgs = "";
 
@@ -74,10 +76,23 @@
 		vm.incluir = incluir;
 		vm.alterar = alterar;
 		vm.carregarFiliais = carregarFiliais;
+		//-------------
+		vm.inserirAtributoNaLista = inserirAtributoNaLista;
+		vm.carregarAtributos = carregarAtributos;
+		vm.removerAtributoDaLista = removerAtributoDaLista;
 
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
+		
+		function activate() {
+			if (vm.quarto.codQuarto !== undefined) {
+				obter();
+			}
+			carregarFiliais();
+			carregarTipoQuarto();
+			carregarAtributos();
+		}
 		
 		function carregarTipoQuarto() {
 			MsgCenter.clear();
@@ -87,14 +102,30 @@
 				vm.tiposQuartos = data.entidades;
 			});
 		}
-
-		function activate() {
-			if (vm.quarto.codQuarto !== undefined) {
-				obter();
-			}
-			carregarFiliais();
-			carregarTipoQuarto();
+		
+		
+		function inserirAtributoNaLista(){
+			var attr = vm.atributo;
+			vm.quarto.atributos.push(attr);
 		}
+
+		function removerAtributoDaLista(codAtributo){			
+			angular.forEach(vm.quarto.atributos, function(item, index){
+			      if(item.codAtributo == codAtributo){
+			    	  vm.quarto.atributos.splice(index, 1);
+			      }
+			   });
+		}
+
+		function carregarAtributos() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			AtributoData.listar(filtros).then(function(data) {
+				vm.atributos = data.entidades;
+			});
+		}
+
 		
 		function carregarFiliais() {
 			MsgCenter.clear();

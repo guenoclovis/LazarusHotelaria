@@ -1,26 +1,17 @@
 <div>
 	<div ng-controller="ConsultarQuartoController as vm">
 
+		<!-- ================= CORPO DA PAGINA ================= -->
+		<div class="row linha-site">
+		<div class="container">
+		<!-- ================= TITULO ================= -->
+		<div class="titulo-paginas-meio">
+			<h1>Quartos</h1>
+		</div>	
+		<!-- ======================= CONSULTA DE ATRIBUTOS =========================== -->
 		<div class=".container">
-			<div class="row">
-				<div class="col-md-12" align="center">
-					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 lazarus-align">
-					<h2>Consultar Quartos</h2>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-md-12 lazarus-align">
-					<div>
-						<pre>{{vm.quarto | json}}</pre>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
+		
+			<div class="row campo-form">
 				<div class="col-md-2"></div>
 				<div class="col-md-8">
 					<div class="form-group">
@@ -36,7 +27,7 @@
 				<div class="col-md-2"></div>
 			</div>
 
-			<div class="row">
+			<div class="row campo-form">
 				<div class="col-md-12">
 					<div align="center">
 						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
@@ -91,7 +82,9 @@
 		</div>
 		
 		<!-- ================= DEBUG ================= -->
-				<debug objeto="{{vm.quartos | json}}"></debug>
+		<debug objeto="{{vm.quartos | json}}"></debug>
 		<debug objeto="{{vm.filtros | json}}"></debug>
+	</div>
+	</div>
 	</div>
 </div>

@@ -10,6 +10,7 @@ import br.org.ufpr.tcc.bc.QuartoBC;
 import br.org.ufpr.tcc.converter.QuartoToDTO;
 import br.org.ufpr.tcc.converter.DTOtoQuarto;
 import br.org.ufpr.tcc.dto.FilialDTO;
+import br.org.ufpr.tcc.dto.FotoDTO;
 import br.org.ufpr.tcc.dto.QuartoDTO;
 import br.org.ufpr.tcc.dto.QuartoFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
@@ -23,7 +24,8 @@ public class QuartoFacade {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
     
-    private QuartoBC bc = new QuartoBC();    
+    private QuartoBC bc = new QuartoBC(); 
+    private FotoFacade fotoFacade = new FotoFacade();
 
     public QuartoDTO obter(Long id, String fields) {
         String logMsg = "Iniciando a busca do quarto id[%d]" + id;
@@ -83,6 +85,8 @@ public class QuartoFacade {
         Quarto quarto = converter.convert(dto);
         
 		ResponseDTO responseDTO = bc.persistir(quarto);
+		
+		fotoFacade.moverFotosPastaTMPParaPastaDefinitiva(dto.getFoto());
 
         logMsg = "Registro de Quarto persistido";
         log.info(logMsg);
@@ -102,52 +106,6 @@ public class QuartoFacade {
     	 
     }
     
-	private void moverFotosPastaTMPParaPastaDefinitiva(QuartoDTO dto) {
-
-		if (dto.getFoto() != null) {
-
-			String nomeArquivo = null;
-			File src = null;
-			File dst = null;
-
-			if (dto.getFoto().getNomeFotoOriginal() != null) {
-
-				// foto original
-				nomeArquivo = dto.getFoto().getNomeFotoOriginal();
-
-				src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
-						+ File.separator + nomeArquivo);
-				dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
-						+ File.separator + nomeArquivo);
-
-				try {
-					ImageUtil.copiarArquivos(src, dst);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-
-			if (dto.getFoto().getNomeFotoMiniatura() != null) {
-				// Foto miniatura
-				nomeArquivo = dto.getFoto().getNomeFotoMiniatura();
-
-				src = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_TMP_FOTOS
-						+ File.separator + nomeArquivo);
-				dst = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS + File.separator + Constantes.NOME_PASTA_DEF_FOTOS
-						+ File.separator + nomeArquivo);
-
-				try {
-					ImageUtil.copiarArquivos(src, dst);
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-			}
-		}
-
-	}
-
 	public ResponseDTO inserir(QuartoDTO dto) {
 		String logMsg = "Iniciando a persistência de Quarto";
         log.info(logMsg);
