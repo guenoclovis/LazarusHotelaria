@@ -37,9 +37,21 @@
 					</div>
 				</div>
 			</div>
+			<br>
+			<!-- TESTE BUSCA PAGINADA 
 			<div class="row">
 				<div class="col-md-12">
-					<div ng-if="vm.atributos.length > 0">
+					<div ng-if="vm.atributos.length > 0">-->
+			<div ng-show="vm.atributos.length > 0" class="well">
+				<div class="clearfix">
+					<div class="pull-right">
+						<select id="pageSize" class="form-control"
+							ng-options="item for item in vm.pageoptions"
+							ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
+							selectpicker>
+						</select>
+					</div>
+					<br> <br>		
 						<table class="table table-striped grid-pesquisa">
 							<thead>
 								<tr>

@@ -44,8 +44,19 @@
 					</div>
 				</div>
 			</div>
-
-			<!-- TESTE BUSCA PAGINADA -->
+			<br>
+			<!-- TESTE BUSCA PAGINADA 
+			<div ng-show="vm.filiais.length > 0" class="well">
+				<div class="clearfix">
+					<div class="pull-right">
+						<select id="pageSize" class="form-control"
+							ng-options="item for item in vm.pageoptions"
+							ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
+							selectpicker>
+						</select>
+					</div>
+					<br> <br>-->
+					
 			<div ng-show="vm.filiais.length > 0" class="well">
 				<div class="clearfix">
 					<div class="pull-right">

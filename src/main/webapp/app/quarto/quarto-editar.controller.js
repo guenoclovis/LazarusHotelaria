@@ -28,9 +28,22 @@
 		vm.uploadImage = function() {
 			
 			var imgBlob = dataURItoBlob(vm.imagem);
+			MsgCenter.add("WARN",
+					"Enviando foto, Aguarde ...", undefined,
+					undefined);
+			vm.enviandoFoto = true;
 			
 			FotoData.incluir(imgBlob, "quarto.jpg", 'fjsadffsasadfas').then(function(response) {
-				vm.quarto.foto = response.data;				
+				vm.quarto.foto = response.data;
+				
+				MsgCenter.clear();
+				MsgCenter.add("INFO",
+						"Foto enviada com sucesso", undefined,
+						undefined);
+				$timeout(function() { MsgCenter.clear();}, 2000);
+				
+				vm.enviandoFoto = false;
+				
 			});
 		}
 

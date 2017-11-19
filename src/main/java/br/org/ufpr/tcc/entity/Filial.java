@@ -37,6 +37,7 @@ public class Filial {
 	@Column(name="nome")	
 	private String nome;
 	
+	@NotNull
 	@Column(name="email")
 	private String email;
 	

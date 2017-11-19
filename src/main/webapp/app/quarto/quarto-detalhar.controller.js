@@ -32,6 +32,7 @@
 
         function activate() {
             obter();
+            pesquisar();
         }
 
         function limpar() {

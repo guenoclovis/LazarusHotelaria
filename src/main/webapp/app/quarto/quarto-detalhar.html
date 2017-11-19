@@ -20,6 +20,20 @@
 					</div>
 				</div>
 			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="status" class="cols-sm-2 control-label">Foto</label>
+				</div>
+				<div class="col-md-2">
+					<img
+						ng-src="data:image/jpeg;base64,{{dcc.quarto.foto.imagemMiniatura}}"
+						class="img-responsive" style="width: 100%" alt="Image" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
 			<div class="row">
 				<div class="col-md-2"></div>
 				<div class="col-md-2">
@@ -27,6 +41,18 @@
 				</div>
 				<div class="col-md-6">
 					<span id="nome">{{dcc.quarto.codQuarto}}</span>
+				</div>
+				<div class="col-md-2"></div>
+				<div class="col-md-2"></div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="nome" class="cols-sm-2 control-label">Hotel</label>
+				</div>
+				<div class="col-md-6">
+					<span id="nome">{{dcc.quarto.codFilial}}</span>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>

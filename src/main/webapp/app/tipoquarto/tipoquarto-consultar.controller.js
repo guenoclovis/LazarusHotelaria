@@ -44,6 +44,7 @@
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
 			restaurarEstadoTela();
+			pesquisar();
 		}
 
 		function pesquisarLimpar() {
