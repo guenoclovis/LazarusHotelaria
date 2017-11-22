@@ -85,12 +85,14 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 		SQL.append("	(:dataSaida > r2.dt_entrada ) and (:dataSaida <= r2.dt_saida)	 ");
 		SQL.append("  ) ");
 		SQL.append(") ");
+		SQL.append(" AND q.cod_filial = :codFilial ");
 
 		SQLQuery query = getHibernateSession().createSQLQuery(SQL.toString());
 
 		//filtros
 		query.setDate("dataEntrada", filtros.getDataEntrada());
 		query.setDate("dataSaida", filtros.getDataSaida());
+		query.setLong("codFilial", filtros.getCodFilial());
 
 		//especificando tipo das colunas de retorno		
 		query.addScalar("cod_quarto", IntegerType.INSTANCE);

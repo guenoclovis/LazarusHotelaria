@@ -30,7 +30,7 @@ public class QuartoToDTO {
 		dto.setStatus(quarto.getStatus());
 		dto.setFoto(converterFoto.convert(quarto.getFoto(), true, false));
 		
-		setDescricaoTipoQuarto(quarto, dto);
+//		setDescricaoTipoQuarto(quarto, dto);
 		
 
 		if (quarto.getAtributos() != null) {

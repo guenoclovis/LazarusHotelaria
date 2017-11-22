@@ -57,7 +57,7 @@ public class Quarto {
 	@Column(name = "descricao")
     private String descricao;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH })
+	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH })
 	@JoinColumn(name = "COD_FOTO", nullable = true)
 	@Fetch(FetchMode.SELECT)
 	private Foto foto;

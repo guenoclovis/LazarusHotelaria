@@ -13,7 +13,7 @@ import br.org.ufpr.tcc.util.Constantes;
 
 public class EmailBC {
 	
-	private static final String SENHA_EMAIL_GOOGLE_EMPRESA = "SENHAAAA";
+	private static final String SENHA_EMAIL_GOOGLE_EMPRESA = "l@zarus2017";
 	
 	public static void main(String[] args) {
 		EmailBC s = new EmailBC();

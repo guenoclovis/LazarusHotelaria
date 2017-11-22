@@ -9,5 +9,5 @@ public class Constantes {
 	
 	public static final String NOME_PASTA_DEF_FOTOS = "definitiva";
 	
-	public static final String EMAIL_GOOGLE_EMPRESA = "arildo.gueno@gmail.com";
+	public static final String EMAIL_GOOGLE_EMPRESA = "lazarushotelaria@gmail.com";
 }
