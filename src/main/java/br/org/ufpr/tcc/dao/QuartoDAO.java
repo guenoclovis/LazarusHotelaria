@@ -15,21 +15,14 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
-import org.hibernate.transform.Transformers;
-import org.hibernate.type.DateType;
-import org.hibernate.type.DoubleType;
 import org.hibernate.type.IntegerType;
-import org.hibernate.type.LongType;
-import org.hibernate.type.StringType;
 
 import br.org.ufpr.tcc.dto.QuartoFiltroDTO;
+import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.entity.Quarto;
 import br.org.ufpr.tcc.entity.Reserva;
-import br.org.ufpr.tcc.entity.Filial;
-import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.util.Util;
 
 public class QuartoDAO extends LazarusDAO<Quarto> {
@@ -81,12 +74,16 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 
 		StringBuffer SQL = new StringBuffer();
 
-		SQL.append("SELECT *");
-		SQL.append("FROM reserva r2 ");
-		SQL.append("WHERE ( ");
-		SQL.append("  (:dataEntrada >= r2.dt_entrada ) and (:dataEntrada < r2.dt_saida) ");
-		SQL.append("	OR ");
-		SQL.append("  (:dataSaida > r2.dt_entrada ) and (:dataSaida <= r2.dt_saida) ");
+		SQL.append("SELECT distinct(q.*)  ");
+		SQL.append("FROM quartos q LEFT JOIN reserva r on q.cod_quarto = r.cod_quarto  ");
+		SQL.append("WHERE ");
+		SQL.append(" q.cod_quarto NOT IN ( ");
+		SQL.append("     SELECT distinct(q2.cod_quarto) FROM quartos q2 left join reserva r2 on q2.cod_quarto = r2.cod_quarto  ");
+		SQL.append("     WHERE ( ");
+		SQL.append("	(:dataEntrada >= r2.dt_entrada ) and (:dataEntrada < r2.dt_saida) ");
+		SQL.append("	or ");
+		SQL.append("	(:dataSaida > r2.dt_entrada ) and (:dataSaida <= r2.dt_saida)	 ");
+		SQL.append("  ) ");
 		SQL.append(") ");
 
 		SQLQuery query = getHibernateSession().createSQLQuery(SQL.toString());
