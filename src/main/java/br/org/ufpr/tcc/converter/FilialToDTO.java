@@ -3,6 +3,8 @@ package br.org.ufpr.tcc.converter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.hibernate.Hibernate;
+
 import br.org.ufpr.tcc.dto.AtributoDTO;
 import br.org.ufpr.tcc.dto.FilialDTO;
 import br.org.ufpr.tcc.entity.Atributo;
@@ -31,11 +33,12 @@ public class FilialToDTO {
 			List<AtributoDTO> listaAtributos = new ArrayList<AtributoDTO>();
 
 			AtributoDTO aDTO = null;
-			for (Atributo a : filial.getAtributos()) {
-				aDTO = converterAtributo.convert(a);
-
-				listaAtributos.add(aDTO);
-			}
+//			Hibernate.initialize(filial.getAtributos());
+//			for (Atributo a : filial.getAtributos()) {
+//				aDTO = converterAtributo.convert(a);
+//
+//				listaAtributos.add(aDTO);
+//			}
 
 			dto.setAtributos(listaAtributos);
 

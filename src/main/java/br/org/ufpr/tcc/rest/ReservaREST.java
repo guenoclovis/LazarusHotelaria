@@ -67,6 +67,16 @@ public class ReservaREST {
         return Response.created(location).entity(response).build();
     }
 
+	@POST
+	@Path("/solicitar")
+    @Produces("application/json")
+    @Consumes("application/json")
+    public Response solicitarReserva(ReservaDTO reservaDTO, @Context UriInfo uriInfo) {
+        ResponseDTO response = facade.solicitarReserva(reservaDTO);        
+        URI location = uriInfo.getRequestUriBuilder().path(String.valueOf(response.getId())).build();
+        return Response.created(location).entity(response).build();
+    }
+	
     @DELETE
     @Produces("application/json")    
     public Response remover(@QueryParam("ids") List<Long> ids) {

@@ -16,7 +16,7 @@ import br.org.ufpr.tcc.validator.validacoes.NaoVazio;
 public class Foto {
 
 	public static final String ID = "codFoto";
-	public static final String NOME_FOTO_ORIGINAL = "nomeFoto";
+	public static final String NOME_FOTO_ORIGINAL = "nomeFotoOriginal";
 	public static final String NOME_FOTO_MINIATURA = "nomeFotoMiniatura";
 	public static final String LEGENDA = "legenda";
 	

@@ -12,19 +12,30 @@
 		<div class=".container">
 		
 			<div class="row campo-form">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div class="form-group">
-						<label for="nome" class="cols-sm-2 control-label">Nome</label>
-						<div class="cols-sm-4">
-							<div class="input-group">
-								<input type="text" class="form-control" name="nome" id="nome"
-									ng-model="vm.filtros.nome" placeholder="Quarto" />
-							</div>
-						</div>
-					</div>
+				<div class="col-sm-2"></div>
+				<div class="col-sm-2">
+					<label for="filiais" class="cols-sm-2 control-label">Hotel</label>
+				</div>			
+				<div class="col-sm-6">						
+					<select id="filiais" class="btn" ng-click="vm.carregarFilial()"
+						ng-options="item.codFilial as item.nome for item in vm.filiais"
+						ng-model="vm.filtros.codFilial"	>
+						<option value="" selected>Selecione</option>
+					</select>
 				</div>
-				<div class="col-md-2"></div>
+				<div class="col-sm-2"></div>
+			</div>
+		
+			<div class="row campo-form">
+				<div class="col-sm-2"></div>
+				<div class="col-sm-2">
+					<label for="nome" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
+				</div>
+				<div class="cols-sm-6">
+						<input type="text" class="form-control" name="nome" id="nome"
+							ng-model="vm.filtros.nome" placeholder="Nome do Quarto" />
+				</div>
+				<div class="col-sm-2"></div>
 			</div>
 
 			<div class="row campo-form">
@@ -36,6 +47,8 @@
 				</div>
 			</div>
  			<br>
+ 		</div>
+ 		<div>
 			<!-- TESTE BUSCA PAGINADA -->
 			<div ng-show="vm.quartos.length > 0" class="well">
 				<div class="clearfix">
@@ -82,7 +95,5 @@
 		<!-- ================= DEBUG ================= -->
 		<debug objeto="{{vm.quartos | json}}"></debug>
 		<debug objeto="{{vm.filtros | json}}"></debug>
-	</div>
-	</div>
 	</div>
 </div>

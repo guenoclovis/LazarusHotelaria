@@ -53,7 +53,8 @@
 		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 		vm.carregarFiliais = carregarFiliais;
 		vm.carregarFilial = carregarFilial;
-		vm.pesquisarQuartosSemReserva = pesquisarQuartosSemReserva; 
+		vm.pesquisarQuartosSemReserva = pesquisarQuartosSemReserva;
+		vm.solicitarReserva = solicitarReserva;
 		
 
 		activate();
@@ -143,7 +144,17 @@
 			salvarEstadoTela();
 			$state.go('quartoEditar');
 		}
-
+		
+		function solicitarReserva(codQuarto){
+			salvarEstadoTela();
+			$state.go('solicitarReserva', {
+				'codQuarto' : codQuarto,
+				'codFilial' : vm.filtros.codFilial,
+				'dataEntrada' : vm.filtros.dataEntrada,
+				'dataSaida' : vm.filtros.dataSaida
+			});
+		}
+		
 		function salvarEstadoTela() {
 			var devePesquisar = vm.quartos.length > 0;
 			FiltroService.salvarFiltros(vm.filtros, devePesquisar);

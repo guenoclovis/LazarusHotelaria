@@ -36,7 +36,7 @@ public class ClienteValidator {
 		//OUTRAS VALIDACOES
     	
     	//data nascimento <= data_atual
-    	if(DataUtil.isDataFuturo(cliente.getDtNasc())){
+    	if(cliente.getDtNasc() != null && DataUtil.isDataFuturo(cliente.getDtNasc())){
     		mensagem = new Mensagem(Mensagem.ERRO, "Data de nascimento deve ser menor ou igual a data atual!");
     		
     		mensagens.add(mensagem);

@@ -44,9 +44,10 @@ public class ReservaBC {
     	validator.validateAndThrow(reserva);
 
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
+    	Reserva reservaPersistida = null;
         if (reserva.getCodReserva() == null) {
             log.info("Inicia a persistencia de uma nova reserva.");
-            dao.persistir(reserva);
+            reservaPersistida = dao.persistir(reserva);
             log.info("Persistiu novo reserva na base de dados.");
 
         } else {
@@ -54,14 +55,14 @@ public class ReservaBC {
 
             try {
                 //TODO: PENDENTE
-                dao.persistir(reserva);
+            	reservaPersistida = dao.persistir(reserva);
             } catch (Exception ex) {
                 Logger.getLogger(ReservaBC.class.getName()).log(Level.SEVERE, "Erro ao alterar.", ex);
             }
             log.info("Alterou reserva na base de dados.");
         }
 
-        return new ResponseDTO();
+        return new ResponseDTO(Long.valueOf(reservaPersistida.getCodReserva()));
     }
 
     public ResponseDTO remover(Integer id) {

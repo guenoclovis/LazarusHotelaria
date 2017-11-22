@@ -44,9 +44,10 @@ public class ClienteBC {
     	validator.validateAndThrow(cliente);
 
         //VALIDAR A ENTIDADE ANTES DE PERSISTIR
+    	Cliente clientePersistido = null;
         if (cliente.getCodCliente() == null) {
             log.info("Inicia a persistência de um novo cliente.");
-            dao.persistir(cliente);
+            clientePersistido = dao.persistir(cliente);
             log.info("Persistiu novo cliente na base de dados.");
 
         } else {
@@ -54,14 +55,14 @@ public class ClienteBC {
 
             try {
                 //TODO: PENDENTE
-                dao.persistir(cliente);
+            	clientePersistido = dao.persistir(cliente);
             } catch (Exception ex) {
                 Logger.getLogger(ClienteBC.class.getName()).log(Level.SEVERE, "Erro ao alterar.", ex);
             }
             log.info("Alterou cliente na base de dados.");
         }
 
-        return new ResponseDTO();
+        return new ResponseDTO(Long.valueOf(clientePersistido.getCodCliente()));
     }
 
     public ResponseDTO remover(Integer id) {

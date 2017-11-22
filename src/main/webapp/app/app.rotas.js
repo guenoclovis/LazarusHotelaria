@@ -54,6 +54,20 @@
 		}
 		$stateProvider.state(reservaDetalharState);
 		
+		var solicitarReservaState = {
+				name : 'solicitarReserva',
+				url : '/solicitarReserva',
+				templateUrl : './reserva/reserva-solicitar.html',			
+				controller : 'SolicitarReservaController',
+				params : {
+					codFilial : undefined,
+					codQuarto : undefined,
+					dataEntrada : undefined,
+					dataSaida : undefined
+				}
+			}
+			$stateProvider.state(solicitarReservaState);
+		
 		var tipoquartositeState = {
 			name : 'tipoquartosite',
 			url : '/tipoquarto',

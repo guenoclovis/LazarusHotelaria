@@ -17,6 +17,8 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import br.org.ufpr.tcc.validator.validacoes.NaoNulo;
+
 @Entity
 @Table(name = "reserva", schema="public")
 
@@ -30,11 +32,11 @@ public class Reserva {
 	    @SequenceGenerator(name = "SEQ_RESERVA", schema="public", sequenceName = "reserva_cod_reserva_seq", allocationSize = 1)
 		private Integer codReserva;
 		
-		@NotNull	
+		@NaoNulo(nomeCampo = "Data de Entrada")	
 		@Column(name = "dt_entrada")
 	    private Date dtEntrada;
 		
-		@NotNull	
+		@NaoNulo(nomeCampo = "Data de Saida")	
 		@Column(name = "dt_saida")
 	    private Date dtSaida;
 		

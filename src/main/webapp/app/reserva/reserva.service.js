@@ -16,7 +16,8 @@
             obter : obter,            
             listar : listar,
             salvar : salvar,
-            excluir : excluir
+            excluir : excluir,
+            solicitarReserva : solicitarReserva
         };
 
         return service;
@@ -36,6 +37,10 @@
             } else {
             	return Restangular.all(apiURLCompleta).post(reserva);
             }
+        }
+        
+        function solicitarReserva(reserva) {
+        	return Restangular.all(apiURLCompleta + "/solicitar").post(reserva);
         }
         
         function excluir(codReserva) {

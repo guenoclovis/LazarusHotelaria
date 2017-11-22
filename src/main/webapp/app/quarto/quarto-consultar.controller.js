@@ -12,7 +12,7 @@
 	// modulo 'quarto'
 	/* @ngInject */
 	function ConsultarQuartoController($controller, $scope, $state, QuartoData,
-			MsgCenter, FiltroService) {
+			MsgCenter, FiltroService, FilialData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
@@ -22,6 +22,8 @@
 		vm.filtros = {};
 		vm.quartos = [];
 		vm.quarto = {};
+		
+		vm.filiais = [];
 
 		// Paginação
 		vm.totalresults = 0;
@@ -44,7 +46,17 @@
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
 			restaurarEstadoTela();
+			carregarFiliais();
 			pesquisar();
+		}
+		
+		function carregarFiliais() {
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			FilialData.listar(filtros).then(function(data) {
+				vm.filiais = data.entidades;
+			});
 		}
 
 		function pesquisarLimpar() {

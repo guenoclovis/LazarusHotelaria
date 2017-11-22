@@ -3,12 +3,17 @@ package br.org.ufpr.tcc.dto;
 public class ReservaDTO {
 
 	private Integer codReserva;
-    private String dtEntrada;
-    private String dtSaida;
+    private String dataEntrada;
+    private String dataSaida;
     private String dtReserva;
     private long preco;
     private char status;
     private Integer codCliente;
+    
+    private String nome;
+    private String cpf;
+    private String telefone;
+    private String email;
     
     private QuartoDTO quarto;
     
@@ -19,16 +24,16 @@ public class ReservaDTO {
 		this.codReserva = codReserva;
 	}
 	public String getDtEntrada() {
-		return dtEntrada;
+		return dataEntrada;
 	}
 	public void setDtEntrada(String dtEntrada) {
-		this.dtEntrada = dtEntrada;
+		this.dataEntrada = dtEntrada;
 	}
 	public String getDtSaida() {
-		return dtSaida;
+		return dataSaida;
 	}
 	public void setDtSaida(String dtSaida) {
-		this.dtSaida = dtSaida;
+		this.dataSaida = dtSaida;
 	}
 	public String getDtReserva() {
 		return dtReserva;
@@ -60,12 +65,43 @@ public class ReservaDTO {
 	public void setQuarto(QuartoDTO quarto) {
 		this.quarto = quarto;
 	}
-	
-	@Override
-	public String toString() {
-		return "ReservaDTO [codReserva=" + codReserva + ", dtEntrada=" + dtEntrada + ", dtSaida=" + dtSaida
-				+ ", dtReserva=" + dtReserva + ", preco=" + preco + ", status=" + status + ", codCliente=" + codCliente
-				+ ", quarto=" + quarto + "]";
+	public String getNome() {
+		return nome;
 	}
-
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+	public String getTelefone() {
+		return telefone;
+	}
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getCpf() {
+		return cpf;
+	}
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+	public String getDataEntrada() {
+		return dataEntrada;
+	}
+	public void setDataEntrada(String dataEntrada) {
+		this.dataEntrada = dataEntrada;
+	}
+	public String getDataSaida() {
+		return dataSaida;
+	}
+	public void setDataSaida(String dataSaida) {
+		this.dataSaida = dataSaida;
+	}
+	
+	
 }
+

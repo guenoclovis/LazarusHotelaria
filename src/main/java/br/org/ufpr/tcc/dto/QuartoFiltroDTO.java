@@ -7,6 +7,7 @@ public class QuartoFiltroDTO extends PesquisaPaginaDTO {
 	private Long codFilial;
 	private Date dataEntrada;
 	private Date dataSaida;
+	private String descricao;
 	
 	public Long getCodFilial() {
 		return codFilial;
@@ -26,4 +27,11 @@ public class QuartoFiltroDTO extends PesquisaPaginaDTO {
 	public void setDataSaida(Date dataSaida) {
 		this.dataSaida = dataSaida;
 	}
+	public String getDescricao() {
+		return descricao;
+	}
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+		
 }

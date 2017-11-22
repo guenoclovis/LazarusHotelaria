@@ -15,6 +15,7 @@ import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
+import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.hibernate.type.IntegerType;
@@ -158,25 +159,14 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 		Predicate[] predicados = {};
 
 		Path<Long> pathCodFilial = root.get("codFilial");
+		Path<String> pathDescricao = root.get("descricao");
 
 		if (filtros.getCodFilial() != null) {
 			predicados = Util.add(predicados, cb.equal(pathCodFilial, filtros.getCodFilial()));
 		}
-
-		if (filtros.getDataEntrada() != null || filtros.getDataSaida() != null) {
-
-			Join<Quarto, Reserva> joinReserva = root.join("reservas", JoinType.INNER);
-
-			if (filtros.getDataEntrada() != null) {
-				Path<Date> pathDataEntrada = joinReserva.get("dtEntrada");
-				predicados = Util.add(predicados, cb.equal(pathDataEntrada, filtros.getDataEntrada()));
-			}
-
-			if (filtros.getDataSaida() != null) {
-				Path<Date> pathDataSaida = joinReserva.get("dtSaida");
-				predicados = Util.add(predicados, cb.equal(pathDataSaida, filtros.getDataEntrada()));
-			}
-
+		
+		if (filtros.getDescricao() != null) {
+			predicados = Util.add(predicados, cb.like(pathDescricao, Util.likeFormat(filtros.getDescricao())));
 		}
 
 		return predicados;

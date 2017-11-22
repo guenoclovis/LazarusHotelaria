@@ -34,8 +34,7 @@ public class Cliente {
 	@Size(min=3, max=200)
 	@Column(name = "nome")
     private String nome;
-	
-	@NaoNulo(message = "{ER001}", nomeCampo = "Data de Nascimento")	
+		
 	@Column(name = "dt_nasc")
     private Date dtNasc;
 	
@@ -91,8 +90,6 @@ public class Cliente {
 	@Column(name = "end_compl")
     private String endCompl;
 
-	@NaoNulo(nomeCampo = "Senha")
-	@NaoVazio(nomeCampo = "Nome")
 	@Column(name = "senha_acesso")
     private String senhaAcesso;
 

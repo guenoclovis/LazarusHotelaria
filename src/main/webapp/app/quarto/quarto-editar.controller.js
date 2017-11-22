@@ -29,7 +29,7 @@
 			
 			var imgBlob = dataURItoBlob(vm.imagem);
 			MsgCenter.add("WARN",
-					"Enviando foto, Aguarde ...", undefined,
+					"Anexando foto, Aguarde ...", undefined,
 					undefined);
 			vm.enviandoFoto = true;
 			
@@ -38,7 +38,7 @@
 				
 				MsgCenter.clear();
 				MsgCenter.add("INFO",
-						"Foto enviada com sucesso", undefined,
+						"Foto anexada com sucesso", undefined,
 						undefined);
 				$timeout(function() { MsgCenter.clear();}, 2000);
 				
@@ -91,7 +91,7 @@
 			}
 			carregarFiliais();
 			carregarTipoQuarto();
-			carregarAtributos();
+//			carregarAtributos();
 		}
 		
 		function carregarTipoQuarto() {

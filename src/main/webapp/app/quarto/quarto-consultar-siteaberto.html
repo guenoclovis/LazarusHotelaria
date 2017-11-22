@@ -17,7 +17,7 @@
 						
 						<div class="row campo-form">
 							<div class="col-sm-4">
-								<label for="combo-filial" class="cols-sm-2 control-label">Hotel</label>
+								<label for="combo-filial" class="cols-sm-2 control-label required">Hotel</label>
 							</div>			
 							<div class="col-sm-8">						
 								<select id="filiais" class="btn btn-primary" ng-click="vm.carregarFilial()"
@@ -31,7 +31,7 @@
 						<!-- DATA ENTRADA -->
 						<div class="row campo-form">
 							<div class="col-sm-4">
-								<label for="dtNasc" class="cols-sm-2 control-label">Data
+								<label for="dtNasc" class="cols-sm-2 control-label required">Data
 									de Entrada</label>
 							</div>
 							<div class="col-sm-8">
@@ -55,7 +55,7 @@
 						<!-- DATA SAIDA -->
 						<div class="row campo-form">
 							<div class="col-sm-4">
-								<label for="dtNasc" class="cols-sm-2 control-label">Data
+								<label for="dtNasc" class="cols-sm-2 control-label required">Data
 									de Sa&iacute;da</label>
 							</div>
 							<div class="col-sm-8">
@@ -88,10 +88,10 @@
 							
 						<div class="row" ng-if="vm.filial.codFilial">
 							<!-- ================ CARROSSEL DE FOTOS =========================== -->
-							<div class="col-sm-8 carrossel-lateral">
-								<img
+								<div class="col-sm-8 carrossel-lateral" ng-if="vm.filial.foto.imagemOriginal">
+									<img
 										ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemOriginal}}"
-										class="img-original-responsive" alt="Image" />
+										class="img-original-responsive" alt="Image"/>
 								
 								</div>
 								
@@ -146,6 +146,9 @@
 								<div class="quarto_valor"><h5>{{quarto.descricaoTipoQuarto}}</h5></div>
 								<div class="quarto_valor"><h5>{{quarto.nrCamas}}</h5></div>
 								<p>{{quarto.descricao}}</p>
+								<button class="btn btn-primary"
+										ng-click="vm.solicitarReserva(quarto.codQuarto)">Solicitar Reserva</button>
+								<p>&nbsp;</p>
 					    	</a>
 					    </div>
 					</div>
@@ -156,5 +159,7 @@
 		<!-- ================= DEBUG ================= -->
 		
 		</div><!-- div class container parte2 -->
+		<debug objeto="{{vm.filtros | json}}"></debug>
+		<debug objeto="{{vm.quartos | json}}"></debug>
 	</div><!-- div controlador -->
 </div><!-- div pai -->
