@@ -1,37 +1,18 @@
 
 <!-- ======================= FORMULARIO DE CONTATO =========================== -->
 <div>
-<div ng-controller="EditarClienteController as vm">
+<div ng-controller="ContatoController as vm">
 
-	<!-- ================= MENSAGENS DE CONTRUÇÃO - COMENTAR ================= -->
-	<h1>{{vm.msgs}}</h1>
-	<div>
-		<pre>{{vm.cliente | json}}</pre>
-	</div>
-	
-	<!-- ================= CORPO DA PÁGINA ================= -->
+	<!-- ================= CORPO DA Pï¿½GINA ================= -->
        <div class="row linha-site">
        <div class="container">
-		<!-- ================= TÍTULO + MSG ================= -->
+		<!-- ================= Tï¿½TULO + MSG ================= -->
 		<div class="titulo-paginas-meio">
 			<h1>Contato</h1>
 			<p>Tem alguma duvida ou sugestao? Envie-nos uma mensagem:</p>
 		</div>		
-		<!-- ================= FORMULÁRIO DE CONTATO ================= -->
+		<!-- ================= FORMULï¿½RIO DE CONTATO ================= -->
 		<form>		
-			<!-- CÓDIGO (OCULTO) -->
-			<div class="row campo-form" ng-if="vm.cliente.codCliente">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">CÃ³digo</label>
-				</div>
-				<div class="col-md-6">
-					<span id="nome">{{vm.cliente.codCliente}}</span>
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-			</div>
-		
 			<!-- NOME -->
 			<div class="row campo-form">
 				<div class="col-md-2"></div>
@@ -39,7 +20,19 @@
 					<label for="nome" class="cols-sm-2 control-label">Nome</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.cliente.nome" placeholder="Seu Nome" />
+					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.dados.nome" placeholder="Seu Nome" />
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<!-- TELEFONE -->
+			<div class="row campo-form">
+				<div class="col-md-2"></div>
+				<div class="col-md-2">
+					<label for="telefone" class="cols-sm-2 control-label">Telefone</label>
+				</div>
+				<div class="col-md-6">
+					<input id="telefone" type="telefone" mask="(99)9999-9999" ng-model="vm.dados.telefone">
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -51,7 +44,7 @@
 					<label for="email1" class="cols-sm-2 control-label">E-mail</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control" name="email1" id="email1" ng-model="vm.cliente.email1"
+					<input type="text" class="form-control" name="email1" id="email1" ng-model="vm.dados.email"
 							placeholder="email@abc.com" />
 				</div>
 				<div class="col-md-2"></div>
@@ -64,12 +57,12 @@
 					<label for="mensagem" class="cols-sm-2 control-label">Mensagem</label>
 				</div>
 				<div class="col-md-6">
-					<input type="text" class="form-control campo-descricao" name="nome" id="mensagem" ng-model="vm.cliente.nome" placeholder="Sua Mensgem..." />
+					<input type="text" class="form-control campo-descricao" name="nome" id="mensagem" ng-model="vm.dados.mensagem" placeholder="Sua Mensgem..." />
 				</div>
 				<div class="col-md-2"></div>
 			</div>
 			
-			<!-- BOTÃO ENVIAR -->
+			<!-- BOTï¿½O ENVIAR -->
 			<div class="col-sm-12">
 				<div class="botoes-meio" align="center">	
 					<button ng-click="vm.enviarEmail()" class="btn btn-primary">Enviar</button>

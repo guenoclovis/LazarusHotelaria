@@ -75,6 +75,38 @@ public class QuartoFacade {
 
         return responseDTO;
     }
+    
+    public ResultadoPaginadoDTO<QuartoDTO> listarSemReserva(QuartoFiltroDTO filtros, String fields) {
+        String logMsg = "Iniciando a listagens de Quarto Facade";
+        log.info(logMsg);
+
+        ResultadoPaginadoDTO<Quarto> listagem = null;
+        try {
+			listagem = bc.listarSemReserva(filtros);
+		} catch (Exception e) {
+			log.severe("Erro ao listar");
+			e.printStackTrace();
+		}
+        
+        log.info("Convertendo resultados obtidos");
+
+        
+        //CONVERTER
+        List<QuartoDTO> quartosDTO = new ArrayList<QuartoDTO>();
+        for(Quarto c : listagem.getEntidades()){
+        	QuartoToDTO converter = new QuartoToDTO();
+        	QuartoDTO quartoDTO = converter.convert(c);
+            
+        	quartosDTO.add(quartoDTO);
+        }
+		
+		ResultadoPaginadoDTO<QuartoDTO> responseDTO = new ResultadoPaginadoDTO<QuartoDTO>(quartosDTO, new Pagina());
+
+        logMsg = "Finalizando listagem de Quarto";
+        log.info(logMsg);
+
+        return responseDTO;
+    }
 
     public ResponseDTO persistir(QuartoDTO dto) {
         String logMsg = "Iniciando a persistência de Quarto";

@@ -1,7 +1,5 @@
 package br.org.ufpr.tcc.dto;
 
-import java.util.Date;
-
 public class ReservaDTO {
 
 	private Integer codReserva;
@@ -11,7 +9,9 @@ public class ReservaDTO {
     private long preco;
     private char status;
     private Integer codCliente;
-    private Integer codQuarto;
+    
+    private QuartoDTO quarto;
+    
 	public Integer getCodReserva() {
 		return codReserva;
 	}
@@ -54,12 +54,18 @@ public class ReservaDTO {
 	public void setCodCliente(Integer codCliente) {
 		this.codCliente = codCliente;
 	}
-	public Integer getCodQuarto() {
-		return codQuarto;
+	public QuartoDTO getQuarto() {
+		return quarto;
 	}
-	public void setCodQuarto(Integer codQuarto) {
-		this.codQuarto = codQuarto;
+	public void setQuarto(QuartoDTO quarto) {
+		this.quarto = quarto;
 	}
-    
-		
+	
+	@Override
+	public String toString() {
+		return "ReservaDTO [codReserva=" + codReserva + ", dtEntrada=" + dtEntrada + ", dtSaida=" + dtSaida
+				+ ", dtReserva=" + dtReserva + ", preco=" + preco + ", status=" + status + ", codCliente=" + codCliente
+				+ ", quarto=" + quarto + "]";
+	}
+
 }

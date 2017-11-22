@@ -53,7 +53,7 @@
 		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 		vm.carregarFiliais = carregarFiliais;
 		vm.carregarFilial = carregarFilial;
-		vm.pesquisarQuartosDisponiveis = pesquisarQuartosDisponiveis; 
+		vm.pesquisarQuartosSemReserva = pesquisarQuartosSemReserva; 
 		
 
 		activate();
@@ -73,6 +73,7 @@
 			restaurarEstadoTela();
 			carregarFiliais();
 			carregarFilial();
+			pesquisarQuartosSemReserva();
 		}
 
 		function carregarFiliais() {
@@ -95,11 +96,19 @@
 				FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
 					vm.filial.foto = data;
 				});
+				
+				vm.quartos = [];
 			});
 		}
 		
-		function pesquisarQuartosDisponiveis(){
-			//TODO: Pendente
+		function pesquisarQuartosSemReserva(){
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			QuartoData.pesquisarSemReserva(filtros).then(function(data) {
+				vm.quartos = data.entidades;
+			});
+			
 		}
 		
 		function pesquisarLimpar() {

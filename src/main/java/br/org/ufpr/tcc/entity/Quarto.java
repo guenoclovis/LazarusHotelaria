@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -69,6 +70,9 @@ public class Quarto {
     inverseJoinColumns = @JoinColumn(name = "COD_ATRIBUTO"))
 	private List<Atributo> atributos = new ArrayList();
 
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "quarto", orphanRemoval = true)
+	private List<Reserva> reservas = new ArrayList<Reserva>();
+	
 	
 	public Integer getCodFilial() {
 		return codFilial;
@@ -142,6 +146,14 @@ public class Quarto {
 		this.atributos = atributos;
 	}
 
+	public List<Reserva> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<Reserva> reservas) {
+		this.reservas = reservas;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -154,6 +166,7 @@ public class Quarto {
 		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((idQuarto == null) ? 0 : idQuarto.hashCode());
 		result = prime * result + ((nrCamas == null) ? 0 : nrCamas.hashCode());
+		result = prime * result + ((reservas == null) ? 0 : reservas.hashCode());
 		result = prime * result + status;
 		return result;
 	}
@@ -207,6 +220,11 @@ public class Quarto {
 				return false;
 		} else if (!nrCamas.equals(other.nrCamas))
 			return false;
+		if (reservas == null) {
+			if (other.reservas != null)
+				return false;
+		} else if (!reservas.equals(other.reservas))
+			return false;
 		if (status != other.status)
 			return false;
 		return true;
@@ -216,7 +234,7 @@ public class Quarto {
 	public String toString() {
 		return "Quarto [codQuarto=" + codQuarto + ", codFilial=" + codFilial + ", idQuarto=" + idQuarto
 				+ ", codTipoQuarto=" + codTipoQuarto + ", nrCamas=" + nrCamas + ", descricao=" + descricao + ", foto="
-				+ foto + ", status=" + status + ", atributos=" + atributos + "]";
+				+ foto + ", status=" + status + ", atributos=" + atributos + ", reservas=" + reservas + "]";
 	}
 
 }

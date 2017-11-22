@@ -8,12 +8,15 @@ public class QuartoDTO {
 	private Integer codFilial;
 	private Integer idQuarto;
 	private Integer codTipoQuarto;
+	private String descricaoTipoQuarto;
 	private Integer nrCamas;
     private String descricao;
     private char status;
     private FotoDTO foto;
     
     private List<AtributoDTO> atributos;
+    
+    private List<ReservaDTO> reservas;
     
 	public Integer getCodQuarto() {
 		return codQuarto;
@@ -71,5 +74,23 @@ public class QuartoDTO {
 	public void setAtributos(List<AtributoDTO> atributos) {
 		this.atributos = atributos;
 	}
+
+	public List<ReservaDTO> getReservas() {
+		return reservas;
+	}
+
+	public void setReservas(List<ReservaDTO> reservas) {
+		this.reservas = reservas;
+	}
+
+	public String getDescricaoTipoQuarto() {
+		return descricaoTipoQuarto;
+	}
+
+	public void setDescricaoTipoQuarto(String descricaoTipoQuarto) {
+		this.descricaoTipoQuarto = descricaoTipoQuarto;
+	}
+	
+	
 	
 }

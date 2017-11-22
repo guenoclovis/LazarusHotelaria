@@ -114,7 +114,9 @@
 		var contatoState = {
 			name : 'contato',
 			url : '/contato',
+			controller : 'ContatoController',
 			templateUrl : './contato/contato.html'
+				
 		}
 		$stateProvider.state(contatoState);
 

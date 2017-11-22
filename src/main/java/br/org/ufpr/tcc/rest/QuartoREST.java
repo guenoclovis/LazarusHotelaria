@@ -25,6 +25,7 @@ import br.org.ufpr.tcc.facade.FilialFacade;
 import br.org.ufpr.tcc.facade.FotoFacade;
 //import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.facade.QuartoFacade;
+import br.org.ufpr.tcc.util.DataUtil;
 
 @Path("/quarto")
 public class QuartoREST {
@@ -44,11 +45,17 @@ public class QuartoREST {
     @Produces("application/json")
 	public ResultadoPaginadoDTO<QuartoDTO> listar(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
-	        @QueryParam("fields") String fields) {
+	        @QueryParam("codFilial") Long codFilial, @QueryParam("dataEntrada") String dataEntrada,	        
+	        @QueryParam("dataSaida") String dataSaida) {
 
 		QuartoFiltroDTO filtro = new QuartoFiltroDTO();
-        
+		filtro.setCodFilial(codFilial);
+		if(dataEntrada != null){
+			filtro.setDataEntrada(DataUtil.toDate(dataEntrada.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));			
+		}
+		if(dataSaida != null){
+			filtro.setDataSaida(DataUtil.toDate(dataSaida.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));			
+		}
 
         // Paginação
         if (pageSize != 0) {
@@ -58,7 +65,35 @@ public class QuartoREST {
             filtro.getPagina().setCurrentPage(currentPage);
         }
 
-        return facade.listar(filtro, fields);
+        return facade.listar(filtro, null);
+    }
+	
+	@GET
+	 @Path("/semreserva")
+    @Produces("application/json")
+	public ResultadoPaginadoDTO<QuartoDTO> listarSemReserva(@QueryParam("currentpage") int currentPage,
+	        @QueryParam("pagesize") int pageSize,
+	        @QueryParam("codFilial") Long codFilial, @QueryParam("dataEntrada") String dataEntrada,	        
+	        @QueryParam("dataSaida") String dataSaida) {
+
+		QuartoFiltroDTO filtro = new QuartoFiltroDTO();
+		filtro.setCodFilial(codFilial);
+		if(dataEntrada != null){
+			filtro.setDataEntrada(DataUtil.toDate(dataEntrada.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));			
+		}
+		if(dataSaida != null){
+			filtro.setDataSaida(DataUtil.toDate(dataSaida.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));			
+		}
+
+        // Paginação
+        if (pageSize != 0) {
+            filtro.getPagina().setPageSize(pageSize);
+        }
+        if (currentPage != 0) {
+            filtro.getPagina().setCurrentPage(currentPage);
+        }
+
+        return facade.listarSemReserva(filtro, null);
     }
 	
 	@POST

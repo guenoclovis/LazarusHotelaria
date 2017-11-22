@@ -27,7 +27,7 @@ public class QuartoBC {
 
     public ResultadoPaginadoDTO<Quarto> listar(QuartoFiltroDTO filtros) throws Exception {
 
-        String logMsg = "Iniciando a listagens de Quarto BC";
+        String logMsg = "Iniciando a listagens de Quartos";
         log.info(logMsg);
 
         List<Quarto> lista = dao.listar(filtros);
@@ -40,6 +40,23 @@ public class QuartoBC {
 		return resultadoPaginadoDTO;
     }
 
+    
+    public ResultadoPaginadoDTO<Quarto> listarSemReserva(QuartoFiltroDTO filtros) throws Exception {
+
+        String logMsg = "Iniciando a listagens de Quartos sem reserva";
+        log.info(logMsg);
+
+        List<Quarto> lista = dao.listarSemReserva(filtros);
+        ResultadoPaginadoDTO<Quarto> resultadoPaginadoDTO = new ResultadoPaginadoDTO<Quarto>(lista, filtros.getPagina());
+        
+        if(lista.isEmpty()){
+        	resultadoPaginadoDTO.getMensagens().add(new Mensagem(Mensagem.AVISO, "Nenhum registro encontrado!"));
+        }
+        
+		return resultadoPaginadoDTO;
+    }
+
+    
     public ResponseDTO persistir(Quarto quarto) {
     	validator.validateAndThrow(quarto);
 

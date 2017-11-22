@@ -1,78 +1,219 @@
 package br.org.ufpr.tcc.dao;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.StringUtils;
+import org.hibernate.SQLQuery;
+import org.hibernate.Session;
+import org.hibernate.transform.Transformers;
+import org.hibernate.type.DateType;
+import org.hibernate.type.DoubleType;
+import org.hibernate.type.IntegerType;
+import org.hibernate.type.LongType;
+import org.hibernate.type.StringType;
 
 import br.org.ufpr.tcc.dto.QuartoFiltroDTO;
 import br.org.ufpr.tcc.entity.Quarto;
+import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.util.Util;
 
-
 public class QuartoDAO extends LazarusDAO<Quarto> {
-    
-    private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    public List<Quarto> listar(QuartoFiltroDTO filtros) {
-    	CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Quarto> cq = cb.createQuery(Quarto.class);
-        Root<Quarto> root = cq.from(Quarto.class);
+	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-        Predicate[] predicadosList = buildPredicatePesquisa(filtros, cb, root, cq);
+	public List<Quarto> listar(QuartoFiltroDTO filtros) {
+		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+		CriteriaQuery<Quarto> cq = cb.createQuery(Quarto.class);
+		Root<Quarto> root = cq.from(Quarto.class);
 
-        cq.where(cb.and(predicadosList)).orderBy(cb.asc(root.get(Quarto.ID)));
+		Predicate[] predicadosList = buildPredicatePesquisa(filtros, cb, root, cq);
 
-        TypedQuery<Quarto> listQuery = getEntityManager().createQuery(cq.distinct(true));
+		cq.where(cb.and(predicadosList)).orderBy(cb.asc(root.get(Quarto.ID)));
 
-        Pagina pagina = filtros.getPagina();
+		TypedQuery<Quarto> listQuery = getEntityManager().createQuery(cq.distinct(true));
 
-        if (pagina != null) {
-            CriteriaQuery<Long> cqCount = cb.createQuery(Long.class);
-            Root<Quarto> rootCount = cqCount.from(Quarto.class);
-            Path<Long> pathID = rootCount.get(Quarto.ID);
-            Predicate[] predicadosCount = buildPredicatePesquisa(filtros, cb, rootCount, cqCount);
+		Pagina pagina = filtros.getPagina();
 
-            cqCount.select(cb.countDistinct(pathID));
-            
-            if(predicadosCount.length > 0){
-            	cqCount.where(predicadosCount);            	
-            }
+		if (pagina != null) {
+			CriteriaQuery<Long> cqCount = cb.createQuery(Long.class);
+			Root<Quarto> rootCount = cqCount.from(Quarto.class);
+			Path<Long> pathID = rootCount.get(Quarto.ID);
+			Predicate[] predicadosCount = buildPredicatePesquisa(filtros, cb, rootCount, cqCount);
 
-            pagina.setTotalResults((int) (getEntityManager().createQuery(cqCount).getSingleResult() + 0));
+			cqCount.select(cb.countDistinct(pathID));
 
-            listQuery.setFirstResult(pagina.getFirstResult());
-            listQuery.setMaxResults(pagina.getPageSize());
+			if (predicadosCount.length > 0) {
+				cqCount.where(predicadosCount);
+			}
 
-        }
+			pagina.setTotalResults((int) (getEntityManager().createQuery(cqCount).getSingleResult() + 0));
 
-        return listQuery.getResultList();        
+			listQuery.setFirstResult(pagina.getFirstResult());
+			listQuery.setMaxResults(pagina.getPageSize());
+
+		}
+
+		return listQuery.getResultList();
+	}
+
+	public Session getHibernateSession() {
+        EntityManager entityManager = getEntityManager();
+        return entityManager.unwrap(Session.class);
     }
 
-    private Predicate[] buildPredicatePesquisa(QuartoFiltroDTO filtros, CriteriaBuilder cb,
-    		Root<Quarto> root, CriteriaQuery<?> cq) {
-        Predicate[] predicados = { };
-        
-        Path<String> pathNumeroQuarto = root.get(Quarto.NUMERO_QUARTO);
-        /*
-         * TODO: PENDENTE
-         
-        if(filtros.getIdHotel() != null){
-            predicados = Util.add(predicados, cb.equal(pathNumeroQuarto, filtros.getId));
-        }
-        */
-        
-        //... outros predicados/filtros se houver
-        
-        return predicados;
-    }
+	
+	public List<Quarto> listarSemReserva(QuartoFiltroDTO filtros) {
+
+		StringBuffer SQL = new StringBuffer();
+
+		SQL.append("SELECT *");
+		SQL.append("FROM reserva r2 ");
+		SQL.append("WHERE ( ");
+		SQL.append("  (:dataEntrada >= r2.dt_entrada ) and (:dataEntrada < r2.dt_saida) ");
+		SQL.append("	OR ");
+		SQL.append("  (:dataSaida > r2.dt_entrada ) and (:dataSaida <= r2.dt_saida) ");
+		SQL.append(") ");
+
+		SQLQuery query = getHibernateSession().createSQLQuery(SQL.toString());
+
+		//filtros
+		query.setDate("dataEntrada", filtros.getDataEntrada());
+		query.setDate("dataSaida", filtros.getDataSaida());
+
+		//especificando tipo das colunas de retorno		
+		query.addScalar("cod_quarto", IntegerType.INSTANCE);
+
+		List listaObjTipoDesconhecido = query.list();
+		
+		ArrayList<Quarto> listaRetorno = new ArrayList<Quarto>();
+		
+		Quarto q = null;
+		for(Object objetoComTipoDesconhecido : listaObjTipoDesconhecido){
+			Integer codQuarto  = (Integer) objetoComTipoDesconhecido;
+			
+			q = load(codQuarto);
+			
+			listaRetorno.add(q);
+		}
+		
+		return listaRetorno;
+
+	}
+	
+	
+	public List<Quarto> listarComReserva(QuartoFiltroDTO filtros) {
+
+		StringBuffer SQL = new StringBuffer();
+
+		SQL.append("SELECT *");
+		SQL.append("FROM reserva r2 ");
+		SQL.append("WHERE ( ");
+		SQL.append("  (:dataEntrada >= r2.dt_entrada ) and (:dataEntrada < r2.dt_saida) ");
+		SQL.append("	OR ");
+		SQL.append("  (:dataSaida > r2.dt_entrada ) and (:dataSaida <= r2.dt_saida) ");
+		SQL.append(") ");
+
+		SQLQuery query = getHibernateSession().createSQLQuery(SQL.toString());
+
+		//filtros
+		query.setDate("dataEntrada", filtros.getDataEntrada());
+		query.setDate("dataSaida", filtros.getDataSaida());
+
+		//especificando tipo das colunas de retorno		
+		query.addScalar("cod_quarto", IntegerType.INSTANCE);
+
+		List listaObjTipoDesconhecido = query.list();
+		
+		ArrayList<Quarto> listaRetorno = new ArrayList<Quarto>();
+		
+		Quarto q = null;
+		for(Object objetoComTipoDesconhecido : listaObjTipoDesconhecido){
+			Integer codQuarto  = (Integer) objetoComTipoDesconhecido;
+			
+			q = load(codQuarto);
+			
+			listaRetorno.add(q);
+		}
+		
+		return listaRetorno;
+
+	}
+
+	private Predicate[] buildPredicatePesquisa(QuartoFiltroDTO filtros, CriteriaBuilder cb, Root<Quarto> root,
+			CriteriaQuery<?> cq) {
+		Predicate[] predicados = {};
+
+		Path<Long> pathCodFilial = root.get("codFilial");
+
+		if (filtros.getCodFilial() != null) {
+			predicados = Util.add(predicados, cb.equal(pathCodFilial, filtros.getCodFilial()));
+		}
+
+		if (filtros.getDataEntrada() != null || filtros.getDataSaida() != null) {
+
+			Join<Quarto, Reserva> joinReserva = root.join("reservas", JoinType.INNER);
+
+			if (filtros.getDataEntrada() != null) {
+				Path<Date> pathDataEntrada = joinReserva.get("dtEntrada");
+				predicados = Util.add(predicados, cb.equal(pathDataEntrada, filtros.getDataEntrada()));
+			}
+
+			if (filtros.getDataSaida() != null) {
+				Path<Date> pathDataSaida = joinReserva.get("dtSaida");
+				predicados = Util.add(predicados, cb.equal(pathDataSaida, filtros.getDataEntrada()));
+			}
+
+		}
+
+		return predicados;
+	}
+
+	private Predicate[] buildPredicateSemReserva(QuartoFiltroDTO filtros, CriteriaBuilder cb, Root<Quarto> root,
+			CriteriaQuery<?> cq) {
+		Predicate[] predicados = {};
+
+		Path<Long> pathCodFilial = root.get("codFilial");
+
+		if (filtros.getCodFilial() != null) {
+			predicados = Util.add(predicados, cb.equal(pathCodFilial, filtros.getCodFilial()));
+		}
+
+		if (filtros.getDataEntrada() != null || filtros.getDataSaida() != null) {
+
+			Join<Quarto, Reserva> joinReserva = root.join("reservas", JoinType.INNER);
+
+			Path<Date> pathDataEntrada = joinReserva.get("dtEntrada");
+			Path<Date> pathDataSaida = joinReserva.get("dtSaida");
+
+			if (filtros.getDataEntrada() != null) {
+				predicados = Util.add(predicados,
+						cb.or(cb.greaterThanOrEqualTo(pathDataEntrada, filtros.getDataEntrada()),
+								cb.lessThan(pathDataSaida, filtros.getDataEntrada())));
+			}
+
+			if (filtros.getDataSaida() != null) {
+				predicados = Util.add(predicados,
+						cb.or(cb.greaterThanOrEqualTo(pathDataEntrada, filtros.getDataEntrada()),
+								cb.lessThan(pathDataSaida, filtros.getDataEntrada())));
+			}
+
+		}
+
+		return predicados;
+	}
 }

@@ -2,11 +2,13 @@ package br.org.ufpr.tcc.converter;
 
 import br.org.ufpr.tcc.bc.ReservaBC;
 import br.org.ufpr.tcc.dto.ReservaDTO;
+import br.org.ufpr.tcc.entity.Quarto;
 import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.util.DataUtil;
 
 public class DTOtoReserva {
 
+	
 	public Reserva convert(ReservaDTO dto) {
 		Reserva reserva = new Reserva();
 
@@ -29,7 +31,12 @@ public class DTOtoReserva {
 		reserva.setPreco(dto.getPreco());
 		reserva.setStatus(dto.getStatus());
 		reserva.setCodCliente(dto.getCodCliente());
-		reserva.setCodQuarto(dto.getCodQuarto());
+		
+		if(dto.getQuarto() != null){
+			DTOtoQuarto converterQuarto = new DTOtoQuarto();
+			Quarto quarto = converterQuarto.convert(dto.getQuarto());
+			reserva.setQuarto(quarto);
+		}
 
 		return reserva;
 	}

@@ -20,6 +20,7 @@ public class RestAPI extends Application {
 		singletons.add(new TipoQuartoREST());
 		singletons.add(new ReservaREST());
 		singletons.add(new QuartoREST());
+		singletons.add(new ContatoREST());
 		
 		singletons.add(new ShowcaseREST());
 		

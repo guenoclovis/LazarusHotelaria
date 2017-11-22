@@ -6,14 +6,17 @@ import java.util.List;
 import br.org.ufpr.tcc.bc.QuartoBC;
 import br.org.ufpr.tcc.dto.AtributoDTO;
 import br.org.ufpr.tcc.dto.QuartoDTO;
+import br.org.ufpr.tcc.dto.ReservaDTO;
 import br.org.ufpr.tcc.entity.Atributo;
 import br.org.ufpr.tcc.entity.Quarto;
+import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.util.DataUtil;
 
 public class DTOtoQuarto {
 	
 	DTOtoFoto converterFoto = new DTOtoFoto();
 	DTOtoAtributo converterAtributo = new DTOtoAtributo();
+	DTOtoReserva converterReserva = new DTOtoReserva();
 	
 	public Quarto convert(QuartoDTO dto) {
 		Quarto quarto = new Quarto();
@@ -46,6 +49,19 @@ public class DTOtoQuarto {
 			}
 			
 			quarto.setAtributos(listaAtributos);
+		}
+		
+		if(dto.getReservas() != null){
+			List<Reserva> listaReservas = new ArrayList<Reserva>();
+
+			Reserva a = null;
+			for (ReservaDTO aDTO : dto.getReservas()) {
+				a = converterReserva.convert(aDTO);
+
+				listaReservas.add(a);
+			}
+
+			quarto.setReservas(listaReservas);
 		}
 		
 		return quarto;

@@ -1,30 +1,29 @@
 package br.org.ufpr.tcc.dto;
 
+import java.util.Date;
+
 public class QuartoFiltroDTO extends PesquisaPaginaDTO {
 
-	private Long id;
+	private Long codFilial;
+	private Date dataEntrada;
+	private Date dataSaida;
 	
-	private Long idHotel;
-	
-	public Long getIdHotel() {
-		return idHotel;
+	public Long getCodFilial() {
+		return codFilial;
 	}
-
-	public void setIdHotel(Long idHotel) {
-		this.idHotel = idHotel;
+	public void setCodFilial(Long codFilial) {
+		this.codFilial = codFilial;
 	}
-
-	public Long getId() {
-		return id;
+	public Date getDataEntrada() {
+		return dataEntrada;
 	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public void setDataEntrada(Date dataEntrada) {
+		this.dataEntrada = dataEntrada;
 	}
-
-	@Override
-	public String toString() {
-		return "QuartoFiltroDTO [id=" + id + ", idHotel=" + idHotel + "]";
+	public Date getDataSaida() {
+		return dataSaida;
 	}
-
+	public void setDataSaida(Date dataSaida) {
+		this.dataSaida = dataSaida;
+	}
 }
