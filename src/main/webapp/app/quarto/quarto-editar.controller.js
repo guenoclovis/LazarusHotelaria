@@ -13,7 +13,7 @@
 	// Definindo atributos e operacoes do Controlador da tela 'editar' do modulo
 	// 'Quarto'
 	/* @ngInject */
-	function EditarQuartoController($controller, $scope,  $http, $state, $stateParams,
+	function EditarQuartoController($controller, $scope,  $http, $state, $stateParams,$timeout,
 			QuartoData, MsgCenter, FotoData, FilialData, TipoQuartoData, AtributoData) {
 
 		
@@ -91,7 +91,7 @@
 			}
 			carregarFiliais();
 			carregarTipoQuarto();
-//			carregarAtributos();
+			carregarAtributos();
 		}
 		
 		function carregarTipoQuarto() {

@@ -79,9 +79,7 @@
 				vm.filial = data.plain();
 				var filtros = { carregarImagemOriginal : true, carregarImagemMiniatura : true };
 				
-				FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
-					vm.filial.foto = data.plain();
-				});
+				
 				
 				vm.quartos = [];
 			});
@@ -96,9 +94,12 @@
 				vm.quarto = data.plain();
 				var filtros = { carregarImagemOriginal : false, carregarImagemMiniatura : true };				
 				
-				FotoData.obter(vm.quarto.foto.codFoto, filtros).then(function(data) {
-					vm.quarto.foto = data.plain();
-				});
+				if(vm.quarto.foto.codFoto != undefined && vm.quarto.foto.codFoto != null){
+					FotoData.obter(vm.quarto.foto.codFoto, filtros).then(function(data) {
+						vm.quarto.foto = data.plain();
+					});	
+				}
+				
 				
 				vm.reserva.quarto = vm.quarto;
 				
