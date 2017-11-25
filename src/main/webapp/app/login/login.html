@@ -1,22 +1,63 @@
-<h2>Login Form</h2>
+<div>
+	<div ng-controller="LoginController as vm">
 
-<form action="/action_page.php">
-  <div class="imgcontainer">
-    <img src="img_avatar2.png" alt="Avatar" class="avatar">
-  </div>
+		<div class="row linha-site">
+			<div class="container">
+				<!-- ================= TITULO ================= -->
 
-  <div class="container">
-    <label><b>Nome do Usu&aacute;rio</b></label>
-    <input type="text" placeholder="Enter Username" name="uname" required>
+				<div class="row campo-form">
+					<div class="col-sm-5"></div>
+					<div class="col-sm-2">
+						
+						<h1>Login</h1>
+						
+					</div>
+					<div class="col-sm-5"></div>
+				</div>
 
-    <label><b>Senha</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" required>
-        
-    <button type="submit">Entrar</button>
-    <input type="checkbox" checked="checked"> Lembrar Senha
-  </div>
+				<form>
 
-  <div class="container" style="background-color:#f1f1f1">
-    <button type="button" class="cancelbtn">Cancelar</button>
-  </div>
-</form>
+					<div class="row campo-form">
+						<div class="col-md-4"></div>
+						<div class="col-md-1">
+							<label for="usuario" class="cols-sm-2 control-label required">Usu&aacute;rio</label>
+						</div>
+						<div class="col-md-3">
+							<input type="text" class="form-control" name="usuario"
+								id="usuario" ng-model="vm.dadosLogin.usuario"
+								placeholder="Nome do Usuario" />
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-4"></div>
+						<div class="col-md-1">
+							<label for="senha" class="cols-sm-2 control-label required">Senha</label>
+						</div>
+						<div class="col-md-3">
+							<input type="password" class="form-control" name="senha"
+								id="senha" ng-model="vm.dadosLogin.senha" />
+						</div>
+						<div class="col-md-4"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-sm-5"></div>
+						<div class="col-sm-2">
+							<button type="button" ng-click="vm.login()"
+								class="btn btn-primary" align="left">Login</button>
+						</div>
+						<div class="col-sm-5"></div>
+					</div>
+
+				</form>
+
+				<div>
+					<pre>{{vm.dadosLogin | json}}</pre>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>

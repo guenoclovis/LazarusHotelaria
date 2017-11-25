@@ -7,20 +7,22 @@
     angular.module('login').factory('LoginData', LoginData);
 
     /* @ngInject */
-    function LoginData(Restangular, $q) {
-    	Restangular.setBaseUrl('http://localhost\:8080');
+    function LoginData(Restangular, $q, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/login';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 
         var service = {
-            obter : obter,            
+            login : login            
         };
 
         return service;
         // //////////////
 
-        function obter(codCliente, filtros) {
-            return Restangular.one(apiURLCompleta, codCliente).get(filtros);
+        function login(dadosLogin) {
+        	return Restangular.all(apiURLCompleta).post(dadosLogin);
         }
 
     }
