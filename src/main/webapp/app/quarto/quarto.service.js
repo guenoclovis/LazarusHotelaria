@@ -7,8 +7,10 @@
     angular.module('quarto').factory('QuartoData', QuartoData);
 
     /* @ngInject */
-    function QuartoData(Restangular, $q) {
-    	Restangular.setBaseUrl('http://localhost\:8080');
+    function QuartoData(Restangular, $q, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/quarto';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 

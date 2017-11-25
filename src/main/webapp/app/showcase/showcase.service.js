@@ -7,7 +7,10 @@
     angular.module('showcase').factory('ShowcaseData', ShowcaseData);
 
     /* @ngInject */
-    function ShowcaseData(Restangular, $q) {
+    function ShowcaseData(Restangular, $q, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/showcase';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 

@@ -7,8 +7,10 @@
     angular.module('tipoquarto').factory('TipoQuartoData', TipoQuartoData);
 
     /* @ngInject */
-    function TipoQuartoData(Restangular, $q) {
-    	Restangular.setBaseUrl('http://localhost\:8080');
+    function TipoQuartoData(Restangular, $q, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/tipoquarto';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 

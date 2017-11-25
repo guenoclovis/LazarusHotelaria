@@ -7,9 +7,10 @@
     angular.module('foto').factory('FotoData', FotoData);
 
     /* @ngInject */
-    function FotoData(Restangular, $q, $http) {
-    	var baseURL = 'http://localhost\:8080';
-    	Restangular.setBaseUrl(baseURL);
+    function FotoData(Restangular, $q, $http, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/foto';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 

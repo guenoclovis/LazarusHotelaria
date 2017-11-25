@@ -7,8 +7,10 @@
     angular.module('contato').factory('ContatoData', ContatoData);
 
     /* @ngInject */
-    function ContatoData(Restangular, $q) {
-    	Restangular.setBaseUrl('http://localhost\:8080');
+    function ContatoData(Restangular, $q, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/contato';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 

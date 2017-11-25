@@ -7,9 +7,10 @@
     angular.module('filial').factory('FilialData', FilialData);
 
     /* @ngInject */
-    function FilialData(Restangular, $q, $http) {
-    	var baseURL = 'http://localhost\:8080';
-    	Restangular.setBaseUrl(baseURL);
+    function FilialData(Restangular, $q, $http, $rootScope) {
+    	
+    	Restangular.setBaseUrl($rootScope.baseURL);
+    	
         var apiURL = '/filial';
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 
