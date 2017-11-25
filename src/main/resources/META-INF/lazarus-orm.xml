@@ -13,5 +13,6 @@
 	<entity class="br.org.ufpr.tcc.entity.Reserva" />
 	<entity class="br.org.ufpr.tcc.entity.Quarto" />
 	<entity class="br.org.ufpr.tcc.entity.Foto" />
+	<!--<entity class="br.org.ufpr.tcc.entity.Login" />  -->
 	
 </entity-mappings>

@@ -61,6 +61,11 @@
 <script type="text/javascript" src="inicio/inicio.module.js"></script>
 <script type="text/javascript" src="inicio/inicio.controller.js"></script>
 
+<!-- Login 
+<script type="text/javascript" src="login/login.module.js"></script>
+<script type="text/javascript" src="login/login.service.js"></script>
+<script type="text/javascript" src="login/login.controller.js"></script>
+-->
 <!-- Cliente -->
 <script type="text/javascript" src="cliente/cliente.module.js"></script>
 <script type="text/javascript" src="cliente/cliente.service.js"></script>
@@ -210,9 +215,10 @@
 <!-- 					ui-sref="showcaseConsultar">Showcase</a></li> -->
 				<!-- ===================================================================== -->
 			</ul>
+			<div ng-controller="ConsultarClienteController as vm">
 			<ul class="nav navbar-nav navbar-right">
-				<li><a href="\clienteEditar" class="menu-opcoes-acesso"><span
-						class="glyphicon glyphicon-log-in menu-opcoes-acesso"></span>
+				<li><a ng-click="vm.irParaTelaInclusao()" class="menu-opcoes-acesso">
+						<span class="glyphicon glyphicon-log-in menu-opcoes-acesso"></span>
 						Cadastre-se</a></li>
 				<li><a href="#" class="menu-opcoes-acesso"><span
 						class="glyphicon glyphicon-log-in"></span> Login</a></li>

@@ -14,6 +14,7 @@
 	function ConsultarQuartoSiteAbertoController($controller, $scope, $state, $stateParams, QuartoData,
 			MsgCenter, FiltroService, FilialData, FotoData) {
 
+		
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
 

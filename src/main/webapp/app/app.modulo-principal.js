@@ -22,7 +22,15 @@
 			'quarto',
 			'reserva',
 			'foto',
-			'contato',
+			'contato'
+			//'login'
 //			'showcase'
 	]);
+	
+	
+	
+	angular.module('lazarusApp').config(['uibDatepickerConfig', function (uibDatepickerConfig) {
+	    uibDatepickerConfig.showWeeks = false;
+	}]);
+	
 })();
