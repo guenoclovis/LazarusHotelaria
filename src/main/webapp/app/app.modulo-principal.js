@@ -22,7 +22,8 @@
 			'quarto',
 			'reserva',
 			'foto',
-			'contato',
+			'contato'
+			//'login'
 //			'showcase'
 	]);
 	

@@ -11,8 +11,8 @@
 
     // Definindo atributos e operacoes do Controlador da tela 'detalhar' do modulo 'quarto'
     /* @ngInject */
-    function DetalharQuartoController($controller, $scope, $state, $stateParams,
-    		QuartoData) {
+    function DetalharQuartoController($controller, $scope, $state, $stateParams, 
+    		QuartoData, FilialData) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -31,7 +31,7 @@
         //////// OPERACOES DO CONTROLADOR ////////////////////
 
         function activate() {
-            obter();
+        	obterQuarto();
         }
 
         function limpar() {
@@ -48,10 +48,16 @@
             });
         }
 
-        function obter() {
+        function obterQuarto() {
         	QuartoData.obter(vm.quarto.codQuarto).then(function (data) {
                 vm.quarto = data.plain();
+                
+            	FilialData.obter(vm.quarto.codFilial).then(function (data) {
+                    vm.filial = data.plain();
+                });                
+             
             });
+        	
         }
         
         function excluir() {

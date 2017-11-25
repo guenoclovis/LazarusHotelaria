@@ -3,6 +3,18 @@
 
 	angular.module('lazarusApp').config(function($stateProvider) {
 
+		
+//		var loginState = {
+//				name : 'login',
+//				url : '/login',
+//				templateUrl : './login/login.html',			
+//				controller : 'LoginController',
+//				params : {
+//
+//				}
+//			}
+//		$stateProvider.state(loginState);
+				
 		var root = {
 			name : "root",
 		    url: "/",
