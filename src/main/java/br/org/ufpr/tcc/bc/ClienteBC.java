@@ -1,5 +1,6 @@
 package br.org.ufpr.tcc.bc;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,9 +10,8 @@ import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
-import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Mensagem;
-import br.org.ufpr.tcc.entity.Pagina;
+import br.org.ufpr.tcc.exception.handler.AuthenticationException;
 import br.org.ufpr.tcc.validator.ClienteValidator;
 
 public class ClienteBC {
@@ -41,9 +41,9 @@ public class ClienteBC {
     }
 
     public ResponseDTO persistir(Cliente cliente) {
+    	//VALIDAR A ENTIDADE ANTES DE PERSISTIR
     	validator.validateAndThrow(cliente);
 
-        //VALIDAR A ENTIDADE ANTES DE PERSISTIR
     	Cliente clientePersistido = null;
         if (cliente.getCodCliente() == null) {
             log.info("Inicia a persistência de um novo cliente.");

@@ -34,6 +34,7 @@ CREATE TABLE USUARIOS(
 	END_CIDADE		VARCHAR(100)		NULL,
 	END_UF			CHAR(2)			NULL,
 	END_COMPL		VARCHAR(100)		NULL,
+	LOGIN		    VARCHAR(100)		NULL,
 	SENHA			VARCHAR(100)		NOT NULL,
 	STATUS			CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
 	CONSTRAINT PK_USUARIOS PRIMARY KEY (COD_USUARIO)
@@ -41,13 +42,13 @@ CREATE TABLE USUARIOS(
 -- DROP TABLE USUARIOS
 -- SELECT * FROM USUARIOS
 INSERT INTO USUARIOS VALUES(1, 'Clovis Daniel Gueno', 'S', '31-12-1990', '1', 'Brasileira', 'A', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'clovis2017', 'I');
+	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'clovis2017','clovis2017',  'I');
 INSERT INTO USUARIOS VALUES(2, 'Eduardo Wosgrau', 'S', '10-11-1990', '1', 'Brasileira', 'A', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'eduardo2017', 'I');	
+	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'eduardo2017','eduardo2017',  'I');	
 INSERT INTO USUARIOS VALUES(3, 'Fulano Funcionario 1', 'S', '10-11-1990', '1', 'Brasileira', 'F', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12017', 'I');		
+	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12017','fulano12017',  'I');		
 INSERT INTO USUARIOS VALUES(4, 'Fulano Funcionario 2', 'S', '10-11-1990', '1', 'Brasileira', 'F', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22017', 'I');			
+	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22017','fulano22017',  'I');			
 
 SELECT setval('usuarios_cod_usuario_seq', COALESCE((SELECT MAX(cod_usuario)+1 FROM usuarios), 1), false);
 	

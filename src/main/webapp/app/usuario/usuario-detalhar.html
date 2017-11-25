@@ -1,23 +1,15 @@
 
 <div>
-	<div ng-controller="DetalharUsuarioController as dcc">
+	<div ng-controller="DetalharUsuarioController as vm">
 
 		<div class=".container">
-			<div class="row">
-				<div class="col-md-12" align="center">
-					<div class=".text-sucess .bg-sucess">{{vm.msgs}}</div>
-				</div>
-			</div>
+			
 			<div class="row">
 				<div class="col-md-12 lazarus-align">
 					<h2>Detalhar do Usuario</h2>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-12">
-					<div><pre>{{dcc.usuario | json}}</pre></div>
-				</div>
-			</div>
+			
 
 			<div class="row">
 				<div class="col-md-2"></div>
@@ -25,7 +17,7 @@
 					<label for="nome" class="cols-sm-2 control-label">Código</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.usuario.codUsuario}}</span>
+					<span id="nome">{{vm.usuario.codUsuario}}</span>
 				</div>
 				<div class="col-md-2"></div>
 				<div class="col-md-2"></div>
@@ -36,7 +28,7 @@
 					<label for="nome" class="cols-sm-2 control-label">Nome</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.usuario.nome}}</span>
+					<span id="nome">{{vm.usuario.nome}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -47,7 +39,7 @@
 					<label for="nome" class="cols-sm-2 control-label">Ativo</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nome">{{dcc.usuario.ativo}}</span>
+					<span id="nome">{{vm.usuario.ativo}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -57,7 +49,7 @@
 					<label for="dtNasc" class="cols-sm-2 control-label">Data Nascimento</label>
 				</div>
 				<div class="col-md-6">
-					<span id="dtNasc">{{dcc.usuario.dtNasc}}</span>
+					<span id="dtNasc">{{vm.usuario.dtNasc}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -68,7 +60,7 @@
 					<label for="sexo" class="cols-sm-2 control-label">Sexo</label>
 				</div>
 				<div class="col-md-6">
-					<span id="sexo">{{dcc.usuario.sexo}}</span>
+					<span id="sexo">{{vm.usuario.sexo}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -79,7 +71,7 @@
 					<label for="nacionalidade" class="cols-sm-2 control-label">Nacionalidade</label>
 				</div>
 				<div class="col-md-6">
-					<span id="nacionalidade">{{dcc.usuario.nacionalidade}}</span>
+					<span id="nacionalidade">{{vm.usuario.nacionalidade}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -90,7 +82,7 @@
 					<label for="perfil" class="cols-sm-2 control-label">Perfil</label>
 				</div>
 				<div class="col-md-6">
-					<span id="telefone">{{dcc.usuario.perfil}}</span>
+					<span id="telefone">{{vm.usuario.perfil}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -101,7 +93,7 @@
 					<label for="telefone" class="cols-sm-2 control-label">Telefone</label>
 				</div>
 				<div class="col-md-6">
-					<span id="telefone">{{dcc.usuario.telefone}}</span>
+					<span id="telefone">{{vm.usuario.telefone}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -112,7 +104,7 @@
 					<label for="email" class="cols-sm-2 control-label">E-mail</label>
 				</div>
 				<div class="col-md-6">
-					<span id="email">{{dcc.usuario.email}}</span>
+					<span id="email">{{vm.usuario.email}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -123,7 +115,7 @@
 					<label for="senha" class="cols-sm-2 control-label">Senha</label>
 				</div>
 				<div class="col-md-6">
-					<span id="senha">{{dcc.usuario.senha}}</span>
+					<span id="senha">{{vm.usuario.senha}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -134,7 +126,7 @@
 					<label for="status" class="cols-sm-2 control-label">Status</label>
 				</div>
 				<div class="col-md-6">
-					<span id="status">{{dcc.usuario.status}}</span>
+					<span id="status">{{vm.usuario.status}}</span>
 				</div>
 				<div class="col-md-2"></div>
 			</div>
@@ -157,12 +149,14 @@
 		<div class="row">
 			<div class="col-md-12 lazarus-align">
 				<div class="lazarus-align">
-					<button ng-click="dcc.voltarParaTelaAnterior()" class="btn btn-primary">Voltar</button>
-					<button ng-click="dcc.irParaTelaEdicao(dcc.usuario.codUsuario)" class="btn btn-primary">Editar</button>
-					<button ng-click="dcc.excluir(dcc.usuario.codUsuario)" class="btn btn-primary">Excluir</button>
+					<button ng-click="vm.voltarParaTelaAnterior()" class="btn btn-primary">Voltar</button>
+					<button ng-click="vm.irParaTelaEdicao(vm.usuario.codUsuario)" class="btn btn-primary">Editar</button>
+					<button ng-click="vm.excluir(vm.usuario.codUsuario)" class="btn btn-primary">Excluir</button>
 				</div>
 			</div>
 		</div>
+
+		<debug objeto="{{vm.usuario | json}}"></debug>
 
 	</div>
 

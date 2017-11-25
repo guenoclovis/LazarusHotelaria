@@ -1,18 +1,15 @@
 <div>
 	<div ng-controller="EditarClienteController as vm">
-		<!-- ================= MENSAGENS da APLICACAO ================= -->
-		<h1>{{vm.msgs}}</h1>
-		
 		<!-- ================= CORPO DA PAGINA ================= -->
 	    <div class="row linha-site">
 	    	<div class="container">
 	    
 				<!-- ================= TITULO ================= -->
 				<div class="titulo-paginas-meio">
-					<div ng-if="vm.atributo.codAtributo">
+					<div ng-if="vm.cliente.codCliente">
 						<h1>Editar H&oacute;spede</h1>
 					</div>
-					<div ng-if="!vm.atributo.codAtributo">
+					<div ng-if="!vm.cliente.codCliente">
 						<h1>Incluir H&oacute;spede</h1>
 					</div>
 				</div>	

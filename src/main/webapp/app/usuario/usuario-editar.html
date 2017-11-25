@@ -1,307 +1,344 @@
-
 <div>
 	<div ng-controller="EditarUsuarioController as vm">
-		<h1>{{vm.msgs}}</h1>
-		<div ng-if="vm.usuario.codUsuario">
-			<h1>Usuario Editar</h1>
-		</div>
-		<div ng-if="!vm.usuario.codUsuario">
-			<h1>Usuario Incluir</h1>
-		</div>
 
-		<div>
-			<pre>{{vm.usuario | json}}</pre>
-		</div>
+		<!-- ================= CORPO DA PAGINA ================= -->
+		<div class="row linha-site">
+			<div class="container">
 
-		<form>
-		
-			<div class="row" ng-if="vm.usuario.codUsuario">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Código</label>
-				</div>
-				<div class="col-md-6">
-					<span id="nome">{{vm.usuario.codUsuario}}</span>
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Nome</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.usuario.nome"
-							placeholder="Nome do Fulano(a)" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="sexo" class="cols-sm-2 control-label">Ativo</label>
-				</div>
-				<div class="col-md-6">
-					<div class="form-inline" id="ativo">
-							<div class="radio col-sm-2">
-								<input ng-model="vm.usuario.ativo" type="radio" name="radio-situacao" id="ativo-s"
-									ng-value="1">
-								<label for="radio-situacao-a">Ativo</label>
-							</div>
-							<div class="radio col-sm-2">
-								<input ng-model="vm.usuario.ativo" type="radio" name="radio-situacao" id="ativo-n"
-									ng-value="0">
-								<label for="radio-situacao-i">Inativo</label>
-							</div>
-						</div>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="dtNasc" class="cols-sm-2 control-label">Data Nascimento</label>
-				</div>
-				<div class="col-md-6">
-					
-					<input type="text" class="form-control" id="dtNasc" uib-datepicker-popup="{{format}}"
-							ng-model="vm.usuario.dtNasc" is-open="vm.popup1.opened"
-							datepicker-options="dateOptions" ng-required="true" close-text="Close"
-							alt-input-formats="altInputFormats" />
-						<span class="input-group-btn">
-							<button type="button" class="btn btn-default" ng-click="vm.open1()">
-								Calendário
-							</button>		
-				</div>
-				
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="sexo" class="cols-sm-2 control-label">Sexo</label>
-				</div>
-				<div class="col-md-6">
-					<div class="form-inline" id="sexo">
-							<div class="radio col-sm-2">
-								<input ng-model="vm.usuario.sexo" type="radio" name="radio-situacao" id="sexo-m"
-									ng-value="1">
-								<label for="radio-situacao-a">Masculino</label>
-							</div>
-							<div class="radio col-sm-2">
-								<input ng-model="vm.usuario.sexo" type="radio" name="radio-situacao" id="sexo-f"
-									ng-value="2">
-								<label for="radio-situacao-i">Feminino</label>
-							</div>
-							<div class="radio col-sm-2">
-								<input ng-model="vm.usuario.sexo" type="radio" name="radio-situacao" id="sexo-o"
-									ng-value="0">
-								<label for="radio-situacao-i">Outro</label>
-							</div>
-						</div>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nacionalidade" class="cols-sm-2 control-label">Nacionalidade</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="nacionalidade" id="nacionalidade" ng-model="vm.usuario.nacionalidade"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="endUf" class="cols-sm-2 control-label">Perfil</label>
-				</div>
-				<div class="col-md-6">
-					<select id="perfil" class="form-control"
-						ng-options="item.codigo as item.descricao for item in vm.perfis" ng-model="vm.usuario.perfil"
-						selectpicker>
-						<option value="" selected>Selecione</option>
-					</select>
-				</div>
-				<div class="col-md-2"></div>
-			</div>		
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="telefone" class="cols-sm-2 control-label">Telefone</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="telefone" id="telefone" ng-model="vm.usuario.telefone"
-							placeholder="(99)99999-9999" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="email" class="cols-sm-2 control-label">E-mail</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="email" id="email" ng-model="vm.usuario.email"
-							placeholder="fulano@abc.com" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<div class="form-group has-feedback">
-						<label for="senha" class="control-label">Senha: </label>
-						<div class="input-group">
-							<span class="input-group-addon">
-								<span class="fa fa-lock">Senha</span>
-							</span>
-							<input id="senha" type="password" class="form-control" ng-model="vm.usuario.senha"
-								autocomplete="nope" uk-model-update-on submit>
-						</div>
+				<!-- ================= TITULO ================= -->
+				<div class="titulo-paginas-meio">
+					<div ng-if="vm.usuario.codUsuario">
+						<h1>Editar Usu&aacute;rio</h1>
+					</div>
+					<div ng-if="!vm.usuario.codUsuario">
+						<h1>Incluir Usu&aacute;rio</h1>
 					</div>
 				</div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="cpf" class="cols-sm-2 control-label">CPF</label>
-				</div>
-				<div class="col-md-6">
-					<input id="cpf" type="cpf" mask="999.999.999-99" ng-model="vm.usuario.cpf">
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="rg" class="cols-sm-2 control-label">RG</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="rg" id="rg" ng-model="vm.usuario.rg"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="passaporte" class="cols-sm-2 control-label">Passaporte</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="passaporte" id="passaporte" ng-model="vm.usuario.passaporte"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="endRua" class="cols-sm-2 control-label">Endereço - Rua</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="endRua" id="endRua" ng-model="vm.usuario.endRua"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="endNro" class="cols-sm-2 control-label">Endereço - Número</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="endNro" id="endNro" ng-model="vm.usuario.endNro"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="endBairro" class="cols-sm-2 control-label">Endereço - Bairro</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="endBairro" id="endBairro" ng-model="vm.usuario.endBairro"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="endCidade" class="cols-sm-2 control-label">Endereço - Cidade</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="endCidade" id="endCidade" ng-model="vm.usuario.endCidade"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="endUf" class="cols-sm-2 control-label">Endereço - UF</label>
-				</div>
-				<div class="col-md-6">
-					<select id="endUf" class="form-control"
-						ng-options="item.codigo as item.descricao for item in vm.ufs" ng-model="vm.usuario.endUf"
-						selectpicker>
-						<option value="" selected>Selecione</option>
-					</select>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="EndCompl" class="cols-sm-2 control-label">Endereço - Complemento</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="EndCompl" id="EndCompl" ng-model="vm.usuario.endCompl"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="status" class="cols-sm-2 control-label">Status</label>
-				</div>
-				<div class="col-md-6">
-					<input type="text" class="form-control" name="status" id="status" ng-model="vm.usuario.status"
-							placeholder="" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="form-group ">
-				<button ng-if="!vm.usuario.codUsuario" ng-click="vm.incluir()" class="btn btn-primary">Incluir</button>
-				<button ng-if="vm.usuario.codUsuario" ng-click="vm.alterar()" class="btn btn-primary">Alterar</button>
-				<button ng-click="vm.irParaTelaConsultar()" class="btn btn-primary">Voltar</button>
-			</div>
 
-		</form>
+				<form>
 
+					<div class="row campo-form" ng-if="vm.usuario.codUsuario">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="nome" class="cols-sm-2 control-label">Código</label>
+						</div>
+						<div class="col-md-6">
+							<span id="nome">{{vm.usuario.codUsuario}}</span>
+						</div>
+						<div class="col-md-2"></div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="nome" class="cols-sm-2 control-label">Nome</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="nome" id="nome"
+								ng-model="vm.usuario.nome" placeholder="Nome do Fulano(a)" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="sexo" class="cols-sm-2 control-label">Ativo</label>
+						</div>
+						<div class="col-md-6">
+							<div class="form-inline" id="ativo">
+								<div class="radio col-sm-2">
+									<input ng-model="vm.usuario.ativo" type="radio"
+										name="radio-situacao" id="ativo-s" ng-value="1"> <label
+										for="radio-situacao-a">Ativo</label>
+								</div>
+								<div class="radio col-sm-2">
+									<input ng-model="vm.usuario.ativo" type="radio"
+										name="radio-situacao" id="ativo-n" ng-value="0"> <label
+										for="radio-situacao-i">Inativo</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-sm-2"></div>
+						<div class="col-sm-2">
+							<label for="dtNasc" class="cols-sm-2 control-label required">Data Nascimento</label>
+						</div>
+						<div class="col-sm-6">
+							
+							<p class="input-group">
+								<input type="text" class="form-control" id="dtNasc"
+									uib-datepicker-popup="{{format}}"
+									ng-model="vm.usuario.dtNasc"
+									is-open="vm.popup1.opened"
+									datepicker-options="dateOptions" ng-required="true"
+									close-text="Close" alt-input-formats="altInputFormats" /> <span
+									class="input-group-btn">
+									<button type="button" class="btn btn-default"
+										ng-click="vm.open1()">
+										<i class="glyphicon glyphicon-calendar"></i>
+									</button>
+								</span>
+							</p>		
+						</div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="sexo" class="cols-sm-2 control-label">Sexo</label>
+						</div>
+						<div class="col-md-6">
+							<div class="form-inline" id="sexo">
+								<div class="radio col-sm-2">
+									<input ng-model="vm.usuario.sexo" type="radio"
+										name="sexo-m" id="sexo-m" ng-value="1"> <label
+										for="sexo-m">Masculino</label>
+								</div>
+								<div class="radio col-sm-2">
+									<input ng-model="vm.usuario.sexo" type="radio"
+										name="sexo-f" id="sexo-f" ng-value="2"> <label
+										for="sexo-f">Feminino</label>
+								</div>
+								<div class="radio col-sm-2">
+									<input ng-model="vm.usuario.sexo" type="radio"
+										name="sexo-o" id="sexo-o" ng-value="0"> <label
+										for="sexo-o">Outro</label>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="nacionalidade" class="cols-sm-2 control-label">Nacionalidade</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="nacionalidade"
+								id="nacionalidade" ng-model="vm.usuario.nacionalidade"
+								placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="endUf" class="cols-sm-2 control-label">Perfil</label>
+						</div>
+						<div class="col-md-6">											
+							
+							<select id="perfil" class="campo-form"
+								ng-options="item.codigo as item.descricao for item in vm.perfis"
+								ng-model="vm.usuario.perfil" selectpicker>
+								<option value="" selected>Selecione</option>
+							</select>
+							
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+					
+					
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="telefone" class="cols-sm-2 control-label">Telefone</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="telefone"
+								id="telefone" ng-model="vm.usuario.telefone"
+								placeholder="(99)99999-9999" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="email" class="cols-sm-2 control-label">E-mail</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="email" id="email"
+								ng-model="vm.usuario.email" placeholder="fulano@abc.com" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="cpf" class="cols-sm-2 control-label">CPF</label>
+						</div>
+						<div class="col-md-6">
+							<input id="cpf" type="cpf" mask="999.999.999-99"
+								ng-model="vm.usuario.cpf">
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="rg" class="cols-sm-2 control-label">RG</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="rg" id="rg"
+								ng-model="vm.usuario.rg" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="passaporte" class="cols-sm-2 control-label">Passaporte</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="passaporte"
+								id="passaporte" ng-model="vm.usuario.passaporte" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="endRua" class="cols-sm-2 control-label">Endereço
+								- Rua</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="endRua" id="endRua"
+								ng-model="vm.usuario.endRua" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="endNro" class="cols-sm-2 control-label">Endereço
+								- Número</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="endNro" id="endNro"
+								ng-model="vm.usuario.endNro" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="endBairro" class="cols-sm-2 control-label">Endereço
+								- Bairro</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="endBairro"
+								id="endBairro" ng-model="vm.usuario.endBairro" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="endCidade" class="cols-sm-2 control-label">Endereço
+								- Cidade</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="endCidade"
+								id="endCidade" ng-model="vm.usuario.endCidade" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="endUf" class="cols-sm-2 control-label">Endereço - UF</label>
+						</div>
+						<div class="col-md-6">											
+							<select id="endUf" class="campo-form"
+								ng-options="item.codigo as item.descricao for item in vm.ufs" ng-model="vm.usuario.endUf"
+								selectpicker>
+								<option value="" selected>Selecione</option>
+							</select>
+							
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="EndCompl" class="cols-sm-2 control-label">Endereço
+								- Complemento</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="EndCompl"
+								id="EndCompl" ng-model="vm.usuario.endCompl" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="login" class="cols-sm-2 control-label">Usu&aacute;rio/Login</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="login" id="login"
+								ng-model="vm.usuario.login" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="senha" class="cols-sm-2 control-label">Senha</label>
+						</div>
+						<div class="col-md-6">
+							<input type="password" class="form-control" name="senha"
+								id="senha" ng-model="vm.usuario.senha" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+					<div class="row campo-form">
+						<div class="col-md-2"></div>
+						<div class="col-md-2">
+							<label for="status" class="cols-sm-2 control-label">Status</label>
+						</div>
+						<div class="col-md-6">
+							<input type="text" class="form-control" name="status" id="status"
+								ng-model="vm.usuario.status" placeholder="" />
+						</div>
+						<div class="col-md-2"></div>
+					</div>
+
+
+
+					<div class="col-sm-10">
+						<div class="row botoes-direita">
+							<button ng-if="!vm.usuario.codUsuario" ng-click="vm.incluir()"
+								class="btn btn-primary">Incluir</button>
+							<button ng-if="vm.usuario.codUsuario" ng-click="vm.alterar()"
+								class="btn btn-primary">Alterar</button>
+							<button ng-click="vm.irParaTelaConsultar()"
+								class="btn btn-primary">Voltar</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.usuario | json}}"></debug>
 	</div>
 </div>
