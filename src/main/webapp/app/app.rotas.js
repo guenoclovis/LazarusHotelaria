@@ -4,16 +4,16 @@
 	angular.module('lazarusApp').config(function($stateProvider) {
 
 		
-//		var loginState = {
-//				name : 'login',
-//				url : '/login',
-//				templateUrl : './login/login.html',			
-//				controller : 'LoginController',
-//				params : {
-//
-//				}
-//			}
-//		$stateProvider.state(loginState);
+		var loginState = {
+			name : 'login',
+			url : '/login',
+			templateUrl : './login/login.html',			
+			controller : 'LoginController',
+			params : {
+
+			}
+		}
+		$stateProvider.state(loginState);
 				
 		var root = {
 			name : "root",
@@ -130,13 +130,6 @@
 		}
 		$stateProvider.state(quartoDetalharState);
 
-		var loginState = {
-			name : 'login',
-			url : '/login',
-			templateUrl : './login/login.html'
-		}
-		$stateProvider.state(loginState);
-		
 		var contatoState = {
 			name : 'contato',
 			url : '/contato',

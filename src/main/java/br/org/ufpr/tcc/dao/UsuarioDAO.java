@@ -1,5 +1,8 @@
 package br.org.ufpr.tcc.dao;
 
+import java.io.UnsupportedEncodingException;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
 
 import javax.persistence.criteria.CriteriaBuilder;
@@ -10,6 +13,7 @@ import javax.persistence.criteria.Root;
 
 import org.apache.commons.lang3.StringUtils;
 
+import br.org.ufpr.tcc.dto.LoginDTO;
 import br.org.ufpr.tcc.dto.UsuarioFiltroDTO;
 import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.entity.Usuario;
@@ -19,6 +23,19 @@ import br.org.ufpr.tcc.util.Util;
 
 public class UsuarioDAO extends LazarusDAO<Usuario> {
 
+	public Usuario obterParaLogin(LoginDTO dto){
+		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);
+        Root<Usuario> root = cq.from(Usuario.class);
+        Predicate[] predicados = buildPredicatePesquisaPorLogin(dto, cb, root);
+
+        cq.where(cb.and(predicados));
+
+        List<Usuario> lista = findByCriteriaQuery(cq, null);
+        
+		return lista.get(0);
+	}
+	
 	public List<Usuario> listar(UsuarioFiltroDTO filtros) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);
@@ -36,16 +53,33 @@ public class UsuarioDAO extends LazarusDAO<Usuario> {
         Root<Usuario> root) {
         Predicate[] predicados = { };
         
-        Path<String> pathCampoTexto = root.get(Usuario.NOME);
+        Path<String> pathCampoNome = root.get(Usuario.NOME);
+//        Path<String> pathCampoSenha = root.get(Usuario.SENHA);
         
         if(StringUtils.isNotBlank(filtros.getNome())){
-            predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getNome())));
+            predicados = Util.add(predicados, cb.like(pathCampoNome, Util.likeFormat(filtros.getNome())));
         }
         
         //... outros predicados/filtros se houver
         
         return predicados;
     }
+    
+    private Predicate[] buildPredicatePesquisaPorLogin(LoginDTO dto, CriteriaBuilder cb,
+            Root<Usuario> root) {
+            Predicate[] predicados = { };
+            
+            Path<String> pathCampoUsuario = root.get(Usuario.LOGIN);
+            Path<String> pathCampoSenha = root.get("senha");
+            
+            if(StringUtils.isNotBlank(dto.getUsuario())){
+                predicados = Util.add(predicados, cb.like(pathCampoUsuario, Util.likeFormat(dto.getUsuario())));
+            }
+            
+            //... outros predicados/filtros se houver
+            
+            return predicados;
+        }
 
 	/*
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());

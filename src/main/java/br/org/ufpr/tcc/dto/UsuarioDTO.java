@@ -1,7 +1,5 @@
 package br.org.ufpr.tcc.dto;
 
-import java.util.Date;
-
 public class UsuarioDTO {
 
 	private Integer codUsuario;
@@ -22,6 +20,7 @@ public class UsuarioDTO {
     private String endCidade;
     private String endUf;
     private String endCompl;
+    private String login;
     private String senha;
     private char status;
     
@@ -138,6 +137,12 @@ public class UsuarioDTO {
 	}
 	public void setSenha(String senha) {
 		this.senha = senha;
+	}
+	public String getLogin() {
+		return login;
+	}
+	public void setLogin(String login) {
+		this.login = login;
 	}
 	public char getStatus() {
 		return status;

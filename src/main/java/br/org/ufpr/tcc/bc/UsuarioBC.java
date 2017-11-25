@@ -1,5 +1,6 @@
 package br.org.ufpr.tcc.bc;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -9,6 +10,7 @@ import br.org.ufpr.tcc.dto.UsuarioFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Usuario;
+import br.org.ufpr.tcc.exception.handler.AuthenticationException;
 import br.org.ufpr.tcc.validator.FilialValidator;
 import br.org.ufpr.tcc.validator.UsuarioValidator;
 import br.org.ufpr.tcc.entity.Mensagem;
@@ -38,6 +40,21 @@ public class UsuarioBC {
     public ResponseDTO persistir(Usuario usuario) {
 
     	validator.validateAndThrow(usuario);
+    	
+    	
+    	//Criptografar senha
+    	try {
+			CriptografiaBC criptoBC = new CriptografiaBC();
+			byte[] bytesSenhaEncriptada = criptoBC.criptografar(usuario.getSenha().getBytes("utf-8"));
+			usuario.setSenha(new String(bytesSenhaEncriptada));
+    	} catch (Exception e) {
+			e.printStackTrace();
+			log.info("ERRO na criptografia");
+			
+			Mensagem m = new Mensagem(Mensagem.ERRO, "Erro no processo de encriptar/desencriptar");
+			List<Mensagem> mensagens = new ArrayList<Mensagem>();
+			throw new AuthenticationException(mensagens);
+    	}
     	
         if (usuario.getCodUsuario() == null) {
             log.info("Inicia a persistência de um novo usuario.");

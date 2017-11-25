@@ -13,6 +13,9 @@ public class RestAPI extends Application {
 	private Set<Object> singletons = new HashSet<Object>();
 
 	public RestAPI() {
+		
+		singletons.add(new LoginREST());
+		
 		singletons.add(new ClienteREST());
 		singletons.add(new FilialREST());
 		singletons.add(new AtributoREST());
@@ -21,6 +24,7 @@ public class RestAPI extends Application {
 		singletons.add(new ReservaREST());
 		singletons.add(new QuartoREST());
 		singletons.add(new ContatoREST());
+		singletons.add(new UsuarioREST());
 		
 		singletons.add(new ShowcaseREST());
 		

@@ -26,6 +26,7 @@ public class UsuarioToDTO {
 		dto.setEndCidade(usuario.getEndCidade());
 		dto.setEndUf(usuario.getEndUf());
 		dto.setEndCompl(usuario.getEndCompl());
+		dto.setLogin(usuario.getLogin());
 		dto.setSenha(usuario.getSenha());
 		dto.setStatus(usuario.getStatus());
 
