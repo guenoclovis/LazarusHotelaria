@@ -1,13 +1,6 @@
 <div>
 	<div ng-controller="ConsultarClienteController as vm">
 
-		<!-- ================= MENSAGENS da APLICACAO ================= -->
-		<h1>{{vm.msgs}}</h1>
-		<!-- ================= DEBUG - COMENTAR DEPOIS ================= -->
-		<div>
-			<pre>{{vm.atributo | json}}</pre>
-		</div>
-		
 		<!-- ================= CORPO DA PAGINA ================= -->
 	    <div class="row linha-site">
 	    	<div class="container">
@@ -20,72 +13,72 @@
 					
 				</div>	
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-8">
-					<div class="form-group">
-						<label for="nome" class="cols-sm-2 control-label">Nome</label>
-						<div class="cols-sm-4">
-							<div class="input-group">
-								<input type="text" class="form-control" name="nome" id="nome"
-									ng-model="vm.cliente.nome" placeholder="Nome do Fulano(a)" />
+				<div class="row campo-form">
+					<div class="col-md-2"></div>
+					<div class="col-md-8">
+						<div class="form-group">
+							<label for="nome" class="cols-sm-2 control-label">Nome</label>
+							<div class="cols-sm-4">
+								<div class="input-group">
+									<input type="text" class="form-control" name="nome" id="nome"
+										ng-model="vm.cliente.nome" placeholder="Nome do H&oacute;spede" />
+								</div>
 							</div>
 						</div>
 					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2"></div>
-			</div>
-
-			<div class="row">
-				<div class="col-md-12">
-					<div align="center">
-						<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
-						<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+	
+				<div class="row campo-form">
+					<div class="col-md-12">
+						<div align="center">
+							<button ng-click="vm.irParaTelaInclusao()" class="btn btn-primary">Incluir</button>
+							<button ng-click="vm.pesquisarLimpar()" class="btn btn-primary">Pesquisar</button>
+						</div>
 					</div>
 				</div>
-			</div>
-			<br>
-			<!-- TESTE BUSCA PAGINADA -->
-			<div ng-show="vm.clientes.length > 0" class="well">
-				<div class="clearfix">
-					<div class="pull-right">
-						<select id="pageSize" class="form-control"
-							ng-options="item for item in vm.pageoptions"
-							ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
-							selectpicker>
-						</select>
-					</div>
-					<br> <br>
-					<table id="table-results" data-searching="false"
-						data-ordering="false" class="table table-striped grid-pesquisa">
-						<thead>
-							<tr>
-								<th>Nome</th>
-								<th>Data Nascimento</th>
-								<th>Sexo</th>
-								<th class="text-center">A&ccedil;&atilde;o</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat="cliente in vm.clientes">
-								<td ng-bind="cliente.nome"></td>
-								<td ng-bind="cliente.dataExibicao"></td>
-								<td ng-bind="cliente.sexoExibicao"></td>
-								<td class="text-center"><a
-									ng-click="vm.irParaTelaDetalhamento(cliente.codCliente)"
-									class="btn btn-primary btn-xs">Detalhar</a></td>
-							</tr>
-						</tbody>
-					</table>
-					<div class="text-center">
-						<div uib-pagination total-items="vm.totalresults"
-							items-per-page="vm.pagesize" ng-model="vm.currentpage"
-							ng-change="vm.paginaAlterada()" max-size="10" rotate="false"
-							boundary-links="true" previous-text="&lt;" next-text="&gt;"
-							first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
+				<br>
+				<!-- TESTE BUSCA PAGINADA -->
+				<div ng-show="vm.clientes.length > 0" class="well">
+					<div class="clearfix">
+						<div class="pull-right">
+							<select id="pageSize" class="form-control"
+								ng-options="item for item in vm.pageoptions"
+								ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
+								selectpicker>
+							</select>
+						</div>
+						<br> <br>
+						<table id="table-results" data-searching="false"
+							data-ordering="false" class="table table-striped grid-pesquisa">
+							<thead>
+								<tr>
+									<th>Nome</th>
+									<th>Data Nascimento</th>
+									<th>Sexo</th>
+									<th class="text-center">A&ccedil;&atilde;o</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr ng-repeat="cliente in vm.clientes">
+									<td ng-bind="cliente.nome"></td>
+									<td ng-bind="cliente.dataExibicao"></td>
+									<td ng-bind="cliente.sexoExibicao"></td>
+									<td class="text-center"><a
+										ng-click="vm.irParaTelaDetalhamento(cliente.codCliente)"
+										class="btn btn-primary btn-xs">Detalhar</a></td>
+								</tr>
+							</tbody>
+						</table>
+						<div class="text-center">
+							<div uib-pagination total-items="vm.totalresults"
+								items-per-page="vm.pagesize" ng-model="vm.currentpage"
+								ng-change="vm.paginaAlterada()" max-size="10" rotate="false"
+								boundary-links="true" previous-text="&lt;" next-text="&gt;"
+								first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
+						</div>
 					</div>
 				</div>
-			</div>
 		</div>
 	</div>
 </div>
