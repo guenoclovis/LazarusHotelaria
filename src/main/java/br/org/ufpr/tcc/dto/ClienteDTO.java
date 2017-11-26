@@ -25,7 +25,7 @@ public class ClienteDTO {
     private String endUf;
     private String endCompl;
     private String senhaAcesso;
-    private char status;
+    private Integer status;
     
     private String sexoExibicao;
     private String dataExibicao;
@@ -144,10 +144,12 @@ public class ClienteDTO {
 	public void setSenhaAcesso(String senhaAcesso) {
 		this.senhaAcesso = senhaAcesso;
 	}
-	public char getStatus() {
+
+	
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public String getSexoExibicao() {

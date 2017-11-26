@@ -17,6 +17,8 @@ import br.org.ufpr.tcc.dto.ReservaFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Reserva;
+import br.org.ufpr.tcc.enuns.StatusEnum;
+import br.org.ufpr.tcc.enuns.StatusReservaEnum;
 import br.org.ufpr.tcc.util.DataUtil;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Pagina;
@@ -127,7 +129,7 @@ public class ReservaFacade {
         //CONVERTER
         ReservaDTOtoCliente r2c = new ReservaDTOtoCliente();
         Cliente c = r2c.convert(dto);
-        c.setStatus('I');
+        c.setStatus(StatusEnum.ATIVO.getCodigo());
         
         ClienteBC clienteBC = new ClienteBC();
 //        Cliente cliente = clienteBC.obterPorCPF(dto.getCpf());
@@ -139,7 +141,7 @@ public class ReservaFacade {
         DTOtoReserva converter = new DTOtoReserva();
         Reserva reserva = converter.convert(dto);
         reserva.setCodCliente(resultado.getId().intValue());
-        reserva.setStatus('S');
+        reserva.setStatus(StatusReservaEnum.SOLICITADA.getCodigo());
         reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));
         reserva.setPreco(200L);
         

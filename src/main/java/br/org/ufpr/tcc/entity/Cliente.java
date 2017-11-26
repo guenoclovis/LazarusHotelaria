@@ -94,128 +94,170 @@ public class Cliente {
     private String senhaAcesso;
 
 	@Column(name = "status")
-    private char status;
-    
+    private Integer status;
+
 	public Integer getCodCliente() {
 		return codCliente;
 	}
+
 	public void setCodCliente(Integer codCliente) {
 		this.codCliente = codCliente;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public Date getDtNasc() {
 		return dtNasc;
 	}
+
 	public void setDtNasc(Date dtNasc) {
 		this.dtNasc = dtNasc;
 	}
+
 	public Integer getSexo() {
 		return sexo;
 	}
+
 	public void setSexo(Integer sexo) {
 		this.sexo = sexo;
 	}
+
 	public String getNacionalidade() {
 		return nacionalidade;
 	}
+
 	public void setNacionalidade(String nacionalidade) {
 		this.nacionalidade = nacionalidade;
 	}
+
 	public String getTelefone1() {
 		return telefone1;
 	}
+
 	public void setTelefone1(String telefone1) {
 		this.telefone1 = telefone1;
 	}
+
 	public String getTelefone2() {
 		return telefone2;
 	}
+
 	public void setTelefone2(String telefone2) {
 		this.telefone2 = telefone2;
 	}
+
 	public String getEmail1() {
 		return email1;
 	}
+
 	public void setEmail1(String email1) {
 		this.email1 = email1;
 	}
+
 	public String getEmail2() {
 		return email2;
 	}
+
 	public void setEmail2(String email2) {
 		this.email2 = email2;
 	}
+
 	public String getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
+
 	public String getRg() {
 		return rg;
 	}
+
 	public void setRg(String rg) {
 		this.rg = rg;
 	}
+
 	public String getPassaporte() {
 		return passaporte;
 	}
+
 	public void setPassaporte(String passaporte) {
 		this.passaporte = passaporte;
 	}
+
 	public String getEndRua() {
 		return endRua;
 	}
+
 	public void setEndRua(String endRua) {
 		this.endRua = endRua;
 	}
+
 	public Integer getEndNro() {
 		return endNro;
 	}
+
 	public void setEndNro(Integer endNro) {
 		this.endNro = endNro;
 	}
+
 	public String getEndBairro() {
 		return endBairro;
 	}
+
 	public void setEndBairro(String endBairro) {
 		this.endBairro = endBairro;
 	}
+
 	public String getEndCidade() {
 		return endCidade;
 	}
+
 	public void setEndCidade(String endCidade) {
 		this.endCidade = endCidade;
 	}
+
 	public String getEndUf() {
 		return endUf;
 	}
+
 	public void setEndUf(String endUf) {
 		this.endUf = endUf;
 	}
+
 	public String getEndCompl() {
 		return endCompl;
 	}
+
 	public void setEndCompl(String endCompl) {
 		this.endCompl = endCompl;
 	}
+
 	public String getSenhaAcesso() {
 		return senhaAcesso;
 	}
+
 	public void setSenhaAcesso(String senhaAcesso) {
 		this.senhaAcesso = senhaAcesso;
 	}
-	public char getStatus() {
+
+	
+
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -237,11 +279,12 @@ public class Cliente {
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		result = prime * result + ((senhaAcesso == null) ? 0 : senhaAcesso.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((telefone1 == null) ? 0 : telefone1.hashCode());
 		result = prime * result + ((telefone2 == null) ? 0 : telefone2.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -336,7 +379,10 @@ public class Cliente {
 				return false;
 		} else if (!sexo.equals(other.sexo))
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		if (telefone1 == null) {
 			if (other.telefone1 != null)
@@ -350,6 +396,7 @@ public class Cliente {
 			return false;
 		return true;
 	}
+
 	@Override
 	public String toString() {
 		return "Cliente [codCliente=" + codCliente + ", nome=" + nome + ", dtNasc=" + dtNasc + ", sexo=" + sexo
@@ -359,6 +406,6 @@ public class Cliente {
 				+ endCidade + ", endUf=" + endUf + ", endCompl=" + endCompl + ", senhaAcesso=" + senhaAcesso
 				+ ", status=" + status + "]";
 	}
-	
+    
 
 }

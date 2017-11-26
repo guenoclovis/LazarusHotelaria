@@ -8,6 +8,7 @@ import br.org.ufpr.tcc.dto.AtributoDTO;
 import br.org.ufpr.tcc.dto.FilialDTO;
 import br.org.ufpr.tcc.entity.Atributo;
 import br.org.ufpr.tcc.entity.Filial;
+import br.org.ufpr.tcc.enuns.StatusEnum;
 
 public class DTOtoFilial {
 	
@@ -26,8 +27,8 @@ public class DTOtoFilial {
 		filial.setNome(dto.getNome());
 		filial.setEmail(dto.getEmail());
 		filial.setDescricao(dto.getDescricao());
-		filial.setExibirSite(dto.getExibirSite());
-		filial.setStatus(dto.getStatus().charAt(0));
+		filial.setExibirSite(Integer.valueOf(dto.getExibirSite()));
+		filial.setStatus(Integer.valueOf(dto.getStatus()));
 	
 		if(dto.getFoto() != null){
 			filial.setFoto(converterFoto.convert(dto.getFoto()));

@@ -27,7 +27,7 @@ public static final String NOME = "nome";
 	private Integer codAtributo;
 	
 	@Column(name="tipo")
-	private String tipo;
+	private Integer tipo;
 	
 	@Size(min=3, max=200)
 	@NotNull
@@ -39,13 +39,48 @@ public static final String NOME = "nome";
 	private String descricao;
 	
 	@Column(name="status")
-	private char status;	
-	
-	@Override
-	public String toString() {
-		return "Atributo [codAtributo=" + codAtributo + ", tipo=" + tipo + ", nome=" + nome + ", descricao=" + descricao
-				+ ", status=" + status + "]";
+	private Integer status;
+
+	public Integer getCodAtributo() {
+		return codAtributo;
 	}
+
+	public void setCodAtributo(Integer codAtributo) {
+		this.codAtributo = codAtributo;
+	}
+
+	public Integer getTipo() {
+		return tipo;
+	}
+
+	public void setTipo(Integer tipo) {
+		this.tipo = tipo;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public Integer getStatus() {
+		return status;
+	}
+
+	public void setStatus(Integer status) {
+		this.status = status;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -53,10 +88,11 @@ public static final String NOME = "nome";
 		result = prime * result + ((codAtributo == null) ? 0 : codAtributo.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
 	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -81,7 +117,10 @@ public static final String NOME = "nome";
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		if (tipo == null) {
 			if (other.tipo != null)
@@ -90,35 +129,11 @@ public static final String NOME = "nome";
 			return false;
 		return true;
 	}
-	public Integer getCodAtributo() {
-		return codAtributo;
+
+	@Override
+	public String toString() {
+		return "Atributo [codAtributo=" + codAtributo + ", tipo=" + tipo + ", nome=" + nome + ", descricao=" + descricao
+				+ ", status=" + status + "]";
 	}
-	public void setCodAtributo(Integer codAtributo) {
-		this.codAtributo = codAtributo;
-	}
-	public String getTipo() {
-		return tipo;
-	}
-	public void setTipo(String tipo) {
-		this.tipo = tipo;
-	}
-	public String getNome() {
-		return nome;
-	}
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-	public String getDescricao() {
-		return descricao;
-	}
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
-	}
-	public char getStatus() {
-		return status;
-	}
-	public void setStatus(char status) {
-		this.status = status;
-	}	
-	
+
 }

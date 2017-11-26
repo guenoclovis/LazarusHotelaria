@@ -11,7 +11,7 @@ public class QuartoDTO {
 	private String descricaoTipoQuarto;
 	private Integer nrCamas;
     private String descricao;
-    private char status;
+    private Integer status;
     private FotoDTO foto;
     
     private List<AtributoDTO> atributos;
@@ -62,12 +62,15 @@ public class QuartoDTO {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public char getStatus() {
+	
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
+
 	public List<AtributoDTO> getAtributos() {
 		return atributos;
 	}

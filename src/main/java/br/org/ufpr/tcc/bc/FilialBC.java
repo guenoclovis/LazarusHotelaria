@@ -7,7 +7,6 @@ import java.util.logging.Logger;
 import javax.print.attribute.standard.Severity;
 
 import br.org.ufpr.tcc.dao.FilialDAO;
-import br.org.ufpr.tcc.dao.FilialJDBCDAO;
 import br.org.ufpr.tcc.dto.FilialFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;

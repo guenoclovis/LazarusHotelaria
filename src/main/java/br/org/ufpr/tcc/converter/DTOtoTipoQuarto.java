@@ -17,7 +17,7 @@ public class DTOtoTipoQuarto {
 		tipoquarto.setTipo("1");		
 		tipoquarto.setNome(dto.getNome());
 		tipoquarto.setDescricao(dto.getDescricao());		
-		tipoquarto.setStatus(dto.getStatus().charAt(0));
+		tipoquarto.setStatus(Integer.valueOf(dto.getStatus()));
 
 		return tipoquarto;
 	}

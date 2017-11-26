@@ -32,7 +32,7 @@ public class TipoQuarto {
 	private String descricao;
 	
 	@Column(name = "status")
-	private char status;
+	private Integer status;
 
 	public Integer getCodTipoQuarto() {
 		return codTipoQuarto;
@@ -66,11 +66,11 @@ public class TipoQuarto {
 		this.descricao = descricao;
 	}
 
-	public char getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -81,7 +81,7 @@ public class TipoQuarto {
 		result = prime * result + ((codTipoQuarto == null) ? 0 : codTipoQuarto.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
 	}
@@ -110,7 +110,10 @@ public class TipoQuarto {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		if (tipo == null) {
 			if (other.tipo != null)

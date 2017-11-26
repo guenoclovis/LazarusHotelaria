@@ -4,7 +4,7 @@ public class UsuarioDTO {
 
 	private Integer codUsuario;
     private String nome;
-    private char ativo;
+    private Integer ativo;
     private String dtNasc;
     private Integer sexo;
     private String nacionalidade;
@@ -22,8 +22,7 @@ public class UsuarioDTO {
     private String endCompl;
     private String login;
     private String senha;
-    private char status;
-    
+    private Integer status;
 	public Integer getCodUsuario() {
 		return codUsuario;
 	}
@@ -36,10 +35,10 @@ public class UsuarioDTO {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public char getAtivo() {
+	public Integer getAtivo() {
 		return ativo;
 	}
-	public void setAtivo(char ativo) {
+	public void setAtivo(Integer ativo) {
 		this.ativo = ativo;
 	}
 	public String getDtNasc() {
@@ -132,23 +131,22 @@ public class UsuarioDTO {
 	public void setEndCompl(String endCompl) {
 		this.endCompl = endCompl;
 	}
-	public String getSenha() {
-		return senha;
-	}
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 	public String getLogin() {
 		return login;
 	}
 	public void setLogin(String login) {
 		this.login = login;
 	}
-	public char getStatus() {
+	public String getSenha() {
+		return senha;
+	}
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
 }

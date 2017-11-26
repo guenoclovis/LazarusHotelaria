@@ -35,7 +35,7 @@ public class Usuario {
     private String nome;
 	
 	@Column(name="ativo")
-    private char ativo;
+    private Integer ativo;
 	
 	@Column(name="dt_nasc")
     private Date dtNasc;
@@ -89,7 +89,7 @@ public class Usuario {
     private String senha;
 	
 	@Column(name="status")
-    private char status;
+    private Integer status;
 
 	public Integer getCodUsuario() {
 		return codUsuario;
@@ -107,11 +107,11 @@ public class Usuario {
 		this.nome = nome;
 	}
 
-	public char getAtivo() {
+	public Integer getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(char ativo) {
+	public void setAtivo(Integer ativo) {
 		this.ativo = ativo;
 	}
 
@@ -251,11 +251,11 @@ public class Usuario {
 		this.senha = senha;
 	}
 
-	public char getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -263,7 +263,7 @@ public class Usuario {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ativo;
+		result = prime * result + ((ativo == null) ? 0 : ativo.hashCode());
 		result = prime * result + ((codUsuario == null) ? 0 : codUsuario.hashCode());
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
 		result = prime * result + ((dtNasc == null) ? 0 : dtNasc.hashCode());
@@ -282,7 +282,7 @@ public class Usuario {
 		result = prime * result + ((rg == null) ? 0 : rg.hashCode());
 		result = prime * result + ((senha == null) ? 0 : senha.hashCode());
 		result = prime * result + ((sexo == null) ? 0 : sexo.hashCode());
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((telefone == null) ? 0 : telefone.hashCode());
 		return result;
 	}
@@ -296,7 +296,10 @@ public class Usuario {
 		if (getClass() != obj.getClass())
 			return false;
 		Usuario other = (Usuario) obj;
-		if (ativo != other.ativo)
+		if (ativo == null) {
+			if (other.ativo != null)
+				return false;
+		} else if (!ativo.equals(other.ativo))
 			return false;
 		if (codUsuario == null) {
 			if (other.codUsuario != null)
@@ -388,7 +391,10 @@ public class Usuario {
 				return false;
 		} else if (!sexo.equals(other.sexo))
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		if (telefone == null) {
 			if (other.telefone != null)
@@ -407,6 +413,5 @@ public class Usuario {
 				+ ", endUf=" + endUf + ", endCompl=" + endCompl + ", login=" + login + ", senha=" + senha + ", status="
 				+ status + "]";
 	}
-	
-	    
+
 }

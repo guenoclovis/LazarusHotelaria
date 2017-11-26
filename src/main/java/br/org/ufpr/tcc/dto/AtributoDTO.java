@@ -8,7 +8,8 @@ public class AtributoDTO {
     private String tipo;	
     private String nome;
     private String descricao;
-    private char status;
+    private Integer codStatus;
+    private String descricaoStatus;
     
 	public Integer getCodAtributo() {
 		return codAtributo;
@@ -34,11 +35,16 @@ public class AtributoDTO {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	public char getStatus() {
-		return status;
+	public Integer getCodStatus() {
+		return codStatus;
 	}
-	public void setStatus(char status) {
-		this.status = status;
+	public void setCodStatus(Integer codStatus) {
+		this.codStatus = codStatus;
 	}
-        
+	public String getDescricaoStatus() {
+		return descricaoStatus;
+	}
+	public void setDescricaoStatus(String descricaoStatus) {
+		this.descricaoStatus = descricaoStatus;
+	}
 }

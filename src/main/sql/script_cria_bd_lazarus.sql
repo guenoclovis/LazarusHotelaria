@@ -103,15 +103,15 @@ SELECT setval('clientes_cod_cliente_seq', COALESCE((SELECT MAX(cod_cliente)+1 FR
 ----------------------------------------------------------------------
 CREATE TABLE ATRIBUTOS(
 	COD_ATRIBUTO		SERIAL		NOT NULL,
-	TIPO			CHAR(1)		NOT NULL, -- 'H' (HOTEL), 'Q' (QUARTO)
+	TIPO			INTEGER		NOT NULL, -- 1 (HOTEL), 2 (QUARTO)
 	NOME			VARCHAR(200) 	NOT NULL,
 	DESCRICAO		TEXT		NULL,
-	STATUS			CHAR(1)		NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS			INTEGER		NOT NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	CONSTRAINT PK_ATRIBUTOS PRIMARY KEY (COD_ATRIBUTO)
 );
 -- DROP TABLE ATRIBUTOS
 -- SELECT * FROM ATRIBUTOS
-INSERT INTO ATRIBUTOS VALUES(1, 'H', 'Piscina e restaurante com vista para a praia.', 'Piscina de x litros...', 'I');
+INSERT INTO ATRIBUTOS VALUES(1, 1, 'Piscina e restaurante com vista para a praia.', 'Piscina de x litros...', 1);
 
 SELECT setval('atributos_cod_atributo_seq', COALESCE((SELECT MAX(cod_atributo)+1 FROM atributos), 1), false);
 
@@ -122,17 +122,17 @@ CREATE TABLE FILIAIS(
 	COD_FILIAL		SERIAL			NOT NULL,
 	NOME			VARCHAR(200)		NOT NULL,
 	DESCRICAO		TEXT			NULL,
-	EXIBIR_SITE		CHAR(1)			NOT NULL	DEFAULT '1', -- '1' (EXIBIR); '0' (NAO EXIBIR)
+	EXIBIR_SITE		INTEGER			NOT NULL	DEFAULT 1, -- 1 (EXIBIR); 0 (NAO EXIBIR)
 	EMAIL			VARCHAR(100)		NULL,
-	STATUS			CHAR(1)			NOT NULL	DEFAULT '1', -- '1' (INCLUIDO); '0' (EXCLUIDO)
+	STATUS			INTEGER			NOT NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	COD_FOTO        INTEGER,	
 	CONSTRAINT PK_FILIAIS PRIMARY KEY (COD_FILIAL)
 );
 -- DROP TABLE FILIAIS
 -- SELECT * FROM FILIAIS
-INSERT INTO FILIAIS VALUES(1, 'Curitiba (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Parana.', '1', '1');
-INSERT INTO FILIAIS VALUES(2, 'Florianopolis (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital de Santa Catarina.', '1', '1');
-INSERT INTO FILIAIS VALUES(3, 'Rio de Janeiro (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Rio de Janeiro.', '1', '1');
+INSERT INTO FILIAIS VALUES(1, 'Curitiba (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Parana.', 1, 1);
+INSERT INTO FILIAIS VALUES(2, 'Florianopolis (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital de Santa Catarina.', 1, 1);
+INSERT INTO FILIAIS VALUES(3, 'Rio de Janeiro (Centro)', 'Belissimo hotel de 6 andares com elevador no centro da capital do Rio de Janeiro.', 1, 1);
 
 SELECT setval('filiais_cod_filial_seq', COALESCE((SELECT MAX(cod_filial)+1 FROM filiais), 1), false);
 
@@ -158,15 +158,15 @@ CREATE TABLE TIPOS_DE_QUARTO(
 	COD_TIPO_QUARTO			SERIAL			NOT NULL,
 	NOME				VARCHAR(200)		NOT NULL,
 	DESCRICAO			TEXT			NULL,
-	EXIBIR_SITE			CHAR(1)			NOT NULL	DEFAULT 'S', -- 'S' (EXIBIR); 'N' (NAO EXIBIR)
-	TIPO				CHAR(1)			NOT NULL 	DEFAULT 'S', -- 'S' (SOLTEIRO), 'C' (CASAL)
+	EXIBIR_SITE			INTEGER			NOT NULL	DEFAULT 1, -- 1 (EXIBIR); 0 (NAO EXIBIR)
+	TIPO				INTEGER			NOT NULL 	DEFAULT 1, -- 1 (SOLTEIRO), 2 (CASAL)
 	VALOR				NUMERIC(9,2)		NOT NULL	DEFAULT 0,
-	STATUS				CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS				INTEGER			NOT NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	CONSTRAINT PK_TIPO_FIL PRIMARY KEY (COD_TIPO_QUARTO)
 );
 -- DROP TABLE TIPOS_DE_QUARTO
 -- SELECT * FROM TIPOS_DE_QUARTO
-INSERT INTO TIPOS_DE_QUARTO VALUES(1, 'Quarto de Solteiro Executivo', 'Quarto com uma cama de solteiro.', 'S', 'S', 350.00, 'I');
+INSERT INTO TIPOS_DE_QUARTO VALUES(1, 'Quarto de Solteiro Executivo', 'Quarto com uma cama de solteiro.', 1, 1, 350.00, 1);
 ----------------------------------------------------------------------
 -- 7 - TABELA DE RELACIONAMENTO TIPOS DE QUARTO X ATRIBUTOS
 ----------------------------------------------------------------------
@@ -191,14 +191,14 @@ CREATE TABLE QUARTOS(
 	NR_CAMAS			INTEGER			NOT NULL	DEFAULT 1,
 	DESCRICAO			VARCHAR(400)	NOT NULL,
 	COD_FOTO        INTEGER,	
-	STATUS				CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS				INTEGER			NOT NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	CONSTRAINT PK_QUARTO PRIMARY KEY (COD_QUARTO),
 	FOREIGN KEY (COD_TIPO_QUARTO) REFERENCES TIPOS_DE_QUARTO(COD_TIPO_QUARTO)	
 );
 -- DROP TABLE QUARTOS
 -- SELECT * FROM QUARTOS
-INSERT INTO QUARTOS VALUES(1, 1, 101, 1, 2, 'Quarto com vista para o mar.',1, 'I');
-INSERT INTO QUARTOS VALUES(2, 1, 102, 1, 2, 'Quarto com vista para o lago.',1, 'I');
+INSERT INTO QUARTOS VALUES(1, 1, 101, 1, 2, 'Quarto com vista para o mar.',1, 1);
+INSERT INTO QUARTOS VALUES(2, 1, 102, 1, 2, 'Quarto com vista para o lago.',1, 1);
 
 SELECT setval('Quartos_cod_quarto_seq', COALESCE((SELECT MAX(cod_quarto)+1 FROM quartos), 1), false);
 ----------------------------------------------------------------------
@@ -222,7 +222,7 @@ CREATE TABLE RESERVA(
 	DT_SAIDA		DATE		NOT NULL,
 	DT_RESERVA 		DATE		NOT NULL,
 	PRECO			NUMERIC         NOT NULL,
-	STATUS			CHAR(1)		NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS			INTEGER		NOT NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	COD_CLIENTE		INTEGER		NOT NULL,
 	COD_QUARTO		INTEGER		NOT NULL,
 	CONSTRAINT PK_RESERVA PRIMARY KEY (COD_RESERVA),

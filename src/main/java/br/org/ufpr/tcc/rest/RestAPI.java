@@ -27,9 +27,6 @@ public class RestAPI extends Application {
 		singletons.add(new ContatoREST());
 		singletons.add(new UsuarioREST());
 		
-		singletons.add(new ShowcaseREST());
-		
-		
 	}
 	
 	@Override

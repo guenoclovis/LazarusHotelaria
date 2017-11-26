@@ -23,8 +23,10 @@ public class FilialToDTO {
 		dto.setNome(filial.getNome());
 		dto.setEmail(filial.getEmail());
 		dto.setDescricao(filial.getDescricao());
-		dto.setExibirSite(filial.getExibirSite());
-		dto.setStatus(String.valueOf(filial.getStatus()));
+		if(filial.getExibirSite() != null){
+			dto.setExibirSite(Integer.valueOf(filial.getExibirSite()));
+		}
+		dto.setStatus(filial.getStatus());
 		
 		dto.setFoto(converterFoto.convert(filial.getFoto(), true, false));
 		

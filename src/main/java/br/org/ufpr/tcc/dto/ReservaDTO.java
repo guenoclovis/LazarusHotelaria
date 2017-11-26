@@ -7,7 +7,7 @@ public class ReservaDTO {
     private String dataSaida;
     private String dtReserva;
     private long preco;
-    private char status;
+    private Integer status;
     private Integer codCliente;
     
     private String nome;
@@ -47,10 +47,10 @@ public class ReservaDTO {
 	public void setPreco(long preco) {
 		this.preco = preco;
 	}
-	public char getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 	public Integer getCodCliente() {

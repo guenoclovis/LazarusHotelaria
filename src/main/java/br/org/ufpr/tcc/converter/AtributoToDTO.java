@@ -2,6 +2,7 @@ package br.org.ufpr.tcc.converter;
 
 import br.org.ufpr.tcc.dto.AtributoDTO;
 import br.org.ufpr.tcc.entity.Atributo;
+import br.org.ufpr.tcc.enuns.StatusEnum;
 
 public class AtributoToDTO {
 
@@ -9,10 +10,13 @@ public class AtributoToDTO {
 		AtributoDTO dto = new AtributoDTO();
 		
 		dto.setCodAtributo(atributo.getCodAtributo());
-		dto.setTipo(atributo.getTipo());		
+		dto.setTipo(atributo.getTipo().toString());		
 		dto.setNome(atributo.getNome());
 		dto.setDescricao(atributo.getDescricao());		
-		dto.setStatus(atributo.getStatus());
+		dto.setCodStatus(atributo.getStatus());
+		if(atributo.getStatus() != null){
+			dto.setDescricaoStatus(StatusEnum.fromCodigo(atributo.getStatus()).getDescricao());
+		}
 		
 		return dto;
 	}

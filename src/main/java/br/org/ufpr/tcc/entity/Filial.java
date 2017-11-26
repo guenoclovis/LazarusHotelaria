@@ -50,10 +50,10 @@ public class Filial {
 	private String descricao;
 	
 	@Column(name="exibir_site")
-	private String exibirSite;
+	private Integer exibirSite;
 	
 	@Column(name="status")
-	private char status;
+	private Integer status;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH })
 	@JoinColumn(name = "COD_FOTO", nullable = true)
@@ -64,7 +64,7 @@ public class Filial {
     @JoinTable(name = "FILIAL_ATRIBUTO", joinColumns = @JoinColumn(name = "COD_FILIAL"),
     inverseJoinColumns = @JoinColumn(name = "COD_ATRIBUTO"))
 	private List<Atributo> atributos = new ArrayList();
-	
+
 	public Integer getCodFilial() {
 		return codFilial;
 	}
@@ -97,22 +97,22 @@ public class Filial {
 		this.descricao = descricao;
 	}
 
-	public String getExibirSite() {
+	public Integer getExibirSite() {
 		return exibirSite;
 	}
 
-	public void setExibirSite(String exibirSite) {
+	public void setExibirSite(Integer exibirSite) {
 		this.exibirSite = exibirSite;
 	}
 
-	public char getStatus() {
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
-	
+
 	public Foto getFoto() {
 		return foto;
 	}
@@ -140,7 +140,7 @@ public class Filial {
 		result = prime * result + ((exibirSite == null) ? 0 : exibirSite.hashCode());
 		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
-		result = prime * result + status;
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -188,7 +188,10 @@ public class Filial {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
-		if (status != other.status)
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}
@@ -199,5 +202,5 @@ public class Filial {
 				+ ", exibirSite=" + exibirSite + ", status=" + status + ", foto=" + foto + ", atributos=" + atributos
 				+ "]";
 	}
-
+	
 }

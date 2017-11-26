@@ -48,7 +48,7 @@ public class Reserva {
 	    private long preco;
 		
 		@Column(name = "status")
-	    private char status;
+	    private Integer status;
 
 		@Column(name = "cod_cliente")
 	    private Integer codCliente;
@@ -97,11 +97,11 @@ public class Reserva {
 			this.preco = preco;
 		}
 
-		public char getStatus() {
+		public Integer getStatus() {
 			return status;
 		}
 
-		public void setStatus(char status) {
+		public void setStatus(Integer status) {
 			this.status = status;
 		}
 
@@ -132,7 +132,7 @@ public class Reserva {
 			result = prime * result + ((dtSaida == null) ? 0 : dtSaida.hashCode());
 			result = prime * result + (int) (preco ^ (preco >>> 32));
 			result = prime * result + ((quarto == null) ? 0 : quarto.hashCode());
-			result = prime * result + status;
+			result = prime * result + ((status == null) ? 0 : status.hashCode());
 			return result;
 		}
 
@@ -177,7 +177,10 @@ public class Reserva {
 					return false;
 			} else if (!quarto.equals(other.quarto))
 				return false;
-			if (status != other.status)
+			if (status == null) {
+				if (other.status != null)
+					return false;
+			} else if (!status.equals(other.status))
 				return false;
 			return true;
 		}
@@ -188,5 +191,6 @@ public class Reserva {
 					+ ", dtReserva=" + dtReserva + ", preco=" + preco + ", status=" + status + ", codCliente="
 					+ codCliente + ", quarto=" + quarto + "]";
 		}
+
 
 }

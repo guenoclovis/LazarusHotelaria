@@ -63,7 +63,7 @@ public class Quarto {
 	private Foto foto;
 
 	@Column(name = "status")
-    private char status;
+    private Integer status;
 	
 	@ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "QUARTO_ATRIBUTO", joinColumns = @JoinColumn(name = "COD_QUARTO"),
@@ -72,23 +72,6 @@ public class Quarto {
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "quarto", orphanRemoval = true)
 	private List<Reserva> reservas = new ArrayList<Reserva>();
-	
-	
-	public Integer getCodFilial() {
-		return codFilial;
-	}
-
-	public void setCodFilial(Integer codFilial) {
-		this.codFilial = codFilial;
-	}
-
-	public Foto getFoto() {
-		return foto;
-	}
-
-	public void setFoto(Foto foto) {
-		this.foto = foto;
-	}
 
 	public Integer getCodQuarto() {
 		return codQuarto;
@@ -96,6 +79,14 @@ public class Quarto {
 
 	public void setCodQuarto(Integer codQuarto) {
 		this.codQuarto = codQuarto;
+	}
+
+	public Integer getCodFilial() {
+		return codFilial;
+	}
+
+	public void setCodFilial(Integer codFilial) {
+		this.codFilial = codFilial;
 	}
 
 	public Integer getIdQuarto() {
@@ -130,11 +121,19 @@ public class Quarto {
 		this.descricao = descricao;
 	}
 
-	public char getStatus() {
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
+
+	public Integer getStatus() {
 		return status;
 	}
 
-	public void setStatus(char status) {
+	public void setStatus(Integer status) {
 		this.status = status;
 	}
 
@@ -158,16 +157,7 @@ public class Quarto {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((atributos == null) ? 0 : atributos.hashCode());
 		result = prime * result + ((codFilial == null) ? 0 : codFilial.hashCode());
-		result = prime * result + ((codQuarto == null) ? 0 : codQuarto.hashCode());
-		result = prime * result + ((codTipoQuarto == null) ? 0 : codTipoQuarto.hashCode());
-		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
-		result = prime * result + ((foto == null) ? 0 : foto.hashCode());
-		result = prime * result + ((idQuarto == null) ? 0 : idQuarto.hashCode());
-		result = prime * result + ((nrCamas == null) ? 0 : nrCamas.hashCode());
-		result = prime * result + ((reservas == null) ? 0 : reservas.hashCode());
-		result = prime * result + status;
 		return result;
 	}
 
@@ -180,52 +170,10 @@ public class Quarto {
 		if (getClass() != obj.getClass())
 			return false;
 		Quarto other = (Quarto) obj;
-		if (atributos == null) {
-			if (other.atributos != null)
-				return false;
-		} else if (!atributos.equals(other.atributos))
-			return false;
 		if (codFilial == null) {
 			if (other.codFilial != null)
 				return false;
 		} else if (!codFilial.equals(other.codFilial))
-			return false;
-		if (codQuarto == null) {
-			if (other.codQuarto != null)
-				return false;
-		} else if (!codQuarto.equals(other.codQuarto))
-			return false;
-		if (codTipoQuarto == null) {
-			if (other.codTipoQuarto != null)
-				return false;
-		} else if (!codTipoQuarto.equals(other.codTipoQuarto))
-			return false;
-		if (descricao == null) {
-			if (other.descricao != null)
-				return false;
-		} else if (!descricao.equals(other.descricao))
-			return false;
-		if (foto == null) {
-			if (other.foto != null)
-				return false;
-		} else if (!foto.equals(other.foto))
-			return false;
-		if (idQuarto == null) {
-			if (other.idQuarto != null)
-				return false;
-		} else if (!idQuarto.equals(other.idQuarto))
-			return false;
-		if (nrCamas == null) {
-			if (other.nrCamas != null)
-				return false;
-		} else if (!nrCamas.equals(other.nrCamas))
-			return false;
-		if (reservas == null) {
-			if (other.reservas != null)
-				return false;
-		} else if (!reservas.equals(other.reservas))
-			return false;
-		if (status != other.status)
 			return false;
 		return true;
 	}
@@ -236,5 +184,7 @@ public class Quarto {
 				+ ", codTipoQuarto=" + codTipoQuarto + ", nrCamas=" + nrCamas + ", descricao=" + descricao + ", foto="
 				+ foto + ", status=" + status + ", atributos=" + atributos + ", reservas=" + reservas + "]";
 	}
+
+		
 
 }

@@ -27,7 +27,9 @@ public class QuartoToDTO {
 		dto.setNrCamas(quarto.getNrCamas());
 		dto.setDescricao(quarto.getDescricao());
 		dto.setCodFilial(quarto.getCodFilial());
-		dto.setStatus(quarto.getStatus());
+		if(quarto.getStatus() != null){
+			dto.setStatus(Integer.valueOf(quarto.getStatus()));
+		}
 		dto.setFoto(converterFoto.convert(quarto.getFoto(), true, false));
 		
 		setDescricaoTipoQuarto(quarto, dto);
@@ -65,9 +67,13 @@ public class QuartoToDTO {
 	}
 
 	private void setDescricaoTipoQuarto(Quarto quarto, QuartoDTO dto) {
-		TipoQuartoBC tipoQuartoBC = new TipoQuartoBC();
-		TipoQuarto tipoQuarto = tipoQuartoBC.obter(quarto.getCodTipoQuarto());
-		dto.setDescricaoTipoQuarto(tipoQuarto.getDescricao());
+		if(quarto.getCodTipoQuarto() != null){
+			TipoQuartoBC tipoQuartoBC = new TipoQuartoBC();
+			TipoQuarto tipoQuarto = tipoQuartoBC.obter(quarto.getCodTipoQuarto());
+			dto.setDescricaoTipoQuarto(tipoQuarto.getDescricao());
+		} else {
+			dto.setDescricaoTipoQuarto("-");
+		}
 	}
 
 }
