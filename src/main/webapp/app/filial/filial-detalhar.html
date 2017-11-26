@@ -13,84 +13,85 @@
 					<h2>Detalhar a Filial</h2>
 				</div>
 			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="status" class="cols-sm-2 control-label">Foto</label>
+			<div class="well">
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="status" class="cols-sm-2 control-label">Foto</label>
+					</div>
+					<div class="col-md-2">
+						<img
+							ng-src="data:image/jpeg;base64,{{dcc.filial.foto.imagemMiniatura}}"
+							class="img-responsive" style="width: 100%" alt="Image" />
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2">
-					<img
-						ng-src="data:image/jpeg;base64,{{dcc.filial.foto.imagemMiniatura}}"
-						class="img-responsive" style="width: 100%" alt="Image" />
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
+					</div>
+					<div class="col-md-6">
+						<span id="nome">{{dcc.filial.codFilial}}</span>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2"></div>
-			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="nome" class="cols-sm-2 control-label">Nome</label>
+					</div>
+					<div class="col-md-6">
+						<span id="nome">{{dcc.filial.nome}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="nome">{{dcc.filial.codFilial}}</span>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="nome" class="cols-sm-2 control-label">E-mail</label>
+					</div>
+					<div class="col-md-6">
+						<span id="nome">{{dcc.filial.email}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Nome</label>
-				</div>
-				<div class="col-md-6">
-					<span id="nome">{{dcc.filial.nome}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">E-mail</label>
-				</div>
-				<div class="col-md-6">
-					<span id="nome">{{dcc.filial.email}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
+					</div>
+					<div class="col-md-6">
+						<span id="dtNasc">{{dcc.filial.descricao}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="dtNasc">{{dcc.filial.descricao}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="exibirSite" class="cols-sm-2 control-label">Site</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="exibirSite" class="cols-sm-2 control-label">Site</label>
+					</div>
+					<div class="col-md-6">
+						<span id="sexo">{{dcc.filial.exibirSite}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="sexo">{{dcc.filial.exibirSite}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="status" class="cols-sm-2 control-label">Status</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="status" class="cols-sm-2 control-label">Status</label>
+					</div>
+					<div class="col-md-6">
+						<span id="sexo">{{dcc.filial.status}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="sexo">{{dcc.filial.status}}</span>
-				</div>
-				<div class="col-md-2"></div>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-md-12 lazarus-align">
 				<div class="lazarus-align">

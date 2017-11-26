@@ -3,109 +3,109 @@
 	<div ng-controller="DetalharQuartoController as vm">
 
 		<div class=".container">
-			
+
 			<div class="row">
 				<div class="col-md-12 lazarus-align">
 					<h2>Detalhar o Quarto</h2>
 				</div>
 			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="status" class="cols-sm-2 control-label">Foto</label>
+			<div class="well">
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="status" class="cols-sm-2 control-label">Foto</label>
+					</div>
+					<div class="col-md-2">
+						<img
+							ng-src="data:image/jpeg;base64,{{vm.quarto.foto.imagemMiniatura}}"
+							class="img-responsive" style="width: 100%" alt="Image" />
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2">
-					<img
-						ng-src="data:image/jpeg;base64,{{vm.quarto.foto.imagemMiniatura}}"
-						class="img-responsive" style="width: 100%" alt="Image" />
-				</div>
-				<div class="col-md-2"></div>
-			</div>
-			
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
-				</div>
-				<div class="col-md-6">
-					<span id="nome">{{vm.quarto.codQuarto}}</span>
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Hotel</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="nome" class="cols-sm-2 control-label">C&oacute;digo</label>
+					</div>
+					<div class="col-md-6">
+						<span id="nome">{{vm.quarto.codQuarto}}</span>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="nome">{{vm.filial.nome}}</span>
-				</div>
-				<div class="col-md-2"></div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="tipo" class="cols-sm-2 control-label">N&uacute;mero do
-						Quarto</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="nome" class="cols-sm-2 control-label">Hotel</label>
+					</div>
+					<div class="col-md-6">
+						<span id="nome">{{vm.filial.nome}}</span>
+					</div>
+					<div class="col-md-2"></div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="tipo">{{vm.quarto.idQuarto}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="nome" class="cols-sm-2 control-label">Tipo do
-						Quarto</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="tipo" class="cols-sm-2 control-label">N&uacute;mero
+							do Quarto</label>
+					</div>
+					<div class="col-md-6">
+						<span id="tipo">{{vm.quarto.idQuarto}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="nome">{{vm.quarto.codTipoQuarto}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">N&uacute;mero
-						de Camas</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="nome" class="cols-sm-2 control-label">Tipo do
+							Quarto</label>
+					</div>
+					<div class="col-md-6">
+						<span id="nome">{{vm.quarto.codTipoQuarto}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="dtNasc">{{vm.quarto.nrCamas}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-			<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="descricao" class="cols-sm-2 control-label">N&uacute;mero
+							de Camas</label>
+					</div>
+					<div class="col-md-6">
+						<span id="dtNasc">{{vm.quarto.nrCamas}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="dtNasc">{{vm.quarto.descricao}}</span>
-				</div>
-				<div class="col-md-2"></div>
-			</div>
 
-		<div class="row">
-				<div class="col-md-2"></div>
-				<div class="col-md-2">
-					<label for="status" class="cols-sm-2 control-label">Status</label>
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="descricao" class="cols-sm-2 control-label">Descri&ccedil;&atilde;o</label>
+					</div>
+					<div class="col-md-6">
+						<span id="dtNasc">{{vm.quarto.descricao}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-6">
-					<span id="sexo">{{vm.quarto.status}}</span>
+
+				<div class="row">
+					<div class="col-md-2"></div>
+					<div class="col-md-2">
+						<label for="status" class="cols-sm-2 control-label">Status</label>
+					</div>
+					<div class="col-md-6">
+						<span id="sexo">{{vm.quarto.status}}</span>
+					</div>
+					<div class="col-md-2"></div>
 				</div>
-				<div class="col-md-2"></div>
 			</div>
 		</div>
-
 		<div class="row">
 			<div class="col-md-12 lazarus-align">
 				<div class="lazarus-align">
