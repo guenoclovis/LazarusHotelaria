@@ -18,12 +18,12 @@ BEGIN;
 CREATE TABLE USUARIOS(
 	COD_USUARIO		SERIAL			NOT NULL,
 	NOME			VARCHAR(200)		NOT NULL,
-	ATIVO			CHAR(1)			NOT NULL	DEFAULT 'S', 
-	DT_NASC			DATE			NOT NULL,
-	SEXO			CHAR(1)			NOT NULL,
-	NACIONALIDADE		VARCHAR(50)		NOT NULL,
-	PERFIL			CHAR(1)			NOT NULL, 
-	TELEFONE		VARCHAR(15)		NULL,
+	ATIVO			INTEGER			NOT NULL	DEFAULT 1, 
+	DT_NASC			DATE			NULL,
+	SEXO			INTEGER			NULL,
+	NACIONALIDADE		VARCHAR(50)		NULL,
+	PERFIL			VARCHAR(10)			NOT NULL, 
+	TELEFONE		VARCHAR(15)		NOT NULL,
 	EMAIL			VARCHAR(100)		NOT NULL,
 	CPF			VARCHAR(11)		NULL,
 	RG			VARCHAR(20)		NULL,
@@ -36,19 +36,15 @@ CREATE TABLE USUARIOS(
 	END_COMPL		VARCHAR(100)		NULL,
 	LOGIN		    VARCHAR(100)		NULL,
 	SENHA			VARCHAR(100)		NOT NULL,
-	STATUS			CHAR(1)			NOT NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS			INTEGER			NOT NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	CONSTRAINT PK_USUARIOS PRIMARY KEY (COD_USUARIO)
 );
 -- DROP TABLE USUARIOS
 -- SELECT * FROM USUARIOS
-INSERT INTO USUARIOS VALUES(1, 'Clovis Daniel Gueno', 'S', '31-12-1990', '1', 'Brasileira', 'A', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'clovis2017','clovis2017',  'I');
-INSERT INTO USUARIOS VALUES(2, 'Eduardo Wosgrau', 'S', '10-11-1990', '1', 'Brasileira', 'A', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'eduardo2017','eduardo2017',  'I');	
-INSERT INTO USUARIOS VALUES(3, 'Fulano Funcionario 1', 'S', '10-11-1990', '1', 'Brasileira', 'F', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12017','fulano12017',  'I');		
-INSERT INTO USUARIOS VALUES(4, 'Fulano Funcionario 2', 'S', '10-11-1990', '1', 'Brasileira', 'F', '(41)3333-3333', 
-	'email@email.com.br', '00000000191','43141413', '3142352352','Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22017','fulano22017',  'I');			
+INSERT INTO usuarios VALUES (1, 'Clovis Daniel Gueno', 1, '2017-11-16', 1, 'Brasileira', 1, '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', '3 ', 'Casa 123', 'clovis2017', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);			
+INSERT INTO usuarios VALUES (2, 'Eduardo Wosgrau', 1, '1990-11-10', 1, 'Brasileira', 1, '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'eduardo2017', 'eduardo2017', 1);
+INSERT INTO usuarios VALUES (3, 'Fulano Funcionario 1', 1, '1990-11-10', 1, 'Brasileira', 1, '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12017', 'fulano12017', 1);
+INSERT INTO usuarios VALUES (4, 'Fulano Funcionario 2', 1, '1990-11-10', 1, 'Brasileira', 1, '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22017', 'fulano22017', 1);
 
 SELECT setval('usuarios_cod_usuario_seq', COALESCE((SELECT MAX(cod_usuario)+1 FROM usuarios), 1), false);
 	
@@ -59,7 +55,7 @@ CREATE TABLE CLIENTES(
 	COD_CLIENTE		SERIAL          NOT NULL,
 	NOME			VARCHAR(200)	NOT NULL,
 	DT_NASC			DATE		NULL,
-	SEXO			CHAR(1)		NULL,
+	SEXO			INTEGER		NULL,
 	NACIONALIDADE		VARCHAR(50)	NULL,
 	TELEFONE1		VARCHAR(15)	NULL,
 	TELEFONE2		VARCHAR(15)	NULL,
@@ -75,24 +71,24 @@ CREATE TABLE CLIENTES(
 	END_UF			CHAR(2)		NULL,
 	END_COMPL		VARCHAR(100)	NULL,
 	SENHA_ACESSO		VARCHAR(100)	NULL,
-	STATUS			CHAR(1)		NULL	DEFAULT 'I', -- 'I' (INCLUIDO); 'E' (EXCLUIDO)
+	STATUS			INTEGER		NULL	DEFAULT 1, -- 1 (ATIVO); 0 (INATIVO)
 	COD_FOTO        INTEGER,
 	CONSTRAINT PK_CLIENTES	PRIMARY KEY (COD_CLIENTE)
 );
 -- DROP TABLE CLIENTES
 -- DROP SEQUENCE clientes_cod_cliente_seq
 -- SELECT * FROM CLIENTES
-INSERT INTO CLIENTES VALUES(1, 'CICLANO 1 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(2, 'CICLANO 2 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(3, 'CICLANO 3 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(4, 'CICLANO 4 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(5, 'CICLANO 5 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(6, 'CICLANO 6 DE SOUZA LEMOS', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(7, 'CICLANO 7 DE SOUZA LEMOS', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(8, 'CICLANO 8 DE SOUZA LEMOS', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(9, 'CICLANO 9 DE SOUZA LEMOS', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(10, 'CICLANO 10 DE SOUZA LEMOS', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
-INSERT INTO CLIENTES VALUES(11, 'CICLANO 11 DE SOUZA LEMOS', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 'I');
+INSERT INTO CLIENTES VALUES(1, 'CICLANO 1 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(2, 'CICLANO 2 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(3, 'CICLANO 3 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(4, 'CICLANO 4 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(5, 'CICLANO 5 DE SOUZA LEMOS', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(6, 'CICLANO 6 DE SOUZA LEMOS', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(7, 'CICLANO 7 DE SOUZA LEMOS', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(8, 'CICLANO 8 DE SOUZA LEMOS', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(9, 'CICLANO 9 DE SOUZA LEMOS', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(10, 'CICLANO 10 DE SOUZA LEMOS', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(11, 'CICLANO 11 DE SOUZA LEMOS', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
 
 
 -- Atualizar a sequencia usada para gerar o cod_cliente com: ultimo codigo + 1
@@ -197,8 +193,8 @@ CREATE TABLE QUARTOS(
 );
 -- DROP TABLE QUARTOS
 -- SELECT * FROM QUARTOS
-INSERT INTO QUARTOS VALUES(1, 1, 101, 1, 2, 'Quarto com vista para o mar.',1, 1);
-INSERT INTO QUARTOS VALUES(2, 1, 102, 1, 2, 'Quarto com vista para o lago.',1, 1);
+INSERT INTO QUARTOS VALUES(1, 1, 101, 1, 2, 'Quarto com vista para o mar.',null, 1);
+INSERT INTO QUARTOS VALUES(2, 1, 102, 1, 2, 'Quarto com vista para o lago.',null, 1);
 
 SELECT setval('Quartos_cod_quarto_seq', COALESCE((SELECT MAX(cod_quarto)+1 FROM quartos), 1), false);
 ----------------------------------------------------------------------

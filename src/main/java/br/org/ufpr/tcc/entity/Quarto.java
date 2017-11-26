@@ -57,7 +57,7 @@ public class Quarto {
 	@Column(name = "descricao")
     private String descricao;
 	
-	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.REFRESH })
+	@OneToOne(fetch = FetchType.LAZY, cascade = {CascadeType.REFRESH })
 	@JoinColumn(name = "COD_FOTO", nullable = true)
 	@Fetch(FetchMode.SELECT)
 	private Foto foto;
@@ -65,7 +65,7 @@ public class Quarto {
 	@Column(name = "status")
     private Integer status;
 	
-	@ManyToMany(cascade = CascadeType.ALL)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "QUARTO_ATRIBUTO", joinColumns = @JoinColumn(name = "COD_QUARTO"),
     inverseJoinColumns = @JoinColumn(name = "COD_ATRIBUTO"))
 	private List<Atributo> atributos = new ArrayList();

@@ -25,6 +25,7 @@ public class ClienteDTO {
     private String endUf;
     private String endCompl;
     private String senhaAcesso;
+    private String confirmarSenhaAcesso;
     private Integer status;
     
     private String sexoExibicao;
@@ -179,8 +180,11 @@ public class ClienteDTO {
 	public void setDataExibicao(String dataExibicao) {
 		this.dataExibicao = dataExibicao;
 	}
-    
-
-	
+	public String getConfirmarSenhaAcesso() {
+		return confirmarSenhaAcesso;
+	}
+	public void setConfirmarSenhaAcesso(String confirmarSenhaAcesso) {
+		this.confirmarSenhaAcesso = confirmarSenhaAcesso;
+	}
 	
 }
