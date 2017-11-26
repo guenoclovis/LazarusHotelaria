@@ -6,16 +6,16 @@ import br.org.ufpr.tcc.entity.Usuario;
 
 public class LazarusPrincipal {
 	
-	private Usuario usuario;
+	private String nomeUsuario;
 	
 	private Date dataHoraLogin;
-	
-	public Usuario getUsuario() {
-		return usuario;
+
+	public String getNomeUsuario() {
+		return nomeUsuario;
 	}
 
-	public void setUsuario(Usuario usuario) {
-		this.usuario = usuario;
+	public void setNomeUsuario(String nomeUsuario) {
+		this.nomeUsuario = nomeUsuario;
 	}
 
 	public Date getDataHoraLogin() {

@@ -6,6 +6,7 @@ import java.util.Set;
 import javax.ws.rs.ApplicationPath;
 import javax.ws.rs.core.Application;
 
+import br.org.ufpr.tcc.exception.handler.AuthExceptionHandler;
 import br.org.ufpr.tcc.exception.handler.NegocioExceptionHandler;
 
 @ApplicationPath("/rest-clovis")
@@ -35,6 +36,7 @@ public class RestAPI extends Application {
     public Set<Class<?>> getClasses() {
         Set<Class<?>> classes = new HashSet<Class<?>>();
         classes.add(NegocioExceptionHandler.class); 
+        classes.add(AuthExceptionHandler.class);
         return classes;
 
     }

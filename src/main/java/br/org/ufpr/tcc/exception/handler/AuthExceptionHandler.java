@@ -8,12 +8,12 @@ import javax.ws.rs.ext.Provider;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 
 @Provider
-public class AuthenticationExceptionHandler implements ExceptionMapper<AuthenticationException> {
+public class AuthExceptionHandler implements ExceptionMapper<AuthException> {
 
 	private static final int UNAUTHORIZED_STATUS_CODE = 401;
 
 	@Override
-	public Response toResponse(AuthenticationException exception) {
+	public Response toResponse(AuthException exception) {
 		
 		ResponseDTO responseDTO = new ResponseDTO(exception.getMensagens());
 		

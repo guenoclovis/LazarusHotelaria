@@ -11,7 +11,7 @@
 
     // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'login'
     /* @ngInject */
-    function LoginController($controller, $scope, $state,
+    function LoginController($controller, $scope, $state, $rootScope,
     		LoginData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
@@ -23,6 +23,7 @@
         // Operacoes acessiveis no html
 
         vm.login = login;
+        vm.logout = logout;
         
 
         activate();
@@ -34,24 +35,26 @@
         	irParaTelaLogin()
         }
 
-        function irParaTelaLogin() {			
-            $state.go('login', {
+        function irParaTelaLogin() {
+        	MsgCenter.clear();
+            $state.go('login');
+        }
+        
+        function login() {
+        	MsgCenter.clear();
+        	LoginData.login(vm.dadosLogin).then(function (data) {
+                $rootScope.nomeUsuario = data.nomeUsuario;
+                $state.go('inicio');
             });
         }
-        function login() {
-        	LoginData.login(vm.dadosLogin).then(function (data) {
-                vm.clientes = data.entidades;
-
-                if (data.pagina) {
-                    var page = data.pagina;
-                    vm.currentpage = page.currentPage + 1;
-                    vm.pagesize = page.pageSize;
-                    vm.totalresults = page.totalResults;
-                }
-                if (data.mensagens) {
-                	MsgCenter.addMessages(data.mensagens);  
-                }
-                
+        
+        function logout() {
+        	MsgCenter.clear();
+        	
+        	$rootScope.nomeUsuario = undefined;
+        	
+        	LoginData.logout().then(function (data) {                
+                $state.go('login');
             });
         }
 

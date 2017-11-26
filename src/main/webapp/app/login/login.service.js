@@ -15,7 +15,8 @@
         var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
 
         var service = {
-            login : login            
+            login : login,
+            logout : logout
         };
 
         return service;
@@ -23,6 +24,10 @@
 
         function login(dadosLogin) {
         	return Restangular.all(apiURLCompleta).post(dadosLogin);
+        }
+        
+        function logout() {
+        	return Restangular.all(apiURLCompleta + "/logout").post();
         }
 
     }

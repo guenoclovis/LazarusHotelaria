@@ -7,7 +7,7 @@
 
 
 	 /* @ngInject */
-    function AuthInterceptor($q, $window, $rootScope, $injector, MsgCenter) {
+    function AuthInterceptor($q, $window, $state, $rootScope, $injector, MsgCenter) {
         return {
         	
             request: function(request){
@@ -25,16 +25,34 @@
         	responseError: function (response) {
                 var status = response.status;
                 
+                //---trecho igual ao do msgcenter.httpinterceptor---
+                var headerTarget = response.config.headers.target;
+		    	
+		    	var msgs = response.data.mensagens;
+		    	for (var i = 0; i < msgs.length; i++) {
+		    		var msg = msgs[i];
+		    		MsgCenter.add(msg.severity, msg.message, msg.path, {target: headerTarget}); 
+		    	}
+		    	MsgCenter.notify();
+                //---trecho igual ao do msgcenter.httpinterceptor---
+                
                 if (status === 401) {
+                	
+                	$state.go('login');
+                	
+                	//TODO: CODIGO FUTURO para tratar authenticacao usando token
+                    /*
                     var $auth = $injector.get('$auth');
                     $auth.removeToken();
-                	$window.location.href = $rootScope.baseURL + "/login";
+                	$window.location.href = $rootScope.baseURL + "/login";*/
                 }
                 
                 if (status === 403) {
-                    var $state = $injector.get('$state');
+                	
+                	//TODO: CODIGO FUTURO para tratar autorizacao
+                    /*var $state = $injector.get('$state');
                     MsgCenter.addNext(response.data.severity, response.data.message);
-                    $state.go('erropermissao');                	
+                    $state.go('erropermissao');*/
                 }
                 
                 return $q.reject(response);
@@ -43,8 +61,8 @@
             response: function (response) { 
             	if(/.*rest-clovis.*/.test(response.config.url)){
             		
-            		var segurancaTokenService = $injector.get('SegurancaTokenService');            		
-            		segurancaTokenService.start();            		
+//            		var segurancaTokenService = $injector.get('SegurancaTokenService');            		
+//            		segurancaTokenService.start();            		
             	}
             	
                 return response;

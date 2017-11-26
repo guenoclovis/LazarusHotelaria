@@ -11,7 +11,7 @@ import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Mensagem;
-import br.org.ufpr.tcc.exception.handler.AuthenticationException;
+import br.org.ufpr.tcc.exception.handler.AuthException;
 import br.org.ufpr.tcc.validator.ClienteValidator;
 
 public class ClienteBC {

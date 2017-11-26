@@ -5,18 +5,18 @@ import java.util.List;
 
 import br.org.ufpr.tcc.entity.Mensagem;
 
-public class AuthenticationException extends RuntimeException {
+public class AuthException extends RuntimeException {
 
 	private static final long serialVersionUID = 1L;
 	
 	private List<Mensagem> mensagens;
 
-    public AuthenticationException(Mensagem m) {
+    public AuthException(Mensagem m) {
         this.mensagens = new ArrayList<Mensagem>();
         this.mensagens.add(m);
     }
 	
-    public AuthenticationException(List<Mensagem> mensagens) {
+    public AuthException(List<Mensagem> mensagens) {
         this.mensagens = mensagens;
     }
 

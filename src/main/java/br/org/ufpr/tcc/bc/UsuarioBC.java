@@ -6,15 +6,14 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import br.org.ufpr.tcc.dao.UsuarioDAO;
-import br.org.ufpr.tcc.dto.UsuarioFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
-import br.org.ufpr.tcc.entity.Usuario;
-import br.org.ufpr.tcc.exception.handler.AuthenticationException;
-import br.org.ufpr.tcc.validator.FilialValidator;
-import br.org.ufpr.tcc.validator.UsuarioValidator;
+import br.org.ufpr.tcc.dto.UsuarioFiltroDTO;
 import br.org.ufpr.tcc.entity.Mensagem;
 import br.org.ufpr.tcc.entity.Pagina;
+import br.org.ufpr.tcc.entity.Usuario;
+import br.org.ufpr.tcc.exception.handler.AuthException;
+import br.org.ufpr.tcc.validator.UsuarioValidator;
 
 public class UsuarioBC {
 
@@ -45,15 +44,16 @@ public class UsuarioBC {
     	//Criptografar senha
     	try {
 			CriptografiaBC criptoBC = new CriptografiaBC();
-			byte[] bytesSenhaEncriptada = criptoBC.criptografar(usuario.getSenha().getBytes("utf-8"));
-			usuario.setSenha(new String(bytesSenhaEncriptada));
+			String senhaEncriptada = criptoBC.criptografarParaBD(usuario.getSenha());			
+			usuario.setSenha(senhaEncriptada);
+			
     	} catch (Exception e) {
 			e.printStackTrace();
 			log.info("ERRO na criptografia");
 			
 			Mensagem m = new Mensagem(Mensagem.ERRO, "Erro no processo de encriptar/desencriptar");
 			List<Mensagem> mensagens = new ArrayList<Mensagem>();
-			throw new AuthenticationException(mensagens);
+			throw new AuthException(mensagens);
     	}
     	
         if (usuario.getCodUsuario() == null) {

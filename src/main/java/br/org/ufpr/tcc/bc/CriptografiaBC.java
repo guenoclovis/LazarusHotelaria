@@ -1,6 +1,7 @@
 package br.org.ufpr.tcc.bc;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.Charset;
 import java.security.InvalidKeyException;
 import java.security.NoSuchAlgorithmException;
 
@@ -17,6 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
  */
 public class CriptografiaBC {
 
+	private static final String CHARSET_NAME = "utf-8";
 	/**
 	 * O valor da chave DEVE ter: 16, 24 ou 32 caracteres.
 	 * 
@@ -27,14 +29,8 @@ public class CriptografiaBC {
 	private static SecretKey chaveSimetricaClass;
 
 	public CriptografiaBC() {
-		
 		byte[] chaveSimetricaByteArray = null;
-		try {
-			chaveSimetricaByteArray = chaveSimetricaString.getBytes("utf-8");
-		} catch (UnsupportedEncodingException e) {
-			chaveSimetricaByteArray = chaveSimetricaString.getBytes();
-		} 
-		
+		chaveSimetricaByteArray = chaveSimetricaString.getBytes(Charset.forName(CHARSET_NAME));
 		chaveSimetricaClass = new SecretKeySpec(chaveSimetricaByteArray, "AES");
 	}
 
@@ -42,9 +38,9 @@ public class CriptografiaBC {
 
 		try {
 			CriptografiaBC aes2 = new CriptografiaBC();
-			String msgOriginal = "fdsa flkdsaj çfjsda çfkjsdafçsadçfjks ";
+			String msgOriginal = "fdsa flkdsaj çfjsda çfkjsdafçsadfadafdsçfjks ";
 			
-			byte[] msg = msgOriginal.getBytes("utf-8");
+			byte[] msg = msgOriginal.getBytes(Charset.forName(CHARSET_NAME));
 			byte[] msgCriptografada = aes2.criptografar(msg);
 			byte[] msgDescriptografada = aes2.descriptografar(msgCriptografada);
 			
@@ -77,6 +73,12 @@ public class CriptografiaBC {
 		/* Recebe a mensagem encriptada e descripta */
 		return cipher.doFinal(mensagemEncriptada);
 		
+	}
+	
+	public String criptografarParaBD(String mensagem) throws InvalidKeyException, NoSuchAlgorithmException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, UnsupportedEncodingException{
+		byte[] bytesSenhaEncriptada = criptografar(mensagem.getBytes("utf-8"));
+		String stringComBytesBase64 = org.postgresql.util.Base64.encodeBytes(bytesSenhaEncriptada);
+		return stringComBytesBase64;
 	}
 
 }
