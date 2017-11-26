@@ -1,5 +1,5 @@
 <div>
-	<div ng-controller="EditarClienteController as vm">
+	<div ng-controller="EditarClienteController as vm" >
 		<!-- ================= CORPO DA PAGINA ================= -->
 	    <div class="row linha-site">
 	    	<div class="container">
@@ -10,9 +10,10 @@
 						<h1>Editar H&oacute;spede</h1>
 					</div>
 					<div ng-if="!vm.cliente.codCliente">
-						<h1>Incluir H&oacute;spede</h1>
+						<h1>Cadastro de H&oacute;spede</h1>
 					</div>
 				</div>	
+
 
 				<form>
 					<div class="row campo-form" ng-if="vm.cliente.codCliente">
@@ -27,6 +28,7 @@
 						<div class="col-md-2"></div>
 					</div>
 					
+				<div class="well">
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
@@ -105,7 +107,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="Telefone1" class="cols-sm-2 control-label required">Telefone1</label>
+							<label for="Telefone1" class="cols-sm-2 control-label required">Telefone</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="telefone1" id="telefone1" ng-model="vm.cliente.telefone1"
@@ -117,7 +119,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="Telefone2" class="cols-sm-2 control-label">Telefone2</label>
+							<label for="Telefone2" class="cols-sm-2 control-label">Telefone Opcional</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="telefone2" id="telefone2" ng-model="vm.cliente.telefone2"
@@ -129,7 +131,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="email1" class="cols-sm-2 control-label required">E-mail1</label>
+							<label for="email1" class="cols-sm-2 control-label required">E-mail</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="email1" id="email1" ng-model="vm.cliente.email1"
@@ -141,7 +143,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="email2" class="cols-sm-2 control-label">E-mail2</label>
+							<label for="email2" class="cols-sm-2 control-label">E-mail Opcional</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="email2" id="email2" ng-model="vm.cliente.email2"
@@ -156,7 +158,7 @@
 							<label for="cpf" class="cols-sm-2 control-label">CPF</label>
 						</div>
 						<div class="col-md-6">
-							<input id="cpf" type="cpf" mask="999.999.999-99" ng-model="vm.cliente.cpf">
+							<input id="cpf" class="form-control" type="cpf" mask="999.999.999-99" ng-model="vm.cliente.cpf">
 						</div>
 						<div class="col-md-2"></div>
 					</div>
@@ -188,7 +190,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="endRua" class="cols-sm-2 control-label">Endereço - Rua</label>
+							<label for="endRua" class="cols-sm-2 control-label">Rua</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="endRua" id="endRua" ng-model="vm.cliente.endRua"
@@ -200,7 +202,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="endNro" class="cols-sm-2 control-label">Endereço - Número</label>
+							<label for="endNro" class="cols-sm-2 control-label">N&uacute;mero</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="endNro" id="endNro" ng-model="vm.cliente.endNro"
@@ -212,7 +214,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="endBairro" class="cols-sm-2 control-label">Endereço - Bairro</label>
+							<label for="endBairro" class="cols-sm-2 control-label">Bairro</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="endBairro" id="endBairro" ng-model="vm.cliente.endBairro"
@@ -224,7 +226,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="endCidade" class="cols-sm-2 control-label">Endereço - Cidade</label>
+							<label for="endCidade" class="cols-sm-2 control-label">Cidade</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="endCidade" id="endCidade" ng-model="vm.cliente.endCidade"
@@ -236,7 +238,7 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="endUf" class="cols-sm-2 control-label">Endereço - UF</label>
+							<label for="endUf" class="cols-sm-2 control-label">UF</label>
 						</div>
 						<div class="col-md-6">											
 							<select id="endUf" class="campo-form"
@@ -252,11 +254,11 @@
 					<div class="row campo-form">
 						<div class="col-md-2"></div>
 						<div class="col-md-2">
-							<label for="EndCompl" class="cols-sm-2 control-label">Endereço - Complemento</label>
+							<label for="EndCompl" class="cols-sm-2 control-label">Complemento</label>
 						</div>
 						<div class="col-md-6">
 							<input type="text" class="form-control" name="EndCompl" id="EndCompl" ng-model="vm.cliente.endCompl"
-									placeholder="" />
+									placeholder="Ex. Fundos" />
 						</div>
 						<div class="col-md-2"></div>
 					</div>
@@ -291,12 +293,22 @@
 							<label for="status" class="cols-sm-2 control-label">Status</label>
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="status" id="status" ng-model="vm.cliente.status"
-									placeholder="" />
+							<div class="form-inline" id="status">
+								<div class="radio col-sm-2">
+									<input ng-model="vm.cliente.status" type="radio"
+										name="radio-status" id="ex-a" ng-value="1"> <label
+										for="ex-a">Ativo</label>
+								</div>
+								<div class="radio col-sm-2">
+									<input ng-model="vm.cliente.status" type="radio"
+										name="radio-status" id="ex-i" ng-value="2"> <label
+										for="ex-i">Inativo</label>
+								</div>
+							</div>
 						</div>
 						<div class="col-md-2"></div>
+					</div>			
 					</div>
-					
 					<div class="col-sm-10">
 						<div class="row botoes-direita">
 							<button ng-if="!vm.cliente.codCliente" ng-click="vm.incluir()" class="btn btn-primary">Incluir</button>

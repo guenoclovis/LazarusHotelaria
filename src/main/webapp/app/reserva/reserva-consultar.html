@@ -2,7 +2,7 @@
 <div>
 	<div ng-controller="ConsultarReservaController as vm">
 
-		<div class="row linha-site">
+		<div class="row linha-site well">
 			<div class="container">
 				<div class="col-sm-4">
 
@@ -11,111 +11,115 @@
 					</div>
 
 					<!-- TITULO -->
-					<div class="row">
-						<h3 align="left">
-							Quartos dispon&iacute;veis
-							</h1>
-						</h3>
+					<div class="well">
+						<div class="row">
+							<h3 align="left">
+								Quartos dispon&iacute;veis
+								</h1>
+							</h3>
+						</div>
+
+						<!-- FILIAL -->
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="filiais" class="cols-sm-2 control-label">Hotel
+									Destino</label>
+							</div>
+
+							<div class="col-sm-12">
+								<select id="filiais" class="btn btn-primary"
+									ng-options="item.codFilial as item.nome for item in vm.filiais"
+									ng-model="vm.filtros.codFilial" selectpicker>
+									<option value="" selected>Selecione</option>
+								</select>
+
+							</div>
+						</div>
+
+						<!-- DATA ENTRADA -->
+						<div class="row campo-form">
+							<div class="col-sm-12">
+								<label for="dtNasc" class="cols-sm-2 control-label">Data
+									de Entrada</label>
+							</div>
+							<div class="col-sm-12">
+								<p class="input-group">
+									<input type="text" class="form-control" id="dtNasc"
+										uib-datepicker-popup="{{format}}"
+										ng-model="vm.filtros.dataEntrada"
+										is-open="vm.popupDataEntrada.opened"
+										datepicker-options="dateOptions" ng-required="true"
+										close-text="Close" alt-input-formats="altInputFormats" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="vm.openDataEntrada()">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
+						</div>
+
+						<!-- DATA SAIDA -->
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="dtNasc" class="cols-sm-2 control-label">Data
+									de Sa&iacute;da</label>
+							</div>
+							<div class="col-sm-12">
+								<p class="input-group">
+									<input type="text" class="form-control" id="dtNasc"
+										uib-datepicker-popup="{{format}}"
+										ng-model="vm.filtros.dataSaida"
+										is-open="vm.popupDataSaida.opened"
+										datepicker-options="dateOptions" ng-required="true"
+										close-text="Close" alt-input-formats="altInputFormats" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="vm.openDataSaida()">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
+						</div>
+
+						<!-- BOTAO BUSCAR -->
+						<div class="botoes-meio" align="center">
+							<button ng-click="vm.irParaTelaInclusao()" name="buscar"
+								class="btn btn-primary">Buscar</button>
+						</div>
+
 					</div>
+					<!-- ======================= QUARTOS DISPONIVEIS PARA RESERVA =========================== -->
 
-					<!-- FILIAL -->
-					<div class="row">
-						<div class="col-sm-12">
-							<label for="filiais" class="cols-sm-2 control-label">Hotel
-								Destino</label>
-						</div>
+					<div class="row linha-site">
+						<div class="container">
 
-						<div class="col-sm-12">
-							<select id="filiais" class="btn btn-primary"
-								ng-options="item.codFilial as item.nome for item in vm.filiais"
-								ng-model="vm.filtros.codFilial" selectpicker>
-								<option value="" selected>Selecione</option>
-							</select>
+							<div class="col-sm-8">
+								<h1>Nossos Hot&eacute;is</h1>
+								<p>Nossa rede de hoteis esta presente em todos os estados.
+									Confira e explore nossas filiais:</p>
 
-						</div>
-					</div>
-
-					<!-- DATA ENTRADA -->
-					<div class="row campo-form">
-						<div class="col-sm-12">
-							<label for="dtNasc" class="cols-sm-2 control-label">Data
-								de Entrada</label>
-						</div>
-						<div class="col-sm-12">
-							<p class="input-group">
-								<input type="text" class="form-control" id="dtNasc"
-									uib-datepicker-popup="{{format}}"
-									ng-model="vm.filtros.dataEntrada"
-									is-open="vm.popupDataEntrada.opened"
-									datepicker-options="dateOptions" ng-required="true"
-									close-text="Close" alt-input-formats="altInputFormats" /> <span
-									class="input-group-btn">
-									<button type="button" class="btn btn-default"
-										ng-click="vm.openDataEntrada()">
-										<i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-							</p>
-						</div>
-					</div>
-
-					<!-- DATA SAIDA -->
-					<div class="row">
-						<div class="col-sm-12">
-							<label for="dtNasc" class="cols-sm-2 control-label">Data
-								de Sa&iacute;da</label>
-						</div>
-						<div class="col-sm-12">
-							<p class="input-group">
-								<input type="text" class="form-control" id="dtNasc"
-									uib-datepicker-popup="{{format}}"
-									ng-model="vm.filtros.dataSaida"
-									is-open="vm.popupDataSaida.opened"
-									datepicker-options="dateOptions" ng-required="true"
-									close-text="Close" alt-input-formats="altInputFormats" /> <span
-									class="input-group-btn">
-									<button type="button" class="btn btn-default"
-										ng-click="vm.openDataSaida()">
-										<i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-							</p>
-						</div>
-					</div>
-
-					<!-- BOTAO BUSCAR -->
-					<div class="botoes-meio" align="center">
-						<button ng-click="vm.irParaTelaInclusao()" name="buscar"
-							class="btn btn-primary">Buscar</button>
-					</div>
-				</div>
-				<!-- ======================= QUARTOS DISPONIVEIS PARA RESERVA =========================== -->
-
-				<div class="row linha-site">
-					<div class="container">
-
-						<div class="col-sm-8">
-							<h1>Nossos Hot&eacute;is</h1>
-							<p>Nossa rede de hoteis esta presente em todos os estados.
-								Confira e explore nossas filiais:</p>
-
-							<div class="row">
-								<div class="container-fluid bg-4 text-center">
-									<div ng-repeat="quarto in vm.quartos track by quarto.codQuarto">
+								<div class="row">
+									<div class="container-fluid bg-4 text-center">
+										<div
+											ng-repeat="quarto in vm.quartos track by quarto.codQuarto">
 
 
-										<div class="col-sm-4 linha-item">
+											<div class="col-sm-4 linha-item">
 
-											<button class="btn btn-sucess"
-												ng-click="vm.irParaTelaEdicaoReserva(quarto.codQuarto)">Reservar</button>
+												<button class="btn btn-sucess"
+													ng-click="vm.irParaTelaEdicaoReserva(quarto.codQuarto)">Reservar</button>
 
-											<a>
-												<h4>{{filial.nome}}</h4> <img
-												ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}"
-												class="img-responsive" style="width: 100%" alt="Image" />
+												<a>
+													<h4>{{filial.nome}}</h4> <img
+													ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}"
+													class="img-responsive" style="width: 100%" alt="Image" />
 
-												<p>{{filial.descricao}}</p>
-											</a>
+													<p>{{filial.descricao}}</p>
+												</a>
+											</div>
 										</div>
 									</div>
 								</div>
@@ -126,4 +130,3 @@
 			</div>
 		</div>
 	</div>
-</div>
