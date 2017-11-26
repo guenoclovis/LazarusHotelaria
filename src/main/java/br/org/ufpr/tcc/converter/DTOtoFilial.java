@@ -30,7 +30,7 @@ public class DTOtoFilial {
 		filial.setExibirSite(Integer.valueOf(dto.getExibirSite()));
 		filial.setStatus(Integer.valueOf(dto.getStatus()));
 	
-		if(dto.getFoto() != null){
+		if(dto.getFoto() != null && dto.getFoto().getCodFoto() != null){
 			filial.setFoto(converterFoto.convert(dto.getFoto()));
 		}
 		

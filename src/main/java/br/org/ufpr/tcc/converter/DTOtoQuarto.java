@@ -34,9 +34,9 @@ public class DTOtoQuarto {
 		quarto.setDescricao(dto.getDescricao());
 		quarto.setStatus(dto.getStatus());
 
-		if(dto.getFoto() != null){
+		if(dto.getFoto() != null && dto.getFoto().getCodFoto() != null){
 			quarto.setFoto(converterFoto.convert(dto.getFoto()));
-		}
+		} 
 
 		if(dto.getAtributos() != null){
 			List<Atributo> listaAtributos = new ArrayList<Atributo>();

@@ -95,9 +95,12 @@
 				vm.filial = data;
 				var filtros = { carregarImagemOriginal : true, carregarImagemMiniatura : true };
 				
-				FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
-					vm.filial.foto = data;
-				});
+				if(vm.filial.foto.codFoto != undefined && vm.filial.foto.codFoto != null){
+					FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
+						vm.filial.foto = data;
+					});	
+				}
+				
 				
 				vm.quartos = [];
 			});
