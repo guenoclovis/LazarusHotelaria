@@ -33,6 +33,14 @@ public class UsuarioDAO extends LazarusDAO<Usuario> {
 
         List<Usuario> lista = findByCriteriaQuery(cq, null);
         
+        if(lista == null){
+        	return null;
+        }
+        
+        if(lista != null && lista.isEmpty()){
+        	return null;
+        }
+                
 		return lista.get(0);
 	}
 	

@@ -30,8 +30,8 @@ public static final String NOME = "nome";
 	private String tipo;
 	
 	@Size(min=3, max=200)
-	@NotNull
-	@NotEmpty
+	//@NotNulldescricao
+	//@NotEmpty
 	@Column(name="nome")
 	private String nome;
 	
