@@ -1,48 +1,40 @@
-<!-- ======================= QUARTOS DISPONIVEIS =========================== -->
-<div>
-	<div ng-controller="ConsultarReservaController as vm">
-
-		<div class="row linha-site well">
-			<div class="container">
-				<div class="col-sm-4">
-
-					<div>
-						<pre>{{vm.filtros | json}}</pre>
-					</div>
-
-					<!-- TITULO -->
-					<div class="well">
-						<div class="row">
-							<h3 align="left">
-								Quartos dispon&iacute;veis
-								</h1>
-							</h3>
-						</div>
-
-						<!-- FILIAL -->
-						<div class="row">
-							<div class="col-sm-12">
-								<label for="filiais" class="cols-sm-2 control-label">Hotel
-									Destino</label>
-							</div>
-
-							<div class="col-sm-12">
-								<select id="filiais" class="btn btn-primary"
+<div><!-- div pai -->
+	<div ng-controller="ConsultarReservaController as vm"><!-- div controlador -->
+		
+		<div class="container"><!-- div class container parte1 -->
+		
+			<!-- ================= TITULO ================= -->
+			<div class="titulo-paginas-meio">
+				<h1>Reservas</h1>
+			</div>	
+			
+			<!-- ======================= CONSULTA DE QUARTOS =========================== -->
+			<div class=".container">
+			
+				<div class="row"><!-- div class form + foto hotel + atributos -->
+					
+					<div class="col-sm-6">
+						
+						<div class="row campo-form">
+							<div class="col-sm-4">
+								<label for="combo-filial" class="cols-sm-2 control-label required">Hotel</label>
+							</div>			
+							<div class="col-sm-8">						
+								<select id="filiais" class="btn btn-primary" ng-click="vm.carregarFilial()"
 									ng-options="item.codFilial as item.nome for item in vm.filiais"
-									ng-model="vm.filtros.codFilial" selectpicker>
+									ng-model="vm.filtros.codFilial"	>
 									<option value="" selected>Selecione</option>
 								</select>
-
 							</div>
 						</div>
-
+						
 						<!-- DATA ENTRADA -->
 						<div class="row campo-form">
-							<div class="col-sm-12">
-								<label for="dtNasc" class="cols-sm-2 control-label">Data
+							<div class="col-sm-4">
+								<label for="dtNasc" class="cols-sm-2 control-label required">Data
 									de Entrada</label>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-8">
 								<p class="input-group">
 									<input type="text" class="form-control" id="dtNasc"
 										uib-datepicker-popup="{{format}}"
@@ -59,14 +51,14 @@
 								</p>
 							</div>
 						</div>
-
+			
 						<!-- DATA SAIDA -->
-						<div class="row">
-							<div class="col-sm-12">
-								<label for="dtNasc" class="cols-sm-2 control-label">Data
+						<div class="row campo-form">
+							<div class="col-sm-4">
+								<label for="dtNasc" class="cols-sm-2 control-label required">Data
 									de Sa&iacute;da</label>
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-8">
 								<p class="input-group">
 									<input type="text" class="form-control" id="dtNasc"
 										uib-datepicker-popup="{{format}}"
@@ -83,52 +75,91 @@
 								</p>
 							</div>
 						</div>
-
+									
 						<!-- BOTAO BUSCAR -->
 						<div class="botoes-meio" align="center">
-							<button ng-click="vm.irParaTelaInclusao()" name="buscar"
+							<button ng-click="vm.pesquisarQuartosComReserva()" name="buscar"
 								class="btn btn-primary">Buscar</button>
 						</div>
-
+								
 					</div>
-					<!-- ======================= QUARTOS DISPONIVEIS PARA RESERVA =========================== -->
-
-					<div class="row linha-site">
-						<div class="container">
-
-							<div class="col-sm-8">
-								<h1>Nossos Hot&eacute;is</h1>
-								<p>Nossa rede de hoteis esta presente em todos os estados.
-									Confira e explore nossas filiais:</p>
-
-								<div class="row">
-									<div class="container-fluid bg-4 text-center">
-										<div
-											ng-repeat="quarto in vm.quartos track by quarto.codQuarto">
-
-
-											<div class="col-sm-4 linha-item">
-
-												<button class="btn btn-sucess"
-													ng-click="vm.irParaTelaEdicaoReserva(quarto.codQuarto)">Reservar</button>
-
-												<a>
-													<h4>{{filial.nome}}</h4> <img
-													ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}"
-													class="img-responsive" style="width: 100%" alt="Image" />
-
-													<p>{{filial.descricao}}</p>
-												</a>
-											</div>
-										</div>
+					
+					<div class="col-sm-6">
+							
+						<div class="row" ng-if="vm.filial.codFilial">
+							<!-- ================ CARROSSEL DE FOTOS =========================== -->
+								<div class="col-sm-8 carrossel-lateral" ng-if="vm.filial.foto.imagemOriginal">
+									<img
+										ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemOriginal}}"
+										class="img-original-responsive" alt="Image"/>
+								
+								</div>
+								
+								<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
+								<div class="col-sm-4 carrossel-lateral">	
+									<h3 align="left">Caracter&iacute;sticas</h1></h3></br>
+									<div ng-repeat="atributo in vm.filial.atributos">
+										<h5>{{atributo.nome}}</h5>
+										<p>{{atributo.descricao}}</p>
 									</div>
 								</div>
 							</div>
 						</div>
+					
+					</div>
+					
+					<div class="col-md-1"></div>
+					
+				</div><!-- div form + foto hotel + atributos -->
+				
+				<div class="row">
+					<!-- ================= DESCRICAO DO HOTEL ================= -->
+					<div class="col-sm-12 corpo-descricao">
+						<p>{{vm.filial.descricao}}</p>
 					</div>
 				</div>
+			
+			</div><!-- div class .container parte1 -->
+			
+			
+		
+		
+		<br>
+			
+		<!-- ================= QUARTOS ================= -->
+		<div class="container" ng-if="vm.quartos.length > 0"><!-- div class container parte2 -->
+			
+			<div class="titulo-paginas-meio">
+		    	<h1>Quartos</h1>
+		    	<p>Confira nossos os tipos de quartos e encontre o que combina com a sua viagem.</p>
+		    </div>
+	    
+	    	<div class=".container">	
+				<div class="row">
+					<!-- ======================= TIPOS DE QUARTOS  =========================== -->
+					<div class="container-fluid bg-4 text-center">
+					<div class="row">
+					    <div class="col-sm-3 item-quarto" ng-repeat="quarto in vm.quartos">
+					    	<a ui-sref="tipoquartosite">
+						    	<h4>Quarto Solteiro</h4>						
+								<img ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}" class="img-responsive" style="width:100%" alt="Image">
+								<div class="quarto_valor"><h5>{{quarto.descricaoTipoQuarto}}</h5></div>
+								<div class="quarto_valor"><h5>{{quarto.nrCamas}}</h5></div>
+								<p>{{quarto.descricao}}</p>
+								<button class="btn btn-primary"
+										ng-click="vm.detalharReserva(quarto.codQuarto)">Detalhar Reserva</button>
+								<p>&nbsp;</p>
+					    	</a>
+					    </div>
+					</div>
+				</br>
+				</div>
 			</div>
-			<!-- ================= DEBUG ================= -->
-			<debug objeto="{{vm.filtros | json}}"></debug>
-		</div>
-	</div>
+ 			
+		<!-- ================= DEBUG ================= -->
+		
+		</div><!-- div class container parte2 -->
+		<debug objeto="{{vm.filtros | json}}"></debug>
+		<debug objeto="{{vm.quartos | json}}"></debug>
+	</div><!-- div controlador -->
+</div><!-- div pai -->
