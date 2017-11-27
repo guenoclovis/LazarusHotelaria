@@ -49,7 +49,7 @@
 			fd.append('nomeArquivo', nomeArquivo);
 			fd.append('legenda', legenda);
 			
-			return $http.post(baseURL + apiURLCompleta + '?nomeArquivo=' + nomeArquivo + "&legenda=" + legenda, fd, {
+			return $http.post($rootScope.baseURL + apiURLCompleta + '?nomeArquivo=' + nomeArquivo + "&legenda=" + legenda, fd, {
 				transformRequest : angular.identity,
 				headers : {
 					'Content-Type' : undefined					
