@@ -29,7 +29,9 @@ public class DTOtoReserva {
 		}
 
 		reserva.setPreco(dto.getPreco());
-		reserva.setStatus(Integer.valueOf(dto.getStatus()));
+		if(dto.getStatus() != null){
+			reserva.setStatus(Integer.valueOf(dto.getStatus()));
+		}
 		reserva.setCodCliente(dto.getCodCliente());
 		
 		if(dto.getQuarto() != null){

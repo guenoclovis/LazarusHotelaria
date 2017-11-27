@@ -19,6 +19,7 @@ import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.enuns.StatusEnum;
 import br.org.ufpr.tcc.enuns.StatusReservaEnum;
+import br.org.ufpr.tcc.util.Constantes;
 import br.org.ufpr.tcc.util.DataUtil;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Pagina;
@@ -132,15 +133,19 @@ public class ReservaFacade {
         c.setStatus(StatusEnum.ATIVO.getCodigo());
         
         ClienteBC clienteBC = new ClienteBC();
-//        Cliente cliente = clienteBC.obterPorCPF(dto.getCpf());
-//        if(cliente == null){
+        Cliente cliente = clienteBC.obterClienteParaReserva(dto);
+        Integer codCliente = null;
+        if(cliente == null){
         	ResponseDTO resultado = clienteBC.persistir(c);        	
         	logMsg = "Realizou Pré-Cadastro de Usuário";
-//        }
+        	codCliente = resultado.getId().intValue();
+        } else {
+        	codCliente = cliente.getCodCliente().intValue();
+        }
         
         DTOtoReserva converter = new DTOtoReserva();
         Reserva reserva = converter.convert(dto);
-        reserva.setCodCliente(resultado.getId().intValue());
+        reserva.setCodCliente(codCliente);
         reserva.setStatus(StatusReservaEnum.SOLICITADA.getCodigo());
         reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));
         reserva.setPreco(200L);
@@ -152,15 +157,15 @@ public class ReservaFacade {
         
         EmailBC emailBC = new EmailBC();
         StringBuffer mensagem = new StringBuffer();
-        mensagem.append("Caro "+dto.getNome()+",");
-        mensagem.append("Obrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
-        mensagem.append("\nSua Solicitacao de Reserva foi realizada com sucesso conforme dados abaixo:\nNome: "+dto.getNome()+"\nTelefone: "+dto.getTelefone()+"\nE-mail: "+dto.getEmail()+"\nData Entrada: "+dto.getDataEntrada()+"\nData Saída: "+dto.getDtSaida()+"\nValor: "+reserva.getPreco()+"\n");
-        mensagem.append("\n\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação de reserva.");
+        mensagem.append("Caro "+dto.getNome()+":");
+        mensagem.append("\nObrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
+        mensagem.append("\nSua Solicitacao de Reserva foi realizada com sucesso conforme dados abaixo:\nNome: "+dto.getNome()+"\nTelefone: "+dto.getTelefone()+"\nE-mail: "+dto.getEmail()+"\nData Entrada: "+dto.getDataEntrada()+"\nData Saída: "+dto.getDtSaida()+"\nValor(R$): "+reserva.getPreco()+"\n");
+        mensagem.append("\n\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
         mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
-        mensagem.append("\nBanco: 156");
-        mensagem.append("\nAgência: 48989-3");
-        mensagem.append("\nCC: 48989-X");
-        mensagem.append("\nCNPJ: 82.438.591/0001-48");
+        mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
+        mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);
+        mensagem.append("\nCC: " + Constantes.CONTA_CORRENTE_EMPRESA);
+        mensagem.append("\nCNPJ: " + Constantes.CNPJ_EMPRESA);
         
         emailBC.enviarEmail(dto.getEmail(), "Solicitação de Reserva", mensagem.toString());
 
