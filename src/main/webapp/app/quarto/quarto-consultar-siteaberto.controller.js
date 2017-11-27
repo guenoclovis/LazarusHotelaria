@@ -72,9 +72,28 @@
 
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
+			
 			restaurarEstadoTela();
 			carregarFiliais();
-			carregarFilial();			
+			carregarFilial();
+			
+			if(preencheuFiltrosObrigatorioParaPesquisa()){
+				pesquisarQuartosSemReserva();
+			}
+		}
+		
+		
+		function preencheuFiltrosObrigatorioParaPesquisa(){
+			if(vm.filtros.codFilial == undefined || vm.filtros.codFilial == ''){
+				return false;
+			}
+			if(vm.filtros.dataEntrada == undefined || vm.filtros.dataEntrada == ''){
+				return false;
+			}
+			if(vm.filtros.dataSaida == undefined || vm.filtros.dataSaida == ''){
+				return false;
+			}
+			return true;
 		}
 
 		function carregarFiliais() {

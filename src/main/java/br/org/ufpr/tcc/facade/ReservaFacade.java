@@ -132,16 +132,7 @@ public class ReservaFacade {
         Cliente c = r2c.convert(dto);
         c.setStatus(StatusEnum.ATIVO.getCodigo());
         
-        ClienteBC clienteBC = new ClienteBC();
-        Cliente cliente = clienteBC.obterClienteParaReserva(dto);
-        Integer codCliente = null;
-        if(cliente == null){
-        	ResponseDTO resultado = clienteBC.persistir(c);        	
-        	logMsg = "Realizou Pré-Cadastro de Usuário";
-        	codCliente = resultado.getId().intValue();
-        } else {
-        	codCliente = cliente.getCodCliente().intValue();
-        }
+        Integer codCliente = obterIDCliente(dto, c);
         
         DTOtoReserva converter = new DTOtoReserva();
         Reserva reserva = converter.convert(dto);
@@ -155,12 +146,48 @@ public class ReservaFacade {
         logMsg = "Registro de Reserva persistido";
         log.info(logMsg);
         
-        EmailBC emailBC = new EmailBC();
+        enviarEmail(dto, reserva);
+
+        return responseDTO;
+	}
+
+	private Integer obterIDCliente(ReservaDTO dto, Cliente c) {
+		String logMsg;
+		
+		ClienteBC clienteBC = new ClienteBC();
+        Cliente cliente = clienteBC.obterClienteParaReserva(dto);
+        
+        Integer codCliente = null;
+        
+        if(cliente == null){
+        	ResponseDTO resultado = clienteBC.persistir(c);        	
+        	logMsg = "Realizou Pré-Cadastro de Usuário";
+        	codCliente = resultado.getId().intValue();
+        } else {
+        	codCliente = cliente.getCodCliente().intValue();
+        }
+        
+		return codCliente;
+	}
+
+	private void enviarEmail(ReservaDTO dto, Reserva reserva) {
+		
+		EmailBC emailBC = new EmailBC();
+		
         StringBuffer mensagem = new StringBuffer();
+        
         mensagem.append("Caro "+dto.getNome()+":");
+        mensagem.append("\n");
         mensagem.append("\nObrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
-        mensagem.append("\nSua Solicitacao de Reserva foi realizada com sucesso conforme dados abaixo:\nNome: "+dto.getNome()+"\nTelefone: "+dto.getTelefone()+"\nE-mail: "+dto.getEmail()+"\nData Entrada: "+dto.getDataEntrada()+"\nData Saída: "+dto.getDtSaida()+"\nValor(R$): "+reserva.getPreco()+"\n");
-        mensagem.append("\n\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
+        mensagem.append("\nSua Solicitacao de Reserva foi realizada com sucesso conforme dados abaixo:");
+        mensagem.append("\nNome: "+dto.getNome());
+        mensagem.append("\nTelefone: "+dto.getTelefone());
+        mensagem.append("\nE-mail: "+dto.getEmail());
+        mensagem.append("\nData Entrada: "+dto.getDataEntrada());
+        mensagem.append("\nData Saída: "+dto.getDtSaida());
+        mensagem.append("\nValor(R$): "+reserva.getPreco()+"\n");
+        mensagem.append("\n");
+        mensagem.append("\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
         mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
         mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
         mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);
@@ -168,8 +195,6 @@ public class ReservaFacade {
         mensagem.append("\nCNPJ: " + Constantes.CNPJ_EMPRESA);
         
         emailBC.enviarEmail(dto.getEmail(), "Solicitação de Reserva", mensagem.toString());
-
-        return responseDTO;
 	}
 
 }
