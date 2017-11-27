@@ -11,8 +11,9 @@
     	
     	Restangular.setBaseUrl($rootScope.baseURL);
     	
-        var apiURL = '/foto';
-        var apiURLCompleta = '/LazarusHotelaria/rest-clovis' + apiURL;
+        var apiURL = '/foto'; 
+        var apiURLCompletaSemBarra = 'LazarusHotelaria/rest-clovis' + apiURL;
+        var apiURLCompleta = '/' + apiURLCompletaSemBarra; 
 
         var service = {
             obter : obter,            
@@ -49,7 +50,7 @@
 			fd.append('nomeArquivo', nomeArquivo);
 			fd.append('legenda', legenda);
 			
-			return $http.post(baseURL + apiURLCompleta + '?nomeArquivo=' + nomeArquivo + "&legenda=" + legenda, fd, {
+			return $http.post($rootScope.baseURL + apiURLCompletaSemBarra + '?nomeArquivo=' + nomeArquivo + "&legenda=" + legenda, fd, {
 				transformRequest : angular.identity,
 				headers : {
 					'Content-Type' : undefined					
