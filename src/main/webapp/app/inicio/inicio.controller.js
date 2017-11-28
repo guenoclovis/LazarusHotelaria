@@ -89,10 +89,40 @@
 		
 		function pesquisarReservasFilial(codFilial){
 			vm.filtros.codFilial = codFilial;
+			
 			irParaTelaPesquisaReserva();
+		}
+		
+		function validarFiltrosObrigatorios() {
+			
+			var filtrosValidos = true;
+			
+			if(vm.filtros.codFilial == undefined){
+				MsgCenter.add("WARN",
+						"Selecione um Hotel", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.filtros.dataEntrada == undefined){
+				MsgCenter.add("WARN",
+						"Selecione uma Data de Entrada", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.filtros.dataSaida == undefined){
+				MsgCenter.add("WARN",
+						"Selecione uma Data de Saida", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			return filtrosValidos;
 		}
 
 		function irParaTelaPesquisaReserva() {
+			
 			$state.go('quartoConsultarSiteAberto', {
 				'codFilial' : vm.filtros.codFilial,
 				'dataEntrada' : vm.filtros.dataEntrada,

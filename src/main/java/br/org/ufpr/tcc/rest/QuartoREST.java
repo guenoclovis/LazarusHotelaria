@@ -69,7 +69,7 @@ public class QuartoREST {
     }
 	
 	@GET
-	 @Path("/semreserva")
+	@Path("/semreserva")
     @Produces("application/json")
 	public ResultadoPaginadoDTO<QuartoDTO> listarSemReserva(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,

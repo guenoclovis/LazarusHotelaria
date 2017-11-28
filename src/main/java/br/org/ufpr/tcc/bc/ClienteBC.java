@@ -7,6 +7,7 @@ import java.util.logging.Logger;
 
 import br.org.ufpr.tcc.dao.ClienteDAO;
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
+import br.org.ufpr.tcc.dto.ReservaDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
@@ -75,5 +76,9 @@ public class ClienteBC {
 		}
     	return response;
     }
+
+	public Cliente obterClienteParaReserva(ReservaDTO dto) {
+		return dao.obterClienteParaReserva(dto);
+	}
 
 }

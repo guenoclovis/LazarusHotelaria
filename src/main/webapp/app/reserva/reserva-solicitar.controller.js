@@ -47,6 +47,11 @@
 
 		function solicitarReserva() {
 			MsgCenter.clear();
+			
+			if(!validarFiltrosObrigatorios()){
+				return;
+			}
+			
 			ReservaData.solicitarReserva(vm.reserva).then(function(data) {
 				
 				
@@ -60,6 +65,43 @@
 				}
 			});
 			
+		}
+		
+		function validarFiltrosObrigatorios() {
+			
+			var filtrosValidos = true;
+			
+			if(vm.reserva.email == undefined || vm.reserva.email == ""){
+				MsgCenter.add("WARN",
+						"Email obrigatório!", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.reserva.nome == undefined || vm.reserva.nome == ""){
+				MsgCenter.add("WARN",
+						"Nome obrigatório!", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.reserva.telefone == undefined || vm.reserva.telefone == ""){
+				MsgCenter.add("WARN",
+						"Telefone obrigatório!", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.reserva.cpf == undefined || vm.reserva.cpf == ""){
+				MsgCenter.add("WARN",
+						"Telefone obrigatório!", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			
+			
+			return filtrosValidos;
 		}
 
 		function carregarFiliais() {

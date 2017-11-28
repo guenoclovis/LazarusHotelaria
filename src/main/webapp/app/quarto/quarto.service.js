@@ -19,7 +19,8 @@
             listar : listar,
             salvar : salvar,
             excluir : excluir,
-            pesquisarSemReserva : pesquisarSemReserva
+            pesquisarSemReserva : pesquisarSemReserva,
+            pesquisarComReserva : pesquisarComReserva
         };
 
         return service;
@@ -30,6 +31,10 @@
         }
 
         function listar(filtros) {
+            return Restangular.one(apiURLCompleta).get(filtros);
+        }
+        
+        function pesquisarComReserva(filtros) {
             return Restangular.one(apiURLCompleta).get(filtros);
         }
         

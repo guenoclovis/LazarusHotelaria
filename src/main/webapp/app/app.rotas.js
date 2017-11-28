@@ -31,8 +31,8 @@
 		$stateProvider.state(inicioState);
 		
 		var reservaConsultarState = {
-			name : 'reserva',
-			url : '/reserva',
+			name : 'reservaConsultar',
+			url : '/reservaConsultar',
 			templateUrl : './reserva/reserva-consultar.html',			
 			controller : 'ConsultarReservaController',
 			params : {
