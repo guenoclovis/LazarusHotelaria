@@ -25,6 +25,9 @@ import br.org.ufpr.tcc.validator.validacoes.NaoNulo;
 public class Reserva {
 
 		public static final String ID = "codReserva";
+		public static final String DATA_ENTRADA = "dtEntrada";
+		public static final String DATA_SAIDA = "dtSaida";
+		public static final String QUARTO = "quarto";
 		
 		@Id
 	    @Column(name = "cod_reserva")

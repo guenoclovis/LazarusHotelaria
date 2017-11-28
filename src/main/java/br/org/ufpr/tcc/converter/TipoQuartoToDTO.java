@@ -9,7 +9,7 @@ public class TipoQuartoToDTO {
 		TipoQuartoDTO dto = new TipoQuartoDTO();
 		
 		dto.setCodTipoQuarto(tipoquarto.getCodTipoQuarto());
-		dto.setTipo(tipoquarto.getTipo());		
+		dto.setTipo(tipoquarto.getTipo().toString());		
 		dto.setNome(tipoquarto.getNome());
 		dto.setDescricao(tipoquarto.getDescricao());		
 		dto.setStatus(String.valueOf(tipoquarto.getStatus()));

@@ -14,7 +14,7 @@ public class DTOtoTipoQuarto {
 		}
 		
 		tipoquarto.setCodTipoQuarto(dto.getCodTipoQuarto());
-		tipoquarto.setTipo("1");		
+		tipoquarto.setTipo(1);		
 		tipoquarto.setNome(dto.getNome());
 		tipoquarto.setDescricao(dto.getDescricao());		
 		tipoquarto.setStatus(Integer.valueOf(dto.getStatus()));

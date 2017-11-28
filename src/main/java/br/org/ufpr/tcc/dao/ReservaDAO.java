@@ -1,21 +1,22 @@
 package br.org.ufpr.tcc.dao;
 
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Join;
+import javax.persistence.criteria.JoinType;
 import javax.persistence.criteria.Path;
 import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
-import org.apache.commons.lang3.StringUtils;
-
 import br.org.ufpr.tcc.dto.ReservaFiltroDTO;
-import br.org.ufpr.tcc.entity.Reserva;
-import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Pagina;
+import br.org.ufpr.tcc.entity.Quarto;
+import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.util.Util;
 
 
@@ -61,15 +62,24 @@ public class ReservaDAO extends LazarusDAO<Reserva> {
     		Root<Reserva> root, CriteriaQuery<?> cq) {
         Predicate[] predicados = { };
         
-        Path<String> pathCampoTexto = root.get(Reserva.ID);
         
-        /*
-        if(StringUtils.isNotBlank(filtros.getIdReserva())){
-            predicados = Util.add(predicados, cb.like(pathCampoTexto, Util.likeFormat(filtros.getIdReserva())));
-        }
-        */
-        
-        //... outros predicados/filtros se houver
+//        Join<Reserva, Quarto> joinQuarto = root.join(Reserva.QUARTO, JoinType.INNER);
+//        Path<Integer> pathCodFilial = joinQuarto.get(Quarto.COD_FILIAL);
+//        
+//        Path<Date> pathDataEntrada = root.get(Reserva.DATA_ENTRADA);
+//        Path<Date> pathDataSaida = root.get(Reserva.DATA_SAIDA);
+//        
+//        if(filtros.getCodFilial() != null){
+//            predicados = Util.add(predicados, cb.equal(pathCodFilial,filtros.getCodFilial()));
+//        }
+//        
+//        if(filtros.getDataEntrada() != null){
+//            predicados = Util.add(predicados, cb.greaterThanOrEqualTo(pathDataEntrada, filtros.getDataEntrada()));
+//        }
+//        
+//        if(filtros.getDataSaida() != null){
+//        	predicados = Util.add(predicados, cb.lessThanOrEqualTo(pathDataSaida, filtros.getDataSaida()));
+//        }
         
         return predicados;
     }

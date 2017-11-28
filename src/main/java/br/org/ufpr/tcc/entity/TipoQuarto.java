@@ -23,7 +23,7 @@ public class TipoQuarto {
 	private Integer codTipoQuarto;
 	
 	@Column(name = "tipo")
-	private String tipo;
+	private Integer tipo;
 	
 	@Column(name = "nome")
 	private String nome;
@@ -42,11 +42,11 @@ public class TipoQuarto {
 		this.codTipoQuarto = codTipoQuarto;
 	}
 
-	public String getTipo() {
+	public Integer getTipo() {
 		return tipo;
 	}
 
-	public void setTipo(String tipo) {
+	public void setTipo(Integer tipo) {
 		this.tipo = tipo;
 	}
 

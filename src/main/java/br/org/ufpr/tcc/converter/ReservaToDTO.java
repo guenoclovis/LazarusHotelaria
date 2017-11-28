@@ -1,7 +1,9 @@
 package br.org.ufpr.tcc.converter;
 
+import br.org.ufpr.tcc.bc.FilialBC;
 import br.org.ufpr.tcc.dto.QuartoDTO;
 import br.org.ufpr.tcc.dto.ReservaDTO;
+import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.util.DataUtil;
 
@@ -23,7 +25,19 @@ public class ReservaToDTO {
 		if(reserva.getQuarto() != null){
 			QuartoToDTO converterQuarto = new QuartoToDTO();
 			QuartoDTO qDTO = converterQuarto.convert(reserva.getQuarto());
-			dto.setQuarto(qDTO);			
+			dto.setQuarto(qDTO);
+			
+			if(qDTO.getCodFilial() != null){
+				dto.setCodFilial(qDTO.getCodFilial());
+				
+				FilialBC filialBC = new FilialBC();
+				
+				Filial filial = filialBC.obter(qDTO.getCodFilial());
+				
+				if(filial != null){
+					dto.setNomeFilial(filial.getNome());
+				}
+			}
 		}
 
 		return dto;
