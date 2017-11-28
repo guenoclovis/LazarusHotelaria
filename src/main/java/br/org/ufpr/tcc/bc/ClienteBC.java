@@ -19,7 +19,7 @@ public class ClienteBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private ClienteDAO dao = new ClienteDAO();
+    private ClienteDAO dao = ClienteDAO.getDAO();
     private ClienteValidator validator = new ClienteValidator();
 
     public Cliente obter(Integer id) {

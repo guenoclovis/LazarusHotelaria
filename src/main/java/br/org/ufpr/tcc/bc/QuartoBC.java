@@ -18,7 +18,7 @@ public class QuartoBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private QuartoDAO dao = new QuartoDAO();
+    private QuartoDAO dao = QuartoDAO.getDAO();
     private QuartoValidator validator = new QuartoValidator();
 
     public Quarto obter(Integer id) {

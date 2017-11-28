@@ -17,7 +17,7 @@ public class FotoBC extends LazarusDAO<Foto> {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private FotoDAO dao = new FotoDAO();
+    private FotoDAO dao = FotoDAO.getDAO();
     //private FotoValidator validator = new FotoValidator();
 
     public Foto obter(Integer id) {

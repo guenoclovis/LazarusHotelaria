@@ -18,7 +18,7 @@ public class TipoQuartoBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private TipoQuartoDAO dao = new TipoQuartoDAO();
+    private TipoQuartoDAO dao = TipoQuartoDAO.getDAO();
     private TipoQuartoValidator validator = new TipoQuartoValidator();
     
     public TipoQuarto obter(Integer id) {

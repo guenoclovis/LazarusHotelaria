@@ -17,6 +17,17 @@ import br.org.ufpr.tcc.util.Util;
 
 public class TipoQuartoDAO extends LazarusDAO<TipoQuarto> {
     
+	private static TipoQuartoDAO dao = null;
+	
+	public static TipoQuartoDAO getDAO(){
+		if(dao == null){
+			dao = new TipoQuartoDAO();
+		}
+		return dao;
+	}
+	
+	private TipoQuartoDAO(){}
+	
 	public List<TipoQuarto> listar(TipoQuartoFiltroDTO filtros) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<TipoQuarto> cq = cb.createQuery(TipoQuarto.class);

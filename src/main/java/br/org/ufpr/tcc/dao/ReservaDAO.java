@@ -21,10 +21,20 @@ import br.org.ufpr.tcc.util.Util;
 
 
 public class ReservaDAO extends LazarusDAO<Reserva> {
-    
+
+	private static ReservaDAO dao = null;
+	
+	public static ReservaDAO getDAO(){
+		if(dao == null){
+			dao = new ReservaDAO();
+		}
+		return dao;
+	}
+	
+	private ReservaDAO(){}
+	
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    
     public List<Reserva> listar(ReservaFiltroDTO filtros) {
     	CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Reserva> cq = cb.createQuery(Reserva.class);

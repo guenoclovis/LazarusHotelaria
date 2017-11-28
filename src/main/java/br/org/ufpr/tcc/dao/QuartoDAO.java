@@ -28,6 +28,17 @@ import br.org.ufpr.tcc.util.Util;
 
 public class QuartoDAO extends LazarusDAO<Quarto> {
 
+	private static QuartoDAO dao = null;
+	
+	public static QuartoDAO getDAO(){
+		if(dao == null){
+			dao = new QuartoDAO();
+		}
+		return dao;
+	}
+	
+	private QuartoDAO(){}
+	
 	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
 	public List<Quarto> listar(QuartoFiltroDTO filtros) {
@@ -110,6 +121,8 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 			
 			listaRetorno.add(q);
 		}
+		
+		getHibernateSession().close();
 		
 		return listaRetorno;
 

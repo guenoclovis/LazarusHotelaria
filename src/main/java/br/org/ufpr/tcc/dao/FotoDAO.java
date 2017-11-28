@@ -21,6 +21,17 @@ import br.org.ufpr.tcc.util.Util;
 
 public class FotoDAO extends LazarusDAO<Foto> {
 
+	private static FotoDAO dao = null;
+	
+	public static FotoDAO getDAO(){
+		if(dao == null){
+			dao = new FotoDAO();
+		}
+		return dao;
+	}
+	
+	private FotoDAO(){}
+	
 	public List<Foto> listar(FotoFiltroDTO filtros) {
 		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Foto> cq = cb.createQuery(Foto.class);
