@@ -1,0 +1,185 @@
+<!-- ======================= SOLICITAR RESERVA =========================== -->
+<div>
+	<div ng-controller="DetalharReservaController as vm">
+
+		<!-- ================= CORPO DA PaGINA ================= -->
+		<div class="row linha-site">
+			<div class="container">
+				<!-- ================= TiTULO ================= -->
+				<div class="titulo-paginas-meio">
+					<div>
+						<h1>Detalhar Reserva</h1>
+					</div>
+				</div>
+
+				<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
+				<form>
+
+					<!-- NOME -->
+					<div class="well">
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="nome" class="cols-sm-2 control-label">Quarto
+									Selecionado</label>
+							</div>
+							<div class="col-md-4">
+								<h4>Quarto Solteiro</h4>
+								<img
+									ng-src="data:image/jpeg;base64,{{vm.reserva.quarto.foto.imagemMiniatura}}"
+									class="img-responsive" style="width: 100%" alt="Image">
+								<div class="quarto_valor">
+									<h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5>
+								</div>
+								<div class="quarto_valor">
+									<h5>Qtde camas: {{vm.reserva.quarto.nrCamas}}</h5>
+								</div>
+								<p>{{vm.reserva.quarto.descricao}}</p>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+						<div class="row campo-form">
+								<div class="col-sm-4">
+									<label for="combo-filial"
+										class="cols-sm-2 control-label required">Hotel</label>
+								</div>
+								<div class="col-sm-8">
+									<select id="filiais" class="btn btn-primary"
+										ng-click="vm.carregarFilial()"
+										ng-options="item.codFilial as item.nome for item in vm.filiais"
+										ng-model="vm.filtros.codFilial">
+										<option value="" selected>Selecione</option>
+									</select>
+								</div>
+							</div>
+
+							<!-- DATA ENTRADA -->
+							<div class="row campo-form">
+								<div class="col-sm-4">
+									<label for="dtNasc" class="cols-sm-2 control-label required">Data
+										de Entrada</label>
+								</div>
+								<div class="col-sm-8">
+									<p class="input-group">
+										<input type="text" class="form-control" id="dtNasc"
+											uib-datepicker-popup="{{format}}"
+											ng-model="vm.filtros.dataEntrada"
+											is-open="vm.popupDataEntrada.opened"
+											datepicker-options="dateOptions" ng-required="true"
+											close-text="Close" alt-input-formats="altInputFormats" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="vm.openDataEntrada()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+							</div>
+
+							<!-- DATA SAIDA -->
+							<div class="row campo-form">
+								<div class="col-sm-4">
+									<label for="dtNasc" class="cols-sm-2 control-label required">Data
+										de Sa&iacute;da</label>
+								</div>
+								<div class="col-sm-8">
+									<p class="input-group">
+										<input type="text" class="form-control" id="dtNasc"
+											uib-datepicker-popup="{{format}}"
+											ng-model="vm.filtros.dataSaida"
+											is-open="vm.popupDataSaida.opened"
+											datepicker-options="dateOptions" ng-required="true"
+											close-text="Close" alt-input-formats="altInputFormats" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="vm.openDataSaida()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+							</div>
+						
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="cpf" class="cols-sm-2 control-label">Valor (R$)</label>
+							</div>
+							<div class="col-md-6">
+								<span id="nome">{{vm.reserva.preco}}</span>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="cpf" class="cols-sm-2 control-label required">CPF</label>
+							</div>
+							<div class="col-md-6">
+								<span id="nome">{{vm.reserva.cpf}}</span>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+						<!-- NOME -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="nome" class="cols-sm-2 control-label required">Nome</label>
+							</div>
+							<div class="col-md-6">
+								<span id="nome">{{vm.reserva.nome}}</span>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+						<!-- TELEFONE -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="telefone" class="cols-sm-2 control-label required">Telefone</label>
+							</div>
+							<div class="col-md-6">
+								<span id="nome">{{vm.reserva.telefone}}</span>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+
+						<!-- E-MAIL -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="email1" class="cols-sm-2 control-label required">E-mail</label>
+							</div>
+							<div class="col-md-6">
+								<span id="nome">{{vm.reserva.email}}</span>
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+					</div>					
+				</form>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-12 lazarus-align">
+				<div class="lazarus-align">
+					<button ng-click="vm.voltarParaTelaAnterior()"
+						class="btn btn-primary">Voltar</button>
+					<button ng-click="vm.irParaTelaEdicao(vm.reserva.codReserva)"
+						class="btn btn-primary">Editar</button>
+					<button ng-click="vm.cancelar(vm.reserva.codReserva)"
+						class="btn btn-primary">Cancelar</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- ================= DEBUG ================= -->
+		<debug objeto="{{vm.quarto | json}}"></debug>
+
+	</div>
+
+</div>

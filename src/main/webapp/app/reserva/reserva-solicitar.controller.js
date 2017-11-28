@@ -13,7 +13,7 @@
 	/* @ngInject */
 	function SolicitarReservaController($controller, $scope, $state,
 			$stateParams, ReservaData, MsgCenter, FilialData, FiltroService,
-			QuartoData, FotoData) {
+			QuartoData, FotoData, TipoQuartoData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;
@@ -26,8 +26,7 @@
 		vm.filial = {};
 		
 		vm.reservas = [];
-		vm.reserva = {};
-		vm.reserva.preco = '400.00'
+		vm.reserva = {};		
 		
 		vm.codQuarto = $stateParams.codQuarto;
 		
@@ -43,7 +42,22 @@
 		function activate() {
 			carregarFiliais();
 			carregarFilial();
-			carregarQuarto();
+			carregarQuarto();			
+		}
+		
+		function calcularPreco(){
+			
+			var firstDate = vm.reservadataEntrada;
+			var secondDate = vm.reservadataSaida;
+			
+		    var date2 = new Date($scope.formatString(secondDate));
+		    var date1 = new Date($scope.formatString(firstDate));
+		    var timeDiff = Math.abs(date2.getTime() - date1.getTime());   
+		    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+		    
+		    
+		    
+		    vm.reserva.preco = vm.reserva.quarto.tipo
 		}
 
 		function solicitarReserva() {
@@ -146,7 +160,18 @@
 				
 				vm.reserva.quarto = vm.quarto;
 				
+				carregarTipoQuarto();
+				
 				vm.quartos = [];
+			});
+		}
+		
+		function carregarTipoQuarto(){
+			MsgCenter.clear();
+			var filtros = vm.filtros;
+
+			TipoQuartoData.obter(vm.codQuarto, filtros).then(function(data) {
+				vm.tipoQuarto = data.plain();
 			});
 		}
 		

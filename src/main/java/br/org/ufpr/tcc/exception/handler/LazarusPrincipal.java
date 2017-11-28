@@ -7,6 +7,7 @@ import br.org.ufpr.tcc.entity.Usuario;
 public class LazarusPrincipal {
 	
 	private String nomeUsuario;
+	private String perfil;
 	
 	private Date dataHoraLogin;
 

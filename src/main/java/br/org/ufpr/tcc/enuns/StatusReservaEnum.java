@@ -2,9 +2,11 @@ package br.org.ufpr.tcc.enuns;
 
 public enum StatusReservaEnum {
 	
+	CANCELADA(0,"Solicitada"),
 	SOLICITADA(1,"Solicitada"),
 	CONFIRMADA(2,"Confirmada"),
-	EFETIVADA(3,"Efetivada");
+	CHECKIN(3,"Check-in"),
+	CHECKOUT(4,"Check-out");
 	
 	private Integer codigo;
 	private String descricao;

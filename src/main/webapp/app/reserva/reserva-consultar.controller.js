@@ -38,7 +38,13 @@
 		//vm.filtros.codFilial = $stateParams.codFilial;
 		//vm.filtros.dataEntrada = $stateParams.dataEntrada;
 		//vm.filtros.dataSaida = $stateParams.dataSaida;
-
+		
+		vm.filtros = {
+		 "codFilial": 1,
+		  "dataEntrada": "2017-11-10T02:00:00.000Z",
+		  "dataSaida": "2017-11-11T02:00:00.000Z"
+		};
+		
 		// Paginação
 		vm.totalresults = 0;
 		vm.pagesize = 0;
@@ -60,6 +66,19 @@
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
 		
+		function activate() {
+			vm.deveRestaurar = FiltroService.deveRestaurar();
+			
+			restaurarEstadoTela();
+			carregarFiliais();
+			carregarFilial();
+			
+//			if(preencheuFiltrosObrigatorioParaPesquisa()){
+				pesquisar();
+//			}
+		}
+		
+		
 		function openDataEntrada() {
 			vm.popupDataEntrada.opened = true;
 		}
@@ -68,19 +87,6 @@
 			vm.popupDataSaida.opened = true;
 		}
 
-		function activate() {
-			vm.deveRestaurar = FiltroService.deveRestaurar();
-			
-			restaurarEstadoTela();
-			carregarFiliais();
-			carregarFilial();
-			
-			if(preencheuFiltrosObrigatorioParaPesquisa()){
-				pesquisarQuartosSemReserva();
-			}
-		}
-		
-		
 		function preencheuFiltrosObrigatorioParaPesquisa(){
 			if(vm.filtros.codFilial == undefined || vm.filtros.codFilial == ''){
 				return false;
@@ -143,10 +149,10 @@
 			$state.reload();
 		}
 
-		function irParaTelaDetalhamento(codQuarto) {
+		function irParaTelaDetalhamento(codReserva) {
 			salvarEstadoTela();
-			$state.go('quartoDetalhar', {
-				'codQuarto' : codQuarto
+			$state.go('reservaDetalhar', {
+				'codReserva' : codReserva
 			});
 		}
 

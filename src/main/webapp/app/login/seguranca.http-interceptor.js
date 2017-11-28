@@ -28,12 +28,15 @@
                 //---trecho igual ao do msgcenter.httpinterceptor---
                 var headerTarget = response.config.headers.target;
 		    	
-		    	var msgs = response.data.mensagens;
-		    	for (var i = 0; i < msgs.length; i++) {
-		    		var msg = msgs[i];
-		    		MsgCenter.add(msg.severity, msg.message, msg.path, {target: headerTarget}); 
-		    	}
-		    	MsgCenter.notify();
+                if(response.data.mensagens != undefined && response.data.mensagens != null){
+                	var msgs = response.data.mensagens;
+                	for (var i = 0; i < msgs.length; i++) {
+                		var msg = msgs[i];
+                		MsgCenter.add(msg.severity, msg.message, msg.path, {target: headerTarget}); 
+                	}
+                	MsgCenter.notify();                	
+                }
+                
                 //---trecho igual ao do msgcenter.httpinterceptor---
                 
                 if (status === 401) {

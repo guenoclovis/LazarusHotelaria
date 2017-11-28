@@ -8,6 +8,7 @@ public class ReservaDTO {
     private String dtReserva;
     private long preco;
     private Integer status;
+    private String statusDescricao;
     private Integer codCliente;
     
     private String nomeFilial;
@@ -115,6 +116,12 @@ public class ReservaDTO {
 	}
 	public void setCodFilial(Integer codFilial) {
 		this.codFilial = codFilial;
+	}
+	public String getStatusDescricao() {
+		return statusDescricao;
+	}
+	public void setStatusDescricao(String statusDescricao) {
+		this.statusDescricao = statusDescricao;
 	}
 }
 
