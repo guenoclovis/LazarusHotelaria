@@ -16,16 +16,31 @@ public class DTOtoReserva {
 			reserva = new ReservaBC().obter(dto.getCodReserva());
 		}
 		if (dto.getDtEntrada() != null) {
-			reserva.setDtEntrada(
-					DataUtil.toDate(dto.getDtEntrada().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+			try {
+				reserva.setDtEntrada(
+						DataUtil.toDate(dto.getDtEntrada().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+			} catch (Exception e) {
+				reserva.setDtEntrada(
+						DataUtil.toDate(dto.getDtEntrada(), "yyyy-MM-dd HH:mm"));
+			}
 		}
 		if (dto.getDtSaida() != null) {
-			reserva.setDtSaida(
-					DataUtil.toDate(dto.getDtSaida().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+			try {
+				reserva.setDtSaida(
+						DataUtil.toDate(dto.getDtSaida().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+			} catch (Exception e) {
+				reserva.setDtSaida(
+						DataUtil.toDate(dto.getDtSaida(), "yyyy-MM-dd HH:mm"));
+			}
 		}
 		if (dto.getDtReserva() != null) {
-			reserva.setDtReserva(
-					DataUtil.toDate(dto.getDtReserva().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+			try {
+				reserva.setDtReserva(
+						DataUtil.toDate(dto.getDtReserva().replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+			} catch (Exception e) {
+				reserva.setDtReserva(
+						DataUtil.toDate(dto.getDtReserva(), "yyyy-MM-dd HH:mm"));
+			}
 		}
 
 		reserva.setPreco(dto.getPreco());

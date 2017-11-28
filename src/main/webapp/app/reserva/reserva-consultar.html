@@ -78,84 +78,62 @@
 									
 						<!-- BOTAO BUSCAR -->
 						<div class="botoes-meio" align="center">
-							<button ng-click="vm.pesquisarQuartosComReserva()" name="buscar"
+							<button ng-click="vm.pesquisarLimpar()" name="buscar"
 								class="btn btn-primary">Buscar</button>
 						</div>
 								
 					</div>
-					
-					<div class="col-sm-6">
-							
-						<div class="row" ng-if="vm.filial.codFilial">
-							<!-- ================ CARROSSEL DE FOTOS =========================== -->
-								<div class="col-sm-8 carrossel-lateral" ng-if="vm.filial.foto.imagemOriginal">
-									<img
-										ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemOriginal}}"
-										class="img-original-responsive" alt="Image"/>
-								
-								</div>
-								
-								<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
-								<div class="col-sm-4 carrossel-lateral">	
-									<h3 align="left">Caracter&iacute;sticas</h1></h3></br>
-									<div ng-repeat="atributo in vm.filial.atributos">
-										<h5>{{atributo.nome}}</h5>
-										<p>{{atributo.descricao}}</p>
-									</div>
-								</div>
-							</div>
-						</div>
-					
-					</div>
-					
-					<div class="col-md-1"></div>
-					
-				</div><!-- div form + foto hotel + atributos -->
-				
-				<div class="row">
-					<!-- ================= DESCRICAO DO HOTEL ================= -->
-					<div class="col-sm-12 corpo-descricao">
-						<p>{{vm.filial.descricao}}</p>
-					</div>
 				</div>
-			
 			</div><!-- div class .container parte1 -->
 			
-			
-		
-		
-		<br>
-			
-		<!-- ================= QUARTOS ================= -->
-		<div class="container" ng-if="vm.quartos.length > 0"><!-- div class container parte2 -->
-			
-			<div class="titulo-paginas-meio">
-		    	<h1>Quartos</h1>
-		    	<p>Confira nossos os tipos de quartos e encontre o que combina com a sua viagem.</p>
-		    </div>
-	    
-	    	<div class=".container">	
-				<div class="row">
-					<!-- ======================= TIPOS DE QUARTOS  =========================== -->
-					<div class="container-fluid bg-4 text-center">
-					<div class="row">
-					    <div class="col-sm-3 item-quarto" ng-repeat="quarto in vm.quartos">
-					    	<a ui-sref="tipoquartosite">
-						    	<h4>Quarto Solteiro</h4>						
-								<img ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}" class="img-responsive" style="width:100%" alt="Image">
-								<div class="quarto_valor"><h5>{{quarto.descricaoTipoQuarto}}</h5></div>
-								<div class="quarto_valor"><h5>{{quarto.nrCamas}}</h5></div>
-								<p>{{quarto.descricao}}</p>
-								<button class="btn btn-primary"
-										ng-click="vm.detalharReserva(quarto.codQuarto)">Detalhar Reserva</button>
-								<p>&nbsp;</p>
-					    	</a>
-					    </div>
+			<!-- TESTE BUSCA PAGINADA -->
+			<div ng-show="vm.reservas.length > 0" class="well">				
+				<div class="clearfix">
+					<div class="pull-right">
+						<select id="pageSize" class="form-control"
+							ng-options="item for item in vm.pageoptions"
+							ng-model="vm.pagesize" ng-change="vm.pageSizeAlterado()"
+							selectpicker>
+						</select>
 					</div>
-				</br>
+					<br> <br>
+					<table id="table-results" data-searching="false"
+						data-ordering="false" class="table table-striped grid-pesquisa">
+						<thead>
+							<tr>
+								<th>Hotel</th>
+								<th>Nº Quarto</th>
+								<th>Data da Reserva</th>
+								<th>Data de Entrada</th>
+								<th>Data de Sa&iacute;da</th>
+								<th>Valor (R$)</th>
+								<th class="text-center">A&ccedil;&atilde;o</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="reserva in vm.reservas">
+								<td ng-bind="reserva.nomeFilial"></td>
+								<td ng-bind="reserva.quarto.idQuarto"></td>
+								<td ng-bind="reserva.dtReserva"></td>
+								<td ng-bind="reserva.dataEntrada"></td>
+								<td ng-bind="reserva.dataSaida"></td>
+								<td ng-bind="reserva.preco"></td>
+								<td class="text-center"><a
+									ng-click="vm.irParaTelaDetalhamento(reserva.codReserva)"
+									class="btn btn-primary btn-xs">Detalhar</a></td>
+							</tr>
+						</tbody>
+					</table>
+					<div class="text-center">
+						<div uib-pagination total-items="vm.totalresults"
+							items-per-page="vm.pagesize" ng-model="vm.currentpage"
+							ng-change="vm.paginaAlterada()" max-size="10" rotate="false"
+							boundary-links="true" previous-text="&lt;" next-text="&gt;"
+							first-text="&lt;&lt;" last-text="&gt;&gt;"></div>
+					</div>
 				</div>
 			</div>
- 			
+ 		
 		<!-- ================= DEBUG ================= -->
 		
 		</div><!-- div class container parte2 -->

@@ -8,7 +8,11 @@ public class ReservaDTO {
     private String dtReserva;
     private long preco;
     private Integer status;
+    private String statusDescricao;
     private Integer codCliente;
+    
+    private String nomeFilial;
+    private Integer codFilial;
     
     private String nome;
     private String cpf;
@@ -101,7 +105,23 @@ public class ReservaDTO {
 	public void setDataSaida(String dataSaida) {
 		this.dataSaida = dataSaida;
 	}
-	
-	
+	public String getNomeFilial() {
+		return nomeFilial;
+	}
+	public void setNomeFilial(String nomeFilial) {
+		this.nomeFilial = nomeFilial;
+	}
+	public Integer getCodFilial() {
+		return codFilial;
+	}
+	public void setCodFilial(Integer codFilial) {
+		this.codFilial = codFilial;
+	}
+	public String getStatusDescricao() {
+		return statusDescricao;
+	}
+	public void setStatusDescricao(String statusDescricao) {
+		this.statusDescricao = statusDescricao;
+	}
 }
 

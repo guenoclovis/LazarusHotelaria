@@ -23,6 +23,7 @@ import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 //import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.facade.ReservaFacade;
+import br.org.ufpr.tcc.util.DataUtil;
 
 @Path("/reserva")
 public class ReservaREST {
@@ -41,11 +42,14 @@ public class ReservaREST {
     @Produces("application/json")
 	public ResultadoPaginadoDTO<ReservaDTO> listar(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
+	        @QueryParam("codFilial") Integer codFilial, @QueryParam("dataEntrada") String dtEntrada,	        
+	        @QueryParam("dataSaida") String dtSaida,
 	        @QueryParam("fields") String fields) {
 
 		ReservaFiltroDTO filtro = new ReservaFiltroDTO();
-        
+		filtro.setCodFilial(codFilial);
+		filtro.setDataEntrada(DataUtil.toDate(dtEntrada.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+		filtro.setDataSaida(DataUtil.toDate(dtSaida.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
 
         // Paginação
         if (pageSize != 0) {

@@ -32,7 +32,7 @@
 									<h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5>
 								</div>
 								<div class="quarto_valor">
-									<h5>{{vm.reserva.quarto.nrCamas}}</h5>
+									<h5>Qtde camas: {{vm.reserva.quarto.nrCamas}}</h5>
 								</div>
 								<p>{{vm.reserva.quarto.descricao}}</p>
 							</div>
@@ -46,8 +46,8 @@
 									Entrada</label>
 							</div>
 							<div class="col-md-6">
-								<input id="cpf" type="dataEntrada" class="btn" disabled
-									ng-model="vm.reserva.dataEntrada">
+								<input id="cpf" type="cpf" class="form-control" 
+									ng-model="vm.reserva.dataEntrada" ng-disabled="true">
 							</div>
 							<div class="col-md-2"></div>
 						</div>
@@ -59,8 +59,20 @@
 									Sa&iacute;da</label>
 							</div>
 							<div class="col-md-6">
-								<input id="cpf" type="dataEntrada" class="btn" disabled
-									ng-model="vm.reserva.dataSaida">
+								<input id="cpf" type="cpf" class="form-control" 
+									ng-model="vm.reserva.dataSaida" ng-disabled="true">
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+						
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="cpf" class="cols-sm-2 control-label">Valor (R$)</label>
+							</div>
+							<div class="col-md-6">
+								<input id="cpf" type="cpf" class="form-control" 
+									ng-model="vm.reserva.preco" ng-disabled="true">
 							</div>
 							<div class="col-md-2"></div>
 						</div>

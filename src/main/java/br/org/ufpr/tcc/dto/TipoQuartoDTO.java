@@ -9,6 +9,7 @@ public class TipoQuartoDTO {
     private String nome;
     private String descricao;
     private String status;
+    private String preco;
     
 	public Integer getCodTipoQuarto() {
 		return codTipoQuarto;
@@ -40,4 +41,11 @@ public class TipoQuartoDTO {
 	public void setStatus(String status) {
 		this.status = status;
 	}
+	public String getPreco() {
+		return preco;
+	}
+	public void setPreco(String preco) {
+		this.preco = preco;
+	}
+	
 }

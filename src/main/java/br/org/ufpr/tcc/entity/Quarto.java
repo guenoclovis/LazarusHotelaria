@@ -31,6 +31,7 @@ public class Quarto {
 
 	public static final String ID = "codQuarto";
 	public static final String NUMERO_QUARTO = "idQuarto";
+	public static final String COD_FILIAL = "codFilial";
 	
 	@Id
 	@Column(name = "cod_quarto")

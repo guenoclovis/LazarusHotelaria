@@ -38,7 +38,13 @@
 		//vm.filtros.codFilial = $stateParams.codFilial;
 		//vm.filtros.dataEntrada = $stateParams.dataEntrada;
 		//vm.filtros.dataSaida = $stateParams.dataSaida;
-
+		
+		vm.filtros = {
+		 "codFilial": 1,
+		  "dataEntrada": "2017-11-10T02:00:00.000Z",
+		  "dataSaida": "2017-11-11T02:00:00.000Z"
+		};
+		
 		// Paginação
 		vm.totalresults = 0;
 		vm.pagesize = 0;
@@ -49,18 +55,29 @@
 		vm.pesquisarLimpar = pesquisarLimpar;
 		vm.pageSizeAlterado = pageSizeAlterado;
 		vm.paginaAlterada = paginaAlterada;
-		vm.limpar = limpar;
-		vm.irParaTelaInclusao = irParaTelaInclusao;
+		vm.limpar = limpar;		
 		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 		vm.carregarFiliais = carregarFiliais;
 		vm.carregarFilial = carregarFilial;
-		vm.pesquisarQuartosComReserva = pesquisarQuartosComReserva;
-		vm.solicitarReserva = solicitarReserva;
+			
 		
 
 		activate();
 
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
+		
+		function activate() {
+			vm.deveRestaurar = FiltroService.deveRestaurar();
+			
+			restaurarEstadoTela();
+			carregarFiliais();
+			carregarFilial();
+			
+//			if(preencheuFiltrosObrigatorioParaPesquisa()){
+				pesquisar();
+//			}
+		}
+		
 		
 		function openDataEntrada() {
 			vm.popupDataEntrada.opened = true;
@@ -70,19 +87,6 @@
 			vm.popupDataSaida.opened = true;
 		}
 
-		function activate() {
-			vm.deveRestaurar = FiltroService.deveRestaurar();
-			
-			restaurarEstadoTela();
-			carregarFiliais();
-			carregarFilial();
-			
-			if(preencheuFiltrosObrigatorioParaPesquisa()){
-				pesquisarQuartosSemReserva();
-			}
-		}
-		
-		
 		function preencheuFiltrosObrigatorioParaPesquisa(){
 			if(vm.filtros.codFilial == undefined || vm.filtros.codFilial == ''){
 				return false;
@@ -122,21 +126,7 @@
 				
 				vm.quartos = [];
 			});
-		}
-		
-		function pesquisarQuartosComReserva(){
-			MsgCenter.clear();
-			var filtros = vm.filtros;
-			
-			if(!validarFiltrosObrigatorios()){
-				return;
-			}
-
-			QuartoData.pesquisarComReserva(filtros).then(function(data) {
-				vm.quartos = data.entidades;
-			});
-			
-		}
+		}		
 		
 		function pesquisarLimpar() {
 			vm.filtros.currentpage = 0;
@@ -159,35 +149,13 @@
 			$state.reload();
 		}
 
-		function irParaTelaDetalhamento(codQuarto) {
+		function irParaTelaDetalhamento(codReserva) {
 			salvarEstadoTela();
-			$state.go('quartoDetalhar', {
-				'codQuarto' : codQuarto
+			$state.go('reservaDetalhar', {
+				'codReserva' : codReserva
 			});
 		}
 
-		function irParaTelaInclusao() {
-			salvarEstadoTela();
-			$state.go('quartoEditar');
-		}
-		
-		function solicitarReserva(codQuarto){
-			salvarEstadoTela();
-			
-			MsgCenter.clear();
-		
-			if(!validarFiltrosObrigatorios()){
-				return;
-			}
-			
-			$state.go('solicitarReserva', {
-				'codQuarto' : codQuarto,
-				'codFilial' : vm.filtros.codFilial,
-				'dataEntrada' : vm.filtros.dataEntrada,
-				'dataSaida' : vm.filtros.dataSaida
-			});
-		}
-		
 		function validarFiltrosObrigatorios() {
 			
 			var filtrosValidos = true;
@@ -236,8 +204,8 @@
 			MsgCenter.clear();
 			var filtros = vm.filtros;
 
-			QuartoData.listar(filtros).then(function(data) {
-				vm.quartos = data.entidades;
+			ReservaData.listar(filtros).then(function(data) {
+				vm.reservas = data.entidades;
 
 				if (data.pagina) {
 					var page = data.pagina;
