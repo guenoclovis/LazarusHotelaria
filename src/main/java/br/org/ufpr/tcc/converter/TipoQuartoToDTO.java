@@ -14,6 +14,21 @@ public class TipoQuartoToDTO {
 		dto.setDescricao(tipoquarto.getDescricao());		
 		dto.setStatus(String.valueOf(tipoquarto.getStatus()));
 		
+		if(tipoquarto.getPreco() != null){
+			String aux = tipoquarto.getPreco().toString();
+			if(aux.endsWith(".0")){
+				dto.setPreco(aux.replace(".0", ",00"));				
+			} else
+			
+			if(aux.endsWith(".00")){
+				dto.setPreco(aux.replace(".00", ",00"));				
+			} else {
+				dto.setPreco(aux.replace(".", ","));				
+			}
+			
+			
+		}
+		
 		return dto;
 	}
 

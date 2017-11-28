@@ -18,6 +18,12 @@ public class DTOtoTipoQuarto {
 		tipoquarto.setNome(dto.getNome());
 		tipoquarto.setDescricao(dto.getDescricao());		
 		tipoquarto.setStatus(Integer.valueOf(dto.getStatus()));
+		
+		if(dto.getPreco() != null){
+			tipoquarto.setPreco(Double.valueOf(dto.getPreco().replace(",", ".")));
+		} else {
+			tipoquarto.setPreco(Double.valueOf("0.0"));
+		}
 
 		return tipoquarto;
 	}

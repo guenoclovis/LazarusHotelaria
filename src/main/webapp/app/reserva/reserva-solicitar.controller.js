@@ -27,6 +27,7 @@
 		
 		vm.reservas = [];
 		vm.reserva = {};
+		vm.reserva.preco = '400.00'
 		
 		vm.codQuarto = $stateParams.codQuarto;
 		

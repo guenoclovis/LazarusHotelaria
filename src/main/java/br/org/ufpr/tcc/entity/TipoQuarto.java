@@ -33,6 +33,9 @@ public class TipoQuarto {
 	
 	@Column(name = "status")
 	private Integer status;
+	
+	@Column(name = "valor")
+    private Double preco;
 
 	public Integer getCodTipoQuarto() {
 		return codTipoQuarto;
@@ -74,6 +77,14 @@ public class TipoQuarto {
 		this.status = status;
 	}
 
+	public Double getPreco() {
+		return preco;
+	}
+
+	public void setPreco(Double preco) {
+		this.preco = preco;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -81,6 +92,7 @@ public class TipoQuarto {
 		result = prime * result + ((codTipoQuarto == null) ? 0 : codTipoQuarto.hashCode());
 		result = prime * result + ((descricao == null) ? 0 : descricao.hashCode());
 		result = prime * result + ((nome == null) ? 0 : nome.hashCode());
+		result = prime * result + ((preco == null) ? 0 : preco.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		result = prime * result + ((tipo == null) ? 0 : tipo.hashCode());
 		return result;
@@ -110,6 +122,11 @@ public class TipoQuarto {
 				return false;
 		} else if (!nome.equals(other.nome))
 			return false;
+		if (preco == null) {
+			if (other.preco != null)
+				return false;
+		} else if (!preco.equals(other.preco))
+			return false;
 		if (status == null) {
 			if (other.status != null)
 				return false;
@@ -123,10 +140,5 @@ public class TipoQuarto {
 		return true;
 	}
 
-	@Override
-	public String toString() {
-		return "TipoQuarto [codTipoQuarto=" + codTipoQuarto + ", tipo=" + tipo + ", nome=" + nome + ", descricao="
-				+ descricao + ", status=" + status + "]";
-	}
-
+	
 }

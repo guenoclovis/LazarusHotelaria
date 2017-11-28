@@ -6,10 +6,10 @@
 
 				<!-- ================= TITULO ================= -->
 				<div class="titulo-paginas-meio">
-					<div ng-if="vm.tipoQuarto.codAtributo">
+					<div ng-if="vm.tipoQuarto.codTipoQuarto">
 						<h1>Editar Tipo de Quarto</h1>
 					</div>
-					<div ng-if="!vm.tipoQuarto.codAtributo">
+					<div ng-if="!vm.tipoQuarto.codTipoQuarto">
 						<h1>Incluir Tipo de Quarto</h1>
 					</div>
 				</div>
@@ -53,6 +53,20 @@
 								<input type="text" class="form-control" name="descricao"
 									id="descricao" ng-model="vm.tipoQuarto.descricao"
 									placeholder="Descri&ccedil;&atilde;o do Tipo de Quarto" />
+							</div>
+							<div class="col-md-2"></div>
+						</div>
+						
+						<!-- PRECO -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="preco" class="cols-sm-2 control-label required">Pre&ccedil;o</label>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="preco" 
+									id="preco" ng-model="vm.tipoQuarto.preco"
+									 />
 							</div>
 							<div class="col-md-2"></div>
 						</div>
