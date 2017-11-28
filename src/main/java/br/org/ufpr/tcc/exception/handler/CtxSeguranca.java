@@ -34,6 +34,7 @@ public class CtxSeguranca {
 	public void setPrincipal(Usuario usuario){
 		LazarusPrincipal lp = new LazarusPrincipal();
 		lp.setNomeUsuario(usuario.getNome());
+		lp.setPerfil(usuario.getPerfil());
 		lp.setDataHoraLogin(new Date());
 		
 		principal = lp;

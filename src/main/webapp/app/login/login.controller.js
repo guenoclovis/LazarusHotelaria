@@ -44,6 +44,7 @@
         	MsgCenter.clear();
         	LoginData.login(vm.dadosLogin).then(function (data) {
                 $rootScope.nomeUsuario = data.nomeUsuario;
+                $rootScope.perfil = data.perfil;
                 $state.go('inicio');
             });
         }
