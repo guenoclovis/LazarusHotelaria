@@ -1,0 +1,11 @@
+- Procure o subsystem jboss:domain:io:
+
+		<subsystem xmlns="urn:jboss:domain:io:1.1">
+            <worker name="default"/>                        
+            <buffer-pool name="default"/>
+        </subsystem>
+        
+- Substitua:  
+			<worker name="default"/>
+  Por:
+			<worker name="default" io-threads="30" task-max-threads="10"/>
