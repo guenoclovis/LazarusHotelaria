@@ -14,98 +14,115 @@
 
 				<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
 				<form>
-				
+
 					<!-- NOME -->
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="nome" class="cols-sm-2 control-label">Quarto Selecionado</label>
-						</div>
-						<div class="col-md-4">
-							<h4>Quarto Solteiro</h4>						
-								<img ng-src="data:image/jpeg;base64,{{vm.reserva.quarto.foto.imagemMiniatura}}" class="img-responsive" style="width:100%" alt="Image">
-								<div class="quarto_valor"><h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5></div>
-								<div class="quarto_valor"><h5>{{vm.reserva.quarto.nrCamas}}</h5></div>
+					<div class="well">
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="nome" class="cols-sm-2 control-label">Quarto
+									Selecionado</label>
+							</div>
+							<div class="col-md-4">
+								<h4>Quarto Solteiro</h4>
+								<img
+									ng-src="data:image/jpeg;base64,{{vm.reserva.quarto.foto.imagemMiniatura}}"
+									class="img-responsive" style="width: 100%" alt="Image">
+								<div class="quarto_valor">
+									<h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5>
+								</div>
+								<div class="quarto_valor">
+									<h5>{{vm.reserva.quarto.nrCamas}}</h5>
+								</div>
 								<p>{{vm.reserva.quarto.descricao}}</p>
-						</div>								
-						<div class="col-md-2"></div>
-					</div>
-					
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="cpf" class="cols-sm-2 control-label">Data Entrada</label>
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-6">
-							<input id="cpf" type="dataEntrada" class="btn" disabled ng-model="vm.reserva.dataEntrada">
+
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="cpf" class="cols-sm-2 control-label">Data
+									Entrada</label>
+							</div>
+							<div class="col-md-6">
+								<input id="cpf" type="dataEntrada" class="btn" disabled
+									ng-model="vm.reserva.dataEntrada">
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-2"></div>
-					</div>
-					
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="cpf" class="cols-sm-2 control-label">Data Sa&iacute;da</label>
+
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="cpf" class="cols-sm-2 control-label">Data
+									Sa&iacute;da</label>
+							</div>
+							<div class="col-md-6">
+								<input id="cpf" type="dataEntrada" class="btn" disabled
+									ng-model="vm.reserva.dataSaida">
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-6">
-							<input id="cpf" type="dataEntrada" class="btn" disabled ng-model="vm.reserva.dataSaida">
+
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="cpf" class="cols-sm-2 control-label required">CPF</label>
+							</div>
+							<div class="col-md-6">
+								<input id="cpf" type="cpf" class="form-control" mask="999.999.999-99"
+									ng-model="vm.reserva.cpf">
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-2"></div>
-					</div>
-					
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="cpf" class="cols-sm-2 control-label required">CPF</label>
+
+						<!-- NOME -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="nome" class="cols-sm-2 control-label required">Nome</label>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="nome" id="nome"
+									ng-model="vm.reserva.nome" placeholder="Seu Nome" />
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-6">
-							<input id="cpf" type="cpf" mask="999.999.999-99" ng-model="vm.reserva.cpf">
+
+						<!-- TELEFONE -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="telefone" class="cols-sm-2 control-label required">Telefone</label>
+							</div>
+							<div class="col-md-6">
+								<input id="telefone" type="telefone" class="form-control" mask="(99)9999-9999"
+									ng-model="vm.reserva.telefone"  placeholder="(99)9999-9999">
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-2"></div>
-					</div>
-					
-					<!-- NOME -->
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="nome" class="cols-sm-2 control-label required">Nome</label>
-						</div>
-						<div class="col-md-6">
-							<input type="text" class="form-control" name="nome" id="nome" ng-model="vm.reserva.nome" placeholder="Seu Nome" />
-						</div>
-						<div class="col-md-2"></div>
-					</div>
-					
-					<!-- TELEFONE -->
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="telefone" class="cols-sm-2 control-label required">Telefone</label>
-						</div>
-						<div class="col-md-6">
-							<input id="telefone" type="telefone" mask="(99)9999-9999" ng-model="vm.reserva.telefone">
-						</div>
-						<div class="col-md-2"></div>
-					</div>
-			
-					<!-- E-MAIL -->
-					<div class="row campo-form">
-						<div class="col-md-2"></div>
-						<div class="col-md-2">
-							<label for="email1" class="cols-sm-2 control-label required">E-mail</label>
-						</div>
-						<div class="col-md-6">
-							<input type="text" class="form-control" name="email1" id="email1" ng-model="vm.reserva.email"
+
+						<!-- E-MAIL -->
+						<div class="row campo-form">
+							<div class="col-md-2"></div>
+							<div class="col-md-2">
+								<label for="email1" class="cols-sm-2 control-label required">E-mail</label>
+							</div>
+							<div class="col-md-6">
+								<input type="text" class="form-control" name="email1"
+									id="email1" ng-model="vm.reserva.email"
 									placeholder="email@abc.com" />
+							</div>
+							<div class="col-md-2"></div>
 						</div>
-						<div class="col-md-2"></div>
 					</div>
 
 					<!-- BOTOES -->
 					<div class="col-sm-10">
 						<div class="row botoes-direita">
-							<button  ng-click="vm.solicitarReserva()"
-								class="btn btn-primary">Solicitar Reserva</button>
+							<button ng-click="vm.solicitarReserva()" class="btn btn-primary">Solicitar
+								Reserva</button>
 						</div>
 					</div>
 				</form>

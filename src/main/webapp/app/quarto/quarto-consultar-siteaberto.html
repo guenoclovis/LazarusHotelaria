@@ -1,103 +1,115 @@
-<div><!-- div pai -->
-	<div ng-controller="ConsultarQuartoSiteAbertoController as vm"><!-- div controlador -->
-		
-		<div class="container"><!-- div class container parte1 -->
-		
+<div>
+	<!-- div pai -->
+	<div ng-controller="ConsultarQuartoSiteAbertoController as vm">
+		<!-- div controlador -->
+
+		<div class="container">
+			<!-- div class container parte1 -->
+
 			<!-- ================= TITULO ================= -->
 			<div class="titulo-paginas-meio">
 				<h1>Reservas</h1>
-			</div>	
-			
+			</div>
+
 			<!-- ======================= CONSULTA DE QUARTOS =========================== -->
-			<div class=".container">
-			
-				<div class="row"><!-- div class form + foto hotel + atributos -->
-					
-					<div class="col-sm-6">
-						
-						<div class="row campo-form">
-							<div class="col-sm-4">
-								<label for="combo-filial" class="cols-sm-2 control-label required">Hotel</label>
-							</div>			
-							<div class="col-sm-8">						
-								<select id="filiais" class="btn btn-primary" ng-click="vm.carregarFilial()"
-									ng-options="item.codFilial as item.nome for item in vm.filiais"
-									ng-model="vm.filtros.codFilial"	>
-									<option value="" selected>Selecione</option>
-								</select>
+			<div class="well">
+				<div class=".container">
+
+					<div class="row">
+						<!-- div class form + foto hotel + atributos -->
+
+						<div class="col-sm-6">
+
+							<div class="row campo-form">
+								<div class="col-sm-4">
+									<label for="combo-filial"
+										class="cols-sm-2 control-label required">Hotel</label>
+								</div>
+								<div class="col-sm-8">
+									<select id="filiais" class="btn btn-primary"
+										ng-click="vm.carregarFilial()"
+										ng-options="item.codFilial as item.nome for item in vm.filiais"
+										ng-model="vm.filtros.codFilial">
+										<option value="" selected>Selecione</option>
+									</select>
+								</div>
 							</div>
+
+							<!-- DATA ENTRADA -->
+							<div class="row campo-form">
+								<div class="col-sm-4">
+									<label for="dtNasc" class="cols-sm-2 control-label required">Data
+										de Entrada</label>
+								</div>
+								<div class="col-sm-8">
+									<p class="input-group">
+										<input type="text" class="form-control" id="dtNasc"
+											uib-datepicker-popup="{{format}}"
+											ng-model="vm.filtros.dataEntrada"
+											is-open="vm.popupDataEntrada.opened"
+											datepicker-options="dateOptions" ng-required="true"
+											close-text="Close" alt-input-formats="altInputFormats" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="vm.openDataEntrada()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+							</div>
+
+							<!-- DATA SAIDA -->
+							<div class="row campo-form">
+								<div class="col-sm-4">
+									<label for="dtNasc" class="cols-sm-2 control-label required">Data
+										de Sa&iacute;da</label>
+								</div>
+								<div class="col-sm-8">
+									<p class="input-group">
+										<input type="text" class="form-control" id="dtNasc"
+											uib-datepicker-popup="{{format}}"
+											ng-model="vm.filtros.dataSaida"
+											is-open="vm.popupDataSaida.opened"
+											datepicker-options="dateOptions" ng-required="true"
+											close-text="Close" alt-input-formats="altInputFormats" /> <span
+											class="input-group-btn">
+											<button type="button" class="btn btn-default"
+												ng-click="vm.openDataSaida()">
+												<i class="glyphicon glyphicon-calendar"></i>
+											</button>
+										</span>
+									</p>
+								</div>
+							</div>
+
+							<!-- BOTAO BUSCAR -->
+							<div class="botoes-meio" align="center">
+								<button ng-click="vm.pesquisarQuartosSemReserva()" name="buscar"
+									class="btn btn-primary">Buscar</button>
+							</div>
+
 						</div>
-						
-						<!-- DATA ENTRADA -->
-						<div class="row campo-form">
-							<div class="col-sm-4">
-								<label for="dtNasc" class="cols-sm-2 control-label required">Data
-									de Entrada</label>
-							</div>
-							<div class="col-sm-8">
-								<p class="input-group">
-									<input type="text" class="form-control" id="dtNasc"
-										uib-datepicker-popup="{{format}}"
-										ng-model="vm.filtros.dataEntrada"
-										is-open="vm.popupDataEntrada.opened"
-										datepicker-options="dateOptions" ng-required="true"
-										close-text="Close" alt-input-formats="altInputFormats" /> <span
-										class="input-group-btn">
-										<button type="button" class="btn btn-default"
-											ng-click="vm.openDataEntrada()">
-											<i class="glyphicon glyphicon-calendar"></i>
-										</button>
-									</span>
-								</p>
-							</div>
-						</div>
-			
-						<!-- DATA SAIDA -->
-						<div class="row campo-form">
-							<div class="col-sm-4">
-								<label for="dtNasc" class="cols-sm-2 control-label required">Data
-									de Sa&iacute;da</label>
-							</div>
-							<div class="col-sm-8">
-								<p class="input-group">
-									<input type="text" class="form-control" id="dtNasc"
-										uib-datepicker-popup="{{format}}"
-										ng-model="vm.filtros.dataSaida"
-										is-open="vm.popupDataSaida.opened"
-										datepicker-options="dateOptions" ng-required="true"
-										close-text="Close" alt-input-formats="altInputFormats" /> <span
-										class="input-group-btn">
-										<button type="button" class="btn btn-default"
-											ng-click="vm.openDataSaida()">
-											<i class="glyphicon glyphicon-calendar"></i>
-										</button>
-									</span>
-								</p>
-							</div>
-						</div>
-									
-						<!-- BOTAO BUSCAR -->
-						<div class="botoes-meio" align="center">
-							<button ng-click="vm.pesquisarQuartosSemReserva()" name="buscar"
-								class="btn btn-primary">Buscar</button>
-						</div>
-								
-					</div>
-					
-					<div class="col-sm-6">
-							
-						<div class="row" ng-if="vm.filial.codFilial">
-							<!-- ================ CARROSSEL DE FOTOS =========================== -->
-								<div class="col-sm-8 carrossel-lateral" ng-if="vm.filial.foto.imagemOriginal">
+
+						<div class="col-sm-6">
+
+							<div class="row" ng-if="vm.filial.codFilial">
+								<!-- ================ CARROSSEL DE FOTOS =========================== -->
+								<div class="col-sm-8 carrossel-lateral"
+									ng-if="vm.filial.foto.imagemOriginal">
 									<img
 										ng-src="data:image/jpeg;base64,{{vm.filial.foto.imagemOriginal}}"
-										class="img-original-responsive" alt="Image"/>
-								
+										class="img-original-responsive" alt="Image" />
+
 								</div>
-								
+
 								<!-- ======================= ATRIBUTOS DA FILIAL =========================== -->
-								<div class="col-sm-4 carrossel-lateral">	
-									<h3 align="left">Caracter&iacute;sticas</h1></h3></br>
+								<div class="col-sm-4 carrossel-lateral">
+									<h3 align="left">
+										Descri&ccedil;&atilde;o
+										</h1>
+									</h3>
+									</br>
 									<div ng-repeat="atributo in vm.filial.atributos">
 										<h5>{{atributo.nome}}</h5>
 										<p>{{atributo.descricao}}</p>
@@ -105,61 +117,76 @@
 								</div>
 							</div>
 						</div>
-					
+
 					</div>
-					
+
 					<div class="col-md-1"></div>
-					
-				</div><!-- div form + foto hotel + atributos -->
-				
+
+				</div>
+				<!-- div form + foto hotel + atributos -->
+
 				<div class="row">
 					<!-- ================= DESCRICAO DO HOTEL ================= -->
-					<div class="col-sm-12 corpo-descricao">
+					<div class="col-sm-5"></div>
+					<div class="col-sm-7 corpo-descricao">
 						<p>{{vm.filial.descricao}}</p>
 					</div>
 				</div>
-			
-			</div><!-- div class .container parte1 -->
-			
-			
-		
-		
+
+			</div>
+			<!-- div class .container parte1 -->
+
+		</div>
+
+
 		<br>
-			
+
 		<!-- ================= QUARTOS ================= -->
-		<div class="container" ng-if="vm.quartos.length > 0"><!-- div class container parte2 -->
-			
+		<div class="container" ng-if="vm.quartos.length > 0">
+			<!-- div class container parte2 -->
+
 			<div class="titulo-paginas-meio">
-		    	<h1>Quartos</h1>
-		    	<p>Confira nossos os tipos de quartos e encontre o que combina com a sua viagem.</p>
-		    </div>
-	    
-	    	<div class=".container">	
+				<h1>Quartos</h1>
+				<p>Confira nossos os tipos de quartos e encontre o que combina
+					com a sua viagem.</p>
+			</div>
+
+			<div class=".container">
 				<div class="row">
 					<!-- ======================= TIPOS DE QUARTOS  =========================== -->
 					<div class="container-fluid bg-4 text-center">
-					<div class="row">
-					    <div class="col-sm-3 item-quarto" ng-repeat="quarto in vm.quartos">
-					    	<a ui-sref="tipoquartosite">
-						    	<h4>Quarto Solteiro</h4>						
-								<img ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}" class="img-responsive" style="width:100%" alt="Image">
-								<div class="quarto_valor"><h5>{{quarto.descricaoTipoQuarto}}</h5></div>
-								<div class="quarto_valor"><h5>{{quarto.nrCamas}}</h5></div>
-								<p>{{quarto.descricao}}</p>
-								<button class="btn btn-primary"
-										ng-click="vm.solicitarReserva(quarto.codQuarto)">Solicitar Reserva</button>
-								<p>&nbsp;</p>
-					    	</a>
-					    </div>
+						<div class="row">
+							<div class="col-sm-3 item-quarto"
+								ng-repeat="quarto in vm.quartos">
+								<a ui-sref="tipoquartosite">
+									<h4>Quarto Solteiro</h4> <img
+									ng-src="data:image/jpeg;base64,{{quarto.foto.imagemMiniatura}}"
+									class="img-responsive" style="width: 100%" alt="Image">
+									<div class="quarto_valor">
+										<h5>{{quarto.descricaoTipoQuarto}}</h5>
+									</div>
+									<div class="quarto_valor">
+										<h5>{{quarto.nrCamas}}</h5>
+									</div>
+									<p>{{quarto.descricao}}</p>
+									<button class="btn btn-primary"
+										ng-click="vm.solicitarReserva(quarto.codQuarto)">Solicitar
+										Reserva</button>
+									<p>&nbsp;</p>
+								</a>
+							</div>
+						</div>
+						</br>
 					</div>
-				</br>
 				</div>
+
+				<!-- ================= DEBUG ================= -->
+
 			</div>
- 			
-		<!-- ================= DEBUG ================= -->
-		
-		</div><!-- div class container parte2 -->
-		<debug objeto="{{vm.filtros | json}}"></debug>
-		<debug objeto="{{vm.quartos | json}}"></debug>
-	</div><!-- div controlador -->
-</div><!-- div pai -->
+			<!-- div class container parte2 -->
+			<debug objeto="{{vm.filtros | json}}"></debug>
+			<debug objeto="{{vm.quartos | json}}"></debug>
+		</div>
+		<!-- div controlador -->
+	</div>
+	<!-- div pai -->

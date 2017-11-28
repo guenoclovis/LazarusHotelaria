@@ -72,10 +72,28 @@
 
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
+			
 			restaurarEstadoTela();
 			carregarFiliais();
 			carregarFilial();
-			pesquisarQuartosSemReserva();
+			
+			if(preencheuFiltrosObrigatorioParaPesquisa()){
+				pesquisarQuartosSemReserva();
+			}
+		}
+		
+		
+		function preencheuFiltrosObrigatorioParaPesquisa(){
+			if(vm.filtros.codFilial == undefined || vm.filtros.codFilial == ''){
+				return false;
+			}
+			if(vm.filtros.dataEntrada == undefined || vm.filtros.dataEntrada == ''){
+				return false;
+			}
+			if(vm.filtros.dataSaida == undefined || vm.filtros.dataSaida == ''){
+				return false;
+			}
+			return true;
 		}
 
 		function carregarFiliais() {
@@ -95,7 +113,7 @@
 				vm.filial = data;
 				var filtros = { carregarImagemOriginal : true, carregarImagemMiniatura : true };
 				
-				if(vm.filial.foto.codFoto != undefined && vm.filial.foto.codFoto != null){
+				if(vm.filial.foto != undefined && vm.filial.foto.codFoto != undefined && vm.filial.foto.codFoto != null){
 					FotoData.obter(vm.filial.foto.codFoto, filtros).then(function(data) {
 						vm.filial.foto = data;
 					});	
@@ -109,6 +127,10 @@
 		function pesquisarQuartosSemReserva(){
 			MsgCenter.clear();
 			var filtros = vm.filtros;
+			
+			if(!validarFiltrosObrigatorios()){
+				return;
+			}
 
 			QuartoData.pesquisarSemReserva(filtros).then(function(data) {
 				vm.quartos = data.entidades;
@@ -151,12 +173,47 @@
 		
 		function solicitarReserva(codQuarto){
 			salvarEstadoTela();
+			
+			MsgCenter.clear();
+		
+			if(!validarFiltrosObrigatorios()){
+				return;
+			}
+			
 			$state.go('solicitarReserva', {
 				'codQuarto' : codQuarto,
 				'codFilial' : vm.filtros.codFilial,
 				'dataEntrada' : vm.filtros.dataEntrada,
 				'dataSaida' : vm.filtros.dataSaida
 			});
+		}
+		
+		function validarFiltrosObrigatorios() {
+			
+			var filtrosValidos = true;
+			
+			if(vm.filtros.codFilial == undefined){
+				MsgCenter.add("WARN",
+						"Selecione um Hotel", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.filtros.dataEntrada == undefined){
+				MsgCenter.add("WARN",
+						"Selecione uma Data de Entrada", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			if(vm.filtros.dataSaida == undefined){
+				MsgCenter.add("WARN",
+						"Selecione uma Data de Saida", undefined,
+						undefined);
+				filtrosValidos = false;
+			}
+			
+			return filtrosValidos;
 		}
 		
 		function salvarEstadoTela() {

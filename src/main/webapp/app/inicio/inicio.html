@@ -60,74 +60,76 @@
 					</div>
 
 					<!-- FILIAL -->
-					<div class="row">
-						<div class="col-sm-12">
-							<label for="dtNasc" class="cols-sm-2 control-label">Hotel
-								Destino</label>
+					<div class="well">
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="dtNasc" class="cols-sm-2 control-label">Hotel
+									Destino</label>
+							</div>
+
+							<div class="col-sm-12">
+								<select id="filiais" class="btn btn-primary"
+									ng-options="item.codFilial as item.nome for item in vm.filiais"
+									ng-model="vm.filtros.codFilial" selectpicker>
+									<option value="" selected>Selecione</option>
+								</select>
+
+							</div>
 						</div>
 
-						<div class="col-sm-12">
-							<select id="filiais" class="btn btn-primary"
-								ng-options="item.codFilial as item.nome for item in vm.filiais"
-								ng-model="vm.filtros.codFilial" selectpicker>
-								<option value="" selected>Selecione</option>
-							</select>
+						<!-- DATA ENTRADA -->
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="dtNasc" class="cols-sm-2 control-label">Data
+									de Entrada</label>
+							</div>
+							<div class="col-sm-12">
+								<p class="input-group">
+									<input type="text" class="form-control" id="dtNasc"
+										uib-datepicker-popup="{{format}}"
+										ng-model="vm.filtros.dataEntrada"
+										is-open="vm.popupDataEntrada.opened"
+										datepicker-options="dateOptions" ng-required="true"
+										close-text="Close" alt-input-formats="altInputFormats" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="vm.openDataEntrada()">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
+						</div>
 
+						<!-- DATA SAIDA -->
+						<div class="row">
+							<div class="col-sm-12">
+								<label for="dtNasc" class="cols-sm-2 control-label">Data
+									de Sa&iacute;da</label>
+							</div>
+							<div class="col-sm-12">
+								<p class="input-group">
+									<input type="text" class="form-control" id="dtNasc"
+										uib-datepicker-popup="{{format}}"
+										ng-model="vm.filtros.dataSaida"
+										is-open="vm.popupDataSaida.opened"
+										datepicker-options="dateOptions" ng-required="true"
+										close-text="Close" alt-input-formats="altInputFormats" /> <span
+										class="input-group-btn">
+										<button type="button" class="btn btn-default"
+											ng-click="vm.openDataSaida()">
+											<i class="glyphicon glyphicon-calendar"></i>
+										</button>
+									</span>
+								</p>
+							</div>
 						</div>
-					</div>
 
-					<!-- DATA ENTRADA -->
-					<div class="row">
-						<div class="col-sm-12">
-							<label for="dtNasc" class="cols-sm-2 control-label">Data
-								de Entrada</label>
+						<!-- BOTAO BUSCAR -->
+						<div class="botoes-meio" align="center">
+							<button ng-click="vm.irParaTelaPesquisaReserva()" name="buscar"
+								class="btn btn-primary">Buscar</button>
 						</div>
-						<div class="col-sm-12">
-							<p class="input-group">
-								<input type="text" class="form-control" id="dtNasc"
-									uib-datepicker-popup="{{format}}"
-									ng-model="vm.filtros.dataEntrada"
-									is-open="vm.popupDataEntrada.opened"
-									datepicker-options="dateOptions" ng-required="true"
-									close-text="Close" alt-input-formats="altInputFormats" /> <span
-									class="input-group-btn">
-									<button type="button" class="btn btn-default"
-										ng-click="vm.openDataEntrada()">
-										<i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-							</p>
-						</div>
-					</div>
-
-					<!-- DATA SAIDA -->
-					<div class="row">
-						<div class="col-sm-12">
-							<label for="dtNasc" class="cols-sm-2 control-label">Data
-								de Sa&iacute;da</label>
-						</div>
-						<div class="col-sm-12">
-							<p class="input-group">
-								<input type="text" class="form-control" id="dtNasc"
-									uib-datepicker-popup="{{format}}"
-									ng-model="vm.filtros.dataSaida"
-									is-open="vm.popupDataSaida.opened"
-									datepicker-options="dateOptions" ng-required="true"
-									close-text="Close" alt-input-formats="altInputFormats" /> <span
-									class="input-group-btn">
-									<button type="button" class="btn btn-default"
-										ng-click="vm.openDataSaida()">
-										<i class="glyphicon glyphicon-calendar"></i>
-									</button>
-								</span>
-							</p>
-						</div>
-					</div>
-
-					<!-- BOTAO BUSCAR -->
-					<div class="botoes-meio" align="center">
-						<button ng-click="vm.irParaTelaPesquisaReserva()" name="buscar"
-							class="btn btn-primary">Buscar</button>
 					</div>
 				</div>
 				<!-- ======================= FILIAIS/HOTEIS =========================== -->
@@ -136,8 +138,8 @@
 
 				<div class="col-sm-8">
 					<h1>Nossos Hot&eacute;is</h1>
-					<p>Nossa rede de hoteis esta presente em todos os estados.
-						Confira e explore nossas filiais:</p>
+					<p>Nossa rede de hoteis est&aacute; presente na maioria dos
+						Estados. Confira e explore nossas filiais:</p>
 
 					<div class="row">
 						<div class="container-fluid bg-4 text-center">
