@@ -23,7 +23,7 @@ public class QuartoToDTO {
 
 		dto.setCodQuarto(quarto.getCodQuarto());
 		dto.setIdQuarto(quarto.getIdQuarto());
-		dto.setCodQuarto(quarto.getCodTipoQuarto());
+		dto.setCodTipoQuarto(quarto.getCodTipoQuarto());
 		dto.setNrCamas(quarto.getNrCamas());
 		dto.setDescricao(quarto.getDescricao());
 		dto.setCodFilial(quarto.getCodFilial());
