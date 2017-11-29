@@ -1,0 +1,44 @@
+Instruções de instalação e configuração:
+
+================================
+Pré-requisitos
+================================
+Possuir as seguintes ferramentas:
+- Java SE Development Kit 8 instalado
+- IDE Eclipse Neon
+- Servidor WildFly wildfly-10.1.0.Final
+- Postegresql 9.3
+
+================================
+Instalação
+================================
+1. Criar o database lazarus no Postgresql, com o comando que está dentro de scriptNOMEDOSCRIPT. Acessar o bd criado e executar o script script_cria_bd_lazarus.sql;
+
+2. Configurar o arquivo "[WILDFLY_HOME]/standalone/configuration/standalone.xml" conforme o arquivo /conf/standalone.xml do projeto lazarus;
+
+3. Compilar fontes, publicar no servidor e iniciar servidor: pode ser feito de 2 formas:
+
+    1ª Possibilidade de Instalação
+
+      - Importar o projeto Lazarus no Eclipse
+      - Compilar o projeto Lazarus no Eclipse com > Run as > Maven install
+      - Publicar o projeto no Wildfly
+      - Iniciar o servidor WildFly
+      - Acessar no navegador http://localhost:8080/LazarusHotelaria
+
+   2ª Possibilidade de Instalação
+      - Compilar o projeto usando maven com as opções "clean install" e "skiptests". Se não tiver uma interface gráfica para manipular o maven:
+          - Abra um terminal 
+          - Vá até o diretorio raiz do projeto, onde está o pom.xml
+          - Use o comando:
+		mvn clean install;    
+
+                OBS: Se ocorrer erro relacionado a checkstyle use opção -Dcheckstyle.skip:
+                mvn clean install -Dcheckstyle.skip
+
+      - Copiar o .war gerado [DIRETORIO_RAIZ_PROJETO]/target para dentro da pasta "[WILDFLY_HOME]/standalone/deployments";
+      - Iniciar o servidor WildFly: 
+          - Vá em  [WILDFLY_HOME]/bin
+          - Execute o script standalone.bat (no windows) ou standalone.sh (no linux);
+
+      - Abra um navegador e acesse a URL http://localhost:8080/LazarusHotelaria
