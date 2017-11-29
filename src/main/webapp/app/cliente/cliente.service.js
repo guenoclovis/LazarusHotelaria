@@ -7,7 +7,7 @@
     angular.module('cliente').factory('ClienteData', ClienteData);
 
     /* @ngInject */
-    function ClienteData(Restangular, $q, $rootScope) {
+    function ClienteData(Restangular, $q, $rootScope, $http) {
     	
     	Restangular.setBaseUrl($rootScope.baseURL);
     	
@@ -18,7 +18,8 @@
             obter : obter,            
             listar : listar,
             salvar : salvar,
-            excluir : excluir
+            excluir : excluir,
+            gerarRelatorioPDF : gerarRelatorioPDF
         };
 
         return service;
@@ -27,7 +28,7 @@
         function obter(codCliente, filtros) {
             return Restangular.one(apiURLCompleta, codCliente).get(filtros);
         }
-
+        
         function listar(filtros) {
             return Restangular.one(apiURLCompleta).get(filtros);
         }
@@ -42,6 +43,29 @@
         
         function excluir(codCliente) {
             return Restangular.one(apiURLCompleta, codCliente).remove();
+        }
+        
+        function gerarRelatorioPDF() {
+        	$http({
+                method : 'GET',
+                cache : false,
+                url : apiURLCompleta + "/pdf",
+                params : undefined
+            }).success(function(data, status, headers) {
+
+                // Recuperar os headers da response
+                var listaHeaders = headers();
+
+                // Recuperar o nome do arquivo
+                var filename = listaHeaders['filename'] || 'download';
+
+                // Salvar o arquivo
+                var data64 = b64.decode(data);
+                var file = new Blob([ data64 ], {
+                    type : 'application/octet-stream'
+                });
+                saveAs(file, filename);
+            });
         }
     }
 })();

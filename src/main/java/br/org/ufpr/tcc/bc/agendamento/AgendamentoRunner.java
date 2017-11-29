@@ -20,6 +20,25 @@ public class AgendamentoRunner {
 	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
 	@PostConstruct
+	public void criarRepositorioDeArquivos() {
+		criarRepositorioDeFotos();
+		criarRepositorioDeRelatorios();
+	}
+	
+	
+	public void criarRepositorioDeRelatorios(){
+		File f = new File(Constantes.PATH_ARMAZENAMENTO_RELATORIOS);
+		if(!f.exists()){
+			
+			log.info("Pasta para armazenamento de relatorios ainda não existe. Tentando criar pasta ...");
+			
+			if(f.mkdirs()){
+				
+				log.info("Pasta "+Constantes.PATH_ARMAZENAMENTO_RELATORIOS+" criada com sucesso!");
+			}
+		}
+	}
+	
 	public void criarRepositorioDeFotos() {
 		
 		File f = new File(Constantes.PATH_ARMAZENAMENTO_FOTOS);
@@ -64,6 +83,7 @@ public class AgendamentoRunner {
 			}
 			
 		}
+		
 	}
 	
 	@Schedule( minute = "30", hour="*", dayOfWeek="*")
