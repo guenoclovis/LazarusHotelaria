@@ -71,7 +71,7 @@ public class ClienteREST {
 			Map<String, Object> parametros = new HashMap<String, Object>();
 			parametros.put("tituloRelatorio", Relatorio.CLIENTES.getReportTitle());
 			parametros.put("nomeSistema", "LAZARUS HOTELARIA");
-			parametros.put("nome", "-");
+			parametros.put("nome", "-");			
 			parametros.put("dados", listaClientes);
 			
 			//gerar o PDF No servidor

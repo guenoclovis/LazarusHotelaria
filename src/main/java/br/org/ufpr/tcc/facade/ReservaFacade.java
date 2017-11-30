@@ -138,7 +138,8 @@ public class ReservaFacade {
         Reserva reserva = converter.convert(dto);
         reserva.setCodCliente(codCliente);
         reserva.setStatus(StatusReservaEnum.SOLICITADA.getCodigo());
-        reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));        
+        reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));
+        reserva.setPreco(Constantes.PRECO_MINIMO);
         
 		ResponseDTO responseDTO = bc.persistir(reserva);
 
@@ -178,22 +179,22 @@ public class ReservaFacade {
         mensagem.append("Caro "+dto.getNome()+":");
         mensagem.append("\n");
         mensagem.append("\nObrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
-        mensagem.append("\nSua Solicitacao de Reserva foi realizada com sucesso conforme dados abaixo:");
+        mensagem.append("\nSua Solicitacão de Reserva foi realizada com sucesso conforme dados abaixo:");
         mensagem.append("\nNome: "+dto.getNome());
         mensagem.append("\nTelefone: "+dto.getTelefone());
         mensagem.append("\nE-mail: "+dto.getEmail());
         mensagem.append("\nData Entrada: "+dto.getDataEntrada());
-        mensagem.append("\nData Sa&iacute;da: "+dto.getDtSaida());
+        mensagem.append("\nData Saída: "+dto.getDtSaida());
         mensagem.append("\nValor(R$): "+reserva.getPreco());
         mensagem.append("\n");
-        mensagem.append("\nAguardamos dep&oacute;sito de sinal correspondente a 50% do valor em at&eacute; 5 dias para que seja feita a confirma&ccedil;&atilde;o da reserva.");
-        mensagem.append("\nDADOS PARA DEP&Oacute;SITO DO SINAL");
+        mensagem.append("\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
+        mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
         mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
-        mensagem.append("\nAg&ecirc;ncia: " + Constantes.AGENCIA_EMPRESA);
+        mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);
         mensagem.append("\nCC: " + Constantes.CONTA_CORRENTE_EMPRESA);
         mensagem.append("\nCNPJ: " + Constantes.CNPJ_EMPRESA);
         
-        emailBC.enviarEmail(dto.getEmail(), "Solicita&ccedil;&atilde;o de Reserva", mensagem.toString());
+        emailBC.enviarEmail(dto.getEmail(), "Solicitação de Reserva", mensagem.toString());
 	}
 
 }

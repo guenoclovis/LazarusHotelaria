@@ -147,11 +147,11 @@
 						
 					<button ng-click="vm.checkin()" ng-if="vm.reserva.status == 2"
 						class="btn btn-primary">Check-in</button>
-						
+		
 					<button ng-click="vm.checkout()" ng-if="vm.reserva.status == 3"
 						class="btn btn-primary">Check-out</button>
 						
-					<button ng-click="vm.cancelar()" 
+					<button ng-click="vm.cancelar()" ng-if="(vm.reserva.status != 4) && (vm.reserva.status != 0)"
 						class="btn btn-primary">Cancelar</button>
 				</div>
 			</div>

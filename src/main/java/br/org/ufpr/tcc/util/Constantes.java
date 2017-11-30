@@ -20,4 +20,7 @@ public class Constantes {
 	public static final String CONTA_CORRENTE_EMPRESA = "48989-X";
 	
 	public static final String CNPJ_EMPRESA = "82.438.591/0001-48";
+	
+	public static final long PRECO_MINIMO = 230;
+	
 }

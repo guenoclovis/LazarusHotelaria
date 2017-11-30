@@ -42,22 +42,25 @@
 		function activate() {
 			carregarFiliais();
 			carregarFilial();
-			carregarQuarto();			
+			carregarQuarto();	
+			calcularPreco();
 		}
 		
 		function calcularPreco(){
 			
-			var firstDate = vm.reservadataEntrada;
-			var secondDate = vm.reservadataSaida;
+			/*
+			var firstDate = vm.reserva.dataEntrada;
+			var secondDate = vm.reserva.dataSaida;
 			
 		    var date2 = new Date($scope.formatString(secondDate));
 		    var date1 = new Date($scope.formatString(firstDate));
 		    var timeDiff = Math.abs(date2.getTime() - date1.getTime());   
-		    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24)); 
+		    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
+		     
+			vm.reserva.preco = vm.reserva.quarto.tipo;
+		    */
 		    
-		    
-		    
-		    vm.reserva.preco = vm.reserva.quarto.tipo
+		    vm.reserva.preco = 230.00;
 		}
 
 		function solicitarReserva() {

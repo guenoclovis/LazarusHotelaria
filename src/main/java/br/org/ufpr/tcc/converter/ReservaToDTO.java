@@ -8,6 +8,7 @@ import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Filial;
 import br.org.ufpr.tcc.entity.Reserva;
 import br.org.ufpr.tcc.enuns.StatusReservaEnum;
+import br.org.ufpr.tcc.util.Constantes;
 import br.org.ufpr.tcc.util.DataUtil;
 
 public class ReservaToDTO {
@@ -21,7 +22,13 @@ public class ReservaToDTO {
 			dto.setDtEntrada(DataUtil.fromDateToString(reserva.getDtEntrada()));
 			dto.setDtSaida(DataUtil.fromDateToString(reserva.getDtSaida()));
 			dto.setDtReserva(DataUtil.fromDateToString(reserva.getDtReserva()));
-			dto.setPreco(reserva.getPreco());
+			
+			if(reserva.getPreco() == 0){
+				dto.setPreco(Constantes.PRECO_MINIMO);
+			} else {
+				dto.setPreco(reserva.getPreco());
+			}
+			
 			dto.setStatus(reserva.getStatus());
 			
 			if(reserva.getStatus() != null){
