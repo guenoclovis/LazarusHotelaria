@@ -12,7 +12,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'cliente'
     /* @ngInject */
     function ConsultarClienteController($controller, $scope, $state,
-            ClienteData, MsgCenter, $rootScope) {
+            ClienteData, MsgCenter) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -23,11 +23,6 @@
         vm.clientes = [];
         vm.cliente = {};
         
-        var apiURL = '/cliente';
-        var apiURLCompleta = 'LazarusHotelaria/rest-clovis' + apiURL;
-        
-        vm.urlRelatorio = $rootScope.baseURL + apiURLCompleta + "/pdf"; 
-
         // Paginação
         vm.totalresults = 0;
         vm.pagesize = 0;
