@@ -23,7 +23,8 @@
 			'reserva',
 			'foto',
 			'contato',
-			'login'
+			'login',
+			'relatorio'
 //			'showcase'
 	]);
 	

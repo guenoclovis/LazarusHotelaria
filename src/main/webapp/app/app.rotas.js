@@ -130,14 +130,23 @@
 		}
 		$stateProvider.state(quartoDetalharState);
 
-		var contatoState = {
-			name : 'contato',
-			url : '/contato',
-			controller : 'ContatoController',
-			templateUrl : './contato/contato.html'
+		var relatorioState = {
+			name : 'relatorio',
+			url : '/relatorio',
+			controller : 'RelatorioController',
+			templateUrl : './relatorio/relatorio.html'
 				
 		}
-		$stateProvider.state(contatoState);
+		$stateProvider.state(relatorioState);
+		
+		var contatoState = {
+				name : 'contato',
+				url : '/contato',
+				controller : 'ContatoController',
+				templateUrl : './contato/contato.html'
+					
+			}
+			$stateProvider.state(contatoState);
 
 		var clienteConsultarState = {
 			name : 'clienteConsultar',
