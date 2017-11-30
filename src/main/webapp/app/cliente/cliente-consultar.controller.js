@@ -12,7 +12,7 @@
     // Definindo atributos e operacoes do Controlador da tela 'consultar' do modulo 'cliente'
     /* @ngInject */
     function ConsultarClienteController($controller, $scope, $state,
-            ClienteData, MsgCenter) {
+            ClienteData, MsgCenter, $rootScope) {
 
         //////// ATRIBUTOS DO CONTROLADOR ////////////////////
         var vm = this;
@@ -22,6 +22,11 @@
         vm.filtros = {};
         vm.clientes = [];
         vm.cliente = {};
+        
+        var apiURL = '/cliente';
+        var apiURLCompleta = 'LazarusHotelaria/rest-clovis' + apiURL;
+        
+        vm.urlRelatorio = $rootScope.baseURL + apiURLCompleta + "/pdf"; 
 
         // Paginação
         vm.totalresults = 0;
@@ -36,6 +41,7 @@
         vm.limpar = limpar;
         vm.irParaTelaInclusao = irParaTelaInclusao;
         vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
+        vm.gerarRelatorioPDF = gerarRelatorioPDF;
 
         activate();
 
@@ -45,6 +51,14 @@
             //vm.deveRestaurar = FiltroService.deveRestaurar();
             //restaurarEstadoTela();
         	pesquisar();
+        }
+        
+        function gerarRelatorioPDF(){
+        	ClienteData.gerarRelatorioPDF().then(function (data) {
+        		if (data.mensagens) {
+                	MsgCenter.addMessages(data.mensagens);  
+                }
+        	});
         }
 
         function pesquisarLimpar() {

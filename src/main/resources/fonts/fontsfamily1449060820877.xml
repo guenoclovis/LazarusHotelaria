@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<fontFamilies>
+  <fontFamily name="Lato">
+    <normal>fonts/Lato-Regular.ttf</normal>
+    <bold>fonts/Lato-Bold.ttf</bold>
+    <italic>fonts/Lato-Italic.ttf</italic>
+    <boldItalic>fonts/Lato-BoldItalic.ttf</boldItalic>
+    <pdfEmbedded>true</pdfEmbedded>
+    <exportFonts>
+    </exportFonts>
+  </fontFamily>
+
+</fontFamilies>

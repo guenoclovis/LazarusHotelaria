@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
@@ -28,6 +29,17 @@ import br.org.ufpr.tcc.util.Util;
 
 public class QuartoDAO extends LazarusDAO<Quarto> {
 
+	private static QuartoDAO dao = null;
+	
+	public static QuartoDAO getDAO(){
+		if(dao == null){
+			dao = new QuartoDAO();
+		}
+		return dao;
+	}
+	
+	private QuartoDAO(){}
+	
 	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
 	public List<Quarto> listar(QuartoFiltroDTO filtros) {
@@ -88,20 +100,21 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 		SQL.append(") ");
 		SQL.append(" AND q.cod_filial = :codFilial ");
 
-		SQLQuery query = getHibernateSession().createSQLQuery(SQL.toString());
+		Query query = getEntityManager().createNativeQuery(SQL.toString(), Quarto.class);
 
 		//filtros
-		query.setDate("dataEntrada", filtros.getDataEntrada());
-		query.setDate("dataSaida", filtros.getDataSaida());
-		query.setLong("codFilial", filtros.getCodFilial());
+		query.setParameter("dataEntrada", filtros.getDataEntrada());
+		query.setParameter("dataSaida", filtros.getDataSaida());
+		query.setParameter("codFilial", filtros.getCodFilial());
 
 		//especificando tipo das colunas de retorno		
-		query.addScalar("cod_quarto", IntegerType.INSTANCE);
+		//query.addScalar("cod_quarto", IntegerType.INSTANCE);
 
-		List listaObjTipoDesconhecido = query.list();
+		List<Quarto> listaRetorno = (List<Quarto>) query.getResultList();
 		
-		ArrayList<Quarto> listaRetorno = new ArrayList<Quarto>();
+		return listaRetorno;
 		
+		/*
 		Quarto q = null;
 		for(Object objetoComTipoDesconhecido : listaObjTipoDesconhecido){
 			Integer codQuarto  = (Integer) objetoComTipoDesconhecido;
@@ -111,7 +124,9 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 			listaRetorno.add(q);
 		}
 		
-		return listaRetorno;
+		getHibernateSession().close();
+		
+		return listaRetorno;*/
 
 	}
 	

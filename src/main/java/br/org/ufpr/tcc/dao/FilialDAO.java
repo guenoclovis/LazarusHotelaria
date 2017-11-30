@@ -18,6 +18,17 @@ import br.org.ufpr.tcc.util.Util;
 
 public class FilialDAO extends LazarusDAO<Filial>{
 
+	private static FilialDAO dao = null;
+	
+	public static FilialDAO getDAO(){
+		if(dao == null){
+			dao = new FilialDAO();
+		}
+		return dao;
+	}
+	
+	private FilialDAO(){}
+	
 	public List<Filial> listar(FilialFiltroDTO filtros) {
 		
 		//SELECT a, b,c FROM filial WHERE nome like 'clov%' and idade > 30 and r3  ... ORDER BY b

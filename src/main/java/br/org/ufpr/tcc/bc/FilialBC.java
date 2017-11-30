@@ -20,7 +20,7 @@ public class FilialBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private FilialDAO dao = new FilialDAO();
+    private FilialDAO dao = FilialDAO.getDAO();
     private FilialValidator validator = new FilialValidator();
 
     public Filial obter(Integer id) {

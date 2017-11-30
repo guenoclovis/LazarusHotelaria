@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.4.3.final using JasperReports Library version 6.4.3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="MovimentacaoInternaReport" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="0ac26ef2-ef72-4a87-a24d-be4e95ba487b">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<parameter name="nome" class="java.lang.String"/>
+	<parameter name="status" class="java.lang.String">
+		<parameterDescription><![CDATA[]]></parameterDescription>
+	</parameter>
+	<parameter name="tituloRelatorio" class="java.lang.String"/>
+	<parameter name="nomeSistema" class="java.lang.String"/>
+	<parameter name="dados" class="java.util.ArrayList">
+		<parameterDescription><![CDATA[movimentacoes]]></parameterDescription>
+	</parameter>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<pageHeader>
+		<band height="31" splitType="Stretch">
+			<subreport isUsingCache="true">
+				<reportElement key="subreport" x="0" y="0" width="802" height="31" uuid="85a7b257-33bf-4dd9-afa0-eb71b353ad22">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<subreportParameter name="tituloRelatorio">
+					<subreportParameterExpression><![CDATA[$P{tituloRelatorio}]]></subreportParameterExpression>
+				</subreportParameter>
+				<subreportParameter name="nomeSistema">
+					<subreportParameterExpression><![CDATA[$P{nomeSistema}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA["relatorios/cabecalhoPaisagem.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="317" splitType="Stretch">
+			<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="true">
+				<reportElement positionType="Float" x="0" y="5" width="802" height="26" uuid="b385ae4a-def1-49eb-8a10-2f8531c7b46a"/>
+				<textElement textAlignment="Center">
+					<font fontName="Lato" size="14" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tituloRelatorio}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line" positionType="Float" x="0" y="41" width="802" height="1" uuid="61a94010-19e6-45bd-aa1d-3db15cc9343f"/>
+			</line>
+			<line>
+				<reportElement key="line" positionType="Float" x="0" y="100" width="802" height="1" uuid="93b1e479-57e5-4778-98cc-fb2672a2aa24">
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+			</line>
+			<staticText>
+				<reportElement key="staticText" positionType="Float" x="0" y="47" width="802" height="13" forecolor="#000000" uuid="23eb92e1-3e91-421b-bd55-007985b23149">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+					<property name="com.jaspersoft.studio.unit.x" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Filtros Utilizados na Consulta]]></text>
+			</staticText>
+			<staticText>
+				<reportElement key="staticText" positionType="Float" x="0" y="64" width="380" height="10" forecolor="#000000" uuid="ee31c31e-bd9b-4ffc-9211-20ce0f5380e9">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nome do Cliente]]></text>
+			</staticText>
+			<textField isStretchWithOverflow="true" isBlankWhenNull="false">
+				<reportElement key="textField" positionType="Float" x="0" y="74" width="380" height="13" uuid="e8000c38-eee4-4baa-bb04-13e33466372d">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<textElement>
+					<font fontName="Lato" size="8"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{nome}]]></textFieldExpression>
+			</textField>
+			<subreport>
+				<reportElement key="" positionType="Float" x="0" y="110" width="802" height="65" uuid="69252f5c-a8ee-44c9-9ab3-e1f22105a2b4">
+					<property name="com.jaspersoft.studio.unit.height" value="pixel"/>
+				</reportElement>
+				<dataSourceExpression><![CDATA[new net.sf.jasperreports.engine.data.JRBeanCollectionDataSource($P{dados})]]></dataSourceExpression>
+				<subreportExpression><![CDATA["relatorios/ClientesListagemPDF.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="0" y="17" width="432" height="10" forecolor="#000000" uuid="947e0d0b-d20e-425f-a64b-8595ef741d31"/>
+				<textElement>
+					<font fontName="Lato" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tituloRelatorio}]]></textFieldExpression>
+			</textField>
+			<textField isBlankWhenNull="false">
+				<reportElement key="textField" x="718" y="17" width="45" height="10" uuid="f55dbc58-18fa-4303-bf2c-6900d3feb286"/>
+				<textElement textAlignment="Right">
+					<font fontName="Lato" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Página " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report" isBlankWhenNull="false">
+				<reportElement key="textField" x="764" y="17" width="30" height="10" uuid="b085dafd-f056-4ea9-91b4-be44df9cc8f2"/>
+				<textElement textAlignment="Left">
+					<font fontName="Lato" size="7"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement key="line" x="0" y="15" width="802" height="1" forecolor="#000000" uuid="7477d50c-86e8-416a-99c2-faff88e21b41">
+					<property name="com.jaspersoft.studio.unit.width" value="pixel"/>
+				</reportElement>
+				<graphicElement>
+					<pen lineWidth="0.5" lineStyle="Solid" lineColor="#8F8F8F"/>
+				</graphicElement>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

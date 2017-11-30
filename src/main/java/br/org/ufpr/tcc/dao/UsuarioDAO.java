@@ -18,6 +18,17 @@ import br.org.ufpr.tcc.util.Util;
 
 public class UsuarioDAO extends LazarusDAO<Usuario> {
 
+	private static UsuarioDAO dao = null;
+	
+	public static UsuarioDAO getDAO(){
+		if(dao == null){
+			dao = new UsuarioDAO();
+		}
+		return dao;
+	}
+	
+	private UsuarioDAO(){}
+	
 	public Usuario obterParaLogin(LoginDTO dto) {
 		CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
 		CriteriaQuery<Usuario> cq = cb.createQuery(Usuario.class);

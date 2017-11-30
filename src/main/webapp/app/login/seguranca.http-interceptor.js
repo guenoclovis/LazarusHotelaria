@@ -28,7 +28,11 @@
                 //---trecho igual ao do msgcenter.httpinterceptor---
                 var headerTarget = response.config.headers.target;
 		    	
-                if(response.data.mensagens != undefined && response.data.mensagens != null){
+                if(response.data != undefined && 
+                	response.data != null &&
+                	response.data.mensagens != undefined && 
+                	response.data.mensagens != null){
+                	
                 	var msgs = response.data.mensagens;
                 	for (var i = 0; i < msgs.length; i++) {
                 		var msg = msgs[i];

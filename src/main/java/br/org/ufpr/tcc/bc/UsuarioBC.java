@@ -19,7 +19,7 @@ public class UsuarioBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private UsuarioDAO dao = new UsuarioDAO();
+    private UsuarioDAO dao = UsuarioDAO.getDAO();
     private UsuarioValidator validator = new UsuarioValidator();
 
     public Usuario obter(Integer id) {

@@ -18,7 +18,7 @@ public class ReservaBC {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private ReservaDAO dao = new ReservaDAO();
+    private ReservaDAO dao = ReservaDAO.getDAO();
     private ReservaValidator validator = new ReservaValidator();
 
     public Reserva obter(Integer id) {

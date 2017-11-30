@@ -24,6 +24,19 @@ import br.org.ufpr.tcc.util.Util;
 
 public class ClienteDAO extends LazarusDAO<Cliente> {
 
+	private static ClienteDAO dao = null;
+	
+	public static ClienteDAO getDAO(){
+		if(dao == null){
+			dao = new ClienteDAO();
+		}
+		return dao;
+	}
+	
+	private ClienteDAO(){
+		
+	}
+	
 	private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
 	public List<Cliente> listar(ClienteFiltroDTO filtros) {

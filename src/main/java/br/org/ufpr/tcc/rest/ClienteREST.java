@@ -1,8 +1,15 @@
 package br.org.ufpr.tcc.rest;
 
+import static net.sf.jasperreports.engine.JasperCompileManager.compileReport;
+import static net.sf.jasperreports.engine.JasperFillManager.fillReport;
+
+import java.io.File;
+import java.io.FileInputStream;
 import java.net.URI;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
@@ -21,8 +28,21 @@ import br.org.ufpr.tcc.dto.ClienteDTO;
 import br.org.ufpr.tcc.dto.ClienteFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
+import br.org.ufpr.tcc.entity.Cliente;
+import br.org.ufpr.tcc.entity.Mensagem;
+import br.org.ufpr.tcc.exception.handler.NegocioException;
 //import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.facade.ClienteFacade;
+import br.org.ufpr.tcc.util.Constantes;
+import br.org.ufpr.tcc.util.reports.FileDTO;
+import br.org.ufpr.tcc.util.reports.JasperTest;
+import br.org.ufpr.tcc.util.reports.Relatorio;
+import br.org.ufpr.tcc.util.reports.RelatoriosExportados;
+import br.org.ufpr.tcc.util.reports.ReportUtils;
+import net.sf.jasperreports.engine.JasperExportManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
 
 @Path("/cliente")
 public class ClienteREST {
@@ -36,6 +56,53 @@ public class ClienteREST {
         ClienteDTO clienteDTO = facade.obter(id, fields);
 		return clienteDTO;
     }
+	
+	@GET
+	@Path("/pdf")
+	@Produces("application/pdf")
+    public Response gerarRelatorioPDF() {
+		
+		try {
+			//listar clientes para o relatorio
+			ClienteFiltroDTO filtro = new ClienteFiltroDTO();
+			List<ClienteDTO> listaClientes = facade.listar(filtro, null).getEntidades();
+			
+			//setar informacoes de cabecalho, rodape e filtros do relatorio 
+			Map<String, Object> parametros = new HashMap<String, Object>();
+			parametros.put("tituloRelatorio", Relatorio.CLIENTES.getReportTitle());
+			parametros.put("nomeSistema", "LAZARUS HOTELARIA");
+			parametros.put("nome", "-");
+			parametros.put("dados", listaClientes);
+			
+			//gerar o PDF No servidor
+			RelatoriosExportados relatorio = RelatoriosExportados.CLIENTES_PDF;
+			String nomeArquivoJrxml = Relatorio.CLIENTES.getJasperReportName();
+			JasperReport jasper = compileReport(
+					JasperTest.class.getResourceAsStream(JasperTest.formatReportFileName(nomeArquivoJrxml)));
+			JasperPrint print = fillReport(jasper, parametros, new JRBeanCollectionDataSource(listaClientes));
+			String pathCompletoPDFGerado = Constantes.PATH_ARMAZENAMENTO_RELATORIOS + File.separator + "Clientes.pdf";
+			
+			JasperExportManager.exportReportToPdfFile(print, pathCompletoPDFGerado);
+			
+			//ler o pdf e devolver para o cliente			
+			FileInputStream fileInputStream = new FileInputStream(new File(pathCompletoPDFGerado));
+			javax.ws.rs.core.Response.ResponseBuilder responseBuilder = javax.ws.rs.core.Response
+					.ok((Object) fileInputStream);
+			responseBuilder.type("application/pdf");
+			responseBuilder.header("Content-Disposition", "filename=test.pdf");
+			
+			return responseBuilder.build();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new NegocioException(new Mensagem(Mensagem.ERRO, "Problema ao gerar relatorio. Tente novamente mais tarde!"));
+		}
+		
+    }
+	
+	
+	
+	
 	
 	@GET
     @Produces("application/json")

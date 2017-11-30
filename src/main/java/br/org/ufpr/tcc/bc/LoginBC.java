@@ -26,7 +26,7 @@ public class LoginBC {
 			String senhaEncriptada = criptoBC.criptografarParaBD(loginDTO.getSenha());			
 			loginDTO.setSenha(senhaEncriptada);
 
-			UsuarioDAO usuarioDAO = new UsuarioDAO();
+			UsuarioDAO usuarioDAO = UsuarioDAO.getDAO();
 
 			usuarioEncontrado = usuarioDAO.obterParaLogin(loginDTO);
 

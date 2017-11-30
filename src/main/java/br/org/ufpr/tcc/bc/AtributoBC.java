@@ -18,7 +18,7 @@ public class AtributoBC extends LazarusDAO<Atributo> {
 
     private Logger log = Logger.getLogger(this.getClass().getCanonicalName());
 
-    private AtributoDAO dao = new AtributoDAO();
+    private AtributoDAO dao = AtributoDAO.getDAO();
     private AtributoValidator validator = new AtributoValidator();
 
     public Atributo obter(Integer id) {
