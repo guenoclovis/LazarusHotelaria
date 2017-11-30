@@ -81,10 +81,10 @@
 		}
 
 		function carregarQuarto() {
-			MsgCenter.clear();
+			
 			var filtros = vm.filtros;
 
-			QuartoData.obter(vm.reserva.codQuarto, filtros).then(
+			QuartoData.obter(vm.reserva.quarto.codQuarto, filtros).then(
 					function(data) {
 						vm.quarto = data.plain();
 						var filtros = {
@@ -109,7 +109,7 @@
 		}
 
 		function carregarTipoQuarto() {
-			MsgCenter.clear();
+
 			var filtros = vm.filtros;
 
 			TipoQuartoData.obter(vm.reserva.quarto.codTipoQuarto, filtros)
@@ -142,20 +142,30 @@
 			MsgCenter.clear();
 
 			ReservaData.salvar(vm.reserva).then(
-					function(data) {
-						
-						if(!msg){
-							msg = "Reserva alterado(a) com sucesso!";
-						}
-						
-						MsgCenter.add("INFO",
-								msg, undefined,
-								undefined);
+				function(data) {
+					
+					if(!msg){
+						msg = "Reserva alterado(a) com sucesso!";
+					}
+					
+					//--NAO Foi possivel usar o carregarReserva, pque ele apaga a msg!!!
+					MsgCenter.clear();
+					var filtros = vm.filtros;
 
-						$state.go('reservaDetalhar', {
-							'codReserva' : vm.quarto.codReserva
-						});
-					});
+					ReservaData.obter(vm.reserva.codReserva, filtros).then(
+							function(data) {
+								vm.reserva = data.plain();
+
+								carregarQuarto()
+								
+								MsgCenter.add("INFO",
+										msg, undefined,
+										undefined);
+							});
+					//--NAO Foi possivel usar o carregarReserva, pque ele apaga a msg!!!
+					
+
+				});
 		}
 
 	}

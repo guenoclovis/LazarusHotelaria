@@ -2,7 +2,7 @@ package br.org.ufpr.tcc.enuns;
 
 public enum StatusReservaEnum {
 	
-	CANCELADA(0,"Solicitada"),
+	CANCELADA(0,"Cancelada"),
 	SOLICITADA(1,"Solicitada"),
 	CONFIRMADA(2,"Confirmada"),
 	CHECKIN(3,"Check-in"),

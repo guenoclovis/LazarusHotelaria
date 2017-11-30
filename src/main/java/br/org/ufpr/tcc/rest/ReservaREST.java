@@ -48,8 +48,8 @@ public class ReservaREST {
 
 		ReservaFiltroDTO filtro = new ReservaFiltroDTO();
 		filtro.setCodFilial(codFilial);
-		filtro.setDataEntrada(DataUtil.toDate(dtEntrada.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
-		filtro.setDataSaida(DataUtil.toDate(dtSaida.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS"));
+		filtro.setDataEntrada(DataUtil.converterData(dtEntrada));
+		filtro.setDataSaida(DataUtil.converterData(dtSaida));
 
         // Paginação
         if (pageSize != 0) {

@@ -266,5 +266,21 @@ public class DataUtil {
     public static boolean isNotNull(Object obj) {
         return obj != null;
     }
+    
+    public static Date converterData(String data){
+    	try {
+			return DataUtil.toDate(data.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS");
+		} catch (Exception e) {
+			try {
+				return DataUtil.toDate(data, "yyyy-MM-dd HH:mm");
+			} catch (Exception e2) {
+				try {
+					return DataUtil.toDate(data, "dd/MM/yyyy HH:mm");
+				} catch (Exception e3){
+					return null;
+				}
+			}
+		}
+    }
 
 }

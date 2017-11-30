@@ -80,7 +80,7 @@
 			MsgCenter.clear();
 			var filtros = vm.filtros;
 
-			QuartoData.obter(vm.reserva.codQuarto, filtros).then(
+			QuartoData.obter(vm.reserva.quarto.codQuarto, filtros).then(
 					function(data) {
 						vm.quarto = data.plain();
 						var filtros = {
