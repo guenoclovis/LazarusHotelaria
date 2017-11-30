@@ -13,7 +13,7 @@
 	/* @ngInject */
 	function ConsultarReservaController($controller, $scope, $state,
 			$stateParams, ReservaData, MsgCenter, FilialData, FiltroService,
-			QuartoData) {
+			QuartoData, FotoData) {
 
 		// ////// ATRIBUTOS DO CONTROLADOR ////////////////////
 		var vm = this;

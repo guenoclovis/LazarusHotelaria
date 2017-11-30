@@ -1,4 +1,4 @@
-<div>
+fte<div>
 	<div ng-controller="EditarClienteController as vm" >
 		<!-- ================= CORPO DA PAGINA ================= -->
 	    <div class="row linha-site">
@@ -110,7 +110,7 @@
 							<label for="Telefone1" class="cols-sm-2 control-label required">Telefone</label>
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="telefone1" id="telefone1" ng-model="vm.cliente.telefone1"
+							<input type="text" class="form-control" name="telefone1" id="telefone1"  mask="(99)99999-9999" ng-model="vm.cliente.telefone1"
 									placeholder="(99)99999-9999" />
 						</div>
 						<div class="col-md-2"></div>
@@ -122,7 +122,7 @@
 							<label for="Telefone2" class="cols-sm-2 control-label">Telefone Opcional</label>
 						</div>
 						<div class="col-md-6">
-							<input type="text" class="form-control" name="telefone2" id="telefone2" ng-model="vm.cliente.telefone2"
+							<input type="text" class="form-control" name="telefone2" id="telefone2"  mask="(99)99999-9999" ng-model="vm.cliente.telefone2"
 									placeholder="(99)99999-9999" />
 						</div>
 						<div class="col-md-2"></div>
