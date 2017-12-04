@@ -60,7 +60,7 @@ public class Cliente {
 	@Column(name = "email2")
     private String email2;
 	
-	@NaoNulo(nomeCampo = "CPF")
+	//@NaoNulo(nomeCampo = "CPF")
 	@NaoVazio(nomeCampo = "CPF")
 	@CPF
 	@Column(name = "cpf")
