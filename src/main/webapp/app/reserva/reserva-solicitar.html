@@ -71,7 +71,7 @@
 								<label for="cpf" class="cols-sm-2 control-label">Valor (R$)</label>
 							</div>
 							<div class="col-md-6">
-								<input id="cpf" type="cpf" class="form-control" mask="R$999,99"
+								<input id="cpf" type="cpf" class="form-control" 
 									ng-model="vm.reserva.preco" ng-disabled="true">
 							</div>
 							<div class="col-md-2"></div>
@@ -143,5 +143,6 @@
 
 		<!-- ================= DEBUG ================= -->
 		<debug objeto="{{vm.reserva | json}}"></debug>
+		<debug objeto="{{vm.tipoQuarto | json}}"></debug>
 	</div>
 </div>

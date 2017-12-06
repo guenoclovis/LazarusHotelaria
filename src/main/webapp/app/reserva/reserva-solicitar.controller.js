@@ -26,7 +26,8 @@
 		vm.filial = {};
 		
 		vm.reservas = [];
-		vm.reserva = {};		
+		vm.reserva = {};
+		vm.tipoQuarto = {};
 		
 		vm.codQuarto = $stateParams.codQuarto;
 		
@@ -42,26 +43,7 @@
 		function activate() {
 			carregarFiliais();
 			carregarFilial();
-			carregarQuarto();	
-			calcularValor(vm.reserva.dataEntrada, vm.reserva.dataSaida, vm.reserva.preco);
-		}
-		
-		function calcularPreco(){
-			
-			/*
-			var firstDate = vm.reserva.dataEntrada;
-			var secondDate = vm.reserva.dataSaida;
-			
-		    var date2 = new Date($scope.formatString(secondDate));
-		    var date1 = new Date($scope.formatString(firstDate));
-		    var timeDiff = Math.abs(date2.getTime() - date1.getTime());   
-		    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
-		     
-			vm.reserva.preco = vm.reserva.quarto.tipo;
-		    
-		    vm.reserva.preco = 230.00;
-			 */
-		
+			carregarQuarto();			
 		}
 		
 		function calcularValor(data1, data2, precoDiaria) {
@@ -71,7 +53,7 @@
 
 			   var dias = (dateAux2 - dateAux1)  / 1000 / 60 / 60 / 24;
 
-			   return dias * precoDiaria;
+			   vm.reserva.preco = dias * precoDiaria;
 
 		}
 
@@ -82,8 +64,13 @@
 				return;
 			}
 			
+			MsgCenter.add("WARN",
+					"Aguarde ...", undefined,
+					undefined);
+			
 			ReservaData.solicitarReserva(vm.reserva).then(function(data) {
 				
+				MsgCenter.clear();
 				
 				MsgCenter.add("INFO",
 						"Solicitação de Reserva efetuada com sucesso", undefined,
@@ -187,6 +174,10 @@
 
 			TipoQuartoData.obter(vm.codQuarto, filtros).then(function(data) {
 				vm.tipoQuarto = data.plain();
+				
+				var precoDiaria = parseInt(vm.tipoQuarto.preco.replace(",","."));
+				
+				calcularValor(vm.reserva.dataEntrada, vm.reserva.dataSaida, precoDiaria);
 			});
 		}
 		

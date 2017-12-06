@@ -138,8 +138,7 @@ public class ReservaFacade {
         Reserva reserva = converter.convert(dto);
         reserva.setCodCliente(codCliente);
         reserva.setStatus(StatusReservaEnum.SOLICITADA.getCodigo());
-        reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));
-        reserva.setPreco(Constantes.PRECO_MINIMO);
+        reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));        
         
 		ResponseDTO responseDTO = bc.persistir(reserva);
 
@@ -179,22 +178,22 @@ public class ReservaFacade {
         mensagem.append("Caro "+dto.getNome()+":");
         mensagem.append("\n");
         mensagem.append("\nObrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
-        mensagem.append("\nSua Solicitacão de Reserva foi realizada com sucesso conforme dados abaixo:");
+        mensagem.append("\nSua Solicitacï¿½o de Reserva foi realizada com sucesso conforme dados abaixo:");
         mensagem.append("\nNome: "+dto.getNome());
         mensagem.append("\nTelefone: "+dto.getTelefone());
         mensagem.append("\nE-mail: "+dto.getEmail());
         mensagem.append("\nData Entrada: "+dto.getDataEntrada());
-        mensagem.append("\nData Saída: "+dto.getDtSaida());
+        mensagem.append("\nData Saï¿½da: "+dto.getDtSaida());
         mensagem.append("\nValor(R$): "+reserva.getPreco());
         mensagem.append("\n");
-        mensagem.append("\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
-        mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
+        mensagem.append("\nAguardamos depï¿½sito de sinal correspondente a 50% do valor em atï¿½ 5 dias para que seja feita a confirmaï¿½ï¿½o da reserva.");
+        mensagem.append("\nDADOS PARA DEPï¿½SITO DO SINAL");
         mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
-        mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);
+        mensagem.append("\nAgï¿½ncia: " + Constantes.AGENCIA_EMPRESA);
         mensagem.append("\nCC: " + Constantes.CONTA_CORRENTE_EMPRESA);
         mensagem.append("\nCNPJ: " + Constantes.CNPJ_EMPRESA);
         
-        emailBC.enviarEmail(dto.getEmail(), "Solicitação de Reserva", mensagem.toString());
+        emailBC.enviarEmail(dto.getEmail(), "Solicitaï¿½ï¿½o de Reserva", mensagem.toString());
 	}
 
 }
