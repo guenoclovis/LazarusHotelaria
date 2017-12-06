@@ -43,7 +43,7 @@
 			carregarFiliais();
 			carregarFilial();
 			carregarQuarto();	
-			calcularPreco();
+			calcularValor(vm.reserva.dataEntrada, vm.reserva.dataSaida, vm.reserva.preco);
 		}
 		
 		function calcularPreco(){
@@ -58,9 +58,21 @@
 		    var diffDays = Math.ceil(timeDiff / (1000 * 3600 * 24));
 		     
 			vm.reserva.preco = vm.reserva.quarto.tipo;
-		    */
 		    
 		    vm.reserva.preco = 230.00;
+			 */
+		
+		}
+		
+		function calcularValor(data1, data2, precoDiaria) {
+
+			   var dateAux1 = new Date(data1); 
+			   var dateAux2 = new Date(data2);
+
+			   var dias = (dateAux2 - dateAux1)  / 1000 / 60 / 60 / 24;
+
+			   return dias * precoDiaria;
+
 		}
 
 		function solicitarReserva() {
