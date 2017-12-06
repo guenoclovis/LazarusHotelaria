@@ -172,7 +172,7 @@
 			MsgCenter.clear();
 			var filtros = vm.filtros;
 
-			TipoQuartoData.obter(vm.codQuarto, filtros).then(function(data) {
+			TipoQuartoData.obter(vm.quarto.codTipoQuarto, filtros).then(function(data) {
 				vm.tipoQuarto = data.plain();
 				
 				var precoDiaria = parseInt(vm.tipoQuarto.preco.replace(",","."));
