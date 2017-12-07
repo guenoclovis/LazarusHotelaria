@@ -94,7 +94,14 @@
 			var filtros = vm.filtros;
 
 			AtributoData.listar(filtros).then(function(data) {
-				vm.atributos = data.entidades;
+				//vm.atributos = data.entidades;
+				angular.forEach(data.entidades, function(atributo, key){
+				      if(atributo.tipo == "1"){
+				    	  vm.atributos.push(atributo);
+				      }
+				         
+				});
+				
 			});
 		}
 		
