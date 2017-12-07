@@ -10,7 +10,9 @@ public class AtributoToDTO {
 		AtributoDTO dto = new AtributoDTO();
 		
 		dto.setCodAtributo(atributo.getCodAtributo());
-		dto.setTipo(atributo.getTipo().toString());		
+		if(atributo.getTipo() != null){
+			dto.setTipo(atributo.getTipo().toString());
+		}
 		dto.setNome(atributo.getNome());
 		dto.setDescricao(atributo.getDescricao());		
 		dto.setCodStatus(atributo.getStatus());
