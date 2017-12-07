@@ -52,6 +52,8 @@
         function logout() {
         	MsgCenter.clear();
         	
+        	vm.dadosLogin = {};        	
+        	
         	$rootScope.nomeUsuario = undefined;
         	
         	LoginData.logout().then(function (data) {                

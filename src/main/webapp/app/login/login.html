@@ -2,7 +2,7 @@
 	<div ng-controller="LoginController as vm">
 
 		<div class="row linha-site">
-			<div class="container well">
+			<div ng-if="!nomeUsuario" class="container well">
 				<!-- ================= TITULO ================= -->
 
 				<div class="row campo-form">
@@ -54,6 +54,17 @@
 				</form>
 
 			</div>
+			
+			<div ng-if="nomeUsuario" class="container well">
+				<div class="row campo-form">
+					<div class="col-sm-2"></div>
+					<div class="col-sm-8">
+						<p class="control-label text-center"><b>Bem vindo {{nomeUsuario}}!<b></p>
+					</div>
+					<div class="col-sm-2"></div>
+				</div>				
+			</div>
+			
 		</div>
 		
 		<!-- ================= DEBUG ================= -->
