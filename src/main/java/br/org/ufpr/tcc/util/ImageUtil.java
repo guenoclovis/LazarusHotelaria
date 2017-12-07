@@ -12,10 +12,16 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.logging.Logger;
 
 import javax.imageio.ImageIO;
 
+import org.jfree.util.Log;
+
 public class ImageUtil {
+	
+	private static Logger log = Logger.getLogger("ImageUtil");
+	
 	public static BufferedImage resize(BufferedImage image, int width, int height) {
 		BufferedImage newImage = new BufferedImage(width, height, BufferedImage.TYPE_INT_RGB);
 		Graphics2D g2d = newImage.createGraphics();
@@ -98,6 +104,8 @@ public class ImageUtil {
 			ImageIO.write(img, extensao, baos);
 			imageData = baos.toByteArray();
 		} catch (IOException e) {
+			log.info("Erro ao ler " + pathFoto);
+			e.printStackTrace();
 			throw e;
 		}
 
