@@ -73,23 +73,23 @@ public class ReservaDAO extends LazarusDAO<Reserva> {
         Predicate[] predicados = { };
         
         
-//        Join<Reserva, Quarto> joinQuarto = root.join(Reserva.QUARTO, JoinType.INNER);
-//        Path<Integer> pathCodFilial = joinQuarto.get(Quarto.COD_FILIAL);
-//        
-//        Path<Date> pathDataEntrada = root.get(Reserva.DATA_ENTRADA);
-//        Path<Date> pathDataSaida = root.get(Reserva.DATA_SAIDA);
-//        
-//        if(filtros.getCodFilial() != null){
-//            predicados = Util.add(predicados, cb.equal(pathCodFilial,filtros.getCodFilial()));
-//        }
-//        
-//        if(filtros.getDataEntrada() != null){
-//            predicados = Util.add(predicados, cb.greaterThanOrEqualTo(pathDataEntrada, filtros.getDataEntrada()));
-//        }
-//        
-//        if(filtros.getDataSaida() != null){
-//        	predicados = Util.add(predicados, cb.lessThanOrEqualTo(pathDataSaida, filtros.getDataSaida()));
-//        }
+        Join<Reserva, Quarto> joinQuarto = root.join(Reserva.QUARTO, JoinType.INNER);
+        Path<Integer> pathCodFilial = joinQuarto.get(Quarto.COD_FILIAL);
+        
+        Path<java.util.Date> pathDataEntrada = root.<java.util.Date>get(Reserva.DATA_ENTRADA);
+        Path<java.util.Date> pathDataSaida = root.<java.util.Date>get(Reserva.DATA_SAIDA);
+        
+        if(filtros.getCodFilial() != null){
+            predicados = Util.add(predicados, cb.equal(pathCodFilial,filtros.getCodFilial()));
+        }
+        
+        if(filtros.getDataEntrada() != null){
+            predicados = Util.add(predicados, cb.greaterThanOrEqualTo(pathDataEntrada, filtros.getDataEntrada()));
+        }
+        
+        if(filtros.getDataSaida() != null){
+        	predicados = Util.add(predicados, cb.lessThanOrEqualTo(pathDataSaida, filtros.getDataSaida()));
+        }
         
         return predicados;
     }
