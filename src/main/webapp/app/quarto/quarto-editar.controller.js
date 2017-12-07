@@ -99,7 +99,7 @@
 			var filtros = vm.filtros;
 
 			TipoQuartoData.listar(filtros).then(function(data) {
-				vm.tiposQuartos = data.entidades;
+				vm.tiposQuartos = data.entidades;				
 			});
 		}
 		
@@ -122,7 +122,13 @@
 			var filtros = vm.filtros;
 
 			AtributoData.listar(filtros).then(function(data) {
-				vm.atributos = data.entidades;
+				//vm.atributos = data.entidades;
+				angular.forEach(data.entidades, function(atributo, key){
+				      if(atributo.tipo == "2"){
+				    	  vm.atributos.push(atributo);
+				      }
+				         
+				});
 			});
 		}
 

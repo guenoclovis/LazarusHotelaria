@@ -111,7 +111,7 @@
 			
 			if(vm.reserva.cpf == undefined || vm.reserva.cpf == ""){
 				MsgCenter.add("WARN",
-						"Telefone obrigatório!", undefined,
+						"CPF obrigatório!", undefined,
 						undefined);
 				filtrosValidos = false;
 			}

@@ -72,7 +72,7 @@
 							</div>
 							<div class="col-md-6">
 								<select id="codTipoQuarto" class="campo-form"
-									ng-options="item.codTipoQuarto as item.descricao for item in vm.tiposQuartos"
+									ng-options="item.codTipoQuarto as item.nome for item in vm.tiposQuartos"
 									ng-model="vm.quarto.codTipoQuarto" selectpicker>
 									<option value="" selected>Selecione</option>
 								</select>
