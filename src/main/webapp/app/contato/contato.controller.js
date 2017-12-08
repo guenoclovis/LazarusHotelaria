@@ -26,6 +26,7 @@
         //////// OPERACOES DO CONTROLADOR ////////////////////
 
         function activate() {
+        	MsgCenter.clear();
         }
 
         function enviarEmail() {

@@ -14,10 +14,13 @@ public class ContatoFacade {
 
 		log.info(logMsg);
 
-		String mensagem = "Nome: " + dadosEmail.getNome() + "\nTelefone: " + dadosEmail.getTelefone() + "\nE-mail: "
-				+ dadosEmail.getEmail() + "\n\n" + "Mensagem:\n" + dadosEmail.getMensagem();
+		String mensagem = "Nome: " + dadosEmail.getNome() + 
+							"\nTelefone: " + dadosEmail.getTelefone() + 
+							"\nE-mail: " + dadosEmail.getEmail() + 
+							"\n\n" + 
+							"Mensagem:\n" + dadosEmail.getMensagem();
 		
-		dadosEmail.setAssunto("E-mail enviado pelo formul&aacute;rio de Contato");
+		dadosEmail.setAssunto("E-mail enviado pelo formulário de Contato");
 
 		EmailBC bc = new EmailBC();
 		bc.enviarEmail(Constantes.EMAIL_GOOGLE_EMPRESA, dadosEmail.getAssunto(), mensagem);
