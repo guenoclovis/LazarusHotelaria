@@ -35,6 +35,8 @@
 		vm.reserva.dataSaida = $stateParams.dataSaida;
 		
 		vm.solicitarReserva = solicitarReserva;
+		
+		vm.exibirBotaoSolicitarReserva = true;
 
 		activate();
 
@@ -76,6 +78,11 @@
 						"Solicitação de Reserva efetuada com sucesso", undefined,
 						undefined);
 				
+				MsgCenter.add("INFO",
+						"Os Dados da Reserva foram enviados para o e-mail informado", undefined,
+						undefined);
+				
+				vm.exibirBotaoSolicitarReserva = false;
 				
 				if (data.mensagens) {
 					MsgCenter.addMessages(data.mensagens);
