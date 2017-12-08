@@ -71,6 +71,7 @@ public class QuartoToDTO {
 			TipoQuartoBC tipoQuartoBC = new TipoQuartoBC();
 			TipoQuarto tipoQuarto = tipoQuartoBC.obter(quarto.getCodTipoQuarto());
 			dto.setDescricaoTipoQuarto(tipoQuarto.getDescricao());
+			dto.setPreco(tipoQuarto.getPreco().toString());
 		} else {
 			dto.setDescricaoTipoQuarto("-");
 		}
