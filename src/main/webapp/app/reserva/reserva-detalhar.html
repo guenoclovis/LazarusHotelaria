@@ -57,7 +57,7 @@
 									Entrada</label>
 							</div>
 							<div class="col-md-6">
-								<span id="nome">{{vm.reserva.dataEntrada}}</span>
+								<span id="nome">{{vm.reserva.dataEntrada  | date:'dd/MM/yyyy 12:00:00'}}</span>
 							</div>
 							<div class="col-md-2"></div>
 						</div>
@@ -69,7 +69,7 @@
 									Sa&iacute;da</label>
 							</div>
 							<div class="col-md-6">
-								<span id="nome">{{vm.reserva.dataSaida}}</span>
+								<span id="nome">{{vm.reserva.dataSaida  | date:'dd/MM/yyyy 14:00:00'}}</span>
 							</div>
 							<div class="col-md-2"></div>
 						</div>

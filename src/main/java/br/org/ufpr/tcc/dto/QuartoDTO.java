@@ -14,6 +14,7 @@ public class QuartoDTO {
     private Integer status;
     private FotoDTO foto;
     private String preco;
+	private String nomeTipoQuarto;
     
     private List<AtributoDTO> atributos;
     
@@ -101,6 +102,14 @@ public class QuartoDTO {
 
 	public void setPreco(String preco) {
 		this.preco = preco;
+	}
+
+	public String getNomeTipoQuarto() {
+		return nomeTipoQuarto;
+	}
+
+	public void setNomeTipoQuarto(String nomeTipoQuarto) {
+		this.nomeTipoQuarto = nomeTipoQuarto;
 	}
 	
 }
