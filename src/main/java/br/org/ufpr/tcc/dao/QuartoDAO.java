@@ -105,7 +105,7 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 		SQL.append("        ) ");
 		SQL.append("     ) ");
 		SQL.append("     AND q2.cod_filial = :codFilial ");
-		SQL.append("     AND q2.status <> 0 ");
+		SQL.append("     AND r2.status <> 0 ");
 		SQL.append("  ) ");
 		SQL.append(") ");
 		SQL.append(" AND q.cod_filial = :codFilial ");
