@@ -17,6 +17,8 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.UriInfo;
 
+import org.apache.commons.lang3.StringUtils;
+
 import br.org.ufpr.tcc.dto.ReservaDTO;
 import br.org.ufpr.tcc.dto.ReservaFiltroDTO;
 import br.org.ufpr.tcc.dto.ResponseDTO;
@@ -48,8 +50,12 @@ public class ReservaREST {
 
 		ReservaFiltroDTO filtro = new ReservaFiltroDTO();
 		filtro.setCodFilial(codFilial);
-		filtro.setDataEntrada(DataUtil.converterData(dtEntrada));
-		filtro.setDataSaida(DataUtil.converterData(dtSaida));
+		if(StringUtils.isNotBlank(dtEntrada)){
+			filtro.setDataEntrada(DataUtil.converterData(dtEntrada, true));			
+		}
+		if(StringUtils.isNotBlank(dtSaida)){
+			filtro.setDataSaida(DataUtil.converterData(dtSaida, true));
+		}
 
         // Paginação
         if (pageSize != 0) {

@@ -39,10 +39,7 @@
 		//vm.filtros.dataEntrada = $stateParams.dataEntrada;
 		//vm.filtros.dataSaida = $stateParams.dataSaida;
 		
-		vm.filtros = {
-		 "codFilial": 1,
-		  "dataEntrada": "2017-11-10T02:00:00.000Z",
-		  "dataSaida": "2017-11-11T02:00:00.000Z"
+		vm.filtros = { 
 		};
 		
 		// Paginação

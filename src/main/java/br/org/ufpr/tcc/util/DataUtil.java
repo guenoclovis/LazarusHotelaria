@@ -268,19 +268,40 @@ public class DataUtil {
     }
     
     public static Date converterData(String data){
+    	return converterData(data, false);
+    }
+    
+    public static Date converterData(String data, boolean truncarHora){
+    	
+    	Date dataRetorno = null;
+    	
     	try {
-			return DataUtil.toDate(data.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS");
+    		dataRetorno = DataUtil.toDate(data.replace("T", " ").replace("Z", ""), "yyyy-MM-dd HH:mm:ss.SSS");
 		} catch (Exception e) {
 			try {
-				return DataUtil.toDate(data, "yyyy-MM-dd HH:mm");
+				dataRetorno = DataUtil.toDate(data, "yyyy-MM-dd HH:mm");
 			} catch (Exception e2) {
 				try {
-					return DataUtil.toDate(data, "dd/MM/yyyy HH:mm");
+					dataRetorno = DataUtil.toDate(data, "dd/MM/yyyy HH:mm");
 				} catch (Exception e3){
-					return null;
+					dataRetorno = null;
 				}
 			}
 		}
+    	
+    	if(truncarHora && dataRetorno != null){
+    		Calendar cal = Calendar.getInstance(); // locale-specific
+    		cal.setTime(dataRetorno);
+    		cal.set(Calendar.HOUR_OF_DAY, 0);
+    		cal.set(Calendar.MINUTE, 0);
+    		cal.set(Calendar.SECOND, 0);
+    		cal.set(Calendar.MILLISECOND, 0);
+    		long time = cal.getTimeInMillis();
+    		
+    		dataRetorno = new Date(time);
+    	}
+    	
+    	return dataRetorno;
     }
 
 }
