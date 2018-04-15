@@ -20,7 +20,7 @@ public class ContatoFacade {
 							"\n\n" + 
 							"Mensagem:\n" + dadosEmail.getMensagem();
 		
-		dadosEmail.setAssunto("E-mail enviado pelo formul·rio de Contato");
+		dadosEmail.setAssunto("E-mail enviado pelo formul√°rio de Contato");
 
 		EmailBC bc = new EmailBC();
 		bc.enviarEmail(Constantes.EMAIL_GOOGLE_EMPRESA, dadosEmail.getAssunto(), mensagem);
