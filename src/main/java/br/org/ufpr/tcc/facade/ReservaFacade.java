@@ -178,22 +178,22 @@ public class ReservaFacade {
         mensagem.append("Caro "+dto.getNome()+":");
         mensagem.append("\n");
         mensagem.append("\nObrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
-        mensagem.append("\nSua Solicitação de Reserva foi realizada com sucesso conforme dados abaixo:");
+        mensagem.append("\nSua SolicitaÃ§Ã£o de Reserva foi realizada com sucesso conforme dados abaixo:");
         mensagem.append("\nNome: "+dto.getNome());
         mensagem.append("\nTelefone: "+dto.getTelefone());
         mensagem.append("\nE-mail: "+dto.getEmail());
         mensagem.append("\nData Entrada: "+dto.getDataEntrada());
-        mensagem.append("\nData Saída: "+dto.getDtSaida());
+        mensagem.append("\nData SaÃ­da: "+dto.getDtSaida());
         mensagem.append("\nValor(R$): "+reserva.getPreco());
         mensagem.append("\n");
-        mensagem.append("\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
-        mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
+        mensagem.append("\nAguardamos depÃ³sito de sinal correspondente a 50% do valor em atÃ© 5 dias para que seja feita a confirmaÃ§Ã£o da reserva.");
+        mensagem.append("\nDADOS PARA DEPÃ“SITO DO SINAL");
         mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
-        mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);
+        mensagem.append("\nAgÃªncia: " + Constantes.AGENCIA_EMPRESA);
         mensagem.append("\nCC: " + Constantes.CONTA_CORRENTE_EMPRESA);
         mensagem.append("\nCNPJ: " + Constantes.CNPJ_EMPRESA);
         
-        emailBC.enviarEmail(dto.getEmail(), "Solicitação de Reserva", mensagem.toString());
+        emailBC.enviarEmail(dto.getEmail(), "SolicitaÃ§Ã£o de Reserva", mensagem.toString());
 	}
 
 }
