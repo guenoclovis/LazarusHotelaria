@@ -1,4 +1,5 @@
-s<!-- ======================= SOLICITAR RESERVA =========================== -->
+s
+<!-- ======================= SOLICITAR RESERVA =========================== -->
 <div>
 	<div ng-controller="SolicitarReservaController as vm">
 
@@ -14,121 +15,142 @@ s<!-- ======================= SOLICITAR RESERVA =========================== -->
 
 				<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
 				<form>
+					<!-- Declaração do formulário -->
+					<form method="post" target="pagseguro"
+						action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
 
-					<!-- NOME -->
-					<div class="well">
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="nome" class="cols-sm-2 control-label">Quarto
-									Selecionado</label>
-							</div>
-							<div class="col-md-4">
-								<h4>Quarto Solteiro</h4>
-								<img
-									ng-src="data:image/jpeg;base64,{{vm.reserva.quarto.foto.imagemMiniatura}}"
-									class="img-responsive" style="width: 100%" alt="Image">
-								<div class="quarto_valor">
-									<h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5>
-								</div>
-								<div class="quarto_valor">
-									<h5>Qtde camas: {{vm.reserva.quarto.nrCamas}}</h5>
-								</div>
-								<p>{{vm.reserva.quarto.descricao}}</p>
-							</div>
-							<div class="col-md-2"></div>
-						</div>
+						<!-- Campos obrigatórios -->
+						<input name="receiverEmail" type="hidden"
+							value="lazarushotelaria@gmail.com"> <input
+							name="currency" type="hidden" value="BRL">
 
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="cpf" class="cols-sm-2 control-label">Data
-									Entrada</label>
-							</div>
-							<div class="col-md-6">
-								<input id="cpf" type="cpf" class="form-control" 
-									ng-model="vm.reserva.dataEntrada | date:'dd/MM/yyyy 14:00:00'" ng-disabled="true">								
-							</div>
-							<div class="col-md-2"></div>
-						</div>
-
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="cpf" class="cols-sm-2 control-label">Data
-									Sa&iacute;da</label>
-							</div>
-							<div class="col-md-6">
-								<input id="cpf" type="cpf" class="form-control" 
-									ng-model="vm.reserva.dataSaida | date:'dd/MM/yyyy 12:00:00'" ng-disabled="true">
-							</div>
-							<div class="col-md-2"></div>
-						</div>
-						
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="cpf" class="cols-sm-2 control-label">Valor (R$)</label>
-							</div>
-							<div class="col-md-6">
-								<input id="cpf" type="cpf" class="form-control" 
-									ng-model="vm.reserva.preco | currency" ng-disabled="true">
-							</div>
-							<div class="col-md-2"></div>
-						</div>
-
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="cpf" class="cols-sm-2 control-label required">CPF</label>
-							</div>
-							<div class="col-md-6">
-								<input id="cpf" type="cpf" class="form-control" mask="999.999.999-99"
-									ng-model="vm.reserva.cpf">
-							</div>
-							<div class="col-md-2"></div>
-						</div>
+						<!-- Itens do pagamento (ao menos um item é obrigatório) -->
 
 						<!-- NOME -->
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="nome" class="cols-sm-2 control-label required">Nome</label>
+						<div class="well">
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="nome" class="cols-sm-2 control-label">Quarto
+										Selecionado</label>
+								</div>
+								<div class="col-md-4">
+									<h4>Quarto Solteiro</h4>
+									<img
+										ng-src="data:image/jpeg;base64,{{vm.reserva.quarto.foto.imagemMiniatura}}"
+										class="img-responsive" style="width: 100%" alt="Image">
+									<div class="quarto_valor">
+										<h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5>
+									</div>
+									<div class="quarto_valor">
+										<h5>Qtde camas: {{vm.reserva.quarto.nrCamas}}</h5>
+									</div>
+									<p>{{vm.reserva.quarto.descricao}}</p>
+								</div>
+								<div class="col-md-2"></div>
 							</div>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="nome" id="nome"
-									ng-model="vm.reserva.nome" placeholder="Seu Nome" />
+
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="cpf" class="cols-sm-2 control-label">Data
+										Entrada</label>
+								</div>
+								<div class="col-md-6">
+									<input id="cpf" type="cpf" class="form-control"
+										ng-model="vm.reserva.dataEntrada | date:'dd/MM/yyyy 14:00:00'"
+										ng-disabled="true">
+								</div>
+								<div class="col-md-2"></div>
 							</div>
-							<div class="col-md-2"></div>
+
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="cpf" class="cols-sm-2 control-label">Data
+										Sa&iacute;da</label>
+								</div>
+								<div class="col-md-6">
+									<input id="cpf" type="cpf" class="form-control"
+										ng-model="vm.reserva.dataSaida | date:'dd/MM/yyyy 12:00:00'"
+										ng-disabled="true">
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="cpf" class="cols-sm-2 control-label">Valor
+										(R$)</label>
+								</div>
+								<div class="col-md-6">
+									<input id="cpf" type="cpf" class="form-control"
+										ng-model="vm.reserva.preco | currency" ng-disabled="true">
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="cpf" class="cols-sm-2 control-label required">CPF</label>
+								</div>
+								<div class="col-md-6">
+									<input id="cpf" type="cpf" class="form-control"
+										mask="999.999.999-99" ng-model="vm.reserva.cpf">
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+
+							<!-- NOME -->
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="nome" class="cols-sm-2 control-label required">Nome</label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="nome" id="nome"
+										ng-model="vm.reserva.nome" placeholder="Seu Nome" />
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+
+							<!-- TELEFONE -->
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="telefone" class="cols-sm-2 control-label required">Telefone</label>
+								</div>
+								<div class="col-md-6">
+									<input id="telefone" type="telefone" class="form-control"
+										mask="(99)99999-9999" ng-model="vm.reserva.telefone"
+										placeholder="(99)99999-9999">
+								</div>
+								<div class="col-md-2"></div>
+							</div>
+
+							<!-- E-MAIL -->
+							<div class="row campo-form">
+								<div class="col-md-2"></div>
+								<div class="col-md-2">
+									<label for="email1" class="cols-sm-2 control-label required">E-mail</label>
+								</div>
+								<div class="col-md-6">
+									<input type="text" class="form-control" name="email1"
+										id="email1" ng-model="vm.reserva.email"
+										placeholder="email@abc.com" />
+								</div>
+								<div class="col-md-2"></div>
+							</div>
 						</div>
 
-						<!-- TELEFONE -->
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="telefone" class="cols-sm-2 control-label required">Telefone</label>
-							</div>
-							<div class="col-md-6">
-								<input id="telefone" type="telefone" class="form-control" mask="(99)99999-9999"
-									ng-model="vm.reserva.telefone"  placeholder="(99)99999-9999">
-							</div>
-							<div class="col-md-2"></div>
+						<!-- submit do form (obrigatório) -->
+						<div class="row botoes-direita">
+							<input alt="Pague com PagSeguro" name="submit" type="image"
+								src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" />
 						</div>
-
-						<!-- E-MAIL -->
-						<div class="row campo-form">
-							<div class="col-md-2"></div>
-							<div class="col-md-2">
-								<label for="email1" class="cols-sm-2 control-label required">E-mail</label>
-							</div>
-							<div class="col-md-6">
-								<input type="text" class="form-control" name="email1"
-									id="email1" ng-model="vm.reserva.email"
-									placeholder="email@abc.com" />
-							</div>
-							<div class="col-md-2"></div>
-						</div>
-					</div>
+					</form>
 
 					<!-- BOTOES -->
 					<div ng-if="vm.exibirBotaoSolicitarReserva" class="col-sm-10">
