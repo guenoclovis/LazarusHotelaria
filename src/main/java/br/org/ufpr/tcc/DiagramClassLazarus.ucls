@@ -1,0 +1,1528 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.2.2" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+  <class id="1" language="java" name="br.org.ufpr.tcc.validator.ReservaValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/ReservaValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="187" x="15282" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="br.org.ufpr.tcc.dto.ResponseDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ResponseDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="225" width="212" x="9649" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="3" language="java" name="br.org.ufpr.tcc.validator.validacoes.NaoVazio" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/validacoes/NaoVazio.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="203" x="228" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="4" language="java" name="br.org.ufpr.tcc.dao.FotoDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/FotoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="476" x="11568" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="br.org.ufpr.tcc.entity.Cliente" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Cliente.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1251" width="169" x="471" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="br.org.ufpr.tcc.util.Constantes" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/util/Constantes.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="226" x="680" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="br.org.ufpr.tcc.dto.QuartoFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/QuartoFiltroDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="128" x="15473" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="br.org.ufpr.tcc.bc.agendamento.AgendamentoRunner" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/agendamento/AgendamentoRunner.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="212" x="946" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <annotation id="9" language="java" name="br.org.ufpr.tcc.validator.validacoes.NaoNulo" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/validacoes/NaoNulo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="135" width="203" x="1198" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </annotation>  
+  <class id="10" language="java" name="br.org.ufpr.tcc.rest.QuartoREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/QuartoREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="368" x="10556" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="11" language="java" name="br.org.ufpr.tcc.converter.TipoQuartoToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/TipoQuartoToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="201" x="1441" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="12" language="java" name="br.org.ufpr.tcc.validator.FilialValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/FilialValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="166" x="10848" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="13" language="java" name="br.org.ufpr.tcc.dao.ClienteDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/ClienteDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="498" x="13507" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="14" language="java" name="br.org.ufpr.tcc.dto.UsuarioFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/UsuarioFiltroDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="127" x="15641" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="15" language="java" name="br.org.ufpr.tcc.rest.FilialREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/FilialREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="355" x="10964" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="16" language="java" name="br.org.ufpr.tcc.dao.FilialDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/FilialDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="474" x="11054" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="17" language="java" name="br.org.ufpr.tcc.dao.QuartoDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/QuartoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="500" x="10308" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="18" language="java" name="br.org.ufpr.tcc.converter.ShowcaseToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/ShowcaseToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="201" x="1682" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="19" language="java" name="br.org.ufpr.tcc.entity.TipoQuarto" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/TipoQuarto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="177" x="1923" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="20" language="java" name="br.org.ufpr.tcc.converter.DTOtoReserva" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoReserva.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="177" x="2140" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="21" language="java" name="br.org.ufpr.tcc.dto.AtributoDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/AtributoDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="162" x="2357" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="22" language="java" name="br.org.ufpr.tcc.exception.handler.NegocioException" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/exception/handler/NegocioException.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="209" x="9901" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="23" language="java" name="br.org.ufpr.tcc.bc.AtributoBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/AtributoBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="305" x="12183" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="24" language="java" name="br.org.ufpr.tcc.util.Util" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/util/Util.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="205" x="2559" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="25" language="java" name="br.org.ufpr.tcc.entity.Quarto" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Quarto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="531" width="177" x="13971" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="26" language="java" name="br.org.ufpr.tcc.rest.ShowcaseREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/ShowcaseREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="388" x="3888" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="27" language="java" name="br.org.ufpr.tcc.dao.FilialJDBCDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/FilialJDBCDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="213" x="2804" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="28" language="java" name="br.org.ufpr.tcc.exception.handler.NegocioExceptionHandler" 
+    project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/exception/handler/NegocioExceptionHandler.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="252" x="3057" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="29" language="java" name="br.org.ufpr.tcc.validator.TipoQuartoValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/TipoQuartoValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="199" x="13268" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="30" language="java" name="br.org.ufpr.tcc.converter.ReservaToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/ReservaToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="177" x="3349" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="31" language="java" name="br.org.ufpr.tcc.dao.LazarusDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/LazarusDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="116" x="12096" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="32" language="java" name="br.org.ufpr.tcc.dao.GenericDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/GenericDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="284" x="12096" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="33" language="java" name="br.org.ufpr.tcc.converter.FotoToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/FotoToDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="219" x="15214" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="34" language="java" name="br.org.ufpr.tcc.rest.TipoQuartoREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/TipoQuartoREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="315" x="12833" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="35" language="java" name="br.org.ufpr.tcc.dto.ClienteFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ClienteFiltroDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="127" x="15808" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="36" language="java" name="br.org.ufpr.tcc.converter.DTOtoFilial" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoFilial.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="135" x="13188" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="37" language="java" name="br.org.ufpr.tcc.dto.FilialDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/FilialDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="149" x="10150" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="38" language="java" name="br.org.ufpr.tcc.dao.EntityManagerUtil" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/EntityManagerUtil.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="282" x="3566" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="39" language="java" name="br.org.ufpr.tcc.facade.QuartoFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/QuartoFacade.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="347" x="10453" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="40" language="java" name="br.org.ufpr.tcc.dto.FotoFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/FotoFiltroDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="142" x="15975" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="41" language="java" name="br.org.ufpr.tcc.validator.AtributoValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/AtributoValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="184" x="12549" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="42" language="java" name="br.org.ufpr.tcc.bc.FilialBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/FilialBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="269" x="10964" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="43" language="java" name="br.org.ufpr.tcc.converter.DTOtoTipoQuarto" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoTipoQuarto.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="201" x="4316" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="44" language="java" name="br.org.ufpr.tcc.dto.QuartoDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/QuartoDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="495" width="177" x="10339" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="45" language="java" name="br.org.ufpr.tcc.converter.DTOtoQuarto" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoQuarto.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="13363" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="46" language="java" name="br.org.ufpr.tcc.entity.Pagina" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Pagina.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="441" width="174" x="14605" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="47" language="java" name="br.org.ufpr.tcc.facade.AtributoFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/AtributoFacade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="-1" width="-1" x="12566" y="1070"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="48" language="java" name="br.org.ufpr.tcc.bc.ClienteBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/ClienteBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="293" x="13564" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="49" language="java" name="br.org.ufpr.tcc.rest.ClienteREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/ClienteREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="367" x="13564" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="50" language="java" name="br.org.ufpr.tcc.validator.validacoes.NaoVazioValidator" 
+    project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/validacoes/NaoVazioValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="268" x="4557" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="51" language="java" name="br.org.ufpr.tcc.dto.AtributoFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/AtributoFiltroDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="127" x="16157" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="52" language="java" name="br.org.ufpr.tcc.entity.Reserva" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Reserva.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="531" width="165" x="4865" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="53" language="java" name="br.org.ufpr.tcc.converter.QuartoToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/QuartoToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="161" x="15214" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="54" language="java" name="br.org.ufpr.tcc.dto.TipoQuartoDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/TipoQuartoDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="177" x="5070" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="55" language="java" name="br.org.ufpr.tcc.entity.Atributo" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Atributo.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="162" x="5287" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="56" language="java" name="br.org.ufpr.tcc.dto.UsuarioDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/UsuarioDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1161" width="167" x="5489" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="57" language="java" name="br.org.ufpr.tcc.bc.QuartoBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/QuartoBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="295" x="10308" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="58" language="java" name="br.org.ufpr.tcc.facade.FotoFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/FotoFacade.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="345" x="11325" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="59" language="java" name="br.org.ufpr.tcc.util.ImageUtil" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/util/ImageUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="237" x="5696" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="60" language="java" name="br.org.ufpr.tcc.dto.FotoDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/FotoDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="191" x="10222" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="61" language="java" name="br.org.ufpr.tcc.rest.AtributoREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/AtributoREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="373" x="12420" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="62" language="java" name="br.org.ufpr.tcc.dto.FilialFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/FilialFiltroDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="127" x="16324" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="63" language="java" name="br.org.ufpr.tcc.validator.UsuarioValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/UsuarioValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="183" x="15509" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="64" language="java" name="br.org.ufpr.tcc.dao.AtributoDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/AtributoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="425" x="12084" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="65" language="java" name="br.org.ufpr.tcc.dto.ResultadoPaginadoDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ResultadoPaginadoDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="243" width="301" x="11755" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="66" language="java" name="br.org.ufpr.tcc.dto.ShowcaseFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ShowcaseFiltroDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="136" x="16491" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="67" language="java" name="br.org.ufpr.tcc.converter.DTOtoCliente" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoCliente.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="159" x="5973" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="68" language="java" name="br.org.ufpr.tcc.facade.ClienteFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/ClienteFacade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="345" x="13564" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="69" language="java" name="br.org.ufpr.tcc.entity.Foto" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Foto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="423" width="191" x="13971" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="70" language="java" name="br.org.ufpr.tcc.bc.ReservaBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/ReservaBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="311" x="14202" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="71" language="java" name="br.org.ufpr.tcc.dao.ShowcaseDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/ShowcaseDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="351" width="279" x="3888" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="72" language="java" name="br.org.ufpr.tcc.validator.QuartoValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/QuartoValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="179" x="10089" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="73" language="java" name="br.org.ufpr.tcc.dto.ReservaDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ReservaDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="513" width="165" x="6172" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="74" language="java" name="br.org.ufpr.tcc.validator.validacoes.NaoNuloValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/validacoes/NaoNuloValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="117" width="268" x="6377" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="75" language="java" name="br.org.ufpr.tcc.converter.DTOtoFoto" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoFoto.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="137" x="13275" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="76" language="java" name="br.org.ufpr.tcc.entity.Usuario" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Usuario.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1233" width="167" x="6685" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="77" language="java" name="br.org.ufpr.tcc.rest.UsuarioREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/UsuarioREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="372" x="14802" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="78" language="java" name="br.org.ufpr.tcc.dto.TipoQuartoFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/TipoQuartoFiltroDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="207" width="139" x="16667" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="79" language="java" name="br.org.ufpr.tcc.validator.ClienteValidator" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/validator/ClienteValidator.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="178" x="14601" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="80" language="java" name="br.org.ufpr.tcc.facade.FilialFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/FilialFacade.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="207" width="321" x="10964" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="81" language="java" name="br.org.ufpr.tcc.facade.UsuarioFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/UsuarioFacade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="355" x="14819" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="82" language="java" name="br.org.ufpr.tcc.dto.ReservaFiltroDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ReservaFiltroDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="123" x="16846" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="83" language="java" name="br.org.ufpr.tcc.converter.AtributoToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/AtributoToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="171" x="6892" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="84" language="java" name="br.org.ufpr.tcc.bc.TipoQuartoBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/TipoQuartoBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="335" x="12833" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="85" language="java" name="br.org.ufpr.tcc.rest.RestAPI" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/RestAPI.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="164" x="7103" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="86" language="java" name="br.org.ufpr.tcc.entity.Showcase" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Showcase.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="459" width="177" x="7307" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="87" language="java" name="br.org.ufpr.tcc.converter.DTOtoAtributo" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoAtributo.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="171" x="7524" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="88" language="java" name="br.org.ufpr.tcc.converter.ClienteToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/ClienteToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="159" x="7735" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="89" language="java" name="br.org.ufpr.tcc.facade.ShowcaseFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/ShowcaseFacade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="387" x="3888" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="90" language="java" name="br.org.ufpr.tcc.dto.ClienteDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ClienteDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="1269" width="169" x="7934" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="91" language="java" name="br.org.ufpr.tcc.facade.ReservaFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/ReservaFacade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="363" x="14202" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="92" language="java" name="br.org.ufpr.tcc.dto.PesquisaPaginaDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/PesquisaPaginaDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="153" width="156" x="15998" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="93" language="java" name="br.org.ufpr.tcc.entity.Mensagem" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Mensagem.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="145" x="9901" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="94" language="java" name="br.org.ufpr.tcc.converter.FilialToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/FilialToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="135" x="15415" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="95" language="java" name="br.org.ufpr.tcc.dto.ShowcaseDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dto/ShowcaseDTO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="405" width="177" x="8143" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="96" language="java" name="br.org.ufpr.tcc.bc.FotoBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/FotoBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="271" x="11568" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="97" language="java" name="br.org.ufpr.tcc.dao.UsuarioDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/UsuarioDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="423" x="14819" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="98" language="java" name="br.org.ufpr.tcc.converter.UsuarioToDTO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/UsuarioToDTO.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="169" x="8360" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="99" language="java" name="br.org.ufpr.tcc.dao.TipoQuartoDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/TipoQuartoDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="455" x="12773" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="100" language="java" name="br.org.ufpr.tcc.rest.FotoREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/FotoREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="356" x="11359" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="101" language="java" name="br.org.ufpr.tcc.facade.TipoQuartoFacade" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/facade/TipoQuartoFacade.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="189" width="387" x="12833" y="1062"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="102" language="java" name="br.org.ufpr.tcc.dao.ConnectionManager" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/ConnectionManager.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="225" width="160" x="8569" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="103" language="java" name="br.org.ufpr.tcc.converter.DTOtoUsuario" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoUsuario.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="169" x="8769" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="104" language="java" name="br.org.ufpr.tcc.converter.DTOtoShowcase" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/converter/DTOtoShowcase.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="99" width="201" x="8978" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="105" language="java" name="br.org.ufpr.tcc.entity.Filial" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/entity/Filial.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="531" width="149" x="14188" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="106" language="java" name="br.org.ufpr.tcc.dao.ReservaDAO" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/dao/ReservaDAO.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="135" width="516" x="14045" y="1754"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="107" language="java" name="br.org.ufpr.tcc.rest.ReservaREST" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/rest/ReservaREST.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="189" width="376" x="14377" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="108" language="java" name="br.org.ufpr.tcc.bc.UsuarioBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/UsuarioBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="303" x="14819" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="109" language="java" name="br.org.ufpr.tcc.bc.ShowcaseBC" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/bc/ShowcaseBC.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="335" x="3888" y="1543"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <class id="110" language="java" name="br.org.ufpr.tcc.util.DataUtil" project="LazarusHotelaria" 
+    file="/LazarusHotelaria/src/main/java/br/org/ufpr/tcc/util/DataUtil.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="819" width="390" x="9219" y="-247"/>    
+    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
+      <operations public="true" package="true" protected="true" private="true" static="true"/>    
+    </display>  
+  </class>  
+  <association id="111">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="112" name="validator"/>      
+      <multiplicity id="113" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="1" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="114">    
+    <end type="SOURCE" refId="91" navigable="false">      
+      <attribute id="115" name="bc"/>      
+      <multiplicity id="116" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="70" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="117">    
+    <end type="SOURCE" refId="51"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <association id="118">    
+    <end type="SOURCE" refId="94" navigable="false">      
+      <attribute id="119" name="converterFoto"/>      
+      <multiplicity id="120" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="121">    
+    <end type="SOURCE" refId="61" navigable="false">      
+      <attribute id="122" name="facade"/>      
+      <multiplicity id="123" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="47" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="124">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="125" name="dao"/>      
+      <multiplicity id="126" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="17" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="127">    
+    <end type="SOURCE" refId="36" navigable="false">      
+      <attribute id="128" name="converterFoto"/>      
+      <multiplicity id="129" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="75" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="130">    
+    <end type="SOURCE" refId="45" navigable="false">      
+      <attribute id="131" name="converterFoto"/>      
+      <multiplicity id="132" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="75" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="133">    
+    <end type="SOURCE" refId="108" navigable="false">      
+      <attribute id="134" name="validator"/>      
+      <multiplicity id="135" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="63" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="136">    
+    <end type="SOURCE" refId="82"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <association id="137">    
+    <end type="SOURCE" refId="109" navigable="false">      
+      <attribute id="138" name="dao"/>      
+      <multiplicity id="139" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="71" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="140">    
+    <end type="SOURCE" refId="39" navigable="false">      
+      <attribute id="141" name="bc"/>      
+      <multiplicity id="142" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="57" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="143">    
+    <bendpoint x="11869" y="1543"/>    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="144">    
+    <end type="SOURCE" refId="68" navigable="false">      
+      <attribute id="145" name="bc"/>      
+      <multiplicity id="146" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="48" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="147">    
+    <bendpoint x="11537" y="1543"/>    
+    <end type="SOURCE" refId="16"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="148">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="149" name="validator"/>      
+      <multiplicity id="150" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="12" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="151">    
+    <bendpoint x="12099" y="1543"/>    
+    <end type="SOURCE" refId="64"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="152">    
+    <end type="SOURCE" refId="44" navigable="false">      
+      <attribute id="153" name="foto"/>      
+      <multiplicity id="154" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="155">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="156" name="dao"/>      
+      <multiplicity id="157" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="13" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="158">    
+    <end type="SOURCE" refId="66"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <generalization id="159">    
+    <end type="SOURCE" refId="31"/>    
+    <end type="TARGET" refId="32"/>  
+  </generalization>  
+  <association id="160">    
+    <end type="SOURCE" refId="26" navigable="false">      
+      <attribute id="161" name="facade"/>      
+      <multiplicity id="162" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="89" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="163">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="164" name="facade"/>      
+      <multiplicity id="165" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="80" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="166">    
+    <end type="SOURCE" refId="78"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <generalization id="167">    
+    <bendpoint x="13887" y="1543"/>    
+    <end type="SOURCE" refId="97"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="168">    
+    <end type="SOURCE" refId="62"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <association id="169">    
+    <end type="SOURCE" refId="80" navigable="false">      
+      <attribute id="170" name="bc"/>      
+      <multiplicity id="171" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="42" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="172">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="173" name="fotoFacade"/>      
+      <multiplicity id="174" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="175">    
+    <bendpoint x="12518" y="1543"/>    
+    <end type="SOURCE" refId="99"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="176">    
+    <end type="SOURCE" refId="15" navigable="false">      
+      <attribute id="177" name="fotoFacade"/>      
+      <multiplicity id="178" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="179">    
+    <bendpoint x="13219" y="1543"/>    
+    <end type="SOURCE" refId="106"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="180">    
+    <end type="SOURCE" refId="96"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="181">    
+    <end type="SOURCE" refId="84" navigable="false">      
+      <attribute id="182" name="dao"/>      
+      <multiplicity id="183" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="99" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="184">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <generalization id="185">    
+    <end type="SOURCE" refId="40"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <association id="186">    
+    <end type="SOURCE" refId="22" navigable="false">      
+      <attribute id="187" name="mensagens"/>      
+      <multiplicity id="188" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="93" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="189">    
+    <end type="SOURCE" refId="57" navigable="false">      
+      <attribute id="190" name="validator"/>      
+      <multiplicity id="191" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="72" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="192">    
+    <end type="SOURCE" refId="105" navigable="false">      
+      <attribute id="193" name="foto"/>      
+      <multiplicity id="194" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="195">    
+    <end type="SOURCE" refId="101" navigable="false">      
+      <attribute id="196" name="bc"/>      
+      <multiplicity id="197" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="84" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="198">    
+    <end type="SOURCE" refId="2" navigable="false">      
+      <attribute id="199" name="mensagens"/>      
+      <multiplicity id="200" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="93" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="201">    
+    <bendpoint x="10933" y="1543"/>    
+    <end type="SOURCE" refId="17"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="202">    
+    <bendpoint x="13198" y="1543"/>    
+    <end type="SOURCE" refId="13"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <generalization id="203">    
+    <end type="SOURCE" refId="35"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <association id="204">    
+    <end type="SOURCE" refId="49" navigable="false">      
+      <attribute id="205" name="facade"/>      
+      <multiplicity id="206" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="68" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="207">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="208" name="validator"/>      
+      <multiplicity id="209" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="41" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="210">    
+    <end type="SOURCE" refId="53" navigable="false">      
+      <attribute id="211" name="converterFoto"/>      
+      <multiplicity id="212" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="33" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="213">    
+    <end type="SOURCE" refId="25" navigable="false">      
+      <attribute id="214" name="foto"/>      
+      <multiplicity id="215" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="69" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="216">    
+    <end type="SOURCE" refId="48" navigable="false">      
+      <attribute id="217" name="validator"/>      
+      <multiplicity id="218" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="79" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="219">    
+    <end type="SOURCE" refId="81" navigable="false">      
+      <attribute id="220" name="bc"/>      
+      <multiplicity id="221" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="108" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="222">    
+    <end type="SOURCE" refId="23" navigable="false">      
+      <attribute id="223" name="dao"/>      
+      <multiplicity id="224" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="64" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="225">    
+    <end type="SOURCE" refId="58" navigable="false">      
+      <attribute id="226" name="bc"/>      
+      <multiplicity id="227" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="96" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="228">    
+    <end type="SOURCE" refId="77" navigable="false">      
+      <attribute id="229" name="facade"/>      
+      <multiplicity id="230" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="81" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="231">    
+    <end type="SOURCE" refId="107" navigable="false">      
+      <attribute id="232" name="facade"/>      
+      <multiplicity id="233" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="91" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="234">    
+    <end type="SOURCE" refId="42" navigable="false">      
+      <attribute id="235" name="dao"/>      
+      <multiplicity id="236" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="16" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="237">    
+    <end type="SOURCE" refId="47" navigable="false">      
+      <attribute id="238" name="bc"/>      
+      <multiplicity id="239" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="23" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="240">    
+    <end type="SOURCE" refId="70" navigable="false">      
+      <attribute id="241" name="dao"/>      
+      <multiplicity id="242" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="106" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="243">    
+    <end type="SOURCE" refId="14"/>    
+    <end type="TARGET" refId="92"/>  
+  </generalization>  
+  <association id="244">    
+    <end type="SOURCE" refId="65" navigable="false">      
+      <attribute id="245" name="mensagens"/>      
+      <multiplicity id="246" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="93" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="247">    
+    <end type="SOURCE" refId="23"/>    
+    <end type="TARGET" refId="31"/>  
+  </generalization>  
+  <association id="248">    
+    <end type="SOURCE" refId="96" navigable="false">      
+      <attribute id="249" name="dao"/>      
+      <multiplicity id="250" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="4" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="251">    
+    <end type="SOURCE" refId="10" navigable="false">      
+      <attribute id="252" name="facade"/>      
+      <multiplicity id="253" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="39" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="254">    
+    <end type="SOURCE" refId="37" navigable="false">      
+      <attribute id="255" name="foto"/>      
+      <multiplicity id="256" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="60" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="257">    
+    <end type="SOURCE" refId="89" navigable="false">      
+      <attribute id="258" name="bc"/>      
+      <multiplicity id="259" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="109" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="260">    
+    <end type="SOURCE" refId="34" navigable="false">      
+      <attribute id="261" name="facade"/>      
+      <multiplicity id="262" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="101" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="263">    
+    <end type="SOURCE" refId="100" navigable="false">      
+      <attribute id="264" name="facade"/>      
+      <multiplicity id="265" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="58" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="266">    
+    <end type="SOURCE" refId="84" navigable="false">      
+      <attribute id="267" name="validator"/>      
+      <multiplicity id="268" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="29" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="269">    
+    <end type="SOURCE" refId="65" navigable="false">      
+      <attribute id="270" name="pagina"/>      
+      <multiplicity id="271" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="272">    
+    <end type="SOURCE" refId="108" navigable="false">      
+      <attribute id="273" name="dao"/>      
+      <multiplicity id="274" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="97" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <association id="275">    
+    <end type="SOURCE" refId="92" navigable="false">      
+      <attribute id="276" name="pagina"/>      
+      <multiplicity id="277" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="46" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="true">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="true" package="true" protected="true" private="true" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

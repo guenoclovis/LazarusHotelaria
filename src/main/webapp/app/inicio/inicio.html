@@ -114,8 +114,10 @@
 										ng-model="vm.filtros.dataSaida"
 										is-open="vm.popupDataSaida.opened"
 										datepicker-options="dateOptions" ng-required="true"
-										close-text="Close" alt-input-formats="altInputFormats" /> <span
-										class="input-group-btn">
+										close-text="Close" alt-input-formats="altInputFormats" 
+										locale="pt_BR"
+										/> 
+										<span class="input-group-btn">
 										<button type="button" class="btn btn-default"
 											ng-click="vm.openDataSaida()">
 											<i class="glyphicon glyphicon-calendar"></i>

@@ -19,11 +19,18 @@
             listar : listar,
             salvar : salvar,
             excluir : excluir,
-            solicitarReserva : solicitarReserva
+            solicitarReserva : solicitarReserva,
+            irParaTelaReservas : irParaTelaReservas
         };
 
         return service;
         // //////////////
+        
+        
+        function irParaTelaReservas() {
+        	MsgCenter.clear();
+            $state.go('reserva-consultar');
+        }
 
         function obter(codReserva, filtros) {
             return Restangular.one(apiURLCompleta, codReserva).get(filtros);
