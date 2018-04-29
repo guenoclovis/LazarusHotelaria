@@ -23,7 +23,7 @@ public class JasperTest {
 
     public static void main(String[] args) throws JRException {
         
-    	System.out.println("Gerando relatório...");
+    	System.out.println("Gerando relatorio...");
 
         Map<String, Object> parametros = new HashMap<String, Object>();
         
@@ -39,8 +39,8 @@ public class JasperTest {
         
         JasperReport jasper = compileReport(JasperTest.class.getResourceAsStream(formatReportFileName(nomeArquivoJrxml)));			 
 		JasperPrint print = fillReport(jasper, parametros, new JRBeanCollectionDataSource(lista));
-		JasperExportManager.exportReportToPdfFile(print, System.getProperty("user.home")+"/Área de Trabalho/Teste.pdf");
-        System.out.println("Relatório gerado.");
+		JasperExportManager.exportReportToPdfFile(print, System.getProperty("user.home")+"/Area de Trabalho/Teste.pdf");
+        System.out.println("Relatorio gerado.");
         
 
     }

@@ -61,6 +61,7 @@ public class ReservaBC {
             }
             log.info("Alterou reserva na base de dados.");
         }
+        
 
         return new ResponseDTO(Long.valueOf(reservaPersistida.getCodReserva()));
     }

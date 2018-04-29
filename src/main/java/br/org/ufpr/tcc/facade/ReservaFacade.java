@@ -7,9 +7,11 @@ import java.util.logging.Logger;
 
 import org.apache.commons.httpclient.util.DateUtil;
 
+import br.org.ufpr.tcc.bc.CheckoutRegisterBC;
 import br.org.ufpr.tcc.bc.ClienteBC;
 import br.org.ufpr.tcc.bc.ReservaBC;
 import br.org.ufpr.tcc.converter.ReservaToDTO;
+import br.org.ufpr.tcc.converter.DTOtoCheckout;
 import br.org.ufpr.tcc.converter.DTOtoReserva;
 import br.org.ufpr.tcc.converter.ReservaDTOtoCliente;
 import br.org.ufpr.tcc.dto.ReservaDTO;
@@ -21,6 +23,7 @@ import br.org.ufpr.tcc.enuns.StatusEnum;
 import br.org.ufpr.tcc.enuns.StatusReservaEnum;
 import br.org.ufpr.tcc.util.Constantes;
 import br.org.ufpr.tcc.util.DataUtil;
+import br.org.ufpr.tcc.entity.Checkout;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Pagina;
 
@@ -84,11 +87,19 @@ public class ReservaFacade {
         log.info(logMsg);
 
         //CONVERTER
-        DTOtoReserva converter = new DTOtoReserva();
-        Reserva reserva = converter.convert(dto);
+        DTOtoReserva converterReserva = new DTOtoReserva();
+        Reserva reserva = converterReserva.convert(dto);
         
 		ResponseDTO responseDTO = bc.persistir(reserva);
+		
+		//
+		DTOtoCheckout converterCheckout = new DTOtoCheckout();
+		Checkout checkout = converterCheckout.convert(dto, responseDTO.getId());
 
+
+        CheckoutRegisterBC checkoutRegister = new CheckoutRegisterBC();
+        checkoutRegister.gerarCompraNoPagSeguro(checkout);
+		
         logMsg = "Registro de Reserva persistido";
         log.info(logMsg);
 

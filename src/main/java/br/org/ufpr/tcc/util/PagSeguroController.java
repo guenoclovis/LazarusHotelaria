@@ -75,7 +75,7 @@
 //		return item;
 //	}
 //
-//	@RequestMapping(value = "/pagseguro-notificacao", method = requestMethod.POST)
+//	@RequestMapping(value = "/pagseguro-notificacao", method = RequestMethod.POST)
 //	public @ResponseBody
 //	String registrarNotificacao(
 //			@RequestParam(value = "notificationCode") String nCode,
