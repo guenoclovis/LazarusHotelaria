@@ -17,7 +17,7 @@ public class DTOtoCheckout {
 		checkout.setExtraAmount(BigDecimal.ONE);
 		checkout.setEmail(dto.getEmail());
 		checkout.setNome(dto.getNome());
-		checkout.setCpf(dto.getCpf());
+		checkout.setCpf(dto.getCpf().replace(".", "").replace("-", ""));
 		checkout.setAreaCode(dto.getTelefone().replace("(", "").replace(")", "").replace("-", "").substring(0,2));
 		checkout.setNumber(dto.getTelefone().replace("(", "").replace(")", "").replace("-", "").substring(2));
 		checkout.setIdReserva(idReserva);

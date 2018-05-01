@@ -1,6 +1,15 @@
 package br.org.ufpr.tcc.validator;
 
 import java.util.ArrayList;
+
+
+/*
+
+ mvn install:install-file -Dfile=pagseguro-api-2.5.6.jar -DgroupId=br.com.uol.pagseguro -DartifactId=pagseguro -Dversion=2.5.2 -Dpackaging=jar
+ 
+ */
+
+
 import java.util.List;
 import java.util.Set;
 

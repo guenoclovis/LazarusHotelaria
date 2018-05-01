@@ -91,15 +91,7 @@ public class ReservaFacade {
         Reserva reserva = converterReserva.convert(dto);
         
 		ResponseDTO responseDTO = bc.persistir(reserva);
-		
-		//
-		DTOtoCheckout converterCheckout = new DTOtoCheckout();
-		Checkout checkout = converterCheckout.convert(dto, responseDTO.getId());
-
-
-        CheckoutRegisterBC checkoutRegister = new CheckoutRegisterBC();
-        checkoutRegister.gerarCompraNoPagSeguro(checkout);
-		
+				
         logMsg = "Registro de Reserva persistido";
         log.info(logMsg);
 
@@ -152,6 +144,14 @@ public class ReservaFacade {
         reserva.setDtReserva(DataUtil.toDate(LocalDate.now()));        
         
 		ResponseDTO responseDTO = bc.persistir(reserva);
+		
+		//
+		DTOtoCheckout converterCheckout = new DTOtoCheckout();
+		Checkout checkout = converterCheckout.convert(dto, responseDTO.getId());
+
+
+        CheckoutRegisterBC checkoutRegister = new CheckoutRegisterBC();
+        checkoutRegister.gerarCompraNoPagSeguro(checkout);
 
         logMsg = "Registro de Reserva persistido";
         log.info(logMsg);
