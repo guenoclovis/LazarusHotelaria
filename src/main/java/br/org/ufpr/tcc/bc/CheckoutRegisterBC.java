@@ -83,7 +83,7 @@ public class CheckoutRegisterBC {
 
 
 					.withAcceptedPaymentMethods(new AcceptedPaymentMethodsBuilder()
-							.addInclude(new PaymentMethodBuilder().withGroup(PaymentMethodGroup.BALANCE))
+							.addInclude(new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
 							.addInclude(new PaymentMethodBuilder().withGroup(PaymentMethodGroup.BANK_SLIP)))
 
 					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
@@ -95,7 +95,7 @@ public class CheckoutRegisterBC {
 							.withPaymentMethod(
 									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.BANK_SLIP))
 							.withConfig(new ConfigBuilder().withKey(ConfigKey.DISCOUNT_PERCENT)
-									.withValue(new BigDecimal(10.00))))
+									.withValue(new BigDecimal(0.01))))
 
 					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
 							.withPaymentMethod(

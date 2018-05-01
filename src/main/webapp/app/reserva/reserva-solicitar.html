@@ -15,24 +15,6 @@ s
 
 				<!-- ======================= FORMULARIO DE ATRIBUTO =========================== -->
 				<form>
-					<!-- Declaração do formulário -->
-					<form method="post" target="pagseguro"
-						action="https://pagseguro.uol.com.br/v2/checkout/payment.html">
-
-						<!-- Campos obrigatórios -->
-						<input name="receiverEmail" type="hidden"
-							value="lazarushotelaria@gmail.com"> <input
-							name="currency" type="hidden" value="BRL">
-
-						<!-- Itens do pagamento (ao menos um item é obrigatório) -->
-
-<!--         <input name="itemId1" type="hidden" value="0001">   -->
-<!--         <input name="itemDescription1" type="hidden" value="Notebook Prata">   -->
-<!--         <input name="itemAmount1" type="hidden" value="24300.00">   -->
-<!--         <input name="itemQuantity1" type="hidden" value="1">   -->
-<!--         <input name="itemWeight1" type="hidden" value="1000">   -->
-
-
 						<!-- NOME -->
 						<div class="well">
 							<div class="row campo-form">
@@ -46,11 +28,11 @@ s
 									<img
 										ng-src="data:image/jpeg;base64,{{vm.reserva.quarto.foto.imagemMiniatura}}"
 										class="img-responsive" style="width: 100%" alt="Image">
-										
+
 									<div name="itemAmount1" class="quarto_valor">
 										<h5>{{vm.reserva.quarto.descricaoTipoQuarto}}</h5>
 									</div>
-									<div name="itemQuantity1 class="quarto_valor">
+									<div name="itemQuantity1" class="quarto_valor">
 										<h5>Qtde camas: {{vm.reserva.quarto.nrCamas}}</h5>
 									</div>
 									<p>{{vm.reserva.quarto.descricao}}</p>
@@ -89,7 +71,8 @@ s
 							<div class="row campo-form">
 								<div class="col-md-2"></div>
 								<div class="col-md-2">
-									<label for="cpf" class="cols-sm-2 control-label">Valor (R$)</label>
+									<label for="cpf" class="cols-sm-2 control-label">Valor
+										(R$)</label>
 								</div>
 								<div class="col-md-6">
 									<input id="cpf" type="cpf" class="form-control"
@@ -152,10 +135,9 @@ s
 							</div>
 						</div>
 
-						<!-- submit do form (obrigatório) -->
+						<!-- Pagar com lightbox -->
 						<div class="row botoes-direita">
-							<input alt="Pague com PagSeguro" name="submit" type="image"
-								src="https://p.simg.uol.com.br/out/pagseguro/i/botoes/pagamentos/120x53-pagar.gif" />
+							<button ng-click="vm.solicitarReserva()" class="btn btn-primary"></button>								
 						</div>
 					</form>
 

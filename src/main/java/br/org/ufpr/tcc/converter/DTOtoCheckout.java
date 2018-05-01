@@ -21,7 +21,7 @@ public class DTOtoCheckout {
 		checkout.setAreaCode(dto.getTelefone().replace("(", "").replace(")", "").replace("-", "").substring(0,2));
 		checkout.setNumber(dto.getTelefone().replace("(", "").replace(")", "").replace("-", "").substring(2));
 		checkout.setIdReserva(idReserva);
-		checkout.setDescription(dto.getStatusDescricao());
+		checkout.setDescription("Quarto");
 		
 		BigDecimal d = new BigDecimal(dto.getPreco());
 		checkout.setAmount(d);

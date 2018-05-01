@@ -71,7 +71,6 @@
 					undefined);
 			
 			ReservaData.solicitarReserva(vm.reserva).then(function(data) {
-				
 				MsgCenter.clear();
 				
 				MsgCenter.add("INFO",
@@ -87,6 +86,9 @@
 				if (data.mensagens) {
 					MsgCenter.addMessages(data.mensagens);
 				}
+				
+				PagSeguroLightbox(data.checkoutCode);
+				
 			});
 			
 		}

@@ -149,14 +149,14 @@ public class ReservaFacade {
 		DTOtoCheckout converterCheckout = new DTOtoCheckout();
 		Checkout checkout = converterCheckout.convert(dto, responseDTO.getId());
 
-
         CheckoutRegisterBC checkoutRegister = new CheckoutRegisterBC();
-        checkoutRegister.gerarCompraNoPagSeguro(checkout);
+        String out = checkoutRegister.gerarCompraNoPagSeguro(checkout);
+        responseDTO.setCheckoutCode(out);
 
         logMsg = "Registro de Reserva persistido";
         log.info(logMsg);
         
-        enviarEmail(dto, reserva);
+        //enviarEmail(dto, reserva);
 
         return responseDTO;
 	}

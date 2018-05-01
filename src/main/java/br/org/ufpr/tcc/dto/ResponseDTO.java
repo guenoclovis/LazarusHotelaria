@@ -8,9 +8,9 @@ import br.org.ufpr.tcc.entity.Mensagem;
 public class ResponseDTO {
 
     private Long id;
-
+	private String checkoutCode;
     private List<Mensagem> mensagens;
-
+    
     public ResponseDTO() {
         this(null, new ArrayList<Mensagem>());
     }
@@ -28,6 +28,14 @@ public class ResponseDTO {
         this(null, mensagens);
     }
 
+    public String getCheckoutCode() {
+		return checkoutCode;
+	}
+
+	public void setCheckoutCode(String checkoutCode) {
+		this.checkoutCode = checkoutCode;
+	}
+    
     public Long getId() {
         return id;
     }

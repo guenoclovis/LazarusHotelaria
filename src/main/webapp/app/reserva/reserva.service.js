@@ -48,7 +48,7 @@
             }
         }
         
-        function solicitarReserva(reserva) {
+        function solicitarReserva(reserva) {        	
         	return Restangular.all(apiURLCompleta + "/solicitar").post(reserva);
         }
         
