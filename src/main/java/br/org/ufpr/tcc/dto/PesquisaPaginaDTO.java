@@ -7,7 +7,7 @@ public class PesquisaPaginaDTO {
     private static final long serialVersionUID = 1L;
 
     private Pagina pagina;
-
+    
     public PesquisaPaginaDTO() {
         this(0, 10);
     }

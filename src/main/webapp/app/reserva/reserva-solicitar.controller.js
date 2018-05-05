@@ -37,6 +37,10 @@
 		vm.solicitarReserva = solicitarReserva;
 		
 		vm.exibirBotaoSolicitarReserva = true;
+		
+		vm.exibirBotaoPagarAgora = undefined;
+		
+		vm.pagarAgora = pagarAgora;
 
 		activate();
 
@@ -46,6 +50,33 @@
 			carregarFiliais();
 			carregarFilial();
 			carregarQuarto();			
+		}
+		
+		function pagarAgora(){
+					
+			MsgCenter.clear();
+			
+			var isOpenLightbox = PagSeguroLightbox( 
+				{ code: vm.reserva.checkoutCode }, 
+				{
+				    success : function(transactionCode) {
+//				        alert("Success - " + transactionCode);
+				        MsgCenter.add("INFO",
+				        		"Successo - " + transactionCode, undefined,
+								undefined);
+				    },
+				    abort : function() {
+				    	MsgCenter.add("WARN",
+				        		"Pagamento abortado!", undefined,
+								undefined);
+				    }
+				}
+			);
+			
+			// Redirecionando o cliente caso o navegador não tenha suporte ao Lightbox
+			if (!isOpenLightbox){
+			    location.href="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code="+code;
+			}
 		}
 		
 		function calcularValor(data1, data2, precoDiaria) {
@@ -74,7 +105,7 @@
 				MsgCenter.clear();
 				
 				MsgCenter.add("INFO",
-						"Solicitação de Reserva efetuada com sucesso", undefined,
+						"Solicitação de Reserva efetuada com sucesso - Código: " + data.checkoutCode , undefined,
 						undefined);
 				
 				MsgCenter.add("INFO",
@@ -87,7 +118,9 @@
 					MsgCenter.addMessages(data.mensagens);
 				}
 				
-				PagSeguroLightbox(data.checkoutCode);
+				vm.reserva.checkoutCode = data.checkoutCode;
+				
+				//PagSeguroLightbox(data.checkoutCode);
 				
 			});
 			

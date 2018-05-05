@@ -1,4 +1,7 @@
 diagrama de sequencia
 
 Ator > View >  Interceptor > Rest > Conversor > Facade > BC > Validador > DAO
+
+Ator > HTML > Controller > Service > Rest > Conversor > Facade > BC > Validador > DAO
+Ator < HTML < Controller < Service < Rest < Conversor < Facade < BC < DAO
                    

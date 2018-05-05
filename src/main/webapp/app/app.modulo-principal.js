@@ -29,11 +29,11 @@
 	]);
 	
 	//Variavel que indica qual a URL que sera concatenada com todos os servicos
-	//Ex: locamente vai ser algo do tipo http://localhost:8080/
+	//Ex: localmente vai ser algo do tipo http://localhost:8080/
 	//    em producao algo do tipo:      https://servidor.fjsdkl.fjskdl:8083/	
 	angular.module('lazarusApp').run(function($rootScope, $location) {
 		
-	    $rootScope.baseURL = $location.protocol() + "://" + $location.host() + ":" + "8080" + "/";
+	    $rootScope.baseURL = $location.protocol() + "://" + $location.host() + ":" + "8080" + "/";	    
 	    
 	})
 })();

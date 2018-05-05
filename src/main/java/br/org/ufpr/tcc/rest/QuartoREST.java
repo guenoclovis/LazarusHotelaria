@@ -92,7 +92,7 @@ public class QuartoREST {
         if (currentPage != 0) {
             filtro.getPagina().setCurrentPage(currentPage);
         }
-
+        
         return facade.listarSemReserva(filtro, null);
     }
 	
