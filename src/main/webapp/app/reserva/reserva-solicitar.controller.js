@@ -60,6 +60,7 @@
 				{ code: vm.reserva.checkoutCode }, 
 				{
 				    success : function(transactionCode) {
+				    	vm.reserva.checkoutCode = undefined;
 //				        alert("Success - " + transactionCode);
 				        MsgCenter.add("INFO",
 				        		"Successo - " + transactionCode, undefined,

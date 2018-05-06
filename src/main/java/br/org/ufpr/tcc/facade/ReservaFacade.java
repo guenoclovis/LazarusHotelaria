@@ -150,13 +150,13 @@ public class ReservaFacade {
 		Checkout checkout = converterCheckout.convert(dto, responseDTO.getId());
 
         CheckoutRegisterBC checkoutRegister = new CheckoutRegisterBC();
-        String out = checkoutRegister.gerarCompraNoPagSeguro(checkout);
-        responseDTO.setCheckoutCode(out);
+        String checkoutCode = checkoutRegister.gerarCompraNoPagSeguro(checkout);
+        responseDTO.setCheckoutCode(checkoutCode);
 
         logMsg = "Registro de Reserva persistido";
         log.info(logMsg);
         
-        //enviarEmail(dto, reserva);
+        enviarEmail(dto, reserva, checkoutCode);
 
         return responseDTO;
 	}
@@ -180,7 +180,7 @@ public class ReservaFacade {
 		return codCliente;
 	}
 
-	private void enviarEmail(ReservaDTO dto, Reserva reserva) {
+	private void enviarEmail(ReservaDTO dto, Reserva reserva, String checkoutCode) {
 		
 		EmailBC emailBC = new EmailBC();
 		
@@ -196,8 +196,9 @@ public class ReservaFacade {
         mensagem.append("\nData Entrada: "+dto.getDataEntrada());
         mensagem.append("\nData Saída: "+dto.getDtSaida());
         mensagem.append("\nValor(R$): "+reserva.getPreco());
+        mensagem.append("\nC�digo para Pagamento no PagSeguro:  "+checkoutCode);
         mensagem.append("\n");
-        mensagem.append("\nAguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
+        mensagem.append("\nCASO PREFERIR: aguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
         mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
         mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
         mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);

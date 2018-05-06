@@ -13,11 +13,11 @@ import br.org.ufpr.tcc.util.Constantes;
 
 public class EmailBC {
 	
-	private static final String SENHA_EMAIL_GOOGLE_EMPRESA = "l@zarus2017";
+	private static final String SENHA_EMAIL_GOOGLE_EMPRESA = "!1qaz2wsx";
 	
 	public static void main(String[] args) {
 		EmailBC s = new EmailBC();
-		s.enviarEmail("clovis.gueno@gmail.com, arildo.gueno@gmail.com", "Testando envio de e-mail via java - teste2", "Chegou?");
+		s.enviarEmail("clovis.gueno@gmail.com", "Testando envio de e-mail via java - teste2", "Chegou?");
 	}
 
 	public void enviarEmail(String destinatarios, String assunto, String mensagem) {
