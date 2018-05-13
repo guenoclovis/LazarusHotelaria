@@ -74,7 +74,7 @@ public class ReservaFacade {
         	reservasDTO.add(reservaDTO);
         }
 		
-		ResultadoPaginadoDTO<ReservaDTO> responseDTO = new ResultadoPaginadoDTO<ReservaDTO>(reservasDTO, new Pagina());
+		ResultadoPaginadoDTO<ReservaDTO> responseDTO = new ResultadoPaginadoDTO<ReservaDTO>(reservasDTO, listagem.getPagina());
 
         logMsg = "Finalizando listagem de Reserva";
         log.info(logMsg);

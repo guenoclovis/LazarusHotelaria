@@ -7,6 +7,8 @@
 			<div class="titulo-paginas-meio">
 				<h1>Resumo de Movimenta&ccedil;&atilde;o</h1>
 			</div>	
+			<div class=".container">
+				<div class="row">
 			
 			<!-- ======================= CONSULTA DE QUARTOS =========================== -->
 			<div class=".container">
@@ -83,8 +85,37 @@
 						</div>
 								
 					</div>
+					<!-- ======================= Dashboard  =========================== -->
+					<div class="col-sm-6">
+					<div class="container-fluid bg-4 text-center">
+						<div class="row">
+							<div class="col-sm-12 item-quarto">
+								
+									<h4>Quartos disponíveis:</h4> 
+									<div class="quarto_valor">
+										<h5>{{vm.quartosDisponiveis}}</h5>
+									</div>
+									<h4>Quartos reservados:</h4> 
+									<div class="quarto_valor">
+										<h5>{{vm.totalresults}}</h5>
+									</div>
+									<h4>Total de quartos:</h4> 
+									<div class="quarto_valor">
+										<h5>{{vm.totalresults + vm.quartosDisponiveis}}</h5>
+									</div>
+									<p>&nbsp;</p>
+								</a>
+							</div>
+						</div>
+						</br>
+					</div>
 				</div>
-			</div><!-- div class .container parte1 -->
+					</div>
+				</div>
+			</div>
+			
+			
+			<!-- div class .container parte1 -->
 			
 			<!-- TESTE BUSCA PAGINADA -->
 			<div ng-show="vm.reservas.length > 0" class="well">				

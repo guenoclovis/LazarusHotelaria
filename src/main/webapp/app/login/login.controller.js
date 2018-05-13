@@ -32,7 +32,6 @@
 
         function activate() {
         	MsgCenter.clear();
-        	irParaTelaLogin()
         }
 
         function irParaTelaLogin() {

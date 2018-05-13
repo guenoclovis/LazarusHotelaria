@@ -30,6 +30,7 @@
 
 		vm.openDataEntrada = openDataEntrada;
 		vm.openDataSaida = openDataSaida;
+		vm.pesquisarQuartosSemReserva = pesquisarQuartosSemReserva;
 		
 		vm.filtros = {};
 		vm.quartos = [];
@@ -41,6 +42,8 @@
 		
 		vm.filtros = { 
 		};
+		
+		vm.quartosDisponiveis = 0;
 		
 		// Paginação
 		vm.totalresults = 0;
@@ -56,6 +59,7 @@
 		vm.irParaTelaDetalhamento = irParaTelaDetalhamento;
 		vm.carregarFiliais = carregarFiliais;
 		vm.carregarFilial = carregarFilial;
+		vm.pesquisarQuartosSemReserva = pesquisarQuartosSemReserva;
 			
 		
 
@@ -73,6 +77,7 @@
 //			if(preencheuFiltrosObrigatorioParaPesquisa()){
 				pesquisar();
 //			}
+				pesquisarQuartosSemReserva();
 		}
 		
 		
@@ -119,8 +124,6 @@
 						vm.filial.foto = data;
 					});	
 				}
-				
-				
 				vm.quartos = [];
 			});
 		}		
@@ -129,6 +132,7 @@
 			vm.filtros.currentpage = 0;
 			MsgCenter.clear();
 			pesquisar();
+			pesquisarQuartosSemReserva();
 		}
 
 		function paginaAlterada() {
@@ -199,6 +203,7 @@
 
 		function pesquisar() {
 			MsgCenter.clear();
+			
 			var filtros = vm.filtros;
 
 			ReservaData.listar(filtros).then(function(data) {
@@ -214,6 +219,16 @@
 					MsgCenter.addMessages(data.mensagens);
 				}
 			});
+		}
+		
+		function pesquisarQuartosSemReserva(){
+
+			var filtros = vm.filtros;
+			
+			QuartoData.pesquisarSemReserva(filtros).then(function(data) {
+				vm.quartosDisponiveis = page.totalResults;
+			});
+			
 		}
 	}
 
