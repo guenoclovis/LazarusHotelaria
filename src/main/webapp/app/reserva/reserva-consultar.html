@@ -53,12 +53,11 @@
 								</p>
 							</div>
 						</div>
-			
+								
 						<!-- DATA SAIDA -->
 						<div class="row campo-form">
 							<div class="col-sm-4">
-								<label for="dtNasc" class="cols-sm-2 control-label required">Data
-									de Sa&iacute;da</label>
+								<label for="dtNasc" class="cols-sm-2 control-label required">Data de Sa&iacute;da</label>
 							</div>
 							<div class="col-sm-8">
 								<p class="input-group">
@@ -67,9 +66,11 @@
 										ng-model="vm.filtros.dataSaida"
 										is-open="vm.popupDataSaida.opened"
 										datepicker-options="dateOptions" ng-required="true"
-										close-text="Close" alt-input-formats="altInputFormats" /> <span
-										class="input-group-btn">
-										<button type="button" class="btn btn-default"
+										close-text="Close" alt-input-formats="altInputFormats" 
+										 /> 
+										<span class="input-group-btn" >
+										
+										<button type="button" class="btn btn-default" 
 											ng-click="vm.openDataSaida()">
 											<i class="glyphicon glyphicon-calendar"></i>
 										</button>

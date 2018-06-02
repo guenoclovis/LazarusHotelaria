@@ -19,6 +19,7 @@ import javax.persistence.criteria.Root;
 import org.apache.commons.lang3.StringUtils;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 import org.hibernate.type.IntegerType;
 
 import br.org.ufpr.tcc.dto.QuartoFiltroDTO;
@@ -85,6 +86,9 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 	
 	public List<Quarto> listarSemReserva(QuartoFiltroDTO filtros) {
 
+		Transaction transacaoAtual = getHibernateSession().getTransaction();
+		transacaoAtual.begin();
+		
 		StringBuffer SQL = new StringBuffer();
 
 		SQL.append("SELECT distinct(q.*)  ");
@@ -121,6 +125,8 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 		//query.addScalar("cod_quarto", IntegerType.INSTANCE);
 
 		List<Quarto> listaRetorno = (List<Quarto>) query.getResultList();
+		
+		transacaoAtual.commit();
 		
 		return listaRetorno;
 		

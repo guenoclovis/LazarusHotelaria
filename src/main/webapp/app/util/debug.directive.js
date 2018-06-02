@@ -1,7 +1,7 @@
 (function() {
     'use strict';
     
-    var ATIVAR_DEBUG = false;
+    var ATIVAR_DEBUG = true;
     
     
     if(ATIVAR_DEBUG){
