@@ -85,9 +85,6 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 
 	
 	public List<Quarto> listarSemReserva(QuartoFiltroDTO filtros) {
-
-		Transaction transacaoAtual = getHibernateSession().getTransaction();
-		transacaoAtual.begin();
 		
 		StringBuffer SQL = new StringBuffer();
 
@@ -125,8 +122,6 @@ public class QuartoDAO extends LazarusDAO<Quarto> {
 		//query.addScalar("cod_quarto", IntegerType.INSTANCE);
 
 		List<Quarto> listaRetorno = (List<Quarto>) query.getResultList();
-		
-		transacaoAtual.commit();
 		
 		return listaRetorno;
 		

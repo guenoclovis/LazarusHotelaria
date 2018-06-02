@@ -70,18 +70,14 @@
 		function activate() {
 			vm.deveRestaurar = FiltroService.deveRestaurar();
 			
-			vm.filtros.codFilial = 1;
-			vm.filtros.dataEntrada =  '2018-06-02T14:00:00.000Z';    
-			vm.filtros.dataSaida = '2018-06-03T12:00:00.000Z';
-			
-			/*
 			var tomorrow = new Date();
 			var numberOfDaysToAdd = 1;
 			tomorrow.setDate(new Date().getDate() + numberOfDaysToAdd);
 			
-			vm.filtros.dataEntrada =  $filter('date')(new Date(), 'yyyy-MM-ddTHH:mm.ss.SSSZ');    
-			vm.filtros.dataSaida = $filter('date')(tomorrow, 'yyyy-MM-ddTHH:mm.ss.SSSZ');
-			*/
+			vm.filtros.codFilial = 1;
+			vm.filtros.dataEntrada =  new Date();   
+			vm.filtros.dataSaida = tomorrow;
+			
 			
 			restaurarEstadoTela();
 			carregarFiliais();
@@ -239,7 +235,7 @@
 			var filtros = vm.filtros;
 			
 			QuartoData.pesquisarSemReserva(filtros).then(function(data) {
-				vm.quartosDisponiveis = page.totalResults;
+				vm.quartosDisponiveis = data.entidades.length;
 			});
 			
 		}

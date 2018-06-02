@@ -92,7 +92,7 @@
 						<div class="row">
 							<div class="col-sm-12 item-quarto">
 								
-									<h4>Quartos disponíveis:</h4> 
+									<h4>Quartos para reserva:</h4> 
 									<div class="quarto_valor">
 										<h5>{{vm.quartosDisponiveis}}</h5>
 									</div>
@@ -149,7 +149,7 @@
 								<td ng-bind="reserva.dtReserva"></td>
 								<td ng-bind="reserva.dataEntrada"></td>
 								<td ng-bind="reserva.dataSaida"></td>
-								<td ng-bind="reserva.preco"></td>
+								<td ng-bind="reserva.preco | currency"></td>
 								<td class="text-center"><a
 									ng-click="vm.irParaTelaDetalhamento(reserva.codReserva)"
 									class="btn btn-primary btn-xs">Detalhar</a></td>
