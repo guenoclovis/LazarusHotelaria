@@ -22,7 +22,7 @@ public class AtributoBC extends LazarusDAO<Atributo> {
     private AtributoValidator validator = new AtributoValidator();
 
     public Atributo obter(Integer id) {
-        return dao.load(id);
+    	return dao.load(id);
     }
 
     public ResultadoPaginadoDTO<Atributo> listar(AtributoFiltroDTO filtros) throws Exception {

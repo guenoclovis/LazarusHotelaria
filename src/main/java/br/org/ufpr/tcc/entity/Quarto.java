@@ -69,7 +69,7 @@ public class Quarto {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinTable(name = "QUARTO_ATRIBUTO", joinColumns = @JoinColumn(name = "COD_QUARTO"),
     inverseJoinColumns = @JoinColumn(name = "COD_ATRIBUTO"))
-	private List<Atributo> atributos = new ArrayList();
+	private List<Atributo> atributos = new ArrayList<Atributo>();
 
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "quarto", orphanRemoval = true)
 	private List<Reserva> reservas = new ArrayList<Reserva>();

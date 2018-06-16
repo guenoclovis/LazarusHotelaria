@@ -692,10 +692,10 @@ SELECT pg_catalog.setval('tipos_de_quarto_cod_tipo_quarto_seq', 5, true);
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO usuarios VALUES (1, 'Clovis Daniel Gueno', 1, '2017-11-16', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', '3 ', 'Casa 123', 'clovis2017', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
-INSERT INTO usuarios VALUES (3, 'Fulano Funcionario 1', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12017', 'fulano12017', 1);
-INSERT INTO usuarios VALUES (4, 'Fulano Funcionario 2', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22017', 'fulano22017', 1);
-INSERT INTO usuarios VALUES (2, 'Stephany Rios', 1, '2017-11-08', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Bocaiuva do Sul', '16', 'Casa 123', 'sr2017', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
+INSERT INTO usuarios VALUES (1, 'Clovis Daniel Gueno', 1, '2017-11-16', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', '3 ', 'Casa 123', 'clovis2018', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
+INSERT INTO usuarios VALUES (3, 'Fulano Funcionario 1', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12018', 'fulano12017', 1);
+INSERT INTO usuarios VALUES (4, 'Fulano Funcionario 2', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22018', 'fulano22017', 1);
+INSERT INTO usuarios VALUES (2, 'Stephany Rios', 1, '2017-11-08', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Bocaiuva do Sul', '16', 'Casa 123', 'sr2018', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
 
 
 --
@@ -889,8 +889,6 @@ REVOKE ALL ON SCHEMA public FROM postgres;
 GRANT ALL ON SCHEMA public TO postgres;
 GRANT ALL ON SCHEMA public TO PUBLIC;
 
-
--- Completed on 2017-12-07 21:27:29
 
 --
 -- PostgreSQL database dump complete

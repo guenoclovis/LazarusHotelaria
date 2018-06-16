@@ -22,7 +22,7 @@
         };
 
         return service;
-        // //////////////não esou ouvindo
+
 
         function obter(id, filtros) {
             return Restangular.one(apiURLCompleta, id).get(filtros);

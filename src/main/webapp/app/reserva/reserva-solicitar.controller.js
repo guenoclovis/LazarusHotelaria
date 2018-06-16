@@ -65,6 +65,8 @@
 				        MsgCenter.add("INFO",
 				        		"Successo - " + transactionCode, undefined,
 								undefined);
+				        
+				        vm.reserva.checkoutCode = undefined;
 				    },
 				    abort : function() {
 				    	MsgCenter.add("WARN",
@@ -78,6 +80,7 @@
 			if (!isOpenLightbox){
 			    location.href="https://sandbox.pagseguro.uol.com.br/v2/checkout/payment.html?code="+code;
 			}
+			
 		}
 		
 		function calcularValor(data1, data2, precoDiaria) {

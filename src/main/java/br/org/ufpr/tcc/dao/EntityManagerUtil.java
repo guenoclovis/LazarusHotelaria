@@ -9,7 +9,7 @@ import javax.persistence.Persistence;
 public class EntityManagerUtil {
 	
 	public static final String LAZARUS_PU = "lazarus-pu";
-	public static final String DESIGN_TAPETES_PU = "design-tapetes-pu";
+	
 	
 	private static HashMap<String, EntityManagerFactory>  emfactories = new HashMap<String, EntityManagerFactory>();
 
