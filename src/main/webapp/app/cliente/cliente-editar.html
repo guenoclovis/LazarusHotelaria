@@ -51,6 +51,7 @@ fte<div>
 							<p class="input-group">
 								<input type="text" class="form-control" id="dtNasc"
 									uib-datepicker-popup="{{format}}"
+									datepicker-popup-template-url="{{formatBtn}}"
 									ng-model="vm.cliente.dtNasc"
 									is-open="vm.popup1.opened"
 									datepicker-options="dateOptions" ng-required="true"

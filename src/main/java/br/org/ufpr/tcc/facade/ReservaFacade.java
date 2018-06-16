@@ -1,8 +1,11 @@
 package br.org.ufpr.tcc.facade;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import java.util.logging.Logger;
 
 import org.apache.commons.httpclient.util.DateUtil;
@@ -182,30 +185,39 @@ public class ReservaFacade {
 
 	private void enviarEmail(ReservaDTO dto, Reserva reserva, String checkoutCode) {
 		
-		EmailBC emailBC = new EmailBC();
+		EmailBC emailBC = new EmailBC();		
+
+		Date dataEntradaObjDate = DataUtil.converterData(dto.getDtEntrada());
+		SimpleDateFormat dt1 = new SimpleDateFormat("dd/MM/yyyy 14:00");
+		SimpleDateFormat dt2 = new SimpleDateFormat("dd/MM/yyyy 12:00");
+		
+        String dataEntrada = dt1.format(dataEntradaObjDate);
+        String dataSaida = dt2.format(dataEntradaObjDate);
 		
         StringBuffer mensagem = new StringBuffer();
         
         mensagem.append("Caro "+dto.getNome()+":");
-        mensagem.append("\n");
-        mensagem.append("\nObrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
-        mensagem.append("\nSua Solicitação de Reserva foi realizada com sucesso conforme dados abaixo:");
-        mensagem.append("\nNome: "+dto.getNome());
-        mensagem.append("\nTelefone: "+dto.getTelefone());
-        mensagem.append("\nE-mail: "+dto.getEmail());
-        mensagem.append("\nData Entrada: "+dto.getDataEntrada());
-        mensagem.append("\nData Saída: "+dto.getDtSaida());
-        mensagem.append("\nValor(R$): "+reserva.getPreco());
-        mensagem.append("\nC�digo para Pagamento no PagSeguro:  "+checkoutCode);
-        mensagem.append("\n");
-        mensagem.append("\nCASO PREFERIR: aguardamos depósito de sinal correspondente a 50% do valor em até 5 dias para que seja feita a confirmação da reserva.");
-        mensagem.append("\nDADOS PARA DEPÓSITO DO SINAL");
-        mensagem.append("\nBanco: " + Constantes.BANCO_EMPRESA);
-        mensagem.append("\nAgência: " + Constantes.AGENCIA_EMPRESA);
-        mensagem.append("\nCC: " + Constantes.CONTA_CORRENTE_EMPRESA);
-        mensagem.append("\nCNPJ: " + Constantes.CNPJ_EMPRESA);
+        mensagem.append("<br>");
+        mensagem.append("<br>Obrigado por escolher a Lazarus Hotelaria para sua hospedagem!");
+        mensagem.append("<br>Sua Solicita&ccedil;&atilde;o de Reserva foi realizada com sucesso conforme dados abaixo:");
+        mensagem.append("<br>Nome: "+dto.getNome());
+        mensagem.append("<br>Telefone: "+dto.getTelefone());
+        mensagem.append("<br>E-mail: "+dto.getEmail());
+		mensagem.append("<br>Data Entrada: "+dataEntrada);
+		mensagem.append("<br>Data Sa&iacute;da: "+dataSaida);
+        mensagem.append("<br><div style=\"color:red;\">Valor(R$): R$"+reserva.getPreco()+",00</div>");
+        mensagem.append("<br>C�digo para Pagamento no PagSeguro:  "+checkoutCode);
+        mensagem.append("<br>");
+        mensagem.append("<br>CASO PREFERIR: aguardamos dep&oacute;sito de sinal correspondente a 50% do valor em at&eacute; 5 dias para que seja feita a confirma&ccedil;&atilde;o da reserva.");
+        mensagem.append("<br>DADOS PARA DEP&Oacute;SITO DO SINAL");
+        mensagem.append("<br>Banco: " + Constantes.BANCO_EMPRESA);
+        mensagem.append("<br>Ag&ecirc;ncia: " + Constantes.AGENCIA_EMPRESA);
+        mensagem.append("<br>CC: " + Constantes.CONTA_CORRENTE_EMPRESA);
+        mensagem.append("<br>CNPJ: " + Constantes.CNPJ_EMPRESA);
         
-        emailBC.enviarEmail(dto.getEmail(), "Solicitação de Reserva", mensagem.toString());
+        
+        
+        emailBC.enviarEmail(dto.getEmail(), "Solicita��o de Reserva", mensagem.toString());
 	}
 
 }

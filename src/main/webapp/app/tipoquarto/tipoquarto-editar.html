@@ -64,7 +64,7 @@
 								<label for="preco" class="cols-sm-2 control-label required">Pre&ccedil;o</label>
 							</div>
 							<div class="col-md-6">
-								<input type="text" class="form-control" name="preco" 
+								<input type="text" class="form-control" name="preco"  value="{{vm.tipoQuarto.preco | currency:'R$'}}"
 									id="preco" ng-model="vm.tipoQuarto.preco"
 									 />
 							</div>

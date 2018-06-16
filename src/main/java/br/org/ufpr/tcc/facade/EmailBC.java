@@ -1,5 +1,6 @@
 package br.org.ufpr.tcc.facade;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Properties;
 import javax.mail.Message;
 import javax.mail.MessagingException;
@@ -8,6 +9,7 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeUtility;
 
 import br.org.ufpr.tcc.util.Constantes;
 
@@ -17,7 +19,7 @@ public class EmailBC {
 	
 	public static void main(String[] args) {
 		EmailBC s = new EmailBC();
-		s.enviarEmail("clovis.gueno@gmail.com", "Testando envio de e-mail via java - teste2", "Chegou?");
+		s.enviarEmail("clovis.gueno@gmail.com", "Testando envio de e-mail via java - teste2", "<div style=\"color:red;\">teste</div><b>Chegou?</b><i>teste</i>");
 	}
 
 	public void enviarEmail(String destinatarios, String assunto, String mensagem) {
@@ -40,13 +42,17 @@ public class EmailBC {
 		try {
 
 			Message message = new MimeMessage(session);
-			message.setFrom(new InternetAddress(Constantes.EMAIL_GOOGLE_EMPRESA));
-			
+			message.setFrom(new InternetAddress(Constantes.EMAIL_GOOGLE_EMPRESA));			
 			InternetAddress[] iAddresses = InternetAddress.parse(destinatarios);
 			
 			message.setRecipients(Message.RecipientType.TO, iAddresses);
-			message.setSubject(assunto);
-			message.setText(mensagem);
+			try{
+				message.setSubject(MimeUtility.encodeText(assunto, "utf-8", "B"));
+			}catch(UnsupportedEncodingException uee){
+				message.setSubject(assunto);
+			}
+			message.setContent(mensagem, "text/html; charset=utf-8");
+	
 
 			Transport.send(message);
 

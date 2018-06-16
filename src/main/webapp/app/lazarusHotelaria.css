@@ -215,9 +215,16 @@
 
 .quarto_valor{
 	width: 100%;
-	height: 30px;		
+	height: 30px;
+			
 }
 .item-descricao{
 	margin-top: 0px;		
 }
+
+
 /* ========================================================================================== */
+
+input[type='radio'] {
+    transform: scale(1.5);
+}

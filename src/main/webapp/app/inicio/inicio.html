@@ -87,11 +87,13 @@
 								<p class="input-group">
 									<input type="text" class="form-control" id="dtNasc" 
 										uib-datepicker-popup="{{format}}"
+										datepicker-popup-template-url="{{formatBtn}}"
 										ng-model="vm.filtros.dataEntrada"
 										is-open="vm.popupDataEntrada.opened"
 										datepicker-options="dateOptions" ng-required="true"
 										close-text="Close" alt-input-formats="altInputFormats" /> <span
-										class="input-group-btn">
+										class="input-group-btn"
+										>
 										<button type="button" class="btn btn-default"
 											ng-click="vm.openDataEntrada()">
 											<i class="glyphicon glyphicon-calendar"></i>
@@ -111,6 +113,7 @@
 								<p class="input-group">
 									<input type="text" class="form-control" id="dtNasc"
 										uib-datepicker-popup="{{format}}"
+										datepicker-popup-template-url="{{formatBtn}}"
 										ng-model="vm.filtros.dataSaida"
 										is-open="vm.popupDataSaida.opened"
 										datepicker-options="dateOptions" ng-required="true"

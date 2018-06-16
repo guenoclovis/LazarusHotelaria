@@ -40,6 +40,7 @@
 								<p class="input-group">
 									<input type="text" class="form-control" id="dtNasc"
 										uib-datepicker-popup="{{format}}"
+										datepicker-popup-template-url="{{formatBtn}}"
 										ng-model="vm.filtros.dataEntrada"
 										is-open="vm.popupDataEntrada.opened"
 										datepicker-options="dateOptions" ng-required="true"
@@ -63,6 +64,7 @@
 								<p class="input-group">
 									<input type="text" class="form-control" id="dtNasc"
 										uib-datepicker-popup="{{format}}"
+										datepicker-popup-template-url="{{formatBtn}}"
 										ng-model="vm.filtros.dataSaida"
 										is-open="vm.popupDataSaida.opened"
 										datepicker-options="dateOptions" ng-required="true"

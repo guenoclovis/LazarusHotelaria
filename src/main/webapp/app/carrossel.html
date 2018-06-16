@@ -63,6 +63,7 @@
 				<p class="input-group">
 					<label for="data-entrada">Data de Entrada</label>
 					<input type="text" class="form-control" uib-datepicker-popup="{{format}}"
+					datepicker-popup-template-url="{{formatBtn}}"
 						ng-model="vm.showcase.dataEntrada" is-open="vm.popup1.opened"
 						datepicker-options="dateOptions" ng-required="true" close-text="Close"
 						alt-input-formats="altInputFormats" id="data-entrada" />

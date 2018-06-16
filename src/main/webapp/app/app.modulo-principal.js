@@ -34,6 +34,7 @@
 	angular.module('lazarusApp').run(function($rootScope, $location) {
 		
 	    $rootScope.baseURL = $location.protocol() + "://" + $location.host() + ":" + "8080" + "/";	    
-	    
+	    $rootScope.format = 'dd/MM/yyyy';
+	    $rootScope.formatBtn = '../lib/templateHTMLparaDatepicker/popup.html';
 	})
 })();
