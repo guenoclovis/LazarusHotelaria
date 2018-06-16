@@ -880,6 +880,17 @@ ALTER TABLE ONLY tipo_quarto_atributo
 ALTER TABLE ONLY tipo_quarto_atributo
     ADD CONSTRAINT tipo_quarto_atributo_cod_tipo_quarto_fkey FOREIGN KEY (cod_tipo_quarto) REFERENCES tipos_de_quarto(cod_tipo_quarto);
 
+ALTER TABLE fotos ADD CONSTRAINT fk_cod_foto UNIQUE (cod_foto);
+
+ALTER TABLE filiais
+   ADD CONSTRAINT fk_filiais_fotos
+   FOREIGN KEY (cod_foto) 
+   REFERENCES fotos(cod_foto);
+
+ALTER TABLE quartos
+   ADD CONSTRAINT fk_quartos_fotos
+   FOREIGN KEY (cod_foto) 
+   REFERENCES fotos(cod_foto);
 
 --
 -- TOC entry 2067 (class 0 OID 0)
