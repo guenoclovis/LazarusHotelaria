@@ -30,6 +30,7 @@ import br.org.ufpr.tcc.dto.ResponseDTO;
 import br.org.ufpr.tcc.dto.ResultadoPaginadoDTO;
 import br.org.ufpr.tcc.entity.Cliente;
 import br.org.ufpr.tcc.entity.Mensagem;
+import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.exception.handler.NegocioException;
 //import br.org.ufpr.tcc.entity.Pagina;
 import br.org.ufpr.tcc.facade.ClienteFacade;
@@ -64,7 +65,7 @@ public class ClienteREST {
 		
 		try {
 			//listar clientes para o relatorio
-			ClienteFiltroDTO filtro = new ClienteFiltroDTO();
+			ClienteFiltroDTO filtro = filtrarResultadosRelatorio();
 			List<ClienteDTO> listaClientes = facade.listar(filtro, null).getEntidades();
 			
 			//setar informacoes de cabecalho, rodape e filtros do relatorio 
@@ -79,7 +80,13 @@ public class ClienteREST {
 			String nomeArquivoJrxml = Relatorio.CLIENTES.getJasperReportName();
 			JasperReport jasper = compileReport(
 					JasperTest.class.getResourceAsStream(JasperTest.formatReportFileName(nomeArquivoJrxml)));
-			JasperPrint print = fillReport(jasper, parametros, new JRBeanCollectionDataSource(listaClientes));
+			
+			List<ClienteDTO> listaFillReport = new ArrayList<ClienteDTO>();
+			ClienteDTO clinteListaFillReport = new ClienteDTO();
+			listaFillReport.add(clinteListaFillReport);
+			
+			
+			JasperPrint print = fillReport(jasper, parametros, new JRBeanCollectionDataSource(listaFillReport));
 			String pathCompletoPDFGerado = Constantes.PATH_ARMAZENAMENTO_RELATORIOS + File.separator + "Clientes.pdf";
 			
 			JasperExportManager.exportReportToPdfFile(print, pathCompletoPDFGerado);
@@ -99,6 +106,14 @@ public class ClienteREST {
 		}
 		
     }
+
+	private ClienteFiltroDTO filtrarResultadosRelatorio() {
+		ClienteFiltroDTO filtro = new ClienteFiltroDTO();
+		Pagina pagina = new Pagina();
+		pagina.setPageSize(Integer.MAX_VALUE);
+		filtro.setPagina(pagina);
+		return filtro;
+	}
 	
 	
 	

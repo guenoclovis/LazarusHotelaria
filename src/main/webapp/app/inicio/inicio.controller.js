@@ -54,6 +54,15 @@
 		function activate() {
 			// vm.deveRestaurar = FiltroService.deveRestaurar();
 			// restaurarEstadoTela();
+			
+			var tomorrow = new Date();
+			var numberOfDaysToAdd = 1;
+			tomorrow.setDate(new Date().getDate() + numberOfDaysToAdd);
+			
+			vm.filtros.codFilial = 1;
+			vm.filtros.dataEntrada =  new Date();   
+			vm.filtros.dataSaida = tomorrow;
+			
 			carregarFiliais();
 		}
 
