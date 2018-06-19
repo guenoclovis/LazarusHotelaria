@@ -123,10 +123,11 @@ public class ClienteREST {
     @Produces("application/json")
 	public ResultadoPaginadoDTO<ClienteDTO> listar(@QueryParam("currentpage") int currentPage,
 	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
+	        @QueryParam("nome") String nome, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {
 
         ClienteFiltroDTO filtro = new ClienteFiltroDTO();
+    	filtro.setNome(nome);
         
 
         // Paginacao

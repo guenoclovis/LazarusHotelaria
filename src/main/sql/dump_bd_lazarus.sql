@@ -526,17 +526,17 @@ SELECT pg_catalog.setval('atributos_cod_atributo_seq', 5, false);
 -- Dependencies: 174
 -- Data for Name: clientes; Type: TABLE DATA; Schema: public; Owner: postgres
 --
-INSERT INTO CLIENTES VALUES(1, 'Douglas Limeira', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '99414695044', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(2, 'Silvio dos Santos', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '81764022068', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(3, 'Clóvis Daniel Guêno', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '52091721042', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(4, 'Maria da Silva', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '85946141015', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(5, 'João das Neves', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '35341215036', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(6, 'Izair Pereira', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '38931789025', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(7, 'Marilia Pontes', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '85086448093', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(8, 'Marisa Medeiros Neta', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '01740754050', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(9, 'Angelida Boudrink', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '75488271058', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(10, 'Assis de Noronha', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '81542509009', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
-INSERT INTO CLIENTES VALUES(11, 'Pablo Estênio', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '73047763070', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 1);
+INSERT INTO CLIENTES VALUES(1, 'Douglas Limeira', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '99414695044', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(2, 'Silvio dos Santos', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '81764022068', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(3, 'Clóvis Daniel Guêno', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '52091721042', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(4, 'Maria da Silva', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '85946141015', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(5, 'João das Neves', '31-12-1990', '1', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '35341215036', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(6, 'Izair Pereira', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '38931789025', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(7, 'Marilia Pontes', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '85086448093', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(8, 'Marisa Medeiros Neta', '31-12-1990', '0', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '01740754050', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(9, 'Angelida Boudrink', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '75488271058', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(10, 'Assis de Noronha', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '81542509009', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
+INSERT INTO CLIENTES VALUES(11, 'Pablo Estênio', '31-12-1990', '2', 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '73047763070', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2);
 
 
 --
@@ -877,6 +877,22 @@ ALTER TABLE ONLY tipo_quarto_atributo
 ALTER TABLE ONLY tipo_quarto_atributo
     ADD CONSTRAINT tipo_quarto_atributo_cod_tipo_quarto_fkey FOREIGN KEY (cod_tipo_quarto) REFERENCES tipos_de_quarto(cod_tipo_quarto);
 
+ALTER TABLE fotos ADD CONSTRAINT fk_cod_foto UNIQUE (cod_foto);
+
+ALTER TABLE filiais
+   ADD CONSTRAINT fk_filiais_fotos
+   FOREIGN KEY (cod_foto) 
+   REFERENCES fotos(cod_foto);
+
+ALTER TABLE quartos
+   ADD CONSTRAINT fk_quartos_fotos
+   FOREIGN KEY (cod_foto) 
+   REFERENCES fotos(cod_foto);
+
+--
+-- TOC entry 2067 (class 0 OID 0)
+-- Dependencies: 6
+-- Name: public; Type: ACL; Schema: -; Owner: postgres
 
 --
 -- TOC entry 2067 (class 0 OID 0)

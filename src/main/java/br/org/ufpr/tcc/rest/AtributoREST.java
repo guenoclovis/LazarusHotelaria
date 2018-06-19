@@ -42,10 +42,11 @@ public class AtributoREST {
     @Produces("application/json")
 	public ResultadoPaginadoDTO<AtributoDTO> listar(@QueryParam("currentpage") int currentPage,			
 	        @QueryParam("pagesize") int pageSize,
-	        @QueryParam("nome") String cpf, @QueryParam("ativo") Boolean ativo,	        
+	        @QueryParam("nome") String nome, @QueryParam("ativo") Boolean ativo,	        
 	        @QueryParam("fields") String fields) {
 
         AtributoFiltroDTO filtro = new AtributoFiltroDTO();
+        filtro.setNome(nome);
         
 
         // Paginação

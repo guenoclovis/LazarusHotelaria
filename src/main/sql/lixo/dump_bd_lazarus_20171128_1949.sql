@@ -537,8 +537,8 @@ INSERT INTO clientes VALUES (8, 'CICLANO 8 DE SOUZA LEMOS', '1990-12-31', 0, 'Br
 INSERT INTO clientes VALUES (9, 'CICLANO 9 DE SOUZA LEMOS', '1990-12-31', 2, 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2, NULL);
 INSERT INTO clientes VALUES (10, 'CICLANO 10 DE SOUZA LEMOS', '1990-12-31', 2, 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2, NULL);
 INSERT INTO clientes VALUES (11, 'CICLANO 11 DE SOUZA LEMOS', '1990-12-31', 2, 'Brasileira', '(41)3333-3333', '(41)3333-3333', 'email1@email1.com.br', 'email2@email2.com.br', '00000000000', '00000', '00000', 'Rua das Flores', 89, 'Jardim das Americas', 'Curitiba', 'PR', 'qqq', '123', 2, NULL);
-INSERT INTO clientes VALUES (12, 'JO√O DA SILVA', NULL, NULL, NULL, '(41)2222-2222', NULL, 'clovis.gueno@gmail.com', NULL, '09597373912', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL);
-INSERT INTO clientes VALUES (13, 'MARIA JO√O DA SILVA', NULL, NULL, NULL, '(41)2222-2222', NULL, 'clovis.gueno@gmail.com', NULL, '09597373912', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL);
+INSERT INTO clientes VALUES (12, 'JO√ÉO DA SILVA', NULL, NULL, NULL, '(41)2222-2222', NULL, 'clovis.gueno@gmail.com', NULL, '09597373912', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL);
+INSERT INTO clientes VALUES (13, 'MARIA JO√ÉO DA SILVA', NULL, NULL, NULL, '(41)2222-2222', NULL, 'clovis.gueno@gmail.com', NULL, '09597373912', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, 1, NULL);
 
 
 --
@@ -695,10 +695,10 @@ SELECT pg_catalog.setval('tipos_de_quarto_cod_tipo_quarto_seq', 3, true);
 -- Data for Name: usuarios; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO usuarios VALUES (1, 'Clovis Daniel Gueno', 1, '2017-11-16', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', '3 ', 'Casa 123', 'clovis2017', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
-INSERT INTO usuarios VALUES (3, 'Fulano Funcionario 1', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12017', 'fulano12017', 1);
-INSERT INTO usuarios VALUES (4, 'Fulano Funcionario 2', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22017', 'fulano22017', 1);
-INSERT INTO usuarios VALUES (2, 'Stephany Rios', 1, '2017-11-08', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Bocaiuva do Sul', '16', 'Casa 123', 'sr2017', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
+INSERT INTO usuarios VALUES (1, 'Clovis Daniel Gueno', 1, '2017-11-16', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', '3 ', 'Casa 123', 'clovis2018', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
+INSERT INTO usuarios VALUES (3, 'Fulano Funcionario 1', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano12018', 'fulano12017', 1);
+INSERT INTO usuarios VALUES (4, 'Fulano Funcionario 2', 1, '1990-11-10', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Colombo', 'PR', 'Casa 123', 'fulano22018', 'fulano22017', 1);
+INSERT INTO usuarios VALUES (2, 'Stephany Rios', 1, '2017-11-08', 1, 'Brasileira', '1', '(41)3333-3333', 'email@email.com.br', '00000000191', '43141413', '3142352352', 'Estrada da Ribeira', 123, 'Imbuial', 'Bocaiuva do Sul', '16', 'Casa 123', 'sr2018', 'ny6Hf6c89jlhZpyfC5o7hQ==', 1);
 
 
 --

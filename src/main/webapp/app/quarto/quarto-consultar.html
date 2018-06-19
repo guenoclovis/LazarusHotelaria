@@ -8,7 +8,7 @@
 		<div class="titulo-paginas-meio">
 			<h1>Consultar Quartos</h1>
 		</div>	
-		<!-- ======================= CONSULTA DE ATRIBUTOS =========================== -->
+		<!-- ======================= CONSULTA DE QUARTO =========================== -->
 		<div class=".container">
 		
 			<div class="row campo-form">
@@ -17,7 +17,7 @@
 					<label for="filiais" class="cols-sm-2 control-label">Hotel</label>
 				</div>			
 				<div class="col-sm-6">						
-					<select id="filiais" class="btn" ng-click="vm.carregarFilial()"
+					<select id="filiais" class="btn btn-primary" ng-click="vm.carregarFilial()"
 						ng-options="item.codFilial as item.nome for item in vm.filiais"
 						ng-model="vm.filtros.codFilial"	>
 						<option value="" selected>Selecione</option>
