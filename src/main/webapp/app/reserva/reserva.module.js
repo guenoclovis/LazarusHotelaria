@@ -6,5 +6,6 @@
 
     // Módulo que define o componente 'reserva'
     angular.module('reserva',[]);
+  
 
 })();

@@ -11,6 +11,8 @@
             //'ng-file-upload',            
             'ui.bootstrap',
             'msgcenter',
+            'rw.moneymask',
+            
             
             //Sub-modulos que sao funcionalidades do sistema
 			'inicio',

@@ -79,34 +79,38 @@ public class CheckoutRegisterBC {
 							.withId(checkout.getIdReserva().toString())//
 							.withDescription(checkout.getDescription()) //
 							.withAmount(checkout.getAmount())//
-							.withQuantity(checkout.getQuantity()).withWeight(1000))
+							.withQuantity(checkout.getQuantity())
+							.withWeight(1000))
 
 
 					.withAcceptedPaymentMethods(new AcceptedPaymentMethodsBuilder()
 							.addInclude(new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
 							.addInclude(new PaymentMethodBuilder().withGroup(PaymentMethodGroup.BANK_SLIP)))
 
-					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
-							.withPaymentMethod(
-									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
-							.withConfig(new ConfigBuilder().withKey(ConfigKey.DISCOUNT_PERCENT)
-									.withValue(new BigDecimal(10.00))))
-					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
-							.withPaymentMethod(
-									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.BANK_SLIP))
-							.withConfig(new ConfigBuilder().withKey(ConfigKey.DISCOUNT_PERCENT)
-									.withValue(new BigDecimal(0.1))))
-
-					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
-							.withPaymentMethod(
-									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
-							.withConfig(new ConfigBuilder().withKey(ConfigKey.MAX_INSTALLMENTS_LIMIT)
-									.withValue(new BigDecimal(10))))
-					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
-							.withPaymentMethod(
-									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
-							.withConfig(new ConfigBuilder().withKey(ConfigKey.MAX_INSTALLMENTS_NO_INTEREST)
-									.withValue(new BigDecimal(5))));
+//					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
+//							.withPaymentMethod(
+//									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
+//							.withConfig(new ConfigBuilder().withKey(ConfigKey.DISCOUNT_PERCENT)
+//									.withValue(new BigDecimal(10.00))))
+//					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
+//							.withPaymentMethod(
+//									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.BANK_SLIP))
+//							.withConfig(new ConfigBuilder().withKey(ConfigKey.DISCOUNT_PERCENT)
+//									.withValue(new BigDecimal(0.1))))
+//
+//					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
+//							.withPaymentMethod(
+//									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
+//							.withConfig(new ConfigBuilder().withKey(ConfigKey.MAX_INSTALLMENTS_LIMIT)
+//									.withValue(new BigDecimal(10))))
+//					.addPaymentMethodConfig(new PaymentMethodConfigBuilder()
+//							.withPaymentMethod(
+//									new PaymentMethodBuilder().withGroup(PaymentMethodGroup.CREDIT_CARD))
+//							.withConfig(new ConfigBuilder().withKey(ConfigKey.MAX_INSTALLMENTS_NO_INTEREST)
+//									.withValue(new BigDecimal(5))))
+			;
+			
+			checkoutRegister.withExtraAmount(new BigDecimal(0));
 			
 			RegisteredCheckout registeredCheckout = pagSeguro.checkouts().register(checkoutRegister);
 			
