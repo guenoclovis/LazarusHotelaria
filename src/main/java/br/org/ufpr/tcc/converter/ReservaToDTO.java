@@ -19,6 +19,15 @@ public class ReservaToDTO {
 		if (reserva != null) {
 
 			dto.setCodReserva(reserva.getCodReserva());
+			
+			reserva.getDtEntrada().setHours(14);
+			reserva.getDtEntrada().setMinutes(0);
+			reserva.getDtEntrada().setSeconds(0);
+			
+			reserva.getDtSaida().setHours(12);
+			reserva.getDtSaida().setMinutes(0);
+			reserva.getDtSaida().setSeconds(0);
+			
 			dto.setDtEntrada(DataUtil.fromDateToString(reserva.getDtEntrada()));
 			dto.setDtSaida(DataUtil.fromDateToString(reserva.getDtSaida()));
 			dto.setDtReserva(DataUtil.fromDateToString(reserva.getDtReserva()));

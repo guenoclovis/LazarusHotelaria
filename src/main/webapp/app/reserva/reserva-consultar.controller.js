@@ -214,10 +214,17 @@
 			MsgCenter.clear();
 			
 			var filtros = vm.filtros;
+			filtros.dataEntrada.setHours(14);
+			filtros.dataEntrada.setMinutes(0);
+			filtros.dataEntrada.setSeconds(0);
+			
+			filtros.dataSaida.setHours(12);
+			filtros.dataSaida.setMinutes(0);
+			filtros.dataSaida.setSeconds(0);
 
 			ReservaData.listar(filtros).then(function(data) {
 				vm.reservas = data.entidades;
-
+				
 				if (data.pagina) {
 					var page = data.pagina;
 					vm.currentpage = page.currentPage + 1;

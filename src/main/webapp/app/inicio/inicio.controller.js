@@ -64,6 +64,15 @@
 			vm.filtros.dataSaida = tomorrow;
 			
 			carregarFiliais();
+			
+			vm.filtros.dataEntrada.setHours(14);
+			vm.filtros.dataEntrada.setMinutes(0);
+			vm.filtros.dataEntrada.setSeconds(0);
+			
+			vm.filtros.dataSaida.setHours(12);
+			vm.filtros.dataSaida.setMinutes(0);
+			vm.filtros.dataSaida.setSeconds(0);
+			
 		}
 
 		function openDataEntrada() {

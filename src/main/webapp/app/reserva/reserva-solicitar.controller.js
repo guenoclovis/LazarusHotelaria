@@ -47,9 +47,18 @@
 		// ////// OPERACOES DO CONTROLADOR ////////////////////
 
 		function activate() {
+			
+			vm.reserva.dataEntrada.setHours(14);
+			vm.reserva.dataEntrada.setMinutes(0);
+			vm.reserva.dataEntrada.setSeconds(0);
+			
+			vm.reserva.dataSaida.setHours(12);
+			vm.reserva.dataSaida.setMinutes(0);
+			vm.reserva.dataSaida.setSeconds(0);
+			
 			carregarFiliais();
 			carregarFilial();
-			carregarQuarto();			
+			carregarQuarto();	
 		}
 		
 		function pagarAgora(){
@@ -88,6 +97,16 @@
 			   var dateAux1 = new Date(data1); 
 			   var dateAux2 = new Date(data2);
 
+			   dateAux1.setHours(0);
+			   dateAux1.setMinutes(0);
+			   dateAux1.setSeconds(0);
+				
+			   dateAux2.setHours(0);
+			   dateAux2.setMinutes(0);
+			   dateAux2.setSeconds(0);
+				
+				
+			   
 			   var dias = (dateAux2 - dateAux1)  / 1000 / 60 / 60 / 24;
 
 			   vm.reserva.preco = dias * precoDiaria;
@@ -100,6 +119,14 @@
 			if(!validarFiltrosObrigatorios()){
 				return;
 			}
+			
+			vm.reserva.dataEntrada.setHours(14);
+			vm.reserva.dataEntrada.setMinutes(0);
+			vm.reserva.dataEntrada.setSeconds(0);
+			
+			vm.reserva.dataSaida.setHours(12);
+			vm.reserva.dataSaida.setMinutes(0);
+			vm.reserva.dataSaida.setSeconds(0);
 			
 			MsgCenter.add("WARN",
 					"Aguarde ...", undefined,
